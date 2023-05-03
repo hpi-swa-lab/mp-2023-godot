@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp2hr4ax11y3o"]
+
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_xj847"]
+[ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://scenes/objects/Tree.tscn" id="2_bdb5u"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1c2y4"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqvdg"]
+albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
+
+[node name="Woods Room" instance=ExtResource("1_xj847")]
+
+[node name="Tree" parent="." index="0" instance=ExtResource("2_bdb5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.31065, 0, 0)
+
+[node name="Tree2" parent="." index="1" instance=ExtResource("2_bdb5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.06144)
+
+[node name="Tree3" parent="." index="2" instance=ExtResource("2_bdb5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.733593, 0, -1.81103)
+
+[node name="Ground" type="MeshInstance3D" parent="." index="3"]
+mesh = SubResource("PlaneMesh_1c2y4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqvdg")

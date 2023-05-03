@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://db8vbg7l8men1"]
+[gd_scene load_steps=7 format=3 uid="uid://ru33cjifwwbc"]
 
-[ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://scenes/objects/Tree.tscn" id="1_47r7v"]
-[ext_resource type="Script" path="res://scripts/root.gd" id="1_p6p0w"]
+[ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="2_keld2"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_vxdkr"]
-size = Vector2(100, 100)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vew2b"]
-albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_vwd4b"]
+size = Vector3(0.146, 0.2, 0.094)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
 
@@ -18,18 +15,8 @@ sky_material = SubResource("PhysicalSkyMaterial_0rulv")
 background_mode = 2
 sky = SubResource("Sky_3nj16")
 
-[node name="Root" type="Node3D"]
-script = ExtResource("1_p6p0w")
-
-[node name="Ground" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_vxdkr")
-surface_material_override/0 = SubResource("StandardMaterial3D_vew2b")
-
-[node name="Tree" parent="." instance=ExtResource("1_47r7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05548, 0, 0)
-
-[node name="Tree2" parent="." instance=ExtResource("1_47r7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93618, 0, -10.2001)
+[node name="Shell" type="Node3D"]
+script = ExtResource("1_ktytr")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
@@ -39,11 +26,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
 [node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/Left Hand"]
+mesh = SubResource("BoxMesh_vwd4b")
+
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/Right Hand"]
+mesh = SubResource("BoxMesh_vwd4b")
+skeleton = NodePath("../../Left Hand")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi6uc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
+
+[node name="Email Room" parent="." instance=ExtResource("2_keld2")]
