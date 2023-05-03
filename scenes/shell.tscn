@@ -32,7 +32,7 @@ mesh = SubResource("BoxMesh_vwd4b")
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/Right Hand"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/Right Hand"]
 mesh = SubResource("BoxMesh_vwd4b")
 skeleton = NodePath("../../Left Hand")
 
