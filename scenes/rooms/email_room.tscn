@@ -1,7 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbqihr71pkhpw"]
+[gd_scene load_steps=10 format=3 uid="uid://cbqihr71pkhpw"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_6lqs3"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_6lqs3"]
+[ext_resource type="PackedScene" uid="uid://ci8hbap6prwgl" path="res://scenes/vr_object.tscn" id="2_adneq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tnpku"]
+size = Vector3(0.2, 0.1, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yqui8"]
+size = Vector3(0.2, 0.1, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unxgq"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvaht"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jkqea"]
+size = Vector3(2, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c2x63"]
+size = Vector3(2, 1, 0.1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rukku"]
+radius = 0.0392037
 
 [node name="Email Room" instance=ExtResource("1_6lqs3")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+[node name="MailVRObject" parent="." index="0" instance=ExtResource("2_adneq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685145, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="MailVRObject" index="0"]
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MailVRObject/RigidBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("BoxMesh_tnpku")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MailVRObject/RigidBody3D" index="1"]
+shape = SubResource("BoxShape3D_yqui8")
+
+[node name="Ground" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" index="0"]
+shape = SubResource("BoxShape3D_unxgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" index="1"]
+mesh = SubResource("BoxMesh_vvaht")
+skeleton = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.677711, 0.735329, 0, -0.735329, 0.677711, 0, 1.34643, 0.873652)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.197007, 0.980402, 0, -0.980402, 0.197007, 0, 0, 0)
+
+[node name="Wall" type="StaticBody3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528233, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" index="0"]
+shape = SubResource("BoxShape3D_jkqea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" index="1"]
+mesh = SubResource("BoxMesh_c2x63")
+
+[node name="PinPoint" type="StaticBody3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.397552, 0.685595, -0.104603)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PinPoint" index="0"]
+shape = SubResource("SphereShape3D_rukku")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="." index="6"]
+node_a = NodePath("../MailVRObject/RigidBody3D")
+node_b = NodePath("../PinPoint")
+params/bias = 0.5
+params/damping = 5.0
+params/impulse_clamp = 5.0
