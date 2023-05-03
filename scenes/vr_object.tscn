@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci8hbap6prwgl"]
+
+[ext_resource type="Script" path="res://scripts/VRObject.gd" id="1_sp8al"]
+
+[node name="VRObject" type="Node3D"]
+script = ExtResource("1_sp8al")
