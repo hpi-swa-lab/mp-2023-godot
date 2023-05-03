@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://db8vbg7l8men1"]
+[gd_scene load_steps=8 format=3 uid="uid://db8vbg7l8men1"]
 
 [ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://scenes/objects/Tree.tscn" id="1_47r7v"]
+[ext_resource type="Script" path="res://scripts/root.gd" id="1_p6p0w"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vxdkr"]
 size = Vector2(100, 100)
@@ -8,7 +9,17 @@ size = Vector2(100, 100)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vew2b"]
 albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
+
+[sub_resource type="Sky" id="Sky_3nj16"]
+sky_material = SubResource("PhysicalSkyMaterial_0rulv")
+
+[sub_resource type="Environment" id="Environment_fi6uc"]
+background_mode = 2
+sky = SubResource("Sky_3nj16")
+
 [node name="Root" type="Node3D"]
+script = ExtResource("1_p6p0w")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_vxdkr")
@@ -20,10 +31,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05548, 0, 0)
 [node name="Tree2" parent="." instance=ExtResource("1_47r7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93618, 0, -10.2001)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 109.637, 0)
-
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
+
+[node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fi6uc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.2661, 0)
