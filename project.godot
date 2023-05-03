@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="VRShell"
+run/main_scene="res://scenes/root.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[xr]
+
+openxr/enabled=true
