@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=8 format=3 uid="uid://lwffyffy5xgt"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="2_keld2"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="2_keld2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vwd4b"]
 size = Vector3(0.146, 0.2, 0.094)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ism3"]
+size = Vector3(0.144797, 0.173822, 0.0957065)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
 
@@ -35,6 +38,11 @@ tracker = &"right_hand"
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/Right Hand"]
 mesh = SubResource("BoxMesh_vwd4b")
 skeleton = NodePath("../../Left Hand")
+
+[node name="Area3D" type="Area3D" parent="XROrigin3D/Right Hand"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Right Hand/Area3D"]
+shape = SubResource("BoxShape3D_3ism3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi6uc")

@@ -12,11 +12,15 @@ func _ready():
 	
 		
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
+@onready var left_hand : XRController3D = $"XROrigin3D/Left Hand"
 		
 func open_room(name):
 	if name == "ax_button":
-		var woods_room_resource: PackedScene = preload("res://scenes/rooms/woods_room.tscn")
+		var woods_room_resource: PackedScene = preload("res://rooms/Adventure/woods_room.tscn")
 		var new_room = woods_room_resource.instantiate()
+		
+		new_room.left_hand = left_hand
+		new_room.right_hand = right_hand
 		self.add_child(new_room)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

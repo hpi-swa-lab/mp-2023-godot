@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=3 uid="uid://bdh0mn6cyrhxm"]
+
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_hk6ib"]
+[ext_resource type="Script" path="res://rooms/Adventure/woods_room.gd" id="2_keenk"]
+[ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://scenes/objects/Tree.tscn" id="3_ql103"]
+[ext_resource type="PackedScene" uid="uid://ci8hbap6prwgl" path="res://scenes/vr_object.tscn" id="4_gj1eu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1c2y4"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqvdg"]
+albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2w0i"]
+size = Vector3(0.123, 0.481, 0.059)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uys04"]
+albedo_color = Color(0.611765, 0.435294, 0.329412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ln4y"]
+size = Vector3(0.103, 0.56, 0.059)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdryr"]
+albedo_color = Color(0.611765, 0.435294, 0.329412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lw13m"]
+size = Vector3(0.108, 0.62, 0.075)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbcg0"]
+albedo_color = Color(0.611765, 0.435294, 0.329412, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xvr85"]
+height = 1.065
+radius = 0.15
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_80l8d"]
+height = 1.0
+radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bsc1e"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 1.2
+
+[node name="Woods Room" instance=ExtResource("1_hk6ib")]
+script = ExtResource("2_keenk")
+
+[node name="Tree" parent="." index="0" instance=ExtResource("3_ql103")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.31065, 0, 0)
+
+[node name="Tree2" parent="." index="1" instance=ExtResource("3_ql103")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.06144)
+
+[node name="Tree3" parent="." index="2" instance=ExtResource("3_ql103")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.733593, 0, -1.81103)
+
+[node name="Ground" type="MeshInstance3D" parent="." index="3"]
+mesh = SubResource("PlaneMesh_1c2y4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqvdg")
+
+[node name="Bow" parent="." index="4" instance=ExtResource("4_gj1eu")]
+transform = Transform3D(0.803335, 0, 0, 0, 0.784097, 0, 0, 0, 1, -0.662042, 0, 1.1733)
+
+[node name="Grip" type="Area3D" parent="Bow" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564961, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bow/Grip" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341204, 0)
+mesh = SubResource("BoxMesh_n2w0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_uys04")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bow/Grip" index="1"]
+transform = Transform3D(0.810614, 0.58558, 0, -0.58558, 0.810614, 0, 0, 0, 1, 0.157434, 0.753878, -0.00271012)
+mesh = SubResource("BoxMesh_3ln4y")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdryr")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Bow/Grip" index="2"]
+transform = Transform3D(0.678378, -0.734713, 0, 0.734713, 0.678378, 0, 0, 0, 1, 0.183629, -0.103866, 0)
+mesh = SubResource("BoxMesh_lw13m")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gbcg0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bow/Grip" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0347171, 0.318461, 0)
+shape = SubResource("CylinderShape3D_xvr85")
+
+[node name="String" type="Area3D" parent="Bow" index="1"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bow/String" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.354585, 0.883422, 0)
+shape = SubResource("CylinderShape3D_80l8d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bow/String" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329857, 0.863923, 0)
+mesh = SubResource("CylinderMesh_bsc1e")
