@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=10 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="2_keld2"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="2_keld2"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_edqy1"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_vwd4b"]
-size = Vector3(0.146, 0.2, 0.094)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
+radius = 0.244139
+height = 0.989987
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
 
@@ -26,15 +30,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
 [node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/Left Hand"]
-mesh = SubResource("BoxMesh_vwd4b")
+[node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_16aro")]
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/Right Hand"]
-mesh = SubResource("BoxMesh_vwd4b")
-skeleton = NodePath("../../Left Hand")
+[node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("3_edqy1")]
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
+shape = SubResource("CapsuleShape3D_g4e5f")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi6uc")

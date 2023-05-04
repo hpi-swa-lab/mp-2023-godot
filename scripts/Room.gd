@@ -1,11 +1,16 @@
 extends Node3D
 
+var interface: XRInterface
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	interface = XRServer.find_interface("OpenXR")
+	if interface and interface.is_initialized():
+		print("OpenXR initialised successfully")
 
+		# Turn off v-sync!
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+		# Change our main viewport to output to the HMD
+		get_viewport().use_xr = true
+	else:
+		print("OpenXR not initialised, please check if your headset is connected")
