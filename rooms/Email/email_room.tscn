@@ -1,16 +1,16 @@
 [gd_scene load_steps=20 format=3 uid="uid://cbqihr71pkhpw"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_6lqs3"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_crevs"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/snap_zone.gd" id="2_ib1op"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_k27nj"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_0lj1x"]
-[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_blvku"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="5_yvqij"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="7_71bs4"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="9_vxnuy"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="10_17i2u"]
-[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="11_1dnjf"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_a8t4x"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/snap_zone.gd" id="2_3ahpi"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_81cbn"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_5fbd1"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="5_2qo6a"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_ey84l"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="7_tr1m0"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="8_3focf"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="9_2wkxp"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="10_sow60"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="11_1syee"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unxgq"]
 size = Vector3(10, 0.1, 10)
@@ -37,7 +37,7 @@ size = Vector3(0.15, 0.08, 0.01)
 [sub_resource type="BoxMesh" id="BoxMesh_sjofp"]
 size = Vector3(0.15, 0.08, 0.01)
 
-[node name="Email Room" instance=ExtResource("1_6lqs3")]
+[node name="Email Room" instance=ExtResource("1_a8t4x")]
 
 [node name="Ground" type="StaticBody3D" parent="." index="0"]
 
@@ -64,7 +64,7 @@ mesh = SubResource("BoxMesh_c2x63")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.726591, 0.289399, 0.104817)
 collision_layer = 4
 collision_mask = 65540
-script = ExtResource("2_ib1op")
+script = ExtResource("2_3ahpi")
 initial_object = NodePath("../../Mail")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/MailSnapZone" index="0"]
@@ -80,30 +80,30 @@ far = 300.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
-[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("2_crevs")]
+[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("3_81cbn")]
 
 [node name="XRToolsFunctionPickup" type="Node3D" parent="XROrigin3D/LeftHand" index="1"]
-script = ExtResource("4_0lj1x")
+script = ExtResource("4_5fbd1")
 ranged_angle = 10.0
 
 [node name="XRToolsMovementDirect" type="Node" parent="XROrigin3D/LeftHand" index="2" groups=["movement_providers"]]
-script = ExtResource("5_yvqij")
+script = ExtResource("5_2qo6a")
 strafe = true
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 
-[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("3_k27nj")]
+[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("6_ey84l")]
 
 [node name="XRToolsFunctionPickup" type="Node3D" parent="XROrigin3D/RightHand" index="1"]
-script = ExtResource("4_0lj1x")
+script = ExtResource("4_5fbd1")
 ranged_angle = 10.0
 
 [node name="XRToolsMovementTurn" type="Node" parent="XROrigin3D/RightHand" index="2" groups=["movement_providers"]]
-script = ExtResource("7_71bs4")
+script = ExtResource("7_tr1m0")
 
-[node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("4_blvku")]
+[node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("8_3focf")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -114,7 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604363, 0)
 collision_layer = 4
 collision_mask = 720903
 freeze_mode = 1
-script = ExtResource("9_vxnuy")
+script = ExtResource("9_2wkxp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mail" index="0"]
 shape = SubResource("BoxShape3D_4wrcc")
@@ -125,15 +125,15 @@ mesh = SubResource("BoxMesh_sjofp")
 [node name="GrabPointHandLeft" type="Marker3D" parent="Mail" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04952, 0.0415391, -0.0864464)
 visible = false
-script = ExtResource("10_17i2u")
+script = ExtResource("10_sow60")
 
 [node name="GrabPointHandRight" type="Marker3D" parent="Mail" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.042, -0.086)
 visible = false
-script = ExtResource("10_17i2u")
+script = ExtResource("10_sow60")
 hand = 1
 
-[node name="HighlightRing" parent="Mail" index="4" instance=ExtResource("11_1dnjf")]
+[node name="HighlightRing" parent="Mail" index="4" instance=ExtResource("11_1syee")]
 
 [connection signal="body_entered" from="Wall/MailSnapZone" to="Wall/MailSnapZone" method="_on_snap_zone_body_entered"]
 [connection signal="body_exited" from="Wall/MailSnapZone" to="Wall/MailSnapZone" method="_on_snap_zone_body_exited"]

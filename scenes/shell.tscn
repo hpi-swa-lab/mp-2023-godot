@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=11 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="2_keld2"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_edqy1"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l3bea"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
+[ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
 radius = 0.244139
@@ -32,10 +33,14 @@ tracker = &"left_hand"
 
 [node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_16aro")]
 
+[node name="FunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_l3bea")]
+
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("3_edqy1")]
+
+[node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_l3bea")]
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
 
@@ -48,4 +53,4 @@ environment = SubResource("Environment_fi6uc")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
 
-[node name="Email Room" parent="." instance=ExtResource("2_keld2")]
+[node name="Woods Room" parent="." instance=ExtResource("5_sr317")]

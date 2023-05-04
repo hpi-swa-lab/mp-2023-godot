@@ -15,7 +15,7 @@ func _ready():
 		
 func open_room(name):
 	if name == "ax_button":
-		var woods_room_resource: PackedScene = preload("res://scenes/rooms/woods_room.tscn")
+		var woods_room_resource: PackedScene = preload("res://rooms/Adventure/woods_room.tscn")
 		var new_room = woods_room_resource.instantiate()
 		self.add_child(new_room)
 
