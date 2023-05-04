@@ -43,6 +43,9 @@ tracker = &"right_hand"
 [node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_l3bea")]
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595009, 0)
+collision_layer = 0
+collision_mask = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
 shape = SubResource("CapsuleShape3D_g4e5f")

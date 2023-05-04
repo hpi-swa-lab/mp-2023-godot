@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5wkmvwm7um16"]
+[gd_scene load_steps=20 format=3 uid="uid://b5wkmvwm7um16"]
 
 [ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_3xsji"]
 [ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://rooms/Adventure/Tree.tscn" id="2_od42l"]
+[ext_resource type="Script" path="res://rooms/Adventure/Bow.gd" id="3_gxru2"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_n1f2g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhvkn"]
@@ -36,8 +37,8 @@ size = Vector3(0.108, 0.62, 0.075)
 albedo_color = Color(0.611765, 0.435294, 0.329412, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xvr85"]
-height = 1.065
-radius = 0.15
+height = 0.8
+radius = 0.12
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_80l8d"]
 height = 1.0
@@ -69,6 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.733593, 0, -1.81103)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42035, 0.501645, 1.28386)
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" index="0"]
 mesh = SubResource("CylinderMesh_rfpm3")
@@ -77,10 +79,12 @@ mesh = SubResource("CylinderMesh_rfpm3")
 shape = SubResource("CylinderShape3D_pbryl")
 
 [node name="Bow" type="Node3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.04749, 0.998872, 0, -0.998872, 0.04749, -0.707251, 1.83469, 1.78966)
+transform = Transform3D(-0.162723, -0.985559, 0.046857, 0, 0.04749, 0.998872, -0.986672, 0.16254, -0.00772773, 0.287286, 1.83469, 1.52569)
+script = ExtResource("3_gxru2")
 
 [node name="Grip" parent="Bow" index="0" instance=ExtResource("3_n1f2g")]
-transform = Transform3D(0.803335, 0, 0, 0, 0.784097, 0, 0, 0, 1, 0.153937, 0.35336, -0.711787)
+transform = Transform3D(0.802777, -0.0291779, 0.0017692, 0.0298938, 0.783554, 3.29278e-05, -0.00142126, 2.58237e-05, 0.999998, 0.153937, 0.35336, -0.711787)
+mass = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bow/Grip" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.11759e-08, 0, 0, 1, 0, 0.341204, -1.19209e-07)
@@ -100,27 +104,22 @@ mesh = SubResource("BoxMesh_lw13m")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gbcg0")
 
-[node name="Area" type="Area3D" parent="Bow/Grip" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.11759e-08, 0, 0, 1, 0, -4.76837e-07, -1.19209e-07)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bow/Grip/Area" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 3.72529e-09, 0, 0, 1, -0.0347171, 0.318461, 1.19209e-07)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bow/Grip" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.23517e-08, 0, 0, 1, -0.0347171, 0.318461, 0)
 shape = SubResource("CylinderShape3D_xvr85")
 
-[node name="String" parent="Bow" index="1" instance=ExtResource("3_n1f2g")]
-transform = Transform3D(1, 0, 0, 0, 0.04749, -0.998872, 0, 0.998872, 0.04749, 0.767067, 1.68246, -2.2974)
+[node name="String" parent="Bow/Grip" index="5" instance=ExtResource("3_n1f2g")]
+transform = Transform3D(1.24395, 7.39271e-10, -0.0463744, -0.0474586, 0.0605665, -1.27303, 0.0017692, 0.998872, 0.047457, 0.827759, 1.66473, -1.58448)
+gravity_scale = 0.0
 
-[node name="StringArea" type="Area3D" parent="Bow/String" index="1"]
-transform = Transform3D(0.803335, 0, 0, 0, 0.0372368, 0.998872, 0, -0.783213, 0.04749, -0.61313, 1.49967, 1.84538)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bow/String" index="2"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bow/Grip/String" index="1"]
 transform = Transform3D(0.803335, 0, 0, 0, 0.0372368, 0.998872, 0, -0.783213, 0.04749, -0.328279, 1.53256, 1.15347)
 shape = SubResource("CylinderShape3D_80l8d")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bow/String" index="3"]
-transform = Transform3D(0.803335, 0, 0, 0, 0.0372368, 0.998872, 0, -0.783213, 0.04749, -0.348144, 1.53184, 1.16875)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bow/Grip/String" index="2"]
+transform = Transform3D(0.800687, -0.0635721, 0.00278856, 0.000804902, 0.036597, 0.99891, -0.0651653, -0.780658, 0.0466014, -0.348144, 1.53184, 1.16875)
 mesh = SubResource("CylinderMesh_bsc1e")
-skeleton = NodePath("../StringArea")
+skeleton = NodePath("")
 
 [node name="Ground" type="StaticBody3D" parent="." index="5"]
 
@@ -130,5 +129,5 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_xqvdg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.460943, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107559, 0)
 shape = SubResource("WorldBoundaryShape3D_pg05n")
