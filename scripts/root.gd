@@ -8,6 +8,7 @@ func _ready():
 		var vp: Viewport = get_viewport()
 		vp.use_xr = true
 	right_hand.button_pressed.connect(open_room)
+	g.portal_camera = $"XROrigin3D/PortalViewport/XROrigin3D/Portal Camera"
 		
 	
 		

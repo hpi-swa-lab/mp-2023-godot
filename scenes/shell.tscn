@@ -1,13 +1,41 @@
-[gd_scene load_steps=8 format=3 uid="uid://lwffyffy5xgt"]
+[gd_scene load_steps=26 format=3 uid="uid://lwffyffy5xgt"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="2_keld2"]
+[ext_resource type="Shader" path="res://shaders/portal.gdshader" id="2_w871m"]
+[ext_resource type="Script" path="res://scripts/portal/stencil.gd" id="3_mfurk"]
+[ext_resource type="Shader" path="res://shaders/portalquad.gdshader" id="4_nnfny"]
+[ext_resource type="Script" path="res://scripts/portal/PortalQuad.gd" id="5_b0ukf"]
+[ext_resource type="Script" path="res://scripts/portal/Portal.gd" id="5_rfyrm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vwd4b"]
 size = Vector3(0.146, 0.2, 0.094)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ism3"]
 size = Vector3(0.144797, 0.173822, 0.0957065)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h1jbq"]
+viewport_path = NodePath("XROrigin3D/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s33kh"]
+resource_local_to_scene = true
+shader = ExtResource("2_w871m")
+shader_parameter/stencil_tex = SubResource("ViewportTexture_h1jbq")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ak3ci"]
+viewport_path = NodePath("XROrigin3D/PortalViewport")
+
+[sub_resource type="Environment" id="Environment_jwqkd"]
+background_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlfh3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_nnfny")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ibljn"]
+material = SubResource("ShaderMaterial_nlfh3")
+size = Vector2(2, 2)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
 
@@ -18,6 +46,25 @@ sky_material = SubResource("PhysicalSkyMaterial_0rulv")
 background_mode = 2
 sky = SubResource("Sky_3nj16")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_gk3ef"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pufdp"]
+albedo_color = Color(0.478431, 0.54902, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3wweg"]
+size = Vector3(0.315, 2.137, 10.436)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4nch7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_krp2n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rno8"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_b8ma2"]
+flip_faces = true
+
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_ktytr")
 
@@ -25,6 +72,8 @@ script = ExtResource("1_ktytr")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
+cull_mask = 1048559
+current = true
 
 [node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
@@ -44,10 +93,95 @@ skeleton = NodePath("../../Left Hand")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Right Hand/Area3D"]
 shape = SubResource("BoxShape3D_3ism3")
 
+[node name="TextureRect" type="TextureRect" parent="XROrigin3D"]
+visible = false
+material = SubResource("ShaderMaterial_s33kh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_right = 3709.0
+offset_bottom = 2828.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ak3ci")
+
+[node name="PortalViewport" type="SubViewport" parent="XROrigin3D"]
+size = Vector2i(2880, 1600)
+size_2d_override = Vector2i(2880, 1600)
+render_target_update_mode = 4
+
+[node name="XROrigin3D" type="XROrigin3D" parent="XROrigin3D/PortalViewport"]
+
+[node name="Portal Camera" type="XRCamera3D" parent="XROrigin3D/PortalViewport/XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.38557, 0.877186, 3.53006)
+cull_mask = 1048559
+current = true
+
+[node name="StencilViewport" type="SubViewport" parent="XROrigin3D"]
+size_2d_override = Vector2i(512, 512)
+render_target_update_mode = 4
+
+[node name="Stencil Camera" type="Camera3D" parent="XROrigin3D/StencilViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49768, 0)
+cull_mask = 16
+environment = SubResource("Environment_jwqkd")
+current = true
+script = ExtResource("3_mfurk")
+main_cam_path = NodePath("../../XRCamera3D")
+
+[node name="PortalQuad" type="MeshInstance3D" parent="XROrigin3D"]
+transform = Transform3D(0.985452, 0, 0.169951, 0, 1, 0, -0.169951, 0, 0.985452, 1.33762, 1.2904, -2.43876)
+mesh = SubResource("QuadMesh_ibljn")
+script = ExtResource("5_b0ukf")
+viewport = NodePath("../PortalViewport")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi6uc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
+light_cull_mask = 4293918721
+shadow_enabled = true
 
 [node name="Email Room" parent="." instance=ExtResource("2_keld2")]
+
+[node name="Room" parent="." instance=ExtResource("2_keld2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room"]
+mesh = SubResource("PlaneMesh_gk3ef")
+surface_material_override/0 = SubResource("StandardMaterial3D_pufdp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22282, 1.09872, 0)
+mesh = SubResource("BoxMesh_3wweg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32623, 0, 0)
+mesh = SubResource("CylinderMesh_4nch7")
+
+[node name="Portal" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65318, -2.58886)
+layers = 16
+mesh = SubResource("SphereMesh_krp2n")
+surface_material_override/0 = SubResource("StandardMaterial3D_0rno8")
+script = ExtResource("5_rfyrm")
+current = true
+other_portal_path = NodePath("../Portal2")
+
+[node name="Inside" type="MeshInstance3D" parent="Portal"]
+layers = 16
+mesh = SubResource("SphereMesh_b8ma2")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0rno8")
+
+[node name="PortalHelper" type="Node3D" parent="Portal"]
+
+[node name="Portal2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02666, 1.65318, -2.58886)
+layers = 16
+mesh = SubResource("SphereMesh_krp2n")
+surface_material_override/0 = SubResource("StandardMaterial3D_0rno8")
+script = ExtResource("5_rfyrm")
+
+[node name="PortalHelper" type="Node3D" parent="Portal2"]
