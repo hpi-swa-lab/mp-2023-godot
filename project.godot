@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="VRShell"
-run/main_scene="res://scenes/shell.tscn"
+run/main_scene="res://scenes/rooms/email_room.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://vrshell-icon.png"
 
@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 
 [xr]
 

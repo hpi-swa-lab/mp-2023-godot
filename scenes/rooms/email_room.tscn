@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cbqihr71pkhpw"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_6lqs3"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_6lqs3"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_crevs"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/snap_zone.gd" id="2_ib1op"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_k27nj"]
@@ -25,7 +25,7 @@ size = Vector3(2, 1, 0.1)
 size = Vector3(2, 1, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r7gkh"]
-radius = 0.1
+radius = 0.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj635"]
 radius = 0.4
