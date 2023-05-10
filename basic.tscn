@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs6227uda7cvw"]
+
+[ext_resource type="Script" path="res://basic.gd" id="1_7agl7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ohluh"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_7agl7")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+mesh = SubResource("BoxMesh_ohluh")
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+mesh = SubResource("BoxMesh_ohluh")
+skeleton = NodePath("../../LeftHand")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
