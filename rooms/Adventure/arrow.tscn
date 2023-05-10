@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://ey28j5bubo5p"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4qhax"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okqag"]
+albedo_color = Color(0.701961, 0.435294, 0.313726, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m5v66"]
+top_radius = 0.001
+bottom_radius = 0.02
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m822y"]
+albedo_color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kwe1q"]
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mudxj"]
+height = 0.3
+radius = 0.01
+
+[node name="Arrow" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Stick" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_4qhax")
+surface_material_override/0 = SubResource("StandardMaterial3D_okqag")
+
+[node name="Pointy End" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00155306, 0.165478)
+mesh = SubResource("CylinderMesh_m5v66")
+surface_material_override/0 = SubResource("StandardMaterial3D_m822y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.00378418, -0.125988)
+mesh = SubResource("PlaneMesh_kwe1q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mudxj")

@@ -27,6 +27,7 @@ script = ExtResource("1_ktytr")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
+current = true
 
 [node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
@@ -55,5 +56,6 @@ environment = SubResource("Environment_fi6uc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
+shadow_enabled = true
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
