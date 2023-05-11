@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnn71qvf6xa84"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ycb4d"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_ftdge"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="10_s60pj"]
+[ext_resource type="PackedScene" uid="uid://6dax7fw2hbkh" path="res://scenes/mail_body.tscn" id="11_1toaa"]
+[ext_resource type="PackedScene" uid="uid://dnd6xau6vswrs" path="res://scenes/mail_header.tscn" id="12_bsr7h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wrcc"]
+size = Vector3(0.15, 0.23, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sjofp"]
+size = Vector3(0.15, 0.03, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_30e7n"]
+size = Vector3(0.03, 0.15, 0.01)
+
+[node name="Mail" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19212, -1.04947)
+collision_layer = 4
+collision_mask = 196615
+gravity_scale = 2.66454e-15
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_ycb4d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015018, 0)
+shape = SubResource("BoxShape3D_4wrcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.115, 2.08165e-12)
+mesh = SubResource("BoxMesh_sjofp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.0251855, 0)
+mesh = SubResource("BoxMesh_30e7n")
+
+[node name="GrabPointHandLeft" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04952, 0.0415391, -0.0864464)
+visible = false
+script = ExtResource("2_ftdge")
+
+[node name="GrabPointHandRight" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.042, -0.086)
+visible = false
+script = ExtResource("2_ftdge")
+hand = 1
+
+[node name="HighlightRing" parent="." instance=ExtResource("10_s60pj")]
+
+[node name="MailBody" parent="." instance=ExtResource("11_1toaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155, -0.25, 2.08165e-12)
+body_text = "Dear John,
+
+We are excited to invite you to our upcoming event. The event will be held on [Date] at [Time], and will feature guest speakers, networking opportunities, and refreshments. We believe this event will be a great opportunity to connect with industry leaders and learn about the latest trends in the field.
+
+If you're interested in attending, please RSVP by [Date] using the following link: [Insert link here]. We look forward to seeing you there.
+
+Best regards,
+Maria"
+
+[node name="MailHeaderFrom" parent="." instance=ExtResource("12_bsr7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114675, 0.00504029)
+header_text = "From: Maria"
+
+[node name="MailHeaderSubject" parent="." instance=ExtResource("12_bsr7h")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0599231, 0.0250337, 0.00504029)
+header_text = "Subject: Invitation to Upcoming Event"
+
+[connection signal="dropped" from="." to="MailBody" method="_on_mail_dropped"]
+[connection signal="picked_up" from="." to="MailBody" method="_on_mail_picked_up"]

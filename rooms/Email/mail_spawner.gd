@@ -1,29 +1,26 @@
 extends Path3D
 
+@export var mail_scene: PackedScene
+@export var mail_amount: int
 
-#var mail : Node3D
-var left_controller : XRController3D
+var left_controller: XRController3D
+var mails: Array
+var mail_path: PathFollow3D
+
 var progress = 0.0
-var mails : Array
-var mail_path : PathFollow3D
 var left_hand_picked_up_mail_index = -1
 var right_hand_picked_up_mail_index = -1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mails = [
-		get_node("../Mail"),
-		get_node("../Mail2"),
-		get_node("../Mail3"),
-	]
+	for i in range(mail_amount):
+		mails.append(create_mail())
+	
 	mail_path = $PathFollow3D
 	left_controller = get_node("../XROrigin3D/LeftHand")
 	
-	for i in mails.size():
-			if i == right_hand_picked_up_mail_index or i == left_hand_picked_up_mail_index: continue
-			
-			mails[i].position = calculate_mail_position(i, progress)
+	position_mails()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,22 +30,33 @@ func _process(delta):
 	var controller_input = left_controller.get_vector2("primary").y
 	if controller_input != 0.0:
 		progress -= controller_input * delta
-		
-		if mails.size() == 0:
+		position_mails()
+
+
+func create_mail():
+	var mail = mail_scene.instantiate()
+	
+	add_child(mail)
+	
+	return mail
+
+
+func position_mails():
+	if mails.size() == 0:
 			printerr("mail size is 0")
 			return
 		
-		for i in mails.size():
-			if i == right_hand_picked_up_mail_index or i == left_hand_picked_up_mail_index: continue
-			
-			mails[i].position = calculate_mail_position(i, progress)
+	for i in mails.size():
+		if i == right_hand_picked_up_mail_index or i == left_hand_picked_up_mail_index: continue
+		
+		mails[i].position = calculate_mail_position(i, progress)
 
 
 func calculate_mail_position(index, value):
 	var mail_progress = (value + float(index) / float(mails.size()))
 	mail_progress = fposmod(mail_progress, 1)
 	mail_path.progress_ratio = mail_progress
-	return mail_path.position + self.position
+	return mail_path.position
 
 
 func reset_mail(index):
