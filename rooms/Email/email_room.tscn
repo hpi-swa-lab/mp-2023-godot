@@ -145,17 +145,17 @@ shape = SubResource("BoxShape3D_unxgq")
 mesh = SubResource("BoxMesh_vvaht")
 skeleton = NodePath("")
 
-[node name="Path3D" type="Path3D" parent="." index="3"]
+[node name="MailSpawner" type="Path3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117957, 1.38657, -1.21769)
 curve = SubResource("Curve3D_cbwpq")
 script = ExtResource("15_d6atf")
 mail_scene = ExtResource("9_ldij3")
 mail_amount = 5
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" index="0"]
+[node name="PathFollow3D" type="PathFollow3D" parent="MailSpawner" index="0"]
 transform = Transform3D(0.919145, -0.144375, -0.366508, 1.49012e-08, 0.930415, -0.366508, 0.393919, 0.336874, 0.855186, 0, 0, 0)
 
-[connection signal="has_dropped" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="Path3D" method="_on_left_hand_has_dropped"]
-[connection signal="has_picked_up" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="Path3D" method="_on_left_hand_has_picked_up"]
-[connection signal="has_dropped" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="Path3D" method="_on_right_hand_has_dropped"]
-[connection signal="has_picked_up" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="Path3D" method="_on_right_hand_has_picked_up"]
+[connection signal="has_dropped" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_left_hand_has_dropped"]
+[connection signal="has_picked_up" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_left_hand_has_picked_up"]
+[connection signal="has_dropped" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_right_hand_has_dropped"]
+[connection signal="has_picked_up" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_right_hand_has_picked_up"]
