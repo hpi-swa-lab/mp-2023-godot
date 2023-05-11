@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjcwearx2isyk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ycs8l"]
+top_radius = 0.3
+height = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwfnf"]
+albedo_color = Color(0.529412, 0.231373, 0.14902, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gxhvv"]
+top_radius = 0.0
+bottom_radius = 1.0
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u270"]
+albedo_color = Color(0.141176, 0.368627, 0.0431373, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v5ypf"]
+top_radius = 0.7
+bottom_radius = 2.0
+height = 4.0
+
+[node name="Pine" type="Node3D"]
+
+[node name="Stem" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.92091, 0)
+mesh = SubResource("CylinderMesh_ycs8l")
+surface_material_override/0 = SubResource("StandardMaterial3D_dwfnf")
+
+[node name="Crown" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5243, 0)
+mesh = SubResource("CylinderMesh_gxhvv")
+surface_material_override/0 = SubResource("StandardMaterial3D_2u270")
+
+[node name="Crown2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.12821, 0)
+mesh = SubResource("CylinderMesh_v5ypf")
+surface_material_override/0 = SubResource("StandardMaterial3D_2u270")
