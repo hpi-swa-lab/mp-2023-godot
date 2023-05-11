@@ -86,33 +86,33 @@ script = ExtResource("3_gxru2")
 arrow_scene = ExtResource("5_7gqxr")
 
 [node name="Grip" parent="Bow" index="0" instance=ExtResource("3_n1f2g")]
-transform = Transform3D(0.999306, -0.0372121, 0.0017692, 0.0372121, 0.999307, 3.29242e-05, -0.0017692, 3.29344e-05, 0.999998, 0, 0, 0)
+transform = Transform3D(0.999306, -0.0372121, 0.0017692, 0.0372121, 0.999307, 3.29242e-05, -0.0017692, 3.29344e-05, 0.999998, 0, 0.166075, -2.38419e-07)
 mass = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bow/Grip" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.11759e-08, 0, 0, 1, 0, 0.341204, -1.19209e-07)
+transform = Transform3D(1, 7.45058e-09, -2.35332e-11, -1.11759e-08, 1, 1.11468e-08, -3.24917e-10, -1.45519e-11, 1, -0.0111707, 0.0412234, -1.00136e-05)
 mesh = SubResource("BoxMesh_n2w0i")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_uys04")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Bow/Grip" index="2"]
-transform = Transform3D(0.810614, 0.58558, 0, -0.58558, 0.810614, 1.11759e-08, 0, -1.86265e-09, 1, 0.157434, 0.753878, -0.0027101)
+transform = Transform3D(0.810614, 0.58558, -2.35332e-11, -0.58558, 0.810614, 1.11468e-08, -2.36469e-11, -2.52658e-09, 1, 0.146263, 0.453898, -0.00272)
 mesh = SubResource("BoxMesh_3ln4y")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gdryr")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Bow/Grip" index="3"]
-transform = Transform3D(0.678378, -0.734713, 0, 0.734713, 0.678378, 1.11759e-08, -3.72529e-09, 0, 1, 0.183629, -0.103866, 0)
+transform = Transform3D(0.678378, -0.734713, -2.35332e-11, 0.734713, 0.678378, 1.11468e-08, -3.62525e-09, 4.311e-10, 1, 0.172458, -0.403847, -9.89437e-06)
 mesh = SubResource("BoxMesh_lw13m")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gbcg0")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Bow/Grip" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.23517e-08, 0, 0, 1, -0.0347171, 0.318461, 0)
+transform = Transform3D(1, 7.45058e-09, 4.28599e-11, -1.11759e-08, 1, 2.23226e-08, -3.24917e-10, -1.45519e-11, 1, -0.0458878, 0.0184803, -9.89437e-06)
 shape = SubResource("CylinderShape3D_xvr85")
 
 [node name="String" parent="Bow/Grip" index="5" instance=ExtResource("3_n1f2g")]
-transform = Transform3D(0.999273, 0.000888162, -0.0381398, -0.0381237, 0.0604898, -0.997441, 0.00142114, 0.99817, 0.0604796, 0.360101, 0.335562, -0.0159544)
+transform = Transform3D(0.999273, 0.000888162, -0.0381398, -0.0381237, 0.0604898, -0.997441, 0.00142114, 0.99817, 0.0604796, 0.347938, 0.00893009, -0.0159653)
 gravity_scale = 0.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Bow/Grip/String" index="1"]
@@ -123,6 +123,9 @@ shape = SubResource("CylinderShape3D_80l8d")
 transform = Transform3D(0.996704, -0.0810767, 0.0027886, 0.00100196, 0.0466745, 0.99891, -0.0811185, -0.995614, 0.0466019, 0, 0, 0)
 mesh = SubResource("CylinderMesh_bsc1e")
 skeleton = NodePath("")
+
+[node name="Aim" type="Node3D" parent="Bow/Grip" index="6"]
+transform = Transform3D(0.999306, 0.0372121, -0.0017692, -0.0372121, 0.999308, 3.29343e-05, 0.0017692, 3.29241e-05, 0.999999, -4.85523, 0.216173, -0.00859702)
 
 [node name="Ground" type="StaticBody3D" parent="." index="5"]
 collision_layer = 17

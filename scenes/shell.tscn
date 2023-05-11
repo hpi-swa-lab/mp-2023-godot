@@ -12,6 +12,8 @@ radius = 0.244139
 height = 0.989987
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
+ground_color = Color(0.180392, 0.364706, 0, 1)
+energy_multiplier = 4.83
 
 [sub_resource type="Sky" id="Sky_3nj16"]
 sky_material = SubResource("PhysicalSkyMaterial_0rulv")

@@ -23,26 +23,27 @@ size = Vector2(0.05, 0.05)
 height = 0.3
 radius = 0.01
 
-[node name="Arrow" type="Node3D"]
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D"]
 collision_layer = 16
 collision_mask = 16
 
-[node name="Stick" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+[node name="Stick" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, -0.000892449, 0.015796)
 mesh = SubResource("CylinderMesh_4qhax")
 surface_material_override/0 = SubResource("StandardMaterial3D_okqag")
 
-[node name="Pointy End" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00155306, 0.165478)
+[node name="Pointy End" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, -0.00244549, -0.149682)
 mesh = SubResource("CylinderMesh_m5v66")
 surface_material_override/0 = SubResource("StandardMaterial3D_m822y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.00378418, -0.125988)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, 1, 4.37114e-08, 8.74228e-08, 8.74228e-08, 3.82137e-15, -1, 0, 0.00289172, 0.141784)
 mesh = SubResource("PlaneMesh_kwe1q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, -0.000892449, 0.015796)
 shape = SubResource("CylinderShape3D_mudxj")
+
+[node name="Arrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.000892449, 0.015796)
