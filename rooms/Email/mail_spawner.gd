@@ -48,7 +48,6 @@ func position_mails():
 		
 	for i in mails.size():
 		if i == right_hand_picked_up_mail_index or i == left_hand_picked_up_mail_index: continue
-		
 		mails[i].position = calculate_mail_position(i, progress)
 
 
@@ -62,9 +61,9 @@ func calculate_mail_position(index, value):
 func reset_mail(index):
 	var mail = mails[index]
 	mail.position = calculate_mail_position(index, progress)
-	mail.look_at(mail.position + Vector3.FORWARD, Vector3.UP)
+	mail.look_at(mail.global_position + Vector3.FORWARD, Vector3.UP)
 	# TODO: fix mail jittering after dropping and scrolling at the same time
-	# fix could involve freezing mail with reset immediately
+	# SOLUTION: fix could involve freezing mail with reset immediately
 
 
 func _on_left_hand_has_picked_up(what):
