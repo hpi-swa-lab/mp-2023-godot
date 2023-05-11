@@ -1,76 +1,57 @@
-[gd_scene load_steps=20 format=3 uid="uid://cbqihr71pkhpw"]
+[gd_scene load_steps=24 format=3 uid="uid://cfykrjril3k8h"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_a8t4x"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/snap_zone.gd" id="2_3ahpi"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_a8t4x"]
+[ext_resource type="Texture2D" uid="uid://cyfxtbxb6f15q" path="res://textures/grid.png" id="2_tfls3"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_81cbn"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_5fbd1"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="5_2qo6a"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_ey84l"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="6_nfile"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="7_tr1m0"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="8_3focf"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="9_2wkxp"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="10_sow60"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="11_1syee"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_unxgq"]
-size = Vector3(10, 0.1, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vvaht"]
-size = Vector3(10, 0.1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jkqea"]
-size = Vector3(2, 1, 0.1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_c2x63"]
-size = Vector3(2, 1, 0.1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_r7gkh"]
-radius = 0.3
+[ext_resource type="PackedScene" uid="uid://6dax7fw2hbkh" path="res://scenes/mail_body.tscn" id="12_np7de"]
+[ext_resource type="PackedScene" uid="uid://dnd6xau6vswrs" path="res://scenes/mail_header.tscn" id="13_vaxtc"]
+[ext_resource type="Script" path="res://rooms/Email/mail_spawner.gd" id="15_d6atf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj635"]
 radius = 0.4
 height = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wrcc"]
-size = Vector3(0.15, 0.08, 0.01)
+size = Vector3(0.15, 0.23, 0.01)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sjofp"]
-size = Vector3(0.15, 0.08, 0.01)
+size = Vector3(0.15, 0.03, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_30e7n"]
+size = Vector3(0.03, 0.15, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unxgq"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05ot1"]
+albedo_texture = ExtResource("2_tfls3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvaht"]
+material = SubResource("StandardMaterial3D_05ot1")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="Curve3D" id="Curve3D_cbwpq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.3, -0.3, 0.7),
+"tilts": PackedFloat32Array(0, 2.08165e-12)
+}
+point_count = 2
 
 [node name="Email Room" instance=ExtResource("1_a8t4x")]
 
-[node name="Ground" type="StaticBody3D" parent="." index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" index="0"]
-shape = SubResource("BoxShape3D_unxgq")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" index="1"]
-mesh = SubResource("BoxMesh_vvaht")
-skeleton = NodePath("")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.197007, 0.980402, 0, -0.980402, 0.197007, 0, 0, 0)
 
-[node name="Wall" type="StaticBody3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528233, -1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" index="0"]
-shape = SubResource("BoxShape3D_jkqea")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" index="1"]
-mesh = SubResource("BoxMesh_c2x63")
-
-[node name="MailSnapZone" type="Area3D" parent="Wall" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.726591, 0.289399, 0.104817)
-collision_layer = 4
-collision_mask = 65540
-script = ExtResource("2_3ahpi")
-initial_object = NodePath("../../Mail")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/MailSnapZone" index="0"]
-shape = SubResource("SphereShape3D_r7gkh")
-
-[node name="XROrigin3D" type="XROrigin3D" parent="." index="3"]
+[node name="XROrigin3D" type="XROrigin3D" parent="." index="1"]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
@@ -89,6 +70,9 @@ ranged_angle = 10.0
 [node name="XRToolsMovementDirect" type="Node" parent="XROrigin3D/LeftHand" index="2" groups=["movement_providers"]]
 script = ExtResource("5_2qo6a")
 strafe = true
+enabled = false
+
+[node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("6_nfile")]
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -104,36 +88,252 @@ ranged_angle = 10.0
 script = ExtResource("7_tr1m0")
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("8_3focf")]
+collision_mask = 1019
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_tj635")
 
-[node name="Mail" type="RigidBody3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604363, 0)
+[node name="Mail" type="RigidBody3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19212, -1.04947)
 collision_layer = 4
-collision_mask = 720903
+collision_mask = 196615
+gravity_scale = 2.66454e-15
+freeze = true
 freeze_mode = 1
 script = ExtResource("9_2wkxp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mail" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015018, 0)
 shape = SubResource("BoxShape3D_4wrcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mail" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.115, 2.08165e-12)
 mesh = SubResource("BoxMesh_sjofp")
 
-[node name="GrabPointHandLeft" type="Marker3D" parent="Mail" index="2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mail" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.0251855, 0)
+mesh = SubResource("BoxMesh_30e7n")
+
+[node name="GrabPointHandLeft" type="Marker3D" parent="Mail" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04952, 0.0415391, -0.0864464)
 visible = false
 script = ExtResource("10_sow60")
 
-[node name="GrabPointHandRight" type="Marker3D" parent="Mail" index="3"]
+[node name="GrabPointHandRight" type="Marker3D" parent="Mail" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.042, -0.086)
 visible = false
 script = ExtResource("10_sow60")
 hand = 1
 
-[node name="HighlightRing" parent="Mail" index="4" instance=ExtResource("11_1syee")]
+[node name="HighlightRing" parent="Mail" index="5" instance=ExtResource("11_1syee")]
 
-[connection signal="body_entered" from="Wall/MailSnapZone" to="Wall/MailSnapZone" method="_on_snap_zone_body_entered"]
-[connection signal="body_exited" from="Wall/MailSnapZone" to="Wall/MailSnapZone" method="_on_snap_zone_body_exited"]
+[node name="MailBody" parent="Mail" index="6" instance=ExtResource("12_np7de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155, -0.25, 2.08165e-12)
+body_text = "Dear John,
+
+We are excited to invite you to our upcoming event. The event will be held on [Date] at [Time], and will feature guest speakers, networking opportunities, and refreshments. We believe this event will be a great opportunity to connect with industry leaders and learn about the latest trends in the field.
+
+If you're interested in attending, please RSVP by [Date] using the following link: [Insert link here]. We look forward to seeing you there.
+
+Best regards,
+Maria"
+
+[node name="MailHeaderFrom" parent="Mail" index="7" instance=ExtResource("13_vaxtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114675, 0.00504029)
+header_text = "From: Maria"
+
+[node name="MailHeaderSubject" parent="Mail" index="8" instance=ExtResource("13_vaxtc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0599231, 0.0250337, 0.00504029)
+header_text = "Subject: Invitation to Upcoming Event"
+
+[node name="Mail2" type="RigidBody3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0258751, 1.21691, -1.10942)
+collision_layer = 4
+collision_mask = 196615
+gravity_scale = 2.66454e-15
+freeze = true
+freeze_mode = 1
+script = ExtResource("9_2wkxp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mail2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015018, 0)
+shape = SubResource("BoxShape3D_4wrcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mail2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.115, 2.08165e-12)
+mesh = SubResource("BoxMesh_sjofp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mail2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.0251855, 0)
+mesh = SubResource("BoxMesh_30e7n")
+
+[node name="GrabPointHandLeft" type="Marker3D" parent="Mail2" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04952, 0.0415391, -0.0864464)
+visible = false
+script = ExtResource("10_sow60")
+
+[node name="GrabPointHandRight" type="Marker3D" parent="Mail2" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.042, -0.086)
+visible = false
+script = ExtResource("10_sow60")
+hand = 1
+
+[node name="HighlightRing" parent="Mail2" index="5" instance=ExtResource("11_1syee")]
+
+[node name="MailBody" parent="Mail2" index="6" instance=ExtResource("12_np7de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155, -0.25, 2.08165e-12)
+body_text = "Dear Emily,
+
+We hope you're doing well. We would like to thank you for choosing our product/service and would like to request your feedback. Your opinion is important to us, and we would appreciate it if you could take a few minutes to complete a short survey. Your input will help us improve our product/service and provide better value to our customers.
+
+The survey can be accessed through the following link: [Insert link here]
+
+Thank you for your time and support.
+
+Best regards,
+Chris"
+
+[node name="MailHeaderFrom" parent="Mail2" index="7" instance=ExtResource("13_vaxtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114675, 0.00504029)
+header_text = "From: Chris"
+
+[node name="MailHeaderSubject" parent="Mail2" index="8" instance=ExtResource("13_vaxtc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0599231, 0.0250337, 0.00504029)
+header_text = "Subject: Feedback Request"
+
+[node name="Mail3" type="RigidBody3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0511043, 1.25767, -1.16609)
+collision_layer = 4
+collision_mask = 196615
+gravity_scale = 2.66454e-15
+freeze = true
+freeze_mode = 1
+script = ExtResource("9_2wkxp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mail3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015018, 0)
+shape = SubResource("BoxShape3D_4wrcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mail3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.115, 2.08165e-12)
+mesh = SubResource("BoxMesh_sjofp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mail3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.0251855, 0)
+mesh = SubResource("BoxMesh_30e7n")
+
+[node name="GrabPointHandLeft" type="Marker3D" parent="Mail3" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04952, 0.0415391, -0.0864464)
+visible = false
+script = ExtResource("10_sow60")
+
+[node name="GrabPointHandRight" type="Marker3D" parent="Mail3" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.042, -0.086)
+visible = false
+script = ExtResource("10_sow60")
+hand = 1
+
+[node name="HighlightRing" parent="Mail3" index="5" instance=ExtResource("11_1syee")]
+
+[node name="MailBody" parent="Mail3" index="6" instance=ExtResource("12_np7de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155, -0.25, 2.08165e-12)
+body_text = "Dear Sarah,
+
+I hope this email finds you well. I just wanted to follow up on our meeting last week and see if you had any additional questions or concerns. As a reminder, our team is available to provide support as needed, and we are committed to ensuring that our clients have a positive experience. If you have any questions or if there is anything else we can assist with, please don't hesitate to reach out.
+
+Thank you for your time, and we look forward to hearing from you soon.
+
+Best regards,
+Mark"
+
+[node name="MailHeaderFrom" parent="Mail3" index="7" instance=ExtResource("13_vaxtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114675, 0.00504029)
+header_text = "From: Mark"
+
+[node name="MailHeaderSubject" parent="Mail3" index="8" instance=ExtResource("13_vaxtc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0599231, 0.0250337, 0.00504029)
+header_text = "Subject: Follow-Up on Meeting"
+
+[node name="Environment" type="Node3D" parent="." index="5"]
+
+[node name="Ground" type="StaticBody3D" parent="Environment" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground" index="0"]
+shape = SubResource("BoxShape3D_unxgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("BoxMesh_vvaht")
+skeleton = NodePath("")
+
+[node name="Ceiling" type="StaticBody3D" parent="Environment" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 8.5, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ceiling" index="0"]
+shape = SubResource("BoxShape3D_unxgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ceiling" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("BoxMesh_vvaht")
+skeleton = NodePath("")
+
+[node name="WallLeft" type="StaticBody3D" parent="Environment" index="2"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5.5, 4, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallLeft" index="0"]
+shape = SubResource("BoxShape3D_unxgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/WallLeft" index="1"]
+mesh = SubResource("BoxMesh_vvaht")
+skeleton = NodePath("")
+
+[node name="WallRight" type="StaticBody3D" parent="Environment" index="3"]
+transform = Transform3D(-4.37114e-08, -1, 3.48787e-16, 1, -4.37114e-08, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, 5.5, 4, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallRight" index="0"]
+shape = SubResource("BoxShape3D_unxgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/WallRight" index="1"]
+mesh = SubResource("BoxMesh_vvaht")
+skeleton = NodePath("")
+
+[node name="WallBack" type="StaticBody3D" parent="Environment" index="4"]
+transform = Transform3D(2.25947e-15, 4.37114e-08, 1, 1, -4.37114e-08, -3.48787e-16, 4.37114e-08, 1, -4.37114e-08, 2.08165e-12, 4, 5.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallBack" index="0"]
+shape = SubResource("BoxShape3D_unxgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/WallBack" index="1"]
+mesh = SubResource("BoxMesh_vvaht")
+skeleton = NodePath("")
+
+[node name="WallFront" type="StaticBody3D" parent="Environment" index="5"]
+transform = Transform3D(2.25947e-15, 4.37114e-08, 1, 1, -4.37114e-08, -3.48787e-16, 4.37114e-08, 1, -4.37114e-08, 2.08165e-12, 4, -5.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallFront" index="0"]
+shape = SubResource("BoxShape3D_unxgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/WallFront" index="1"]
+mesh = SubResource("BoxMesh_vvaht")
+skeleton = NodePath("")
+
+[node name="Path3D" type="Path3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117957, 1.38657, -1.21769)
+curve = SubResource("Curve3D_cbwpq")
+script = ExtResource("15_d6atf")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" index="0"]
+transform = Transform3D(0.919145, -0.144375, -0.366508, 1.49012e-08, 0.930415, -0.366508, 0.393919, 0.336874, 0.855186, 0, 0, 0)
+
+[connection signal="has_dropped" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="Path3D" method="_on_left_hand_has_dropped"]
+[connection signal="has_picked_up" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="Path3D" method="_on_left_hand_has_picked_up"]
+[connection signal="has_dropped" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="Path3D" method="_on_right_hand_has_dropped"]
+[connection signal="has_picked_up" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="Path3D" method="_on_right_hand_has_picked_up"]
+[connection signal="dropped" from="Mail" to="Mail/MailBody" method="_on_mail_dropped"]
+[connection signal="picked_up" from="Mail" to="Mail/MailBody" method="_on_mail_picked_up"]
+[connection signal="dropped" from="Mail2" to="Mail2/MailBody" method="_on_mail_dropped"]
+[connection signal="picked_up" from="Mail2" to="Mail2/MailBody" method="_on_mail_picked_up"]
+[connection signal="dropped" from="Mail3" to="Mail3/MailBody" method="_on_mail_dropped"]
+[connection signal="picked_up" from="Mail3" to="Mail3/MailBody" method="_on_mail_picked_up"]

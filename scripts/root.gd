@@ -8,11 +8,11 @@ func _ready():
 		var vp: Viewport = get_viewport()
 		vp.use_xr = true
 	right_hand.button_pressed.connect(open_room)
-		
-	
-		
+
+
+
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
-		
+
 func open_room(name):
 	if name == "ax_button":
 		var woods_room_resource: PackedScene = preload("res://rooms/Adventure/woods_room.tscn")

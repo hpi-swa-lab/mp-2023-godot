@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=13 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
@@ -19,6 +19,12 @@ sky_material = SubResource("PhysicalSkyMaterial_0rulv")
 [sub_resource type="Environment" id="Environment_fi6uc"]
 background_mode = 2
 sky = SubResource("Sky_3nj16")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvgvv"]
+albedo_color = Color(0.215055, 0.546804, 0.878599, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6n2hk"]
+material = SubResource("StandardMaterial3D_wvgvv")
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_ktytr")
@@ -57,3 +63,7 @@ environment = SubResource("Environment_fi6uc")
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.54268, 1.08981, 0)
+mesh = SubResource("BoxMesh_6n2hk")

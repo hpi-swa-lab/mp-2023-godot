@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://6dax7fw2hbkh"]
+
+[ext_resource type="Script" path="res://scenes/mail_body.gd" id="1_n2l0p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6segu"]
+
+[sub_resource type="QuadMesh" id="1"]
+size = Vector2(0.4, 0.7)
+
+[sub_resource type="ViewportTexture" id="2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="3"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("2")
+
+[node name="GUIPanel3D" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_n2l0p")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+gui_embed_subwindows = true
+size = Vector2i(400, 700)
+render_target_update_mode = 4
+
+[node name="GUI" type="Control" parent="SubViewport"]
+material = SubResource("ShaderMaterial_6segu")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 280.0
+offset_bottom = 180.0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="SubViewport/GUI"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 120.0
+offset_bottom = 520.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/GUI/Panel"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 700.0
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("3")
