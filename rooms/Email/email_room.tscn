@@ -1,16 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfykrjril3k8h"]
+[gd_scene load_steps=16 format=3 uid="uid://cfykrjril3k8h"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_a8t4x"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_a8t4x"]
 [ext_resource type="Texture2D" uid="uid://cyfxtbxb6f15q" path="res://textures/grid.png" id="2_tfls3"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_81cbn"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_5fbd1"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="5_2qo6a"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_ey84l"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_h5xnw"]
 [ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="6_nfile"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="7_tr1m0"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="8_3focf"]
-[ext_resource type="PackedScene" uid="uid://bnn71qvf6xa84" path="res://scenes/mail.tscn" id="9_ldij3"]
-[ext_resource type="Script" path="res://rooms/Email/mail_spawner.gd" id="15_d6atf"]
+[ext_resource type="PackedScene" uid="uid://xxu78i4pi1g1" path="res://scenes/inbox.tscn" id="11_b1yls"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj635"]
 radius = 0.4
@@ -26,14 +26,7 @@ albedo_texture = ExtResource("2_tfls3")
 material = SubResource("StandardMaterial3D_05ot1")
 size = Vector3(10, 1, 10)
 
-[sub_resource type="Curve3D" id="Curve3D_cbwpq"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.3, -0.3, 0.7),
-"tilts": PackedFloat32Array(0, 2.08165e-12)
-}
-point_count = 2
-
-[node name="Email Room" instance=ExtResource("1_a8t4x")]
+[node name="EmailRoom" instance=ExtResource("1_a8t4x")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.197007, 0.980402, 0, -0.980402, 0.197007, 0, 0, 0)
@@ -60,6 +53,8 @@ strafe = true
 enabled = false
 
 [node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("6_nfile")]
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="4" instance=ExtResource("6_h5xnw")]
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -145,17 +140,10 @@ shape = SubResource("BoxShape3D_unxgq")
 mesh = SubResource("BoxMesh_vvaht")
 skeleton = NodePath("")
 
-[node name="MailSpawner" type="Path3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117957, 1.38657, -1.21769)
-curve = SubResource("Curve3D_cbwpq")
-script = ExtResource("15_d6atf")
-mail_scene = ExtResource("9_ldij3")
-mail_amount = 5
+[node name="Inbox" parent="." index="3" instance=ExtResource("11_b1yls")]
 
-[node name="PathFollow3D" type="PathFollow3D" parent="MailSpawner" index="0"]
-transform = Transform3D(0.919145, -0.144375, -0.366508, 1.49012e-08, 0.930415, -0.366508, 0.393919, 0.336874, 0.855186, 0, 0, 0)
+[node name="Inbox2" parent="." index="4" instance=ExtResource("11_b1yls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28555, 1.38657, -1.21769)
 
-[connection signal="has_dropped" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_left_hand_has_dropped"]
-[connection signal="has_picked_up" from="XROrigin3D/LeftHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_left_hand_has_picked_up"]
-[connection signal="has_dropped" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_right_hand_has_dropped"]
-[connection signal="has_picked_up" from="XROrigin3D/RightHand/XRToolsFunctionPickup" to="MailSpawner" method="_on_right_hand_has_picked_up"]
+[node name="Inbox3" parent="." index="5" instance=ExtResource("11_b1yls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47077, 1.38657, -1.21769)

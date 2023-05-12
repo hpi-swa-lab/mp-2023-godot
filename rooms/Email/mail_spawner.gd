@@ -10,6 +10,7 @@ var mail_path: PathFollow3D
 var progress = 0.0
 var left_hand_picked_up_mail_index = -1
 var right_hand_picked_up_mail_index = -1
+var selected = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +20,11 @@ func _ready():
 	
 	mail_path = $PathFollow3D
 	left_controller = get_node("../XROrigin3D/LeftHand")
+	left_controller.get_node("./XRToolsFunctionPickup").has_picked_up.connect(_on_left_hand_has_picked_up)
+	left_controller.get_node("./XRToolsFunctionPickup").has_dropped.connect(_on_left_hand_has_dropped)
+	var right_controller = get_node("../XROrigin3D/RightHand")
+	right_controller.get_node("./XRToolsFunctionPickup").has_picked_up.connect(_on_right_hand_has_picked_up)
+	right_controller.get_node("./XRToolsFunctionPickup").has_dropped.connect(_on_right_hand_has_dropped)
 	
 	position_mails()
 
@@ -28,7 +34,7 @@ func _process(delta):
 	if left_controller == null: return
 	
 	var controller_input = left_controller.get_vector2("primary").y
-	if controller_input != 0.0:
+	if controller_input != 0.0 and selected:
 		progress -= controller_input * delta
 		position_mails()
 
@@ -43,8 +49,8 @@ func create_mail():
 
 func position_mails():
 	if mails.size() == 0:
-			printerr("mail size is 0")
-			return
+		printerr("mail size is 0")
+		return
 		
 	for i in mails.size():
 		if i == right_hand_picked_up_mail_index or i == left_hand_picked_up_mail_index: continue
@@ -86,3 +92,11 @@ func _on_left_hand_has_dropped():
 	if left_hand_picked_up_mail_index != -1:
 		reset_mail(left_hand_picked_up_mail_index)
 		left_hand_picked_up_mail_index = -1
+
+
+func _on_box_on_pointer_entered():
+	selected = true
+
+
+func _on_box_on_pointer_exited():
+	selected = false

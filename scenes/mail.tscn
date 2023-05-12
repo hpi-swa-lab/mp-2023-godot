@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnn71qvf6xa84"]
+[gd_scene load_steps=9 format=3 uid="uid://q6qut1xsa2fd"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ycb4d"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_ftdge"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="10_s60pj"]
-[ext_resource type="PackedScene" uid="uid://6dax7fw2hbkh" path="res://scenes/mail_body.tscn" id="11_1toaa"]
-[ext_resource type="PackedScene" uid="uid://dnd6xau6vswrs" path="res://scenes/mail_header.tscn" id="12_bsr7h"]
+[ext_resource type="PackedScene" uid="uid://6jimoslievda" path="res://scenes/mail_body.tscn" id="11_1toaa"]
+[ext_resource type="PackedScene" path="res://scenes/mail_header.tscn" id="12_bsr7h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wrcc"]
 size = Vector3(0.15, 0.23, 0.01)
