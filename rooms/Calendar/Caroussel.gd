@@ -14,16 +14,20 @@ func _ready():
 
 
 func _process(delta):
-	var children: Array[Node] = get_children()
-	for child in children:
-		(child as Node3D).look_at(camera.position, Vector3.UP)
+	for child in get_children():
+		var camera_height_aligned_position = Vector3(
+			camera.position.x,
+			child.global_position.y,
+			camera.position.z
+		)
+		child.look_at(camera_height_aligned_position, Vector3.UP)
 
 func _physics_process(_delta):
 	if (hand != null):
 		
 		if debug:
-			$"../../first".global_position = prev_position
-			$"../../second".global_position = hand.global_position
+			$"../first".global_position = prev_position
+			$"../second".global_position = hand.global_position
 		
 		var offset: float = prev_position.distance_to(hand.global_position) / (radius * 2) * (2 * PI)
 		var forwardVector = camera.get_global_transform().basis.z
@@ -31,7 +35,7 @@ func _physics_process(_delta):
 		var sign = 1.0 if direction.x > 0 else -1.0
 		
 		if debug:
-			$"../../Label3D".text = str(sign)
+			$"../direction".text = str(sign)
 		self.rotate_y(sign * offset)
 		prev_position = Vector3(hand.global_position)
 
@@ -50,10 +54,10 @@ func place_children_along_caroussel(offset_rad: float):
 
 
 func _on_xr_tools_interactable_area_area_entered(area: Area3D):
-	print("entered")
+	$"../touch".text = "inside"
 	hand = area
 	prev_position = Vector3(hand.global_position)
 
 func _on_xr_tools_interactable_area_area_exited(area: Area3D):
-	print("left")
+	$"../touch".text = "outside"
 	hand = null

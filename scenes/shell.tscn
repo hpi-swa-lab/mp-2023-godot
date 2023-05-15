@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bcjbjwhgu4ndh" path="res://rooms/Calendar/calendar_room.tscn" id="8_lbybp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l5xiv"]
-radius = 0.035
+margin = 0.01
+radius = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
 radius = 0.244139
@@ -45,7 +46,6 @@ tracker = &"left_hand"
 script = ExtResource("4_0xbmt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Left Hand/XRToolsHandPoseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 shape = SubResource("SphereShape3D_l5xiv")
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
@@ -59,7 +59,6 @@ tracker = &"right_hand"
 script = ExtResource("4_0xbmt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Right Hand/XRToolsHandPoseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 shape = SubResource("SphereShape3D_l5xiv")
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
@@ -83,4 +82,4 @@ visible = false
 visible = false
 
 [node name="calendar_room" parent="." instance=ExtResource("8_lbybp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890622, 0)
+transform = Transform3D(-0.999788, 0, 0.0205935, 0, 1, 0, -0.0205935, 0, -0.999788, 0.182692, 0.338925, -0.409117)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cbqihr71pkhpw"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_a8t4x"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_a8t4x"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/snap_zone.gd" id="2_3ahpi"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_81cbn"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_5fbd1"]

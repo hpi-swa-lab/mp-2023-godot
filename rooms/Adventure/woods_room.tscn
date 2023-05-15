@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://b5wkmvwm7um16"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_3xsji"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_3xsji"]
 [ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://rooms/Adventure/Tree.tscn" id="2_od42l"]
 [ext_resource type="Script" path="res://rooms/Adventure/Bow.gd" id="3_gxru2"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_n1f2g"]
