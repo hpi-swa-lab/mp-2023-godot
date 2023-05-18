@@ -46,4 +46,7 @@ func switch_room(room_key):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if right_hand_raycast.is_colliding():
+		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = true
+	else:
+		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = false
