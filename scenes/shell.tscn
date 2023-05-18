@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=21 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l3bea"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
 [ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
+[ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="7_cr2p6"]
+[ext_resource type="Texture2D" uid="uid://cqt6w2wk3apb0" path="res://assets/img/Mail.png" id="7_l7lwu"]
+[ext_resource type="Texture2D" uid="uid://cjc18afkfqg42" path="res://assets/img/Woods.png" id="8_72e30"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
 radius = 0.244139
@@ -21,6 +24,29 @@ sky_material = SubResource("PhysicalSkyMaterial_0rulv")
 [sub_resource type="Environment" id="Environment_fi6uc"]
 background_mode = 2
 sky = SubResource("Sky_3nj16")
+
+[sub_resource type="SystemFont" id="SystemFont_j8pjj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_24njd"]
+font = SubResource("SystemFont_j8pjj")
+font_size = 78
+
+[sub_resource type="LabelSettings" id="LabelSettings_fbmhk"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_ia6q8"]
+font_size = 40
+
+[sub_resource type="QuadMesh" id="QuadMesh_tjrwr"]
+size = Vector2(2, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_17ibn"]
+viewport_path = NodePath("Menu/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bws1c"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_17ibn")
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_ktytr")
@@ -61,3 +87,68 @@ transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 
 shadow_enabled = true
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
+
+[node name="Menu" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31475, 0.715349, 0)
+
+[node name="SubViewport" type="SubViewport" parent="Menu"]
+handle_input_locally = false
+size = Vector2i(1200, 600)
+render_target_update_mode = 3
+
+[node name="Control" type="Control" parent="Menu/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_cr2p6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/SubViewport/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Menu/SubViewport/Control/VBoxContainer"]
+layout_mode = 2
+text = "Select room to switch to"
+label_settings = SubResource("LabelSettings_24njd")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/SubViewport/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MailPanel" type="VBoxContainer" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MailIcon" type="TextureButton" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
+layout_mode = 2
+texture_normal = ExtResource("7_l7lwu")
+
+[node name="MailLabel" type="Label" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
+layout_mode = 2
+text = "Mail"
+label_settings = SubResource("LabelSettings_fbmhk")
+horizontal_alignment = 1
+
+[node name="AdventurePanel" type="VBoxContainer" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="AdventureIcon" type="TextureButton" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
+layout_mode = 2
+texture_normal = ExtResource("8_72e30")
+
+[node name="AdventureLabel" type="Label" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
+layout_mode = 2
+text = "Adventure
+"
+label_settings = SubResource("LabelSettings_ia6q8")
+horizontal_alignment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Menu"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.40308, 0)
+mesh = SubResource("QuadMesh_tjrwr")
+surface_material_override/0 = SubResource("StandardMaterial3D_bws1c")
