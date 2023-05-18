@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=23 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
 [ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="7_cr2p6"]
 [ext_resource type="Texture2D" uid="uid://cqt6w2wk3apb0" path="res://assets/img/Mail.png" id="7_l7lwu"]
+[ext_resource type="Script" path="res://scripts/RoomSwitcherMenu.gd" id="7_xp2pn"]
 [ext_resource type="Texture2D" uid="uid://cjc18afkfqg42" path="res://assets/img/Woods.png" id="8_72e30"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
@@ -48,6 +49,9 @@ resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_17ibn")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_e51qs"]
+size = Vector3(2, 1, 0.05)
+
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_ktytr")
 
@@ -69,6 +73,12 @@ tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("3_edqy1")]
 
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/Right Hand/RightHand"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+target_position = Vector3(0, 0, -5)
+collision_mask = 8388608
+collide_with_areas = true
+
 [node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_l3bea")]
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
@@ -88,15 +98,16 @@ shadow_enabled = true
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
 
-[node name="Menu" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31475, 0.715349, 0)
+[node name="RoomSwitcherMenu" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.31475, 1.28805, 0)
+script = ExtResource("7_xp2pn")
 
-[node name="SubViewport" type="SubViewport" parent="Menu"]
+[node name="SubViewport" type="SubViewport" parent="RoomSwitcherMenu"]
 handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 3
 
-[node name="Control" type="Control" parent="Menu/SubViewport"]
+[node name="Control" type="Control" parent="RoomSwitcherMenu/SubViewport"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,50 +116,56 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_cr2p6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/SubViewport/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomSwitcherMenu/SubViewport/Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Menu/SubViewport/Control/VBoxContainer"]
+[node name="Label" type="Label" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer"]
 layout_mode = 2
 text = "Select room to switch to"
 label_settings = SubResource("LabelSettings_24njd")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/SubViewport/Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MailPanel" type="VBoxContainer" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer"]
+[node name="MailPanel" type="VBoxContainer" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="MailIcon" type="TextureButton" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
+[node name="MailIcon" type="TextureButton" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
 layout_mode = 2
 texture_normal = ExtResource("7_l7lwu")
 
-[node name="MailLabel" type="Label" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
+[node name="MailLabel" type="Label" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
 layout_mode = 2
 text = "Mail"
 label_settings = SubResource("LabelSettings_fbmhk")
 horizontal_alignment = 1
 
-[node name="AdventurePanel" type="VBoxContainer" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer"]
+[node name="AdventurePanel" type="VBoxContainer" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="AdventureIcon" type="TextureButton" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
+[node name="AdventureIcon" type="TextureButton" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
 layout_mode = 2
 texture_normal = ExtResource("8_72e30")
 
-[node name="AdventureLabel" type="Label" parent="Menu/SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
+[node name="AdventureLabel" type="Label" parent="RoomSwitcherMenu/SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
 layout_mode = 2
 text = "Adventure
 "
 label_settings = SubResource("LabelSettings_ia6q8")
 horizontal_alignment = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Menu"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.40308, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomSwitcherMenu"]
 mesh = SubResource("QuadMesh_tjrwr")
 surface_material_override/0 = SubResource("StandardMaterial3D_bws1c")
+
+[node name="Area3D" type="Area3D" parent="RoomSwitcherMenu"]
+collision_layer = 9437184
+collision_mask = 8388608
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomSwitcherMenu/Area3D"]
+shape = SubResource("BoxShape3D_e51qs")
