@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://wegdpqb55s3n"]
+
+[ext_resource type="Script" path="res://rooms/Calendar/day_element.gd" id="1_r4qgr"]
+[ext_resource type="PackedScene" uid="uid://b01txtibi28bq" path="res://rooms/Calendar/appointment.tscn" id="2_35a5c"]
+
+[sub_resource type="SystemFont" id="SystemFont_lch76"]
+subpixel_positioning = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfv6t"]
+albedo_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+metallic = 0.39
+metallic_specular = 0.04
+roughness = 0.51
+
+[sub_resource type="BoxMesh" id="BoxMesh_1duko"]
+material = SubResource("StandardMaterial3D_xfv6t")
+size = Vector3(0.576, 1.563, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ned7"]
+margin = 0.01
+size = Vector3(0.767432, 1.59489, 0.0790227)
+
+[node name="DayElement" type="Area3D"]
+transform = Transform3D(1, 0, 4.5946e-10, 0, 1, 0, 4.5946e-10, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+script = ExtResource("1_r4qgr")
+
+[node name="title" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.136744, 0.72568, -0.0159492)
+pixel_size = 0.002
+outline_modulate = Color(1, 1, 1, 1)
+text = "10-05-2023"
+font = SubResource("SystemFont_lch76")
+outline_size = 0
+
+[node name="time y axis" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.289397, 0.673525, -0.00535816)
+pixel_size = 0.002
+outline_modulate = Color(1, 1, 1, 1)
+text = "00:00
+01:00
+02:00
+03:00
+04:00
+05:00
+06:00
+07:00
+08:00
+09:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00
+18:00
+19:00
+20:00
+21:00
+22:00
+23:00"
+font = SubResource("SystemFont_lch76")
+font_size = 17
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+line_spacing = 5.113
+
+[node name="Pane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653489, 0, -3.00252e-11)
+mesh = SubResource("BoxMesh_1duko")
+
+[node name="Appointment" parent="." instance=ExtResource("2_35a5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0499193, -0.142659, -0.0600613)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2ned7")

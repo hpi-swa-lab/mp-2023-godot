@@ -1,49 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcjbjwhgu4ndh"]
+[gd_scene load_steps=5 format=3 uid="uid://bcjbjwhgu4ndh"]
 
 [ext_resource type="Script" path="res://rooms/Calendar/calendar_room.gd" id="1_8g38w"]
-[ext_resource type="Script" path="res://rooms/Calendar/Caroussel.gd" id="7_1v1gf"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/interactable_area.gd" id="7_5j6bi"]
+[ext_resource type="Script" path="res://rooms/Calendar/OrderedPanels.gd" id="3_awhnt"]
+[ext_resource type="Script" path="res://rooms/Calendar/DaySlider.gd" id="4_fuify"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xm2j1"]
-albedo_color = Color(1, 0.329412, 0.658824, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ogt4w"]
-material = SubResource("StandardMaterial3D_xm2j1")
-radius = 0.01
-height = 0.01
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_526c8"]
-albedo_color = Color(0.913725, 0, 0.2, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ixo2r"]
-material = SubResource("StandardMaterial3D_526c8")
-radius = 0.01
-height = 0.01
-
-[sub_resource type="SystemFont" id="SystemFont_lch76"]
-subpixel_positioning = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_1duko"]
-size = Vector3(0.722, 1.563, 0.01)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ravre"]
-size = Vector3(0.485, 1.557, 0.01)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ctpc"]
-albedo_color = Color(0.596078, 0.905882, 0.294118, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2ned7"]
-margin = 0.01
-size = Vector3(0.767432, 1.59489, 0.0790227)
+[sub_resource type="BoxShape3D" id="BoxShape3D_mil3q"]
+size = Vector3(1.911, 1.202, 0.185)
 
 [node name="calendar_room" type="Node3D"]
 script = ExtResource("1_8g38w")
-
-[node name="first" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ogt4w")
-
-[node name="second" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ixo2r")
 
 [node name="direction" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23359, 1.57042, 0.74244)
@@ -57,299 +22,21 @@ billboard = 1
 no_depth_test = true
 text = "Test"
 
-[node name="Caroussel" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09289, 0)
-script = ExtResource("7_1v1gf")
-radius = 0.943
-
-[node name="DayElement" type="Area3D" parent="Caroussel"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 1, 0, 4.5946e-10, 0, 1, 0, 0, -0.661711)
-script = ExtResource("7_5j6bi")
-
-[node name="title" type="Label3D" parent="Caroussel/DayElement"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.00703122, 0.72568, -0.0159492)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "10-05-2023"
-font = SubResource("SystemFont_lch76")
-outline_size = 0
-
-[node name="time y axis" type="Label3D" parent="Caroussel/DayElement"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.289397, 0.673525, -0.00535816)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "00:00
-01:00
-02:00
-03:00
-04:00
-05:00
-06:00
-07:00
-08:00
-09:00
-10:00
-11:00
-12:00
-13:00
-14:00
-15:00
-16:00
-17:00
-18:00
-19:00
-20:00
-21:00
-22:00
-23:00"
-font = SubResource("SystemFont_lch76")
-font_size = 17
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 0
-line_spacing = 5.113
-
-[node name="Pane" type="MeshInstance3D" parent="Caroussel/DayElement"]
-mesh = SubResource("BoxMesh_1duko")
-
-[node name="Appointment" type="Node3D" parent="Caroussel/DayElement"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.06)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Caroussel/DayElement/Appointment"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 0.208633, 0, 4.5946e-10, 0, 1, -0.0793288, 0, 0.0463327)
-mesh = SubResource("BoxMesh_ravre")
-surface_material_override/0 = SubResource("StandardMaterial3D_8ctpc")
-
-[node name="Label3D" type="Label3D" parent="Caroussel/DayElement/Appointment"]
-transform = Transform3D(-1, 0, -1.51334e-07, 0, 1, 0, 1.50393e-07, 0, -1, -0.0689759, 0.0902377, 0.041201)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "Meeting with Tom"
-font = SubResource("SystemFont_lch76")
-font_size = 24
-outline_size = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Caroussel/DayElement"]
-shape = SubResource("BoxShape3D_2ned7")
-
-[node name="DayElement2" type="Area3D" parent="Caroussel"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 1, 0, 4.5946e-10, 0, 1, 0, 0, -0.661711)
-script = ExtResource("7_5j6bi")
-
-[node name="title" type="Label3D" parent="Caroussel/DayElement2"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.00703122, 0.72568, -0.0159492)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "10-05-2023"
-font = SubResource("SystemFont_lch76")
-outline_size = 0
-
-[node name="time y axis" type="Label3D" parent="Caroussel/DayElement2"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.289397, 0.673525, -0.00535816)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "00:00
-01:00
-02:00
-03:00
-04:00
-05:00
-06:00
-07:00
-08:00
-09:00
-10:00
-11:00
-12:00
-13:00
-14:00
-15:00
-16:00
-17:00
-18:00
-19:00
-20:00
-21:00
-22:00
-23:00"
-font = SubResource("SystemFont_lch76")
-font_size = 17
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 0
-line_spacing = 5.113
-
-[node name="Pane" type="MeshInstance3D" parent="Caroussel/DayElement2"]
-mesh = SubResource("BoxMesh_1duko")
-
-[node name="Appointment" type="Node3D" parent="Caroussel/DayElement2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.06)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Caroussel/DayElement2/Appointment"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 0.208633, 0, 4.5946e-10, 0, 1, -0.0793288, 0, 0.0463327)
-mesh = SubResource("BoxMesh_ravre")
-surface_material_override/0 = SubResource("StandardMaterial3D_8ctpc")
-
-[node name="Label3D" type="Label3D" parent="Caroussel/DayElement2/Appointment"]
-transform = Transform3D(-1, 0, -1.51334e-07, 0, 1, 0, 1.50393e-07, 0, -1, -0.0689759, 0.0902377, 0.041201)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "Meeting with Tom"
-font = SubResource("SystemFont_lch76")
-font_size = 24
-outline_size = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Caroussel/DayElement2"]
-shape = SubResource("BoxShape3D_2ned7")
-
-[node name="DayElement3" type="Area3D" parent="Caroussel"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 1, 0, 4.5946e-10, 0, 1, 0, 0, -0.661711)
-script = ExtResource("7_5j6bi")
-
-[node name="title" type="Label3D" parent="Caroussel/DayElement3"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.00703122, 0.72568, -0.0159492)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "10-05-2023"
-font = SubResource("SystemFont_lch76")
-outline_size = 0
-
-[node name="time y axis" type="Label3D" parent="Caroussel/DayElement3"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.289397, 0.673525, -0.00535816)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "00:00
-01:00
-02:00
-03:00
-04:00
-05:00
-06:00
-07:00
-08:00
-09:00
-10:00
-11:00
-12:00
-13:00
-14:00
-15:00
-16:00
-17:00
-18:00
-19:00
-20:00
-21:00
-22:00
-23:00"
-font = SubResource("SystemFont_lch76")
-font_size = 17
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 0
-line_spacing = 5.113
-
-[node name="Pane" type="MeshInstance3D" parent="Caroussel/DayElement3"]
-mesh = SubResource("BoxMesh_1duko")
-
-[node name="Appointment" type="Node3D" parent="Caroussel/DayElement3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.06)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Caroussel/DayElement3/Appointment"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 0.208633, 0, 4.5946e-10, 0, 1, -0.0793288, 0, 0.0463327)
-mesh = SubResource("BoxMesh_ravre")
-surface_material_override/0 = SubResource("StandardMaterial3D_8ctpc")
-
-[node name="Label3D" type="Label3D" parent="Caroussel/DayElement3/Appointment"]
-transform = Transform3D(-1, 0, -1.51334e-07, 0, 1, 0, 1.50393e-07, 0, -1, -0.0689759, 0.0902377, 0.041201)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "Meeting with Tom"
-font = SubResource("SystemFont_lch76")
-font_size = 24
-outline_size = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Caroussel/DayElement3"]
-shape = SubResource("BoxShape3D_2ned7")
-
-[node name="DayElement4" type="Area3D" parent="Caroussel"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 1, 0, 4.5946e-10, 0, 1, 0, 0, -0.661711)
-script = ExtResource("7_5j6bi")
-
-[node name="title" type="Label3D" parent="Caroussel/DayElement4"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.00703122, 0.72568, -0.0159492)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "10-05-2023"
-font = SubResource("SystemFont_lch76")
-outline_size = 0
-
-[node name="time y axis" type="Label3D" parent="Caroussel/DayElement4"]
-transform = Transform3D(-1, 0, 8.70849e-08, 0, 1, 0, -8.79913e-08, 0, -1, 0.289397, 0.673525, -0.00535816)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "00:00
-01:00
-02:00
-03:00
-04:00
-05:00
-06:00
-07:00
-08:00
-09:00
-10:00
-11:00
-12:00
-13:00
-14:00
-15:00
-16:00
-17:00
-18:00
-19:00
-20:00
-21:00
-22:00
-23:00"
-font = SubResource("SystemFont_lch76")
-font_size = 17
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 0
-line_spacing = 5.113
-
-[node name="Pane" type="MeshInstance3D" parent="Caroussel/DayElement4"]
-mesh = SubResource("BoxMesh_1duko")
-
-[node name="Appointment" type="Node3D" parent="Caroussel/DayElement4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.06)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Caroussel/DayElement4/Appointment"]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 0.208633, 0, 4.5946e-10, 0, 1, -0.0793288, 0, 0.0463327)
-mesh = SubResource("BoxMesh_ravre")
-surface_material_override/0 = SubResource("StandardMaterial3D_8ctpc")
-
-[node name="Label3D" type="Label3D" parent="Caroussel/DayElement4/Appointment"]
-transform = Transform3D(-1, 0, -1.51334e-07, 0, 1, 0, 1.50393e-07, 0, -1, -0.0689759, 0.0902377, 0.041201)
-pixel_size = 0.002
-outline_modulate = Color(1, 1, 1, 1)
-text = "Meeting with Tom"
-font = SubResource("SystemFont_lch76")
-font_size = 24
-outline_size = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Caroussel/DayElement4"]
-shape = SubResource("BoxShape3D_2ned7")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.963993, 0.265926, 0, -0.265926, -0.963993, 0, 2.34836, -1.7741)
 
-[connection signal="area_entered" from="Caroussel/DayElement" to="Caroussel" method="_on_xr_tools_interactable_area_area_entered"]
-[connection signal="area_exited" from="Caroussel/DayElement" to="Caroussel" method="_on_xr_tools_interactable_area_area_exited"]
-[connection signal="area_entered" from="Caroussel/DayElement2" to="Caroussel" method="_on_xr_tools_interactable_area_area_entered"]
-[connection signal="area_exited" from="Caroussel/DayElement2" to="Caroussel" method="_on_xr_tools_interactable_area_area_exited"]
-[connection signal="area_entered" from="Caroussel/DayElement3" to="Caroussel" method="_on_xr_tools_interactable_area_area_entered"]
-[connection signal="area_exited" from="Caroussel/DayElement3" to="Caroussel" method="_on_xr_tools_interactable_area_area_exited"]
-[connection signal="area_entered" from="Caroussel/DayElement4" to="Caroussel" method="_on_xr_tools_interactable_area_area_entered"]
-[connection signal="area_exited" from="Caroussel/DayElement4" to="Caroussel" method="_on_xr_tools_interactable_area_area_exited"]
+[node name="DaySlider" type="Node3D" parent="."]
+script = ExtResource("4_fuify")
+
+[node name="View" type="Area3D" parent="DaySlider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DaySlider/View"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_mil3q")
+
+[node name="OrderedPanels" type="Node3D" parent="DaySlider"]
+script = ExtResource("3_awhnt")
+
+[connection signal="area_entered" from="DaySlider/View" to="DaySlider/OrderedPanels" method="_on_view_area_entered"]
+[connection signal="area_exited" from="DaySlider/View" to="DaySlider/OrderedPanels" method="_on_view_area_exited"]
