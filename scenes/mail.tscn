@@ -16,7 +16,6 @@ size = Vector3(0.15, 0.03, 0.01)
 size = Vector3(0.03, 0.15, 0.01)
 
 [node name="Mail" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19212, -1.04947)
 collision_layer = 4
 collision_mask = 196615
 gravity_scale = 2.66454e-15
