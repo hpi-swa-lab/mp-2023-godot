@@ -20,7 +20,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8ctpc")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -1.51334e-07, 0, 1, 0, 1.50393e-07, 0, -1, -0.0689759, 0.107204, 0.041201)
 pixel_size = 0.0015
-outline_modulate = Color(1, 1, 1, 1)
+modulate = Color(0, 0, 0, 1)
 text = "Meeting with Tom"
 font = SubResource("SystemFont_lch76")
 font_size = 24

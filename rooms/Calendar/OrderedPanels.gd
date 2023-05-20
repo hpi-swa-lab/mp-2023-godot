@@ -2,24 +2,29 @@ extends Node3D
 
 const SECS_PER_DAY: int = 24 * 60 * 60
 
-var dayElementScene = preload("res://rooms/Calendar/day_element.tscn")
+const dayElementScene = preload("res://rooms/Calendar/day_element.tscn")
 @onready var right_hand : XRController3D = get_node("/root/Shell/XROrigin3D/Right Hand")
 
-@export var gap: float = 0.1
-@export var neighboringElementsCount: int = 6
+var gap: float = 0.1
+var visible_children = 7
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready():	
 	var today = Time.get_unix_time_from_system()
 	var dayElem = init_DayElem(today)
 	dayElem.transform = $"../View".transform
 	dayElem.visible = true
+	
+	var cs = $"../View/CollisionShape3D" as CollisionShape3D
+	var bs = cs.shape as BoxShape3D
+	bs.size.x = dayElem.aabb.size.x * visible_children
+	
 	self.add_child(dayElem)
 	
-	for _i in range(int(neighboringElementsCount / 2)):
+	for _i in range(visible_children * 2):
 		self.add_left()
 	
-	for _i in range(int(neighboringElementsCount / 2)):
+	for _i in range(visible_children * 2):
 		self.add_right()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
