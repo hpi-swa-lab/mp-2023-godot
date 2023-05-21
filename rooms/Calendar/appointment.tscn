@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b01txtibi28bq"]
+[gd_scene load_steps=5 format=3 uid="uid://b01txtibi28bq"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_lsl5n"]
-size = Vector3(0.369, 1.557, 0.01)
+[ext_resource type="Script" path="res://rooms/Calendar/appointment.gd" id="1_ubtsv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i1r01"]
+size = Vector3(0.369, 0.228, 0.01)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ctpc"]
 albedo_color = Color(0.596078, 0.905882, 0.294118, 1)
@@ -10,15 +12,15 @@ albedo_color = Color(0.596078, 0.905882, 0.294118, 1)
 subpixel_positioning = 0
 
 [node name="Appointment" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.06)
+script = ExtResource("1_ubtsv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 4.5946e-10, 0, 0.208633, 0, 4.5946e-10, 0, 1, -0.0793288, 0, 0.0463327)
-mesh = SubResource("BoxMesh_lsl5n")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19163, -0.120485, -2.98023e-08)
+mesh = SubResource("BoxMesh_i1r01")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ctpc")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-1, 0, -1.51334e-07, 0, 1, 0, 1.50393e-07, 0, -1, -0.0689759, 0.107204, 0.041201)
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, -0.197072, -0.0445963, -0.0237087)
 pixel_size = 0.0015
 modulate = Color(0, 0, 0, 1)
 text = "Meeting with Tom"

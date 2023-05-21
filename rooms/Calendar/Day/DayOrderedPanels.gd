@@ -2,7 +2,7 @@ extends Node3D
 
 const SECS_PER_DAY: int = 24 * 60 * 60
 
-const dayElementScene = preload("res://rooms/Calendar/day_element.tscn")
+const dayElementScene = preload("res://rooms/Calendar/Day/day_element.tscn")
 @onready var right_hand : XRController3D = get_node("/root/Shell/XROrigin3D/Right Hand")
 
 var gap: float = 0.1

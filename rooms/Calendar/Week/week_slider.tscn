@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d17uy4bnnau4g"]
+
+[ext_resource type="Script" path="res://rooms/Calendar/Week/week_slider.gd" id="1_fsuab"]
+[ext_resource type="Script" path="res://rooms/Calendar/Week/OrderedPanels.gd" id="2_j7j8k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mil3q"]
+size = Vector3(1.911, 1.202, 0.185)
+
+[node name="WeekSlider" type="Node3D"]
+script = ExtResource("1_fsuab")
+
+[node name="View" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="View"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_mil3q")
+
+[node name="OrderedPanels" type="Node3D" parent="."]
+script = ExtResource("2_j7j8k")
+
+[connection signal="area_entered" from="View" to="OrderedPanels" method="_on_view_area_entered"]
+[connection signal="area_exited" from="View" to="OrderedPanels" method="_on_view_area_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=14 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
@@ -7,8 +7,7 @@
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/hand_pose_area.gd" id="4_0xbmt"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
 [ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
-[ext_resource type="PackedScene" uid="uid://cbqihr71pkhpw" path="res://rooms/Email/email_room.tscn" id="7_nb4dd"]
-[ext_resource type="PackedScene" uid="uid://bcjbjwhgu4ndh" path="res://rooms/Calendar/calendar_room.tscn" id="8_lbybp"]
+[ext_resource type="PackedScene" uid="uid://duku3n4gj03m2" path="res://rooms/Calendar/calendar_room.tscn" id="8_lbybp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l5xiv"]
 margin = 0.01
@@ -75,11 +74,7 @@ environment = SubResource("Environment_fi6uc")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
 
-[node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
-visible = false
-
-[node name="Email Room" parent="." instance=ExtResource("7_nb4dd")]
-visible = false
-
 [node name="calendar_room" parent="." instance=ExtResource("8_lbybp")]
-transform = Transform3D(-0.999788, 0, 0.0205935, 0, 1, 0, -0.0205935, 0, -0.999788, 0.182692, 0.338925, -0.409117)
+transform = Transform3D(-0.999788, 0, 0.0205935, 0, 1, 0, -0.0205935, 0, -0.999788, 0.182692, 0.338925, -3.3166)
+
+[node name="Woods Room" parent="." instance=ExtResource("5_sr317")]

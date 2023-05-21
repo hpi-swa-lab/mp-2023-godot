@@ -1,25 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcjbjwhgu4ndh"]
+[gd_scene load_steps=4 format=3 uid="uid://duku3n4gj03m2"]
 
 [ext_resource type="Script" path="res://rooms/Calendar/calendar_room.gd" id="1_8g38w"]
-[ext_resource type="Script" path="res://rooms/Calendar/OrderedPanels.gd" id="3_awhnt"]
-[ext_resource type="Script" path="res://rooms/Calendar/DaySlider.gd" id="4_fuify"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mil3q"]
-size = Vector3(1.911, 1.202, 0.185)
-
-[sub_resource type="GDScript" id="GDScript_jvi7j"]
-script/source = "extends CollisionShape3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var dayElem = $\"../../OrderedPanels\".get_child(0) as DayElement
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
+[ext_resource type="PackedScene" uid="uid://dhyspr2y1tgdf" path="res://rooms/Calendar/Day/day_slider.tscn" id="2_c6xr0"]
+[ext_resource type="PackedScene" uid="uid://d17uy4bnnau4g" path="res://rooms/Calendar/Week/week_slider.tscn" id="2_ga7ao"]
 
 [node name="calendar_room" type="Node3D"]
 script = ExtResource("1_8g38w")
@@ -39,19 +22,7 @@ text = "Test"
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.963993, 0.265926, 0, -0.265926, -0.963993, 0, 2.34836, -1.7741)
 
-[node name="DaySlider" type="Node3D" parent="."]
-script = ExtResource("4_fuify")
+[node name="WeekSlider" parent="." instance=ExtResource("2_ga7ao")]
+transform = Transform3D(1, 0, 0, 0, 0.962175, 0.272431, 0, -0.272431, 0.962175, 0, 2.20275, 0)
 
-[node name="View" type="Area3D" parent="DaySlider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DaySlider/View"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shape = SubResource("BoxShape3D_mil3q")
-script = SubResource("GDScript_jvi7j")
-
-[node name="OrderedPanels" type="Node3D" parent="DaySlider"]
-script = ExtResource("3_awhnt")
-
-[connection signal="area_entered" from="DaySlider/View" to="DaySlider/OrderedPanels" method="_on_view_area_entered"]
-[connection signal="area_exited" from="DaySlider/View" to="DaySlider/OrderedPanels" method="_on_view_area_exited"]
+[node name="DaySlider" parent="." instance=ExtResource("2_c6xr0")]
