@@ -46,14 +46,27 @@ func press(area_local_pos):
 		on_mail_button_pressed()
 	if pos_is_in_rect(menu_pos, adventure_button.get_global_rect()):
 		on_adventure_button_pressed()
+		
+func release(area_local_pos):
+	var menu_pos = area_pos_to_menu_pos(area_local_pos)
+	if pos_is_in_rect(menu_pos, mail_button.get_global_rect()):
+		on_mail_button_released()
+	if pos_is_in_rect(menu_pos, adventure_button.get_global_rect()):
+		on_adventure_button_released()
 
 func on_mail_button_pressed():
-	print("VRSHELL EMAIL PRESSED")
-	shell.switch_room("email")
+	mail_button.modulate = Color("#636363")
 
 func on_adventure_button_pressed():
-	print("VRSHELL ADVENTURE PRESSED")
+	adventure_button.modulate = Color("#636363")
+	
+func on_mail_button_released():
+	shell.switch_room("email")
+	mail_button.modulate = Color.WHITE
+
+func on_adventure_button_released():
 	shell.switch_room("adventure")
+	adventure_button.modulate = Color.WHITE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
