@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://rooms/Adventure/Bow.gd" id="3_gxru2"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_n1f2g"]
 [ext_resource type="PackedScene" uid="uid://ey28j5bubo5p" path="res://rooms/Adventure/arrow.tscn" id="5_7gqxr"]
-[ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://rooms/Adventure/oak.tscn" id="5_iry8c"]
+[ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://rooms/Adventure/Tree.tscn" id="5_iry8c"]
 [ext_resource type="PackedScene" uid="uid://bjcwearx2isyk" path="res://rooms/Adventure/pine.tscn" id="6_juin3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhvkn"]

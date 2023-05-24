@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=14 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
@@ -6,6 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l3bea"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
 [ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
+[ext_resource type="PackedScene" uid="uid://de6b15l3uot4n" path="res://scenes/room_switcher_menu.tscn" id="7_i3q0j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmg7j"]
+albedo_color = Color(1, 0.109804, 0.109804, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ugme5"]
+material = SubResource("StandardMaterial3D_pmg7j")
+top_radius = 0.005
+bottom_radius = 0.005
+height = 5.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
 radius = 0.244139
@@ -43,6 +53,17 @@ tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("3_edqy1")]
 
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/Right Hand/RightHand"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+target_position = Vector3(0, 0, -5)
+collision_mask = 8388608
+collide_with_areas = true
+
+[node name="VisibleRay" type="MeshInstance3D" parent="XROrigin3D/Right Hand/RightHand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.47778)
+mesh = SubResource("CylinderMesh_ugme5")
+
 [node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_l3bea")]
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
@@ -61,3 +82,6 @@ transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 
 shadow_enabled = true
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
+
+[node name="RoomSwitcherMenu" parent="." instance=ExtResource("7_i3q0j")]
+visible = false

@@ -18,10 +18,15 @@ config/icon="res://vrshell-icon.png"
 [autoload]
 
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+A="*res://scripts/apps.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
+
+[gui]
+
+theme/custom="res://assets/gui_theme.tres"
 
 [layer_names]
 
