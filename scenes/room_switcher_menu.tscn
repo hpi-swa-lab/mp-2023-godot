@@ -1,21 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://de6b15l3uot4n"]
+[gd_scene load_steps=9 format=3 uid="uid://de6b15l3uot4n"]
 
 [ext_resource type="Script" path="res://scripts/RoomSwitcherMenu.gd" id="1_81aqu"]
 [ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="2_te886"]
-[ext_resource type="Texture2D" uid="uid://cqt6w2wk3apb0" path="res://assets/img/Mail.png" id="3_tuc61"]
-[ext_resource type="Texture2D" uid="uid://cjc18afkfqg42" path="res://assets/img/Woods.png" id="4_1w5x5"]
 
 [sub_resource type="SystemFont" id="SystemFont_j8pjj"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_24njd"]
 font = SubResource("SystemFont_j8pjj")
 font_size = 78
-
-[sub_resource type="LabelSettings" id="LabelSettings_fbmhk"]
-font_size = 40
-
-[sub_resource type="LabelSettings" id="LabelSettings_ia6q8"]
-font_size = 40
 
 [sub_resource type="QuadMesh" id="QuadMesh_tjrwr"]
 size = Vector2(2, 1)
@@ -63,34 +56,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MailPanel" type="VBoxContainer" parent="SubViewport/Control/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="MailIcon" type="TextureButton" parent="SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
-layout_mode = 2
-texture_normal = ExtResource("3_tuc61")
-
-[node name="MailLabel" type="Label" parent="SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel"]
-layout_mode = 2
-text = "Mail"
-label_settings = SubResource("LabelSettings_fbmhk")
-horizontal_alignment = 1
-
-[node name="AdventurePanel" type="VBoxContainer" parent="SubViewport/Control/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="AdventureIcon" type="TextureButton" parent="SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
-layout_mode = 2
-texture_normal = ExtResource("4_1w5x5")
-
-[node name="AdventureLabel" type="Label" parent="SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel"]
-layout_mode = 2
-text = "Adventure
-"
-label_settings = SubResource("LabelSettings_ia6q8")
-horizontal_alignment = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_tjrwr")

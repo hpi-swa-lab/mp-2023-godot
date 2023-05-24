@@ -1,8 +1,21 @@
 extends Node
 
 var apps: Dictionary = {
-	"email" :  preload("res://rooms/Email/email_room.tscn"),
-	"adventure" : preload("res://rooms/Adventure/woods_room.tscn")
+	"email" :  {
+		"scene": preload("res://rooms/Email/email_room.tscn"),
+		"icon": "res://assets/img/Mail.png",
+		"name": "Mail"
+	},
+	"adventure" : {
+		"scene" :  preload("res://rooms/Adventure/woods_room.tscn"),
+		"icon": "res://assets/img/Woods.png",
+		"name": "Adventure"
+	},
+	"calendar" : {
+		"scene" :  preload("res://rooms/Adventure/woods_room.tscn"),
+		"icon": "res://assets/img/Calendar.png",
+		"name": "Calendar"
+	}
 }
 
 # Called when the node enters the scene tree for the first time.

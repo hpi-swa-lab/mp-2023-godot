@@ -6,9 +6,33 @@ var shell
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mail_button = $SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel/MailIcon
-	adventure_button = $SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel/AdventureIcon
+	mail_button = null # $SubViewport/Control/VBoxContainer/HBoxContainer/MailPanel/MailIcon
+	adventure_button = null # $SubViewport/Control/VBoxContainer/HBoxContainer/AdventurePanel/AdventureIcon
 	shell = get_parent()
+	generate_menu()
+	
+var buttons = Dictionary()
+	
+func generate_menu():
+	var menu_item_root = $SubViewport/Control/VBoxContainer/HBoxContainer
+	print("VRSHELLDEBUG ", A.apps.keys())
+	for k in A.apps.keys():
+		var app_spec = A.apps[k]
+		print("VRSHELLDEBUG Adding ", k , " to menu")
+		var panel = VBoxContainer.new()
+		var button = TextureButton.new()
+		var label = Label.new()
+		panel.add_child(button)
+		panel.add_child(label)
+		button.texture_normal = ResourceLoader.load(app_spec["icon"])
+		label.text = app_spec["name"]
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		var label_settings = LabelSettings.new()
+		label_settings.font_size = 40
+		label.label_settings = label_settings
+		menu_item_root.add_child(panel)
+		buttons[button] = k
+	
 
 func pos_is_in_rect(pos, rect):
 	var startx = rect.position.x
@@ -41,32 +65,20 @@ func area_pos_to_menu_pos(area_local_pos):
 	
 
 func press(area_local_pos):
+	print("VRSHELLDEBUG ", buttons)
 	var menu_pos = area_pos_to_menu_pos(area_local_pos)
-	if pos_is_in_rect(menu_pos, mail_button.get_global_rect()):
-		on_mail_button_pressed()
-	if pos_is_in_rect(menu_pos, adventure_button.get_global_rect()):
-		on_adventure_button_pressed()
+	for button in buttons.keys():
+		if pos_is_in_rect(menu_pos, button.get_global_rect()):
+			button.modulate = Color("#636363")
 		
 func release(area_local_pos):
 	var menu_pos = area_pos_to_menu_pos(area_local_pos)
-	if pos_is_in_rect(menu_pos, mail_button.get_global_rect()):
-		on_mail_button_released()
-	if pos_is_in_rect(menu_pos, adventure_button.get_global_rect()):
-		on_adventure_button_released()
-
-func on_mail_button_pressed():
-	mail_button.modulate = Color("#636363")
-
-func on_adventure_button_pressed():
-	adventure_button.modulate = Color("#636363")
-	
-func on_mail_button_released():
-	shell.switch_room("email")
-	mail_button.modulate = Color.WHITE
-
-func on_adventure_button_released():
-	shell.switch_room("adventure")
-	adventure_button.modulate = Color.WHITE
+	for button in buttons.keys():	
+		if pos_is_in_rect(menu_pos, button.get_global_rect()):
+			var app = buttons[button]
+			print("VRSHELLDEBUG app ", app)
+			shell.switch_room(app)
+			button.modulate = Color.WHITE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

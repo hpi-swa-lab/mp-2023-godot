@@ -49,7 +49,7 @@ func on_right_hand_button_released(button_name):
 				
 func switch_room(room_key):
 	active_room.queue_free()
-	var new_room = A.apps[room_key].instantiate()
+	var new_room = A.apps[room_key]["scene"].instantiate()
 	active_room = new_room
 	add_child(new_room)
 
