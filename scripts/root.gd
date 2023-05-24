@@ -5,6 +5,7 @@ var active_room: Node3D
 var room_switcher_menu: Node3D
 var xr_interface: XRInterface
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -22,6 +23,7 @@ func _ready():
 	
 		
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
+@onready var primary_camera: XRCamera3D = $"XROrigin3D/XRCamera3D"
 
 func ray_cast_on_room_switcher_menu():
 	right_hand_raycast.force_raycast_update()
@@ -35,7 +37,7 @@ func ray_cast_on_room_switcher_menu():
 		
 func on_right_hand_button_pressed(button_name):
 	if button_name == "ax_button":
-		room_switcher_menu.visible = !room_switcher_menu.visible
+		room_switcher_menu.toggle_visibility()
 	if button_name == "grip_click":
 		var ray_cast_result = ray_cast_on_room_switcher_menu()
 		if ray_cast_result:

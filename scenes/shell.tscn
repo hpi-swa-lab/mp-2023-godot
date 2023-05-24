@@ -38,7 +38,6 @@ script = ExtResource("1_ktytr")
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
 current = true
 
 [node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
@@ -84,4 +83,3 @@ shadow_enabled = true
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
 
 [node name="RoomSwitcherMenu" parent="." instance=ExtResource("7_i3q0j")]
-visible = false

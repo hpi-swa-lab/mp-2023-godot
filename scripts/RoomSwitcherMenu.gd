@@ -62,7 +62,17 @@ func area_pos_to_menu_pos(area_local_pos):
 	y *= view_port_height
 	return Vector2(x,y)
 	
-	
+func toggle_visibility():
+	visible = !visible
+	if visible:
+		var camera: XRCamera3D = shell.primary_camera
+		var forward = camera.get_global_transform().basis.z
+		var test_pos = - forward.normalized() * 2 + camera.global_position
+		global_position = test_pos
+		global_position.y = max(global_position.y, 0.5)
+		global_position.y = min(global_position.y, 2)
+		var look_at_pos = Vector3(camera.global_position.x, camera.global_position.y + 0.2, camera.global_position.z)
+		look_at(look_at_pos, Vector3(0,1,0))
 
 func press(area_local_pos):
 	print("VRSHELLDEBUG ", buttons)
