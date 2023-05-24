@@ -12,7 +12,7 @@ var apps: Dictionary = {
 		"name": "Adventure"
 	},
 	"calendar" : {
-		"scene" :  preload("res://rooms/Adventure/woods_room.tscn"),
+		"scene" :  preload("res://rooms/Calendar/calendar_room.tscn"),
 		"icon": "res://assets/img/Calendar.png",
 		"name": "Calendar"
 	}

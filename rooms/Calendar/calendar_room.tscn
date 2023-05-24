@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://duku3n4gj03m2"]
+[gd_scene load_steps=7 format=3 uid="uid://duku3n4gj03m2"]
 
 [ext_resource type="Script" path="res://rooms/Calendar/calendar_room.gd" id="1_8g38w"]
 [ext_resource type="PackedScene" uid="uid://dhyspr2y1tgdf" path="res://rooms/Calendar/Day/day_slider.tscn" id="2_c6xr0"]
 [ext_resource type="PackedScene" uid="uid://d17uy4bnnau4g" path="res://rooms/Calendar/Week/week_slider.tscn" id="2_ga7ao"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d2frd"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nx6r"]
+albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hanbm"]
 
 [node name="calendar_room" type="Node3D"]
 script = ExtResource("1_8g38w")
@@ -31,3 +39,14 @@ transform = Transform3D(-0.995593, 0.024938, 0.0904014, 0, -0.963994, 0.265926, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="DaySlider"]
 transform = Transform3D(-0.995593, 0.0249381, 0.0904016, 0.0208259, -0.881126, 0.472422, 0.0914365, 0.472223, 0.876724, 0.941555, 2.34836, -3.5329)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 17
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_d2frd")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2nx6r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_hanbm")
