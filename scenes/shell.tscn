@@ -75,6 +75,6 @@ environment = SubResource("Environment_fi6uc")
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
 
 [node name="calendar_room" parent="." instance=ExtResource("8_lbybp")]
-transform = Transform3D(-0.999788, 0, 0.0205935, 0, 1, 0, -0.0205935, 0, -0.999788, 0.182692, 0.338925, -3.3166)
+transform = Transform3D(-0.770536, 0, 0.637397, 0, 1, 0, -0.637397, 0, -0.770536, 3.28825, 0.338925, -1.70642)
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]

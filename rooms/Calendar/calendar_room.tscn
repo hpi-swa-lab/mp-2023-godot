@@ -9,20 +9,25 @@ script = ExtResource("1_8g38w")
 
 [node name="direction" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23359, 1.57042, 0.74244)
+visible = false
 billboard = 1
 no_depth_test = true
 text = "entered"
 
 [node name="touch" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11523, 1.93405, 0.802252)
+visible = false
 billboard = 1
 no_depth_test = true
 text = "Test"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.963993, 0.265926, 0, -0.265926, -0.963993, 0, 2.34836, -1.7741)
-
 [node name="WeekSlider" parent="." instance=ExtResource("2_ga7ao")]
-transform = Transform3D(1, 0, 0, 0, 0.962175, 0.272431, 0, -0.272431, 0.962175, 0, 2.20275, 0)
+transform = Transform3D(-0.995593, 0, 0.0937781, 0, 1, 0, -0.0937782, 0, -0.995593, 1.26871, 2.38419e-07, -5.20313)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WeekSlider"]
+transform = Transform3D(-0.995593, 0.024938, 0.0904014, 0, -0.963994, 0.265926, 0.0937782, 0.264754, 0.959745, 0.941555, 2.34836, -3.5329)
 
 [node name="DaySlider" parent="." instance=ExtResource("2_c6xr0")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DaySlider"]
+transform = Transform3D(-0.995593, 0.0249381, 0.0904016, 0.0208259, -0.881126, 0.472422, 0.0914365, 0.472223, 0.876724, 0.941555, 2.34836, -3.5329)

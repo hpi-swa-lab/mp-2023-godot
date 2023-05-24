@@ -78,6 +78,7 @@ line_spacing = 9.983
 
 [node name="debug" type="Label3D" parent="."]
 transform = Transform3D(-0.997993, 0, -0.0633306, 0, 1, 0, 0.0633306, 0, -0.997993, 0.151634, 1.10683, -0.0154377)
+visible = false
 text = "debug"
 font_size = 15
 
