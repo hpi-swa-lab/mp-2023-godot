@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://duku3n4gj03m2"]
+[gd_scene load_steps=6 format=3 uid="uid://duku3n4gj03m2"]
 
-[ext_resource type="Script" path="res://rooms/Calendar/calendar_room.gd" id="1_8g38w"]
 [ext_resource type="PackedScene" uid="uid://dhyspr2y1tgdf" path="res://rooms/Calendar/Day/day_slider.tscn" id="2_c6xr0"]
 [ext_resource type="PackedScene" uid="uid://d17uy4bnnau4g" path="res://rooms/Calendar/Week/week_slider.tscn" id="2_ga7ao"]
 
@@ -8,12 +7,11 @@
 size = Vector2(100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nx6r"]
-albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
+albedo_color = Color(0.219608, 0.741176, 0.74902, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hanbm"]
 
 [node name="calendar_room" type="Node3D"]
-script = ExtResource("1_8g38w")
 
 [node name="direction" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23359, 1.57042, 0.74244)

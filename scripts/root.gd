@@ -3,13 +3,17 @@ extends Node3D
 var right_hand_raycast
 var active_room: Node3D
 var room_switcher_menu: Node3D
+var xr_interface: XRInterface
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var xr_interface: XRInterface = XRServer.find_interface("OpenXR")
+	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		var vp: Viewport = get_viewport()
 		vp.use_xr = true
+	else:
+		print("OpenXR not initialised, please check if your headset is connected")
 	right_hand_raycast = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
 	right_hand.button_released.connect(on_right_hand_button_released)
 	right_hand.button_pressed.connect(on_right_hand_button_pressed)
