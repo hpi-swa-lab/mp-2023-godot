@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://duku3n4gj03m2"]
+
+[ext_resource type="Script" path="res://rooms/Calendar/calendar_room.gd" id="1_8g38w"]
+[ext_resource type="PackedScene" uid="uid://dhyspr2y1tgdf" path="res://rooms/Calendar/Day/day_slider.tscn" id="2_c6xr0"]
+[ext_resource type="PackedScene" uid="uid://d17uy4bnnau4g" path="res://rooms/Calendar/Week/week_slider.tscn" id="2_ga7ao"]
+
+[node name="calendar_room" type="Node3D"]
+script = ExtResource("1_8g38w")
+
+[node name="direction" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23359, 1.57042, 0.74244)
+visible = false
+billboard = 1
+no_depth_test = true
+text = "entered"
+
+[node name="touch" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11523, 1.93405, 0.802252)
+visible = false
+billboard = 1
+no_depth_test = true
+text = "Test"
+
+[node name="WeekSlider" parent="." instance=ExtResource("2_ga7ao")]
+transform = Transform3D(-0.995593, 0, 0.0937781, 0, 1, 0, -0.0937782, 0, -0.995593, 1.26871, 2.38419e-07, -5.20313)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WeekSlider"]
+transform = Transform3D(-0.995593, 0.024938, 0.0904014, 0, -0.963994, 0.265926, 0.0937782, 0.264754, 0.959745, 0.941555, 2.34836, -3.5329)
+
+[node name="DaySlider" parent="." instance=ExtResource("2_c6xr0")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DaySlider"]
+transform = Transform3D(-0.995593, 0.0249381, 0.0904016, 0.0208259, -0.881126, 0.472422, 0.0914365, 0.472223, 0.876724, 0.941555, 2.34836, -3.5329)
