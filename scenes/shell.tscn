@@ -32,6 +32,12 @@ sky_material = SubResource("PhysicalSkyMaterial_0rulv")
 background_mode = 2
 sky = SubResource("Sky_3nj16")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvgvv"]
+albedo_color = Color(0.215055, 0.546804, 0.878599, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6n2hk"]
+material = SubResource("StandardMaterial3D_wvgvv")
+
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_ktytr")
 

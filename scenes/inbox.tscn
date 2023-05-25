@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=3 uid="uid://xxu78i4pi1g1"]
+
+[ext_resource type="Script" path="res://rooms/Email/mail_spawner.gd" id="1_76cks"]
+[ext_resource type="PackedScene" uid="uid://q6qut1xsa2fd" path="res://scenes/mail.tscn" id="2_p01o0"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_furkl"]
+[ext_resource type="Script" path="res://rooms/Email/inbox_outline.gd" id="4_q3hx2"]
+
+[sub_resource type="Curve3D" id="Curve3D_cbwpq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.3, -0.3, 0.7),
+"tilts": PackedFloat32Array(0, 2.08165e-12)
+}
+point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2y2r"]
+font_size = 91
+
+[sub_resource type="QuadMesh" id="QuadMesh_x1qpa"]
+resource_local_to_scene = true
+size = Vector2(0.3, 0.15)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uuv2e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ai3jo"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_uuv2e")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qva2"]
+resource_local_to_scene = true
+size = Vector3(0.3, 0.15, 0.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6nuno"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vy8j"]
+shading_mode = 0
+albedo_color = Color(0, 0.933333, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1v5dk"]
+material = SubResource("StandardMaterial3D_1vy8j")
+radius = 0.01
+height = 1.0
+radial_segments = 4
+rings = 1
+
+[node name="Inbox" type="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117957, 1.38657, -1.21769)
+curve = SubResource("Curve3D_cbwpq")
+script = ExtResource("1_76cks")
+mail_scene = ExtResource("2_p01o0")
+mail_amount = 5
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.919145, -0.144375, -0.366508, 1.49012e-08, 0.930415, -0.366508, 0.393919, 0.336874, 0.855186, 0, 0, 0)
+
+[node name="Label3D" parent="." instance=ExtResource("3_furkl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+screen_size = Vector2(0.3, 0.15)
+viewport_size = Vector2(300, 150)
+
+[node name="Viewport" parent="Label3D" index="0"]
+size = Vector2i(300, 150)
+
+[node name="GUI" type="Control" parent="Label3D/Viewport" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Label3D/Viewport/GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Label3D/Viewport/GUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inbox"
+label_settings = SubResource("LabelSettings_p2y2r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Screen" parent="Label3D" index="1"]
+mesh = SubResource("QuadMesh_x1qpa")
+surface_material_override/0 = SubResource("StandardMaterial3D_ai3jo")
+
+[node name="StaticBody3D" parent="Label3D" index="2"]
+screen_size = Vector2(0.3, 0.15)
+viewport_size = Vector2(300, 150)
+
+[node name="CollisionShape3D" parent="Label3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_3qva2")
+
+[node name="Box" type="StaticBody3D" parent="."]
+collision_layer = 1048576
+collision_mask = 1048576
+script = ExtResource("4_q3hx2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
+shape = SubResource("BoxShape3D_6nuno")
+
+[node name="Node3D" type="Node3D" parent="Box"]
+transform = Transform3D(0.792073, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.252087)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.98023e-08, -0.5, 0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.98023e-08, -0.5, -0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.49012e-08, 0.5, -0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.49012e-08, 0.5, 0.5)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -0.5, -0.5, 0)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.5, -0.5, 0)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.5, 0.5, 0)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Box/Node3D"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -0.5, 0.5, 0)
+mesh = SubResource("CapsuleMesh_1v5dk")
+
+[connection signal="on_pointer_entered" from="Box" to="." method="_on_box_on_pointer_entered"]
+[connection signal="on_pointer_exited" from="Box" to="." method="_on_box_on_pointer_exited"]
+
+[editable path="Label3D"]
