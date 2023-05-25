@@ -1,20 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cfykrjril3k8h"]
+[gd_scene load_steps=7 format=3 uid="uid://cfykrjril3k8h"]
 
 [ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_a8t4x"]
 [ext_resource type="Texture2D" uid="uid://cyfxtbxb6f15q" path="res://textures/grid.png" id="2_tfls3"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_81cbn"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/function_pickup.gd" id="4_5fbd1"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="5_2qo6a"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_ey84l"]
-[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_h5xnw"]
-[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="6_nfile"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="7_tr1m0"]
-[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="8_3focf"]
 [ext_resource type="PackedScene" uid="uid://xxu78i4pi1g1" path="res://scenes/inbox.tscn" id="11_b1yls"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tj635"]
-radius = 0.4
-height = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unxgq"]
 size = Vector3(10, 0.1, 10)
@@ -27,56 +15,12 @@ material = SubResource("StandardMaterial3D_05ot1")
 size = Vector3(10, 1, 10)
 
 [node name="EmailRoom" instance=ExtResource("1_a8t4x")]
+script = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.197007, 0.980402, 0, -0.980402, 0.197007, 0, 0, 0)
 
-[node name="XROrigin3D" type="XROrigin3D" parent="." index="1"]
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-far = 300.0
-
-[node name="LeftHand" type="XRController3D" parent="XROrigin3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
-tracker = &"left_hand"
-
-[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("3_81cbn")]
-
-[node name="XRToolsFunctionPickup" type="Node3D" parent="XROrigin3D/LeftHand" index="1"]
-script = ExtResource("4_5fbd1")
-ranged_angle = 10.0
-
-[node name="XRToolsMovementDirect" type="Node" parent="XROrigin3D/LeftHand" index="2" groups=["movement_providers"]]
-script = ExtResource("5_2qo6a")
-strafe = true
-enabled = false
-
-[node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("6_nfile")]
-
-[node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="4" instance=ExtResource("6_h5xnw")]
-
-[node name="RightHand" type="XRController3D" parent="XROrigin3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
-tracker = &"right_hand"
-
-[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("6_ey84l")]
-
-[node name="XRToolsFunctionPickup" type="Node3D" parent="XROrigin3D/RightHand" index="1"]
-script = ExtResource("4_5fbd1")
-ranged_angle = 10.0
-
-[node name="XRToolsMovementTurn" type="Node" parent="XROrigin3D/RightHand" index="2" groups=["movement_providers"]]
-script = ExtResource("7_tr1m0")
-
-[node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("8_3focf")]
-collision_mask = 1019
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CapsuleShape3D_tj635")
-
-[node name="Environment" type="Node3D" parent="." index="2"]
+[node name="Environment" type="Node3D" parent="." index="1"]
 
 [node name="Ground" type="StaticBody3D" parent="Environment" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
@@ -140,10 +84,10 @@ shape = SubResource("BoxShape3D_unxgq")
 mesh = SubResource("BoxMesh_vvaht")
 skeleton = NodePath("")
 
-[node name="Inbox" parent="." index="3" instance=ExtResource("11_b1yls")]
+[node name="Inbox" parent="." index="2" instance=ExtResource("11_b1yls")]
 
-[node name="Inbox2" parent="." index="4" instance=ExtResource("11_b1yls")]
+[node name="Inbox2" parent="." index="3" instance=ExtResource("11_b1yls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28555, 1.38657, -1.21769)
 
-[node name="Inbox3" parent="." index="5" instance=ExtResource("11_b1yls")]
+[node name="Inbox3" parent="." index="4" instance=ExtResource("11_b1yls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47077, 1.38657, -1.21769)

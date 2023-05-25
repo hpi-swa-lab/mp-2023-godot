@@ -1,12 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://ru33cjifwwbc"]
+[gd_scene load_steps=19 format=3 uid="uid://ru33cjifwwbc"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_ktytr"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_edqy1"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l3bea"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="4_sa3c1"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_anhra"]
 [ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_1i65q"]
 [ext_resource type="PackedScene" uid="uid://de6b15l3uot4n" path="res://scenes/room_switcher_menu.tscn" id="7_i3q0j"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="8_x037j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmg7j"]
 albedo_color = Color(1, 0.109804, 0.109804, 1)
@@ -32,11 +36,24 @@ sky_material = SubResource("PhysicalSkyMaterial_0rulv")
 background_mode = 2
 sky = SubResource("Sky_3nj16")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvgvv"]
-albedo_color = Color(0.215055, 0.546804, 0.878599, 1)
+[sub_resource type="GDScript" id="GDScript_uip0h"]
+script/source = "extends Node3D
 
-[sub_resource type="BoxMesh" id="BoxMesh_6n2hk"]
-material = SubResource("StandardMaterial3D_wvgvv")
+var interface: XRInterface
+
+func _ready():
+	interface = XRServer.find_interface(\"OpenXR\")
+	if interface and interface.is_initialized():
+		print(\"OpenXR initialised successfully\")
+
+		# Turn off v-sync!
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+		# Change our main viewport to output to the HMD
+		get_viewport().use_xr = true
+	else:
+		print(\"OpenXR not initialised, please check if your headset is connected\")
+"
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_ktytr")
@@ -53,6 +70,17 @@ tracker = &"left_hand"
 [node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_16aro")]
 
 [node name="FunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_l3bea")]
+
+[node name="XRToolsMovementDirect" type="Node" parent="XROrigin3D/Left Hand" groups=["movement_providers"]]
+script = ExtResource("4_sa3c1")
+strafe = true
+enabled = false
+
+[node name="FunctionTeleport" parent="XROrigin3D/Left Hand" instance=ExtResource("5_anhra")]
+
+[node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("6_1i65q")]
+enabled = false
+show_laser = 0
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
@@ -72,6 +100,9 @@ mesh = SubResource("CylinderMesh_ugme5")
 
 [node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_l3bea")]
 
+[node name="XRToolsMovementTurn" type="Node" parent="XROrigin3D/Right Hand" groups=["movement_providers"]]
+script = ExtResource("8_x037j")
+
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595009, 0)
 collision_layer = 0
@@ -88,6 +119,7 @@ transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 
 shadow_enabled = true
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
+script = SubResource("GDScript_uip0h")
 
 [node name="RoomSwitcherMenu" parent="." instance=ExtResource("7_i3q0j")]
 visible = false
