@@ -188,19 +188,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_xqvdg")
 shape = SubResource("WorldBoundaryShape3D_pg05n")
 
 [node name="Oak" parent="." index="3" instance=ExtResource("5_iry8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0758, 0, -6.33909)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.699, 0, -10.4018)
 
 [node name="Oak2" parent="." index="4" instance=ExtResource("5_iry8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.776668, 0, 2.49684)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31997, 0, 7.73416)
 
 [node name="Oak3" parent="." index="5" instance=ExtResource("5_iry8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.43892, 0, -1.20907)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.35469, 0, 0)
 
 [node name="Oak4" parent="." index="6" instance=ExtResource("5_iry8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59811, 0, -6.33909)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82959, 0, -5.43052)
 
 [node name="Oak5" parent="." index="7" instance=ExtResource("5_iry8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07166, 0, 4.84681)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17477, 0, -4.62221)
 
 [node name="Pine" parent="." index="8" instance=ExtResource("6_juin3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17752, 0, 9.258)
