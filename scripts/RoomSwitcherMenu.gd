@@ -15,10 +15,8 @@ var buttons = Dictionary()
 	
 func generate_menu():
 	var menu_item_root = $SubViewport/Control/VBoxContainer/HBoxContainer
-	print("VRSHELLDEBUG ", A.apps.keys())
 	for k in A.apps.keys():
 		var app_spec = A.apps[k]
-		print("VRSHELLDEBUG Adding ", k , " to menu")
 		var panel = VBoxContainer.new()
 		var button = TextureButton.new()
 		var label = Label.new()
@@ -65,7 +63,6 @@ func area_pos_to_menu_pos(area_local_pos):
 	
 
 func press(area_local_pos):
-	print("VRSHELLDEBUG ", buttons)
 	var menu_pos = area_pos_to_menu_pos(area_local_pos)
 	for button in buttons.keys():
 		if pos_is_in_rect(menu_pos, button.get_global_rect()):
@@ -76,7 +73,6 @@ func release(area_local_pos):
 	for button in buttons.keys():	
 		if pos_is_in_rect(menu_pos, button.get_global_rect()):
 			var app = buttons[button]
-			print("VRSHELLDEBUG app ", app)
 			shell.switch_room(app)
 			button.modulate = Color.WHITE
 

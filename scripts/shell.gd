@@ -1,3 +1,4 @@
+class_name Shell
 extends Node3D
 
 var right_hand_raycast
@@ -12,8 +13,10 @@ func _ready():
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		var vp: Viewport = get_viewport()
 		vp.use_xr = true
+		L.log("OpenXR initialized.")
 	else:
-		print("OpenXR not initialised, please check if your headset is connected")
+		L.log("OpenXR not initialized, please check if your headset is connected")
+	G.shell = self
 	right_hand_raycast = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
 	right_hand.button_released.connect(on_right_hand_button_released)
 	right_hand.button_pressed.connect(on_right_hand_button_pressed)
@@ -22,6 +25,8 @@ func _ready():
 	
 		
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
+@onready var left_hand : XRController3D = $"XROrigin3D/Left Hand"
+@onready var player_body: XRToolsPlayerBody = $XROrigin3D/PlayerBody
 
 func ray_cast_on_room_switcher_menu():
 	right_hand_raycast.force_raycast_update()
@@ -50,12 +55,41 @@ func on_right_hand_button_released(button_name):
 			var menu = ray_cast_result[0]
 			var menu_pos = ray_cast_result[1]
 			menu.release(menu_pos)
-				
+
+var additional_functions: Array[Node] = []			
+
 func switch_room(room_key):
 	active_room.queue_free()
 	var new_room = A.apps[room_key]["scene"].instantiate()
 	active_room = new_room
 	add_child(new_room)
+	
+	# Add additional functions to XR Controllers
+	for function in additional_functions:
+		function.queue_free()
+	additional_functions = []
+	if "additional_functions" in A.apps[room_key]:
+		if "left" in A.apps[room_key]["additional_functions"]:
+			var left_path = NodePath(A.apps[room_key]["additional_functions"]["left"])
+			var left_node = active_room.get_node(left_path)
+			for function in left_node.get_children():
+				function.get_parent().remove_child(function)
+				left_hand.add_child(function)
+				additional_functions.append(function)
+				if "_controller" in function:
+					function._controller = XRHelpers.get_xr_controller(function)
+		if "right" in A.apps[room_key]["additional_functions"]:
+			var right_path = NodePath(A.apps[room_key]["additional_functions"]["right"])
+			var right_node = active_room.get_node(right_path)
+			for function in right_node.get_children():
+				L.log( function.name)
+				function.get_parent().remove_child(function)
+				right_hand.add_child(function)
+				additional_functions.append(function)
+				if "_controller" in function:
+					function._controller = XRHelpers.get_xr_controller(function)
+	player_body._movement_providers = get_tree().get_nodes_in_group("movement_providers")
+	player_body._movement_providers.sort_custom(player_body.sort_by_order)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

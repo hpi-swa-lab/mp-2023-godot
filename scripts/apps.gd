@@ -4,7 +4,11 @@ var apps: Dictionary = {
 	"email" :  {
 		"scene": preload("res://rooms/Email/email_room.tscn"),
 		"icon": "res://assets/img/Mail.png",
-		"name": "Mail"
+		"name": "Mail",
+		"additional_functions": { # Path to additional functions, which are added to the XRControllers when the room is loaded
+			"left": "Additional Functions/Left",
+			"right": "Additional Functions/Right"
+		}
 	},
 	"adventure" : {
 		"scene" :  preload("res://rooms/Adventure/woods_room.tscn"),

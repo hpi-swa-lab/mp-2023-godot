@@ -19,10 +19,10 @@ func _ready():
 		mails.append(create_mail())
 	
 	mail_path = $PathFollow3D
-	left_controller = get_node("../XROrigin3D/LeftHand")
+	left_controller = get_node("/XROrigin3D/LeftHand")
 	left_controller.get_node("./XRToolsFunctionPickup").has_picked_up.connect(_on_left_hand_has_picked_up)
 	left_controller.get_node("./XRToolsFunctionPickup").has_dropped.connect(_on_left_hand_has_dropped)
-	var right_controller = get_node("../XROrigin3D/RightHand")
+	var right_controller = get_node("/XROrigin3D/RightHand")
 	right_controller.get_node("./XRToolsFunctionPickup").has_picked_up.connect(_on_right_hand_has_picked_up)
 	right_controller.get_node("./XRToolsFunctionPickup").has_dropped.connect(_on_right_hand_has_dropped)
 	

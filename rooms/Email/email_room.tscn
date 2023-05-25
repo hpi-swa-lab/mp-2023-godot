@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf8aokwul5b0y"]
+[gd_scene load_steps=11 format=3 uid="uid://cf8aokwul5b0y"]
 
 [ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_a8t4x"]
 [ext_resource type="Texture2D" uid="uid://cyfxtbxb6f15q" path="res://textures/grid.png" id="2_tfls3"]
 [ext_resource type="PackedScene" uid="uid://c1uygyufkp6vs" path="res://rooms/Email/inbox.tscn" id="3_jhc7q"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="4_ml2ys"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_m1v86"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_fl7p6"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="7_vu15e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unxgq"]
 size = Vector3(10, 0.1, 10)
@@ -91,3 +95,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0254, 1.38657, -1.21769)
 
 [node name="Inbox3" parent="." index="4" instance=ExtResource("3_jhc7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.569604, 1.38657, -1.21769)
+
+[node name="Additional Functions" type="Node" parent="." index="5"]
+
+[node name="Left" type="Node" parent="Additional Functions" index="0"]
+
+[node name="FunctionTeleport" parent="Additional Functions/Left" index="0" instance=ExtResource("5_m1v86")]
+
+[node name="FunctionPointer" parent="Additional Functions/Left" index="1" instance=ExtResource("6_fl7p6")]
+
+[node name="XRToolsMovementDirect" type="Node" parent="Additional Functions/Left" index="2" groups=["movement_providers"]]
+script = ExtResource("4_ml2ys")
+strafe = true
+enabled = false
+
+[node name="Right" type="Node" parent="Additional Functions" index="1"]
+
+[node name="XRToolsMovementTurn" type="Node" parent="Additional Functions/Right" index="0" groups=["movement_providers"]]
+script = ExtResource("7_vu15e")

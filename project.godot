@@ -19,6 +19,8 @@ config/icon="res://vrshell-icon.png"
 
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 A="*res://scripts/apps.gd"
+G="*res://scripts/global.gd"
+L="*res://scripts/logger.gd"
 
 [editor_plugins]
 
