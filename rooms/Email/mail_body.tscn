@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://6jimoslievda"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scenes/mail_body.gd" id="1_n2l0p"]
+[ext_resource type="Script" path="res://rooms/Email/mail_body.gd" id="1_n2l0p"]
 
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(0.4, 0.7)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnd6xau6vswrs"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://scenes/mail_header.gd" id="1_hht57"]
+[ext_resource type="Script" path="res://rooms/Email/mail_header.gd" id="1_hht57"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6segu"]
 
