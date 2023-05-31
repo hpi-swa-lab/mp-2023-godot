@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://5ptdwkc6ixdk"
+path="res://.godot/imported/panel.obj-3c4a669b067160952d00c2e2d12c1268.mesh"
+
+[deps]
+
+files=["res://.godot/imported/panel.obj-3c4a669b067160952d00c2e2d12c1268.mesh"]
+
+source_file="res://assets/meshes/panel.obj"
+dest_files=["res://.godot/imported/panel.obj-3c4a669b067160952d00c2e2d12c1268.mesh", "res://.godot/imported/panel.obj-3c4a669b067160952d00c2e2d12c1268.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

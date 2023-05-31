@@ -1,0 +1,200 @@
+[gd_scene load_steps=3 format=3 uid="uid://0uc4l3fjpd80"]
+
+[ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="1_l18ay"]
+[ext_resource type="Texture2D" uid="uid://d4kp6v68famld" path="res://assets/img/Google_Calendar_screenshot.png" id="2_50bvd"]
+
+[node name="2DCalendar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 461.0
+offset_bottom = 220.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.941176, 0, 0.290196, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Calender"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 8
+
+[node name="Control36" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Mo" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "Mo
+"
+
+[node name="Tu" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "Tu
+"
+
+[node name="We" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "We"
+
+[node name="Th" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "Th
+"
+
+[node name="Fr" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "Fr
+"
+
+[node name="Sa" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "Sa
+"
+
+[node name="Su" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "Su
+"
+
+[node name="8" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "8
+"
+
+[node name="Control" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control6" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control7" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="9" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_l18ay")
+text = "9
+"
+
+[node name="Control8" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control9" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control10" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control11" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control12" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control13" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control14" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control15" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control16" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control17" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control18" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control19" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control20" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control21" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control22" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control23" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control24" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control25" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control26" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control27" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control28" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control29" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control30" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control31" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control32" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control33" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control34" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control35" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_50bvd")

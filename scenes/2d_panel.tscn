@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8h8nleqbmb8j"]
+
+[ext_resource type="Script" path="res://scripts/2d_panel.gd" id="1_2jg0p"]
+[ext_resource type="ArrayMesh" uid="uid://5ptdwkc6ixdk" path="res://assets/meshes/panel.obj" id="1_iw8oe"]
+[ext_resource type="PackedScene" uid="uid://0uc4l3fjpd80" path="res://scenes/2d/calender.tscn" id="2_3od12"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="4_uscxi"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3oopp"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul0ck"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_3oopp")
+uv1_scale = Vector3(-4, 1, 1)
+uv1_offset = Vector3(-0.558, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ltwj"]
+size = Vector3(1.4, 1, 0.2)
+
+[node name="2DPanel" type="Node3D"]
+script = ExtResource("1_2jg0p")
+
+[node name="Viewport" type="SubViewport" parent="."]
+render_target_update_mode = 4
+
+[node name="2DCalender" parent="Viewport" instance=ExtResource("2_3od12")]
+
+[node name="PickableObject" parent="." instance=ExtResource("4_uscxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
+gravity_scale = 0.0
+freeze = true
+ranged_grab_method = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="PickableObject"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 0.5, 0, 1, 0, 1.31134e-07, -5.58794e-08, 0.00690246, -0.934851)
+cast_shadow = 0
+mesh = ExtResource("1_iw8oe")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ul0ck")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PickableObject"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.98023e-08, 0, -0.0626711)
+shape = SubResource("BoxShape3D_3ltwj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PickableObject"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.98023e-08, 0, -0.0627424)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/StaticBody3D"]
+shape = SubResource("BoxShape3D_3ltwj")

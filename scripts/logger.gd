@@ -1,6 +1,7 @@
 extends Node
 
 var logging_key = "VRShell Log "
+# Log with 'adb logcat | grep -i "VRShell Log"'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
