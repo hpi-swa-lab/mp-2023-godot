@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8h8nleqbmb8j"]
+[gd_scene load_steps=9 format=3 uid="uid://c8h8nleqbmb8j"]
 
 [ext_resource type="Script" path="res://scripts/2d_panel.gd" id="1_2jg0p"]
 [ext_resource type="ArrayMesh" uid="uid://5ptdwkc6ixdk" path="res://assets/meshes/panel.obj" id="1_iw8oe"]
 [ext_resource type="PackedScene" uid="uid://0uc4l3fjpd80" path="res://scenes/2d/calender.tscn" id="2_3od12"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="4_uscxi"]
+[ext_resource type="Script" path="res://scripts/2d_panel_pointable_body.gd" id="5_8xs4x"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3oopp"]
 viewport_path = NodePath("Viewport")
@@ -11,16 +12,17 @@ viewport_path = NodePath("Viewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul0ck"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_3oopp")
-uv1_scale = Vector3(-4, 1, 1)
-uv1_offset = Vector3(-0.558, 0, 0)
+uv1_scale = Vector3(-4.53, 2, 0)
+uv1_offset = Vector3(0.89, 0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ltwj"]
-size = Vector3(1.4, 1, 0.2)
+size = Vector3(1.3, 1, 0.2)
 
 [node name="2DPanel" type="Node3D"]
 script = ExtResource("1_2jg0p")
 
 [node name="Viewport" type="SubViewport" parent="."]
+size = Vector2i(260, 200)
 render_target_update_mode = 4
 
 [node name="2DCalender" parent="Viewport" instance=ExtResource("2_3od12")]
@@ -42,10 +44,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ul0ck")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.98023e-08, 0, -0.0626711)
 shape = SubResource("BoxShape3D_3ltwj")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="PickableObject"]
+[node name="PointerBody" type="StaticBody3D" parent="PickableObject" node_paths=PackedStringArray("vp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.98023e-08, 0, -0.0627424)
-collision_layer = 0
-collision_mask = 0
+collision_layer = 9437184
+collision_mask = 8388608
+script = ExtResource("5_8xs4x")
+vp = NodePath("../../Viewport")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/PointerBody"]
 shape = SubResource("BoxShape3D_3ltwj")
+
+[connection signal="pointer_moved" from="PickableObject/PointerBody" to="PickableObject/PointerBody" method="_on_pointer_moved"]
+[connection signal="pointer_pressed" from="PickableObject/PointerBody" to="PickableObject/PointerBody" method="_on_pointer_pressed"]
+[connection signal="pointer_released" from="PickableObject/PointerBody" to="PickableObject/PointerBody" method="_on_pointer_released"]

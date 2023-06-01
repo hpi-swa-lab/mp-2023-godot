@@ -1,20 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://0uc4l3fjpd80"]
+[gd_scene load_steps=4 format=3 uid="uid://0uc4l3fjpd80"]
 
+[ext_resource type="Script" path="res://scenes/2d/calender.gd" id="1_k7ia7"]
 [ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="1_l18ay"]
 [ext_resource type="Texture2D" uid="uid://d4kp6v68famld" path="res://assets/img/Google_Calendar_screenshot.png" id="2_50bvd"]
 
 [node name="2DCalendar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 461.0
-offset_bottom = 220.0
+offset_right = 260.0
+offset_bottom = 200.0
+script = ExtResource("1_k7ia7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.941176, 0, 0.290196, 1)
@@ -27,6 +28,10 @@ offset_bottom = 40.0
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Calender"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Change color"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -194,7 +199,16 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_50bvd")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 194.0
+offset_right = 259.0
+offset_bottom = 200.0
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -27,6 +27,7 @@ func _ready():
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
 @onready var left_hand : XRController3D = $"XROrigin3D/Left Hand"
 @onready var player_body: XRToolsPlayerBody = $XROrigin3D/PlayerBody
+@onready var right_raycast: RayCast3D = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
 
 func ray_cast_on_room_switcher_menu():
 	right_hand_raycast.force_raycast_update()
@@ -37,24 +38,46 @@ func ray_cast_on_room_switcher_menu():
 			# Simulate button press at the raycast collision
 			var menu_pos = global_pos - area.global_position
 			return [area.get_parent(), Vector2(menu_pos.z, menu_pos.y)]
-		
+
+var ray_cast_last_collided_at = Vector3(0,0,0)
+var ray_cast_target = null		
+
 func on_right_hand_button_pressed(button_name):
 	if button_name == "ax_button":
 		room_switcher_menu.visible = !room_switcher_menu.visible
-	if button_name == "grip_click":
-		var ray_cast_result = ray_cast_on_room_switcher_menu()
-		if ray_cast_result:
-			var menu = ray_cast_result[0]
-			var menu_pos = ray_cast_result[1]
+	if button_name == "trigger_click":
+		var ray_cast_menu_result = ray_cast_on_room_switcher_menu()
+		if ray_cast_menu_result:
+			var menu = ray_cast_menu_result[0]
+			var menu_pos = ray_cast_menu_result[1]
 			menu.press(menu_pos)
+			return
+		if right_hand_raycast.is_colliding():
+			ray_cast_target = right_hand_raycast.get_collider()
+			ray_cast_last_collided_at = right_hand_raycast.get_collision_point()
+
+			if ray_cast_target.has_signal("pointer_pressed"):
+				ray_cast_target.emit_signal("pointer_pressed", ray_cast_last_collided_at)
+			elif ray_cast_target.has_method("pointer_pressed"):
+				ray_cast_target.pointer_pressed(ray_cast_last_collided_at)
 				
 func on_right_hand_button_released(button_name):
-	if button_name == "grip_click":
-		var ray_cast_result = ray_cast_on_room_switcher_menu()
-		if ray_cast_result:
-			var menu = ray_cast_result[0]
-			var menu_pos = ray_cast_result[1]
+	if button_name == "trigger_click":
+		var ray_cast_menu_result = ray_cast_on_room_switcher_menu()
+		if ray_cast_menu_result:
+			var menu = ray_cast_menu_result[0]
+			var menu_pos = ray_cast_menu_result[1]
 			menu.release(menu_pos)
+			return
+		if right_hand_raycast.is_colliding():
+			if ray_cast_target:
+				if ray_cast_target.has_signal("pointer_released"):
+					ray_cast_target.emit_signal("pointer_released", ray_cast_last_collided_at)
+				elif ray_cast_target.has_method("pointer_released"):
+					ray_cast_target.pointer_released(ray_cast_last_collided_at)
+				# unset target
+				ray_cast_target = null
+				ray_cast_last_collided_at = Vector3(0, 0, 0)
 
 var additional_functions: Array[Node] = []			
 
@@ -93,7 +116,7 @@ func switch_room(room_key):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if right_hand_raycast.is_colliding() and room_switcher_menu.visible:
+	if right_hand_raycast.is_colliding() and (room_switcher_menu.visible or $"2DPanel".visible):
 		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = true
 	else:
 		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = false
