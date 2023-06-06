@@ -116,7 +116,7 @@ func switch_room(room_key):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if right_hand_raycast.is_colliding() and (room_switcher_menu.visible or $"2DPanel".visible):
+	if right_hand_raycast.is_colliding() and (room_switcher_menu.visible or $"Panel Manager".visible):
 		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = true
 	else:
 		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = false

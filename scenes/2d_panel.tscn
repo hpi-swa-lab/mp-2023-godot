@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8h8nleqbmb8j"]
+[gd_scene load_steps=8 format=3 uid="uid://c8h8nleqbmb8j"]
 
 [ext_resource type="Script" path="res://scripts/2d_panel.gd" id="1_2jg0p"]
 [ext_resource type="ArrayMesh" uid="uid://5ptdwkc6ixdk" path="res://assets/meshes/panel.obj" id="1_iw8oe"]
-[ext_resource type="PackedScene" uid="uid://0uc4l3fjpd80" path="res://scenes/2d/calender.tscn" id="2_3od12"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="4_uscxi"]
 [ext_resource type="Script" path="res://scripts/2d_panel_pointable_body.gd" id="5_8xs4x"]
 
@@ -24,8 +23,6 @@ script = ExtResource("1_2jg0p")
 [node name="Viewport" type="SubViewport" parent="."]
 size = Vector2i(260, 200)
 render_target_update_mode = 4
-
-[node name="2DCalender" parent="Viewport" instance=ExtResource("2_3od12")]
 
 [node name="PickableObject" parent="." instance=ExtResource("4_uscxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
