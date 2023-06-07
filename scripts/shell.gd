@@ -5,6 +5,8 @@ var right_hand_raycast
 var active_room: Node3D
 var room_switcher_menu: Node3D
 var xr_interface: XRInterface
+var xr_action_map: OpenXRActionMap
+var xr_action_set: OpenXRActionSet
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +15,7 @@ func _ready():
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		var vp: Viewport = get_viewport()
 		vp.use_xr = true
+		xr_action_map =  ResourceLoader.load(ProjectSettings.get("xr/openxr/default_action_map"))
 		L.log("OpenXR initialized.")
 	else:
 		L.log("OpenXR not initialized, please check if your headset is connected")
@@ -22,6 +25,8 @@ func _ready():
 	right_hand.button_pressed.connect(on_right_hand_button_pressed)
 	active_room = $"Woods Room"
 	room_switcher_menu = $RoomSwitcherMenu
+
+	xr_action_set = xr_action_map.get_action_set(0)
 	
 		
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
@@ -44,7 +49,9 @@ var ray_cast_target = null
 
 func on_right_hand_button_pressed(button_name):
 	if button_name == "ax_button":
-		room_switcher_menu.visible = !room_switcher_menu.visible
+		#room_switcher_menu.visible = !room_switcher_menu.visible
+		$"Panel Manager".visible = !$"Panel Manager".visible
+		$"Panel Manager".global_position = Vector3(player_body.global_position.x, 0, player_body.global_position.z)
 	if button_name == "trigger_click":
 		var ray_cast_menu_result = ray_cast_on_room_switcher_menu()
 		if ray_cast_menu_result:
@@ -113,6 +120,10 @@ func switch_room(room_key):
 					function._controller = XRHelpers.get_xr_controller(function)
 	player_body._movement_providers = get_tree().get_nodes_in_group("movement_providers")
 	player_body._movement_providers.sort_custom(player_body.sort_by_order)
+	
+func haptic_pulse(side: String, duration: float, intensity: float = 10):
+	var hand = right_hand if side == "right" else left_hand
+	hand.trigger_haptic_pulse("haptic", 4000, intensity, duration, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

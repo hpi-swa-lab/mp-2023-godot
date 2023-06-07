@@ -28,6 +28,7 @@ func _ready():
 func on_picked_up(pickable):
 	picked_up = true
 	grab_start_angle = _angle_on_circle
+	G.shell.haptic_pulse("right", 0.1, 5)
 	
 func on_dropped(pickable):
 	picked_up = false
@@ -53,6 +54,8 @@ func set_angle_and_rearrange_panels(alpha):
 		var change_valid = panel_manager.angle_changed(alpha, grab_start_angle, self)
 		if change_valid:
 			_set_angle(alpha)
+		else:
+			G.shell.haptic_pulse("right",0.1, 2)
 		
 func process_drag():
 	var picked_up_position = pickable.global_position
