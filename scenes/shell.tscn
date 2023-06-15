@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://0uc4l3fjpd80" path="res://scenes/2d/calender.tscn" id="10_8f2v2"]
 [ext_resource type="PackedScene" uid="uid://ctjq6j5mjl4by" path="res://scenes/2d/mails.tscn" id="11_jeb0k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmg7j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6jea"]
 albedo_color = Color(1, 0.109804, 0.109804, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ugme5"]
-material = SubResource("StandardMaterial3D_pmg7j")
+material = SubResource("StandardMaterial3D_s6jea")
 top_radius = 0.005
 bottom_radius = 0.005
 height = 5.0

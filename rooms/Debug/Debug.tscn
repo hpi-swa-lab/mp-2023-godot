@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://tffiuc6rtdor"]
+
+[ext_resource type="Script" path="res://basic.gd" id="1_eb0m7"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_ox0nx"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="2_xu1qm"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_mputp"]
+[ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="4_iciie"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3o6se"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_844rn"]
+size = Vector3(0.1, 0.08, 0.01)
+
+[node name="Debug" type="Node3D"]
+script = ExtResource("1_eb0m7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.197007, 0.980402, 0, -0.980402, 0.197007, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_3o6se")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+current = true
+
+[node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("1_ox0nx")]
+
+[node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("2_xu1qm")]
+
+[node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("3_mputp")]
+
+[node name="ScrollContainer3D" parent="." instance=ExtResource("4_iciie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403526)
+path_start = Vector3(0.5, 0.5, 0.5)
+path_end = Vector3(-0.5, -0.5, -0.5)
+visibility_ratio = 1.0
+scroll_speed = null
+max_velocity = 1.0
+decceleration = 0.8
+
+[node name="Node3D" type="Node3D" parent="ScrollContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D"]
+mesh = SubResource("BoxMesh_844rn")
+
+[node name="Node3D2" type="Node3D" parent="ScrollContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355848, 0.355848, 0.355848)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D2"]
+mesh = SubResource("BoxMesh_844rn")
+
+[node name="Node3D3" type="Node3D" parent="ScrollContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215087, 0.215087, 0.215087)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D3"]
+mesh = SubResource("BoxMesh_844rn")
+
+[node name="Node3D4" type="Node3D" parent="ScrollContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0716297, 0.0716297, 0.0716297)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D4"]
+mesh = SubResource("BoxMesh_844rn")
+
+[node name="Node3D5" type="Node3D" parent="ScrollContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0716297, -0.0716297, -0.0716297)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D5"]
+mesh = SubResource("BoxMesh_844rn")
+
+[node name="Node3D6" type="Node3D" parent="ScrollContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215086, -0.215086, -0.215086)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D6"]
+mesh = SubResource("BoxMesh_844rn")
+
+[node name="Node3D7" type="Node3D" parent="ScrollContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355848, -0.355848, -0.355848)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D7"]
+mesh = SubResource("BoxMesh_844rn")
