@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 [gui]
 
 theme/custom="res://assets/gui_theme.tres"
+theme/default_font_multichannel_signed_distance_field=true
 
 [layer_names]
 
