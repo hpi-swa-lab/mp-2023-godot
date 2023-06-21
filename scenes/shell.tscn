@@ -119,6 +119,7 @@ visible = false
 
 [node name="Panel Manager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910686, 0, 0)
+visible = false
 script = ExtResource("9_aosk4")
 
 [node name="CalenderPanel" parent="Panel Manager" instance=ExtResource("9_f15wr")]
