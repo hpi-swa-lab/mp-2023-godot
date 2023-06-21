@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://v3yard3yd6qp"]
+
+[ext_resource type="Script" path="res://rooms/Debug/ScrollContainer3D.gd" id="1_6dmnp"]
+
+[sub_resource type="Curve3D" id="Curve3D_cbwpq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, -0.5, -0.5, -0.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_6dmnp")
+path_start = null
+path_end = null
+visibility_ratio = null
+scroll_speed = null
+max_velocity = null
+decceleration = null
+
+[node name="Internal" type="Node3D" parent="."]
+
+[node name="Path3D" type="Path3D" parent="Internal"]
+curve = SubResource("Curve3D_cbwpq")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Internal/Path3D"]
+transform = Transform3D(-0.707106, -0.408248, -0.57735, -1.49012e-08, 0.816496, -0.57735, 0.707106, -0.408248, -0.57735, 0.240782, 0.240782, 0.240782)
+progress = 0.450481

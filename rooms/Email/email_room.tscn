@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cf8aokwul5b0y"]
 
-[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_a8t4x"]
+[ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/room.tscn" id="1_a8t4x"]
 [ext_resource type="Texture2D" uid="uid://cyfxtbxb6f15q" path="res://textures/grid.png" id="2_tfls3"]
 [ext_resource type="PackedScene" uid="uid://c1uygyufkp6vs" path="res://rooms/Email/inbox.tscn" id="3_jhc7q"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="4_ml2ys"]
