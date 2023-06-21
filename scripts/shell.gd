@@ -30,6 +30,7 @@ func _ready():
 	
 		
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
+@onready var right_hand_pickup = $"XROrigin3D/Right Hand/XRToolsFunctionPickup"
 @onready var left_hand : XRController3D = $"XROrigin3D/Left Hand"
 @onready var player_body: XRToolsPlayerBody = $XROrigin3D/PlayerBody
 @onready var right_raycast: RayCast3D = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
@@ -44,10 +45,17 @@ func ray_cast_on_room_switcher_menu():
 			var menu_pos = global_pos - area.global_position
 			return [area.get_parent(), Vector2(menu_pos.z, menu_pos.y)]
 
+# our own ray cast (not used)
 var ray_cast_last_collided_at = Vector3(0,0,0)
 var ray_cast_target = null		
+var right_hand_button_pressed_handlers = []
+var right_hand_button_released_handlers = []
 
 func on_right_hand_button_pressed(button_name):
+	L.log("Shell: Button pressed, handlers " + str(right_hand_button_pressed_handlers.size()))
+	for handler in right_hand_button_pressed_handlers:
+		L.log("Shell: Calling handler")
+		handler.call(button_name)
 	if button_name == "ax_button":
 		#room_switcher_menu.visible = !room_switcher_menu.visible
 		$"Panel Manager".visible = !$"Panel Manager".visible
@@ -69,6 +77,8 @@ func on_right_hand_button_pressed(button_name):
 				ray_cast_target.pointer_pressed(ray_cast_last_collided_at)
 				
 func on_right_hand_button_released(button_name):
+	for handler in right_hand_button_released_handlers:
+		handler.call(button_name)
 	if button_name == "trigger_click":
 		var ray_cast_menu_result = ray_cast_on_room_switcher_menu()
 		if ray_cast_menu_result:
@@ -127,7 +137,8 @@ func haptic_pulse(side: String, duration: float, intensity: float = 10):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if right_hand_raycast.is_colliding() and (room_switcher_menu.visible or $"Panel Manager".visible):
-		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = true
-	else:
-		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = false
+	pass
+	#if right_hand_raycast.is_colliding() and (room_switcher_menu.visible or $"Panel Manager".visible):
+	#	$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = true
+	#else:
+	#	$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = false

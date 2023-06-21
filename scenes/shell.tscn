@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dj7lpcowipddk"]
+[gd_scene load_steps=23 format=3 uid="uid://7f80cm36mgod"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_ot81t"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_edqy1"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_l3bea"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_3rujx"]
 [ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
 [ext_resource type="PackedScene" uid="uid://de6b15l3uot4n" path="res://scenes/room_switcher_menu.tscn" id="7_i3q0j"]
 [ext_resource type="Script" path="res://scripts/2d_panel_manager.gd" id="9_aosk4"]
@@ -87,14 +88,17 @@ tracker = &"right_hand"
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 target_position = Vector3(0, 0, -5)
-collision_mask = 8388608
+collision_mask = 9437184
 collide_with_areas = true
 
 [node name="VisibleRay" type="MeshInstance3D" parent="XROrigin3D/Right Hand/RightHand"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.47778)
+visible = false
 mesh = SubResource("CylinderMesh_ugme5")
 
 [node name="XRToolsFunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_l3bea")]
+
+[node name="FunctionPointer" parent="XROrigin3D/Right Hand" instance=ExtResource("5_3rujx")]
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("4_tv461")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595009, 0)
