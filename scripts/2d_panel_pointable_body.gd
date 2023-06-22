@@ -30,7 +30,6 @@ func global_to_viewport(p_at):
 	# Convert to screen space
 	at.x = ((at.x / screen_size.x) + 0.5) * viewport_size.x
 	at.y = (0.5 - (at.y / screen_size.y)) * viewport_size.y
-	L.log("at.x at.y" + str(at))
 
 	return Vector2(at.x, at.y)
 	
@@ -50,9 +49,7 @@ func _on_pointer_moved(from, to):
 		vp.push_input(event)
 
 func _on_pointer_pressed(at):
-	L.log("Pointer pressed at " + str(at))
 	var local_at = global_to_viewport(at)
-	L.log("Pointer pressed locally at " +  str(local_at))
 	# Let's mimic a mouse
 	mouse_mask = 1
 	var event = InputEventMouseButton.new()
