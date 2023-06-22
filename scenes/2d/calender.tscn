@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://0uc4l3fjpd80"]
+[gd_scene load_steps=3 format=3 uid="uid://0uc4l3fjpd80"]
 
 [ext_resource type="Script" path="res://scenes/2d/calender.gd" id="1_k7ia7"]
 [ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="1_l18ay"]
-[ext_resource type="Texture2D" path="res://assets/img/Google_Calendar_screenshot.png" id="2_50bvd"]
 
 [node name="2DCalendar" type="Control"]
 layout_mode = 3
@@ -203,7 +202,6 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_50bvd")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0

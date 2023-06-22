@@ -248,3 +248,4 @@ shape = SubResource("CylinderShape3D_84buy")
 [node name="TextBox" parent="." index="12" instance=ExtResource("7_q0a42")]
 transform = Transform3D(-0.767008, 0, -0.641637, 0, 1, 0, 0.641637, 0, -0.767008, -1, 1, 0)
 text = "Hello World! how are ye"
+alignment = 1

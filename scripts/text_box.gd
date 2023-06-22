@@ -32,6 +32,9 @@ var z_dist = 0.0001
 @onready var box_mesh: BoxMesh = mesh.mesh
 @onready var collision_box : BoxShape3D = collision_shape.shape
 
+@onready var handle_mesh: MeshInstance3D = $"InteractableHandle/MeshInstance3D"
+@onready var handle_collision_shape: CollisionShape3D = $"InteractableHandle/CollisionShape3D"
+
 signal pointer_entered
 signal pointer_exited
 
@@ -58,6 +61,7 @@ func rearrange():
 		label.position.x = 0
 	
 	reposition_label()
+	reposition_handle(bb)
 
 func set_depth(d):
 	if !Engine.is_editor_hint():
@@ -77,6 +81,13 @@ func set_text(s):
 		
 func reposition_label():
 	label.position.z = box_mesh.size.z / 2 + z_dist
+
+var handle_bar_padding = 0.1
+
+func reposition_handle(bb: Vector3):
+	var y_pos = - bb.y/2 - handle_bar_padding
+	handle_mesh.position.y = y_pos
+	handle_collision_shape.position.y = y_pos
 	
 func set_material(m):
 	if !Engine.is_editor_hint():

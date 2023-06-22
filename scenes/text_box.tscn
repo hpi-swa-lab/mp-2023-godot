@@ -7,11 +7,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
 resource_local_to_scene = true
-size = Vector3(0.410235, 0.176181, 0.05)
+size = Vector3(0.423454, 0.176181, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xrn6j"]
 resource_local_to_scene = true
-size = Vector3(0.410235, 0.176181, 0.05)
+size = Vector3(0.423454, 0.176181, 0.05)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xigs6"]
 height = 0.3
@@ -30,7 +30,8 @@ text = "Hello World!"
 resize_box = true
 depth = 0.05
 material = null
-text_font_size = 5.0
+text_font_size = 50.0
+alignment = 1
 ranged_grab_method = 0
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -38,9 +39,9 @@ shape = SubResource("BoxShape3D_bogg5")
 
 [node name="Label" type="Label3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0251)
-pixel_size = 0.01
+pixel_size = 0.001
 text = "Hello World!"
-font_size = 5
+font_size = 50
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
 mesh = SubResource("BoxMesh_xrn6j")
@@ -53,10 +54,10 @@ picked_up_layer = 1048576
 hold_method = 1
 ranged_grab_method = 0
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="InteractableHandle" index="0"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.146155, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableHandle" index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.13809, 0)
 shape = SubResource("CylinderShape3D_xigs6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableHandle" index="1"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.146155, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.13809, 0)
 mesh = SubResource("CylinderMesh_q6n0x")
