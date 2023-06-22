@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://vbayr0ykht7t"]
 
 [ext_resource type="Script" path="res://rooms/Email/mail_body.gd" id="1_n2l0p"]
 

@@ -18,15 +18,15 @@ extends Node3D
 		($Internal/Path3D as Path3D).curve.set_point_position(1, new_path_end)
 		path_end = new_path_end
 		position_children()
-		
+
 @export_range(0.0, 1.0) var visibility_ratio: float:
 	set(new_visibility_ratio):
 		visibility_ratio = new_visibility_ratio
 		position_children()
 
 @export var scroll_speed: float = 2.0
-@export var max_velocity: float
-@export var decceleration: float
+@export var max_velocity: float = 1.0
+@export var decceleration: float = 0.8
 
 var left_controller: XRController3D
 var mails: Array

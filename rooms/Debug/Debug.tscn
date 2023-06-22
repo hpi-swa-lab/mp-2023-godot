@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_ox0nx"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="2_xu1qm"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_mputp"]
-[ext_resource type="PackedScene" path="res://scenes/scroll_container_3d.tscn" id="4_iciie"]
+[ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="4_iciie"]
 [ext_resource type="PackedScene" uid="uid://dkk1dbehe46dy" path="res://scenes/AlignmentContainer3D.tscn" id="6_m14mi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3o6se"]
@@ -53,9 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403526)
 path_start = Vector3(0.5, 0.5, 0.5)
 path_end = Vector3(-0.5, -0.5, -0.5)
 visibility_ratio = 1.0
-scroll_speed = 2.0
-max_velocity = 1.0
-decceleration = 0.8
 
 [node name="Node3D" type="Node3D" parent="ScrollContainer3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
@@ -112,51 +109,49 @@ is_horizontal = true
 center_children = true
 
 [node name="AlignmentContainer3D3" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0943333, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07075, 0, 0)
 extend = -0.12
-center_children = false
 
 [node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 pixel_size = 0.0001
 text = "Mo"
 font_size = 128
 
 [node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 pixel_size = 0.0001
 text = "Doctor"
 font_size = 128
 
 [node name="AlignmentContainer3D4" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07075, 0, 0)
 extend = -0.12
-center_children = false
 
 [node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 pixel_size = 0.0001
 text = "Mo"
 font_size = 128
 
 [node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 pixel_size = 0.0001
 text = "Doctor"
 font_size = 128
 
 [node name="AlignmentContainer3D5" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0943333, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07075, 0, 0)
 extend = -0.12
-center_children = false
 
 [node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 pixel_size = 0.0001
 text = "Mo"
 font_size = 128
 
 [node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 pixel_size = 0.0001
 text = "Doctor"
 font_size = 128

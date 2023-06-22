@@ -9,14 +9,8 @@ _data = {
 }
 point_count = 2
 
-[node name="Node3D" type="Node3D"]
+[node name="ScrollContainer3D" type="Node3D"]
 script = ExtResource("1_6dmnp")
-path_start = null
-path_end = null
-visibility_ratio = null
-scroll_speed = null
-max_velocity = null
-decceleration = null
 
 [node name="Internal" type="Node3D" parent="."]
 
@@ -24,5 +18,5 @@ decceleration = null
 curve = SubResource("Curve3D_cbwpq")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Internal/Path3D"]
-transform = Transform3D(-0.707106, -0.408248, -0.57735, -1.49012e-08, 0.816496, -0.57735, 0.707106, -0.408248, -0.57735, 0.240782, 0.240782, 0.240782)
+transform = Transform3D(-0.707106, -0.408248, -0.57735, 1.49011e-08, 0.816496, -0.57735, 0.707106, -0.408248, -0.57735, 0.240783, 0.240783, 0.240783)
 progress = 0.450481
