@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://de6b15l3uot4n"]
+[gd_scene load_steps=9 format=3 uid="uid://de6b15l3uot4n"]
 
 [ext_resource type="Script" path="res://scripts/RoomSwitcherMenu.gd" id="1_81aqu"]
+[ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="2_te886"]
 
 [sub_resource type="SystemFont" id="SystemFont_j8pjj"]
 subpixel_positioning = 0
@@ -39,6 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_te886")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control"]
 layout_mode = 0

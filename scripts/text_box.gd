@@ -32,6 +32,19 @@ var z_dist = 0.0001
 @onready var box_mesh: BoxMesh = mesh.mesh
 @onready var collision_box : BoxShape3D = collision_shape.shape
 
+signal pointer_entered
+signal pointer_exited
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pointer_entered.connect(on_pointer_entered)
+	pointer_exited.connect(on_pointer_exited)
+
+func on_pointer_entered():
+	G.add_outline(mesh)
+	
+func on_pointer_exited():
+	G.remove_outline(mesh)
 
 func rearrange():
 	var bb = label.get_aabb().size

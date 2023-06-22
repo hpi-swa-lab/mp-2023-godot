@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://buykjmar5evtr"]
+
+[ext_resource type="Script" path="res://scripts/2d_panel_manager.gd" id="1_ky65l"]
+[ext_resource type="PackedScene" uid="uid://c8h8nleqbmb8j" path="res://scenes/2d_panel.tscn" id="2_nb46b"]
+[ext_resource type="PackedScene" uid="uid://0uc4l3fjpd80" path="res://scenes/2d/calender.tscn" id="3_2a0po"]
+[ext_resource type="PackedScene" uid="uid://ctjq6j5mjl4by" path="res://scenes/2d/mails.tscn" id="4_l6utu"]
+
+[node name="Panel Manager" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910686, 0, 0)
+visible = false
+script = ExtResource("1_ky65l")
+
+[node name="CalenderPanel" parent="." instance=ExtResource("2_nb46b")]
+scene_2d = ExtResource("3_2a0po")
+
+[node name="MailPanel" parent="." instance=ExtResource("2_nb46b")]
+scene_2d = ExtResource("4_l6utu")

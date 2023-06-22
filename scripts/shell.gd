@@ -23,6 +23,7 @@ func _ready():
 	right_hand_raycast = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
 	right_hand.button_released.connect(on_right_hand_button_released)
 	right_hand.button_pressed.connect(on_right_hand_button_pressed)
+	right_hand.input_vector2_changed.connect(on_right_hand_vec2_changed)
 	active_room = $"Woods Room"
 	room_switcher_menu = $RoomSwitcherMenu
 
@@ -30,9 +31,11 @@ func _ready():
 	
 		
 @onready var right_hand : XRController3D = $"XROrigin3D/Right Hand"
+@onready var right_hand_pickup = $"XROrigin3D/Right Hand/XRToolsFunctionPickup"
 @onready var left_hand : XRController3D = $"XROrigin3D/Left Hand"
 @onready var player_body: XRToolsPlayerBody = $XROrigin3D/PlayerBody
 @onready var right_raycast: RayCast3D = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
+@onready var right_pointer: XRToolsFunctionPointer = $"XROrigin3D/Right Hand/FunctionPointer"
 
 func ray_cast_on_room_switcher_menu():
 	right_hand_raycast.force_raycast_update()
@@ -44,10 +47,16 @@ func ray_cast_on_room_switcher_menu():
 			var menu_pos = global_pos - area.global_position
 			return [area.get_parent(), Vector2(menu_pos.z, menu_pos.y)]
 
+# our own ray cast (not used)
 var ray_cast_last_collided_at = Vector3(0,0,0)
 var ray_cast_target = null		
+var right_hand_button_pressed_handlers = []
+var right_hand_button_released_handlers = []
+var right_hand_input_vec2_handlers = []
 
 func on_right_hand_button_pressed(button_name):
+	for handler in right_hand_button_pressed_handlers:
+		handler.call(button_name)
 	if button_name == "ax_button":
 		#room_switcher_menu.visible = !room_switcher_menu.visible
 		$"Panel Manager".visible = !$"Panel Manager".visible
@@ -69,6 +78,8 @@ func on_right_hand_button_pressed(button_name):
 				ray_cast_target.pointer_pressed(ray_cast_last_collided_at)
 				
 func on_right_hand_button_released(button_name):
+	for handler in right_hand_button_released_handlers:
+		handler.call(button_name)
 	if button_name == "trigger_click":
 		var ray_cast_menu_result = ray_cast_on_room_switcher_menu()
 		if ray_cast_menu_result:
@@ -125,9 +136,19 @@ func haptic_pulse(side: String, duration: float, intensity: float = 10):
 	var hand = right_hand if side == "right" else left_hand
 	hand.trigger_haptic_pulse("haptic", 4000, intensity, duration, 0)
 
+
+func on_right_hand_vec2_changed(input_name: String, value: Vector2):
+	for handler in right_hand_input_vec2_handlers:
+		handler.call(input_name, value)
+
+func pointer_vec():
+	var base_pointer = Vector3(0,0,-1000)
+	return base_pointer *  right_pointer.global_transform.inverse()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if right_hand_raycast.is_colliding() and (room_switcher_menu.visible or $"Panel Manager".visible):
-		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = true
-	else:
-		$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = false
+	pass
+	#if right_hand_raycast.is_colliding() and (room_switcher_menu.visible or $"Panel Manager".visible):
+	#	$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = true
+	#else:
+	#	$"XROrigin3D/Right Hand/RightHand/VisibleRay".visible = false
