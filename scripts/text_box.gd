@@ -14,6 +14,8 @@ enum TextAlignment {
 @export var text_font_size : float : set = set_text_font_size
 @export var alignment: TextAlignment = TextAlignment.CENTER :
 	set(new_alignment):
+		if !Engine.is_editor_hint():
+			return
 		alignment = new_alignment
 		label.horizontal_alignment = int(alignment)
 		rearrange()
@@ -30,9 +32,6 @@ var z_dist = 0.0001
 @onready var box_mesh: BoxMesh = mesh.mesh
 @onready var collision_box : BoxShape3D = collision_shape.shape
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func rearrange():
 	var bb = label.get_aabb().size
@@ -48,10 +47,16 @@ func rearrange():
 	reposition_label()
 
 func set_depth(d):
+	if !Engine.is_editor_hint():
+		return
+	
 	depth = d
 	rearrange()
 
 func set_text(s):
+	if !Engine.is_editor_hint():
+		return
+	
 	text = s
 	label.text = s
 	if resize_box:
@@ -61,15 +66,17 @@ func reposition_label():
 	label.position.z = box_mesh.size.z / 2 + z_dist
 	
 func set_material(m):
+	if !Engine.is_editor_hint():
+		return
+
 	material = m
 	box_mesh.material = m
 	
 func set_text_font_size(s):
+	if !Engine.is_editor_hint():
+		return
+	
 	text_font_size = s
 	label.font_size = s
 	if resize_box:
 		rearrange()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
