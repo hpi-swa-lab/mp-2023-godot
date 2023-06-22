@@ -1,11 +1,22 @@
 @tool
 extends XRToolsPickable
 
-@export var text: String : set = set_text
+enum TextAlignment {
+	LEFT,
+	CENTER,
+	RIGHT
+}
+
+@export_multiline var text: String : set = set_text
 @export var resize_box: bool = true
 @export var depth: float = 0.1 : set = set_depth
 @export var material: Material : set = set_material
 @export var text_font_size : float : set = set_text_font_size
+@export var alignment: TextAlignment = TextAlignment.CENTER :
+	set(new_alignment):
+		alignment = new_alignment
+		label.horizontal_alignment = int(alignment)
+		rearrange()
 
 @onready var label: Label3D = $Label
 @onready var mesh: MeshInstance3D = $MeshInstance3D
@@ -27,6 +38,13 @@ func rearrange():
 	var bb = label.get_aabb().size
 	box_mesh.size = Vector3(bb.x + margin_x, bb.y + margin_y, depth)
 	collision_box.size = box_mesh.size
+	if alignment == TextAlignment.LEFT:
+		label.position.x = -bb.x / 2.0
+	elif alignment == TextAlignment.RIGHT:
+		label.position.x = bb.x / 2.0
+	else:
+		label.position.x = 0
+	
 	reposition_label()
 
 func set_depth(d):

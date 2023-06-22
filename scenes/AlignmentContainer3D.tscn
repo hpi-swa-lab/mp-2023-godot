@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkk1dbehe46dy"]
+
+[ext_resource type="Script" path="res://scripts/AlignmentContainer3D.gd" id="1_weu2f"]
+
+[node name="AlignmentContainer3D" type="Node3D"]
+script = ExtResource("1_weu2f")
+center_children = null
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

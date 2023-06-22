@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="2_k7ew3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
+resource_local_to_scene = true
 size = Vector3(1.39382, 0.404722, 0.038)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xrn6j"]
@@ -18,6 +19,7 @@ resize_box = true
 depth = 0.05
 material = null
 text_font_size = 5.0
+alignment = null
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_bogg5")

@@ -1,16 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://tffiuc6rtdor"]
+[gd_scene load_steps=11 format=3 uid="uid://tffiuc6rtdor"]
 
 [ext_resource type="Script" path="res://basic.gd" id="1_eb0m7"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_ox0nx"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="2_xu1qm"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_mputp"]
-[ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="4_iciie"]
+[ext_resource type="PackedScene" path="res://scenes/scroll_container_3d.tscn" id="4_iciie"]
+[ext_resource type="PackedScene" uid="uid://dkk1dbehe46dy" path="res://scenes/AlignmentContainer3D.tscn" id="6_m14mi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3o6se"]
 size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_844rn"]
 size = Vector3(0.1, 0.08, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea45b"]
+albedo_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ndb0l"]
+material = SubResource("StandardMaterial3D_ea45b")
+size = Vector3(0.3, 0.15, 0.01)
 
 [node name="Debug" type="Node3D"]
 script = ExtResource("1_eb0m7")
@@ -45,7 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403526)
 path_start = Vector3(0.5, 0.5, 0.5)
 path_end = Vector3(-0.5, -0.5, -0.5)
 visibility_ratio = 1.0
-scroll_speed = null
+scroll_speed = 2.0
 max_velocity = 1.0
 decceleration = 0.8
 
@@ -90,3 +98,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355848, -0.355848, -0.3558
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D7"]
 mesh = SubResource("BoxMesh_844rn")
+
+[node name="Tablet" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09799, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tablet"]
+mesh = SubResource("BoxMesh_ndb0l")
+
+[node name="AlignmentContainer3D" parent="Tablet" instance=ExtResource("6_m14mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0566666, 0.00685741)
+extend = 0.283
+is_horizontal = true
+center_children = true
+
+[node name="AlignmentContainer3D3" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0943333, 0, 0)
+extend = -0.12
+center_children = false
+
+[node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+pixel_size = 0.0001
+text = "Mo"
+font_size = 128
+
+[node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+pixel_size = 0.0001
+text = "Doctor"
+font_size = 128
+
+[node name="AlignmentContainer3D4" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
+extend = -0.12
+center_children = false
+
+[node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+pixel_size = 0.0001
+text = "Mo"
+font_size = 128
+
+[node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+pixel_size = 0.0001
+text = "Doctor"
+font_size = 128
+
+[node name="AlignmentContainer3D5" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0943333, 0, 0)
+extend = -0.12
+center_children = false
+
+[node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+pixel_size = 0.0001
+text = "Mo"
+font_size = 128
+
+[node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+pixel_size = 0.0001
+text = "Doctor"
+font_size = 128
