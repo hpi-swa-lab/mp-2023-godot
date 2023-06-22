@@ -19,13 +19,13 @@ font_size = 91
 resource_local_to_scene = true
 size = Vector2(0.3, 0.15)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a60q0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ghglr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_equap"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvvbx"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_a60q0")
+albedo_texture = SubResource("ViewportTexture_ghglr")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qva2"]
@@ -93,7 +93,7 @@ vertical_alignment = 1
 
 [node name="Screen" parent="Label3D" index="1"]
 mesh = SubResource("QuadMesh_x1qpa")
-surface_material_override/0 = SubResource("StandardMaterial3D_equap")
+surface_material_override/0 = SubResource("StandardMaterial3D_vvvbx")
 
 [node name="StaticBody3D" parent="Label3D" index="2"]
 screen_size = Vector2(0.3, 0.15)

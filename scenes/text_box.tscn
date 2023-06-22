@@ -19,7 +19,7 @@ resize_box = true
 depth = 0.05
 material = null
 text_font_size = 5.0
-alignment = null
+alignment = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_bogg5")
