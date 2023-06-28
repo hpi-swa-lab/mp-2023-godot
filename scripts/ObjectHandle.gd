@@ -1,18 +1,28 @@
+@tool
 extends XRToolsPickable
 
 signal pointer_entered
 signal pointer_exited
 
 @onready var mesh = $MeshInstance3D
+@onready var collision_shape = $"CollisionShape3D"
 var pointer_on_this = false
-@onready var parent
+
+@export var handled_node: Node3D
+@export var y_offset = -0.15:
+	set(o):
+		if !Engine.is_editor_hint():
+			return
+		y_offset = o
+		if not is_inside_tree(): await ready
+		mesh.position.y = o
+		collision_shape.position.y = o
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
 	pointer_entered.connect(on_pointer_entered)
 	pointer_exited.connect(on_pointer_exited)
-	parent = get_parent()
 
 var initialized = false
 func ready_in_shell():
@@ -54,5 +64,4 @@ func on_input_vec2(input_name, value):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_picked_up():
-		parent.global_transform = global_transform
-		var ray_cast_vector : Vector3 = G.shell.pointer_vec().normalized()
+		handled_node.global_transform = global_transform

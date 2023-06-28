@@ -10,6 +10,24 @@ enum TextAlignment {
 @export_multiline var text: String : set = set_text
 @export var resize_box: bool = true
 @export var depth: float = 0.1 : set = set_depth
+@export var height: float:
+	set(h):
+		height = h
+		if not is_inside_tree(): await ready
+		box_mesh.size.y = h
+		collision_box.size = box_mesh.size
+	get:
+		if not is_inside_tree(): await ready
+		return box_mesh.size.y
+@export var width: float:
+	set(w):
+		width = w
+		if not is_inside_tree(): await ready
+		box_mesh.size.x = w
+		collision_box.size = box_mesh.size
+	get:
+		if not is_inside_tree(): await ready
+		return box_mesh.size.x
 @export var material: Material : set = set_material
 @export var text_font_size : float : set = set_text_font_size
 @export var alignment: TextAlignment = TextAlignment.CENTER :
@@ -17,23 +35,58 @@ enum TextAlignment {
 		if !Engine.is_editor_hint():
 			return
 		alignment = new_alignment
+		if not is_inside_tree(): await ready
 		label.horizontal_alignment = int(alignment)
-		rearrange()
+		if resize_box:
+			rearrange()
+@export var enable_handle_bar: bool = true:
+	set(enabled):
+		if !Engine.is_editor_hint():
+			return
+		if not is_inside_tree(): await ready
+		handle.visible = enabled
+		handle.enabled = enabled
+		handle.collision_layer = 0b00000000_00010000_00000000_00000000 if enabled else 0
+		enable_handle_bar = enabled
 
 @onready var label: Label3D = $Label
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
-var margin_x = 0.1
-var margin_y = 0.1
+@export var margin_x = 0.02
+@export var margin_y = 0.02
 
 var z_dist = 0.0001
 
 @onready var box_mesh: BoxMesh = mesh.mesh
 @onready var collision_box : BoxShape3D = collision_shape.shape
 
+@onready var handle: XRToolsPickable = $"InteractableHandle"
 @onready var handle_mesh: MeshInstance3D = $"InteractableHandle/MeshInstance3D"
 @onready var handle_collision_shape: CollisionShape3D = $"InteractableHandle/CollisionShape3D"
+
+#@export var debug_redraw = false:
+#	set(do_redraw):
+#		if not is_inside_tree(): await ready
+#		debug_redraw = do_redraw
+#		var h = height
+#		var w = width
+#		var d = depth
+#		var r = resize_box
+#		var m = material
+#		var t = text_font_size
+#		var a = alignment
+#		resize_box = true
+#		text = text
+#		material = m
+#		text_font_size = t
+#		alignment = a
+#		rearrange()
+#		depth = d
+#		width = w
+#		height = h
+#		resize_box = r
+		
 
 signal pointer_entered
 signal pointer_exited
@@ -50,6 +103,7 @@ func on_pointer_exited():
 	G.remove_outline(mesh)
 
 func rearrange():
+	if not is_inside_tree(): await ready
 	var bb = label.get_aabb().size
 	box_mesh.size = Vector3(bb.x + margin_x, bb.y + margin_y, depth)
 	collision_box.size = box_mesh.size
@@ -75,6 +129,7 @@ func set_text(s):
 		return
 	
 	text = s
+	if not is_inside_tree(): await ready
 	label.text = s
 	if resize_box:
 		rearrange()
@@ -92,8 +147,8 @@ func reposition_handle(bb: Vector3):
 func set_material(m):
 	if !Engine.is_editor_hint():
 		return
-
 	material = m
+	if not is_inside_tree(): await ready
 	box_mesh.material = m
 	
 func set_text_font_size(s):
@@ -101,6 +156,7 @@ func set_text_font_size(s):
 		return
 	
 	text_font_size = s
+	if not is_inside_tree(): await ready
 	label.font_size = s
 	if resize_box:
 		rearrange()

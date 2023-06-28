@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b5wkmvwm7um16"]
+[gd_scene load_steps=38 format=3 uid="uid://b5wkmvwm7um16"]
 
 [ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_3xsji"]
 [ext_resource type="Script" path="res://rooms/Adventure/Bow.gd" id="3_gxru2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fajiqsv35d4p" path="res://rooms/Adventure/oak.tscn" id="5_iry8c"]
 [ext_resource type="PackedScene" uid="uid://bjcwearx2isyk" path="res://rooms/Adventure/pine.tscn" id="6_juin3"]
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="7_q0a42"]
+[ext_resource type="PackedScene" uid="uid://bnifb8cd4ymis" path="res://scenes/vrobjects/mail.tscn" id="8_s28wq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhvkn"]
 albedo_color = Color(0.470588, 0.921569, 1, 1)
@@ -247,5 +248,10 @@ shape = SubResource("CylinderShape3D_84buy")
 
 [node name="TextBox" parent="." index="12" instance=ExtResource("7_q0a42")]
 transform = Transform3D(-0.767008, 0, -0.641637, 0, 1, 0, 0.641637, 0, -0.767008, -1, 1, 0)
-text = "Hello World! how are ye"
-alignment = 1
+height = Object(GDScriptFunctionState,"script":null)
+
+width = Object(GDScriptFunctionState,"script":null)
+
+
+[node name="Mail" parent="." index="13" instance=ExtResource("8_s28wq")]
+transform = Transform3D(-0.98376, 0, -0.179489, 0, 1, 0, 0.179489, 0, -0.98376, 0, 0.392754, 0.0292912)

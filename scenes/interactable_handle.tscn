@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://21krsh2yvxqn"]
+
+[ext_resource type="PackedScene" uid="uid://bddj5m7ull6g0" path="res://addons/godot-xr-tools/interactables/interactable_handle.tscn" id="1_dhvvy"]
+[ext_resource type="Script" path="res://scripts/ObjectHandle.gd" id="2_yej3c"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_spe0k"]
+height = 0.3
+radius = 0.01
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wfjx1"]
+resource_local_to_scene = true
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.3
+
+[node name="InteractableHandle" instance=ExtResource("1_dhvvy")]
+collision_layer = 1048580
+freeze = true
+script = ExtResource("2_yej3c")
+y_offset = -0.15
+picked_up_layer = 1048576
+hold_method = 1
+ranged_grab_method = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.138, 0)
+shape = SubResource("CylinderShape3D_spe0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.13809, 0)
+mesh = SubResource("CylinderMesh_wfjx1")

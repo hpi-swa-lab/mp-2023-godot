@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnifb8cd4ymis"]
+
+[ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="1_gn5o8"]
+[ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="2_82a4p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndj80"]
+shading_mode = 0
+
+[node name="Mail" type="Node3D"]
+
+[node name="TextBoxes" type="Node3D" parent="."]
+
+[node name="Subject" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237226, 0)
+text = "Subject:  Your Appointment"
+resize_box = false
+height = Object(GDScriptFunctionState,"script":null)
+
+width = Object(GDScriptFunctionState,"script":null)
+
+material = SubResource("StandardMaterial3D_ndj80")
+text_font_size = 20.0
+alignment = 0
+enable_handle_bar = false
+margin_x = 0.02
+margin_y = 0.02
+
+[node name="Body" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0368953, 0)
+text = "Dear Daniel,
+
+this is just a heads up that I can't make our appointment
+today.
+
+Best regards
+Mr. Fire
+
+
+
+
+"
+resize_box = false
+height = Object(GDScriptFunctionState,"script":null)
+
+width = Object(GDScriptFunctionState,"script":null)
+
+material = SubResource("StandardMaterial3D_ndj80")
+text_font_size = 15.0
+alignment = 0
+enable_handle_bar = false
+margin_x = 0.02
+margin_y = 0.02
+
+[node name="From" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.184032, 0)
+text = "From: Mr. Fire"
+resize_box = false
+height = Object(GDScriptFunctionState,"script":null)
+
+width = Object(GDScriptFunctionState,"script":null)
+
+material = SubResource("StandardMaterial3D_ndj80")
+text_font_size = 20.0
+alignment = 0
+enable_handle_bar = false
+margin_x = 0.02
+margin_y = 0.02
+
+[node name="To" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.183824, 0)
+text = "To: You"
+resize_box = false
+height = Object(GDScriptFunctionState,"script":null)
+
+width = Object(GDScriptFunctionState,"script":null)
+
+material = SubResource("StandardMaterial3D_ndj80")
+text_font_size = 21.0
+alignment = 0
+enable_handle_bar = false
+margin_x = 0.02
+margin_y = 0.02
+
+[node name="InteractableHandle" parent="." instance=ExtResource("2_82a4p")]
