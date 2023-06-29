@@ -23,9 +23,9 @@ hold_method = 1
 ranged_grab_method = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.138, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.15, 0)
 shape = SubResource("CylinderShape3D_spe0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.13809, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.15, 0)
 mesh = SubResource("CylinderMesh_wfjx1")
