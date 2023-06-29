@@ -27,6 +27,7 @@ extends Node3D
 @export var scroll_speed: float = 2.0
 @export var max_velocity: float = 1.0
 @export var decceleration: float = 0.8
+@export var remove_child_on_pickup: bool = true
 
 var left_controller: XRController3D
 var mails: Array
@@ -36,17 +37,23 @@ var progress = 0.0
 var velocity = 0.0
 var selected = false
 
+signal child_picked_up(child: Node3D)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
+	child_picked_up.connect(_on_child_picked_up)
 	mail_path = $Internal/Path3D/PathFollow3D
-	left_controller = get_node("../XROrigin3D/Left Hand")
+	left_controller = G.shell.left_hand
 	
 	position_children()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Engine.is_editor_hint():
+		return
+	left_controller = G.shell.left_hand
 	if left_controller == null: return
 	
 	var controller_input = left_controller.get_vector2("primary").y * scroll_speed
@@ -58,7 +65,6 @@ func _process(delta):
 		progress -= controller_input * delta
 		position_children()
 	elif abs(velocity) > 0.01:
-		print(velocity)
 		velocity = sign(velocity) * (abs(velocity) - decceleration * delta)
 		progress -= velocity * delta
 		position_children()
@@ -95,3 +101,8 @@ func _on_box_on_pointer_entered():
 
 func _on_box_on_pointer_exited():
 	selected = false
+
+func _on_child_picked_up(child: Node3D):
+	if remove_child_on_pickup:
+		remove_child(child)
+		get_parent().add_child(child)

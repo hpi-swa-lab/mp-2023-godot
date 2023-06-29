@@ -52,6 +52,11 @@ enum TextAlignment {
 		enable_handle_bar = e
 		apply_properties()
 
+@export var hide_box: bool = false:
+	set(h):
+		hide_box = h
+		apply_properties()
+
 @onready var label: Label3D = $Label
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
@@ -114,6 +119,7 @@ func apply_properties():
 	label.font_size = text_font_size
 
 	box_mesh.material = material
+	mesh.visible = !hide_box
 
 	if resize_box:
 		rearrange()

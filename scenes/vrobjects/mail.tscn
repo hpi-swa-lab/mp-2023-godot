@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnifb8cd4ymis"]
+[gd_scene load_steps=5 format=3 uid="uid://bnifb8cd4ymis"]
 
+[ext_resource type="Script" path="res://scenes/vrobjects/mail.gd" id="1_6fyxo"]
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="1_gn5o8"]
 [ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="2_82a4p"]
 
@@ -7,12 +8,17 @@
 shading_mode = 0
 
 [node name="Mail" type="Node3D"]
+script = ExtResource("1_6fyxo")
+subject = "Subject"
+from = "From"
+to = "To"
+body = "Body"
 
 [node name="TextBoxes" type="Node3D" parent="."]
 
 [node name="Subject" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237226, 0)
-text = "Subject: Your Appointment"
+text = "Subject"
 resize_box = false
 height = 0.0558333
 width = 0.5
@@ -26,18 +32,7 @@ enabled = false
 
 [node name="Body" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0368953, 0)
-text = "Dear Daniel,
-
-this is just a heads up that I can't make our appointment
-today.
-
-Best regards
-Mr. Fire
-
-
-
-
-"
+text = "Body"
 resize_box = false
 height = 0.247021
 width = 0.5
@@ -51,7 +46,7 @@ enabled = false
 
 [node name="From" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.184032, 0)
-text = "From: Mr. Fire"
+text = "From"
 resize_box = false
 height = 0.0504722
 width = 0.25
@@ -65,7 +60,7 @@ enabled = false
 
 [node name="To" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.183824, 0)
-text = "To: You"
+text = "To"
 resize_box = false
 height = 0.0510625
 width = 0.25
@@ -77,4 +72,4 @@ margin_y = 0.02
 enabled = false
 
 [node name="InteractableHandle" parent="." node_paths=PackedStringArray("handled_node") instance=ExtResource("2_82a4p")]
-handled_node = NodePath("../TextBoxes")
+handled_node = NodePath("..")

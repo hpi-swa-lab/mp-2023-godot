@@ -26,6 +26,7 @@ material = null
 text_font_size = 50.0
 alignment = 1
 enable_handle_bar = true
+hide_box = false
 margin_x = 0.1
 margin_y = 0.1
 ranged_grab_method = 0

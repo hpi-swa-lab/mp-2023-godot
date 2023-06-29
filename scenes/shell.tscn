@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7f80cm36mgod"]
+[gd_scene load_steps=15 format=3 uid="uid://7f80cm36mgod"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_ot81t"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_tv461"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_3rujx"]
 [ext_resource type="PackedScene" uid="uid://b5wkmvwm7um16" path="res://rooms/Adventure/woods_room.tscn" id="5_sr317"]
-[ext_resource type="Material" uid="uid://dlvqrfc6kycpc" path="res://materials/Outline.tres" id="12_m6kri"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6jea"]
 albedo_color = Color(1, 0.109804, 0.109804, 1)
@@ -51,12 +50,6 @@ func _ready():
 	else:
 		print(\"OpenXR not initialised, please check if your headset is connected\")
 "
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvgwv"]
-next_pass = ExtResource("12_m6kri")
-
-[sub_resource type="BoxMesh" id="BoxMesh_b5vp2"]
-material = SubResource("StandardMaterial3D_cvgwv")
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_ot81t")
@@ -112,7 +105,3 @@ shadow_enabled = true
 
 [node name="Woods Room" parent="." instance=ExtResource("5_sr317")]
 script = SubResource("GDScript_uip0h")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43617, 1.62991, -0.130816)
-mesh = SubResource("BoxMesh_b5vp2")

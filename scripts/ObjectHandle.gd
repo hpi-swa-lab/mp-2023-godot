@@ -48,11 +48,15 @@ func on_button_press(button_name):
 			G.shell.right_hand_pickup.picked_up_object = self
 			G.shell.right_hand_pickup.picked_up_ranged = false
 			pick_up(G.shell.right_hand_pickup, G.shell.right_hand)
+			if handled_node.has_signal("on_handle_pick_up"):
+				handled_node.emit_signal("on_handle_pick_up")
 	
 func on_button_release(button_name):
 	if button_name == "grip_click":
 		if is_picked_up():
 			G.shell.right_hand_pickup.drop_object()
+			if handled_node.has_signal("on_handle_dropped"):
+				handled_node.emit_signal("on_handle_dropped")
 
 func on_input_vec2(input_name, value):
 	if input_name == "primary":

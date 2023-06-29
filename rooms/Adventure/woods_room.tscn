@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b5wkmvwm7um16"]
+[gd_scene load_steps=39 format=3 uid="uid://b5wkmvwm7um16"]
 
 [ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_3xsji"]
 [ext_resource type="Script" path="res://rooms/Adventure/Bow.gd" id="3_gxru2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjcwearx2isyk" path="res://rooms/Adventure/pine.tscn" id="6_juin3"]
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="7_q0a42"]
 [ext_resource type="PackedScene" uid="uid://bnifb8cd4ymis" path="res://scenes/vrobjects/mail.tscn" id="8_im45k"]
+[ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="8_rm0cs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhvkn"]
 albedo_color = Color(0.470588, 0.921569, 1, 1)
@@ -251,5 +252,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418554, 0)
 height = 0.1
 width = 0.1
 
-[node name="Mail" parent="." index="13" instance=ExtResource("8_im45k")]
-transform = Transform3D(0.784246, 0, -0.62045, 0, 1, 0, 0.62045, 0, 0.784246, 1.68716, 0.274, 0)
+[node name="Inbox" type="Node3D" parent="." index="13"]
+transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.0348821, -0.244324, 0, 0)
+
+[node name="TextBox" parent="Inbox" index="0" instance=ExtResource("7_q0a42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
+text = "Inbox"
+width = 0.266833
+enable_handle_bar = false
+hide_box = true
+
+[node name="InboxScrollContainer" parent="Inbox" index="1" instance=ExtResource("8_rm0cs")]
+transform = Transform3D(0.993984, 0, 0.109526, 0, 1, 0, -0.109526, 0, 0.993984, 0.0190916, 0.484127, 0.0117028)
+path_end = Vector3(0, 1, 0)
+visibility_ratio = 1.0
+
+[node name="MailMate" parent="Inbox/InboxScrollContainer" index="1" instance=ExtResource("8_im45k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+subject = "Invoice @ mate-shop24.de"
+from = "From: Mate-Shop24"
+to = "To: You"
+body = "Dear __mateLover77__,
+
+This is the invoice for your order
+#17866A43
+You order details:
+- 240l Club Mate
+- 62l Mio Mate
+- 12l Mate Mate
+
+We hope to hear from you again soon!
+Best, you Mate-Shop24 Team"
+
+[node name="MailArchery" parent="Inbox/InboxScrollContainer" index="2" instance=ExtResource("8_im45k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.75, 0.25)
+subject = "Archery cancelled"
+from = "Archie"
+to = "You"
+body = "Hey,
+
+Sorry guys, I'm still ill and therefore archery class will be cancelled this thursday. I hope we can get together next week.
+
+Yours, Archie"
+
+[node name="MailJob" parent="Inbox/InboxScrollContainer" index="3" instance=ExtResource("8_im45k")]
+subject = "Software Engineer at Platypus Consult"
+from = "From: Stephany from Platypus Consult"
+to = "To: You"
+body = "Hey Champ,
+
+Today I've got a very exclusive job
+offer for you:
+Work as a Software Engineer at Platypus Consult.
+
+We offer a competitive compensation
+and flexible working hours
+100 % remote.
+
+I look forward to hearing from you.
+
+Best, Stephany"
