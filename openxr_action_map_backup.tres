@@ -1,0 +1,60 @@
+[gd_resource type="OpenXRActionMap" load_steps=13 format=3 uid="uid://7po02cc2ateq"]
+
+[sub_resource type="OpenXRAction" id="OpenXRAction_mpr52"]
+resource_name = "gaze"
+localized_name = "gaze"
+action_type = 3
+toplevel_paths = PackedStringArray("/user/eyes_ext")
+
+[sub_resource type="OpenXRAction" id="OpenXRAction_nhn6g"]
+resource_name = "left"
+localized_name = "left"
+action_type = 3
+toplevel_paths = PackedStringArray("/user/hand/left")
+
+[sub_resource type="OpenXRAction" id="OpenXRAction_xwd6o"]
+resource_name = "right"
+localized_name = "right"
+action_type = 3
+toplevel_paths = PackedStringArray("/user/hand/right")
+
+[sub_resource type="OpenXRActionSet" id="OpenXRActionSet_ajbrd"]
+resource_name = "vrobjects"
+localized_name = "vrobjects"
+actions = [SubResource("OpenXRAction_mpr52"), SubResource("OpenXRAction_nhn6g"), SubResource("OpenXRAction_xwd6o")]
+
+[sub_resource type="OpenXRIPBinding" id="OpenXRIPBinding_qus2u"]
+action = SubResource("OpenXRAction_nhn6g")
+paths = PackedStringArray("/user/hand/left/input/aim/pose")
+
+[sub_resource type="OpenXRIPBinding" id="OpenXRIPBinding_kc8n3"]
+action = SubResource("OpenXRAction_xwd6o")
+paths = PackedStringArray("/user/hand/right/input/aim/pose")
+
+[sub_resource type="OpenXRInteractionProfile" id="OpenXRInteractionProfile_5k5cd"]
+interaction_profile_path = "/interaction_profiles/khr/simple_controller"
+bindings = [SubResource("OpenXRIPBinding_qus2u"), SubResource("OpenXRIPBinding_kc8n3")]
+
+[sub_resource type="OpenXRIPBinding" id="OpenXRIPBinding_pmq5c"]
+action = SubResource("OpenXRAction_nhn6g")
+paths = PackedStringArray("/user/hand/left/input/aim/pose")
+
+[sub_resource type="OpenXRIPBinding" id="OpenXRIPBinding_lv7j4"]
+action = SubResource("OpenXRAction_xwd6o")
+paths = PackedStringArray("/user/hand/right/input/aim/pose")
+
+[sub_resource type="OpenXRInteractionProfile" id="OpenXRInteractionProfile_8dbxf"]
+interaction_profile_path = "/interaction_profiles/oculus/touch_controller"
+bindings = [SubResource("OpenXRIPBinding_pmq5c"), SubResource("OpenXRIPBinding_lv7j4")]
+
+[sub_resource type="OpenXRIPBinding" id="OpenXRIPBinding_hb84n"]
+action = SubResource("OpenXRAction_mpr52")
+paths = PackedStringArray("/user/eyes_ext/input/gaze_ext/pose")
+
+[sub_resource type="OpenXRInteractionProfile" id="OpenXRInteractionProfile_r2guy"]
+interaction_profile_path = "/interaction_profiles/ext/eye_gaze_interaction"
+bindings = [SubResource("OpenXRIPBinding_hb84n")]
+
+[resource]
+action_sets = [SubResource("OpenXRActionSet_ajbrd")]
+interaction_profiles = [SubResource("OpenXRInteractionProfile_5k5cd"), SubResource("OpenXRInteractionProfile_8dbxf"), SubResource("OpenXRInteractionProfile_r2guy")]

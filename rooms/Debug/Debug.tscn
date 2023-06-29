@@ -1,157 +1,331 @@
-[gd_scene load_steps=11 format=3 uid="uid://tffiuc6rtdor"]
+[gd_scene load_steps=14 format=3 uid="uid://tffiuc6rtdor"]
 
 [ext_resource type="Script" path="res://basic.gd" id="1_eb0m7"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_ox0nx"]
-[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="2_xu1qm"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_mputp"]
-[ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="4_iciie"]
-[ext_resource type="PackedScene" uid="uid://dkk1dbehe46dy" path="res://scenes/AlignmentContainer3D.tscn" id="6_m14mi"]
+[ext_resource type="Script" path="res://rooms/Debug/gaze_target.gd" id="2_8u7x8"]
+[ext_resource type="Script" path="res://rooms/Debug/gaze.gd" id="2_gmu72"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rfgv"]
+albedo_color = Color(0.501961, 0.25098, 0.305882, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3o6se"]
+material = SubResource("StandardMaterial3D_5rfgv")
 size = Vector3(10, 1, 10)
 
-[sub_resource type="BoxMesh" id="BoxMesh_844rn"]
-size = Vector3(0.1, 0.08, 0.01)
+[sub_resource type="BoxMesh" id="BoxMesh_tn4cd"]
+size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea45b"]
-albedo_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_c4lj8"]
+size = Vector3(0.01, 0.01, 0.01)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ndb0l"]
-material = SubResource("StandardMaterial3D_ea45b")
-size = Vector3(0.3, 0.15, 0.01)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yh08"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0eipm"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4yh08")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bsbi4"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_uurhn"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhisi"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vqst6"]
 
 [node name="Debug" type="Node3D"]
 script = ExtResource("1_eb0m7")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.653552, 0)
+mesh = SubResource("BoxMesh_3o6se")
+skeleton = NodePath("")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.197007, 0.980402, 0, -0.980402, 0.197007, 0, 0, 0)
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-mesh = SubResource("BoxMesh_3o6se")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 current = true
 
-[node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
-tracker = &"left_hand"
+[node name="Gaze" type="XRController3D" parent="XROrigin3D"]
+tracker = &"/user/eyes_ext"
 
-[node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("1_ox0nx")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/Gaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+mesh = SubResource("BoxMesh_tn4cd")
 
-[node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("2_xu1qm")]
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/Gaze"]
+target_position = Vector3(0, 0, -10)
+script = ExtResource("2_gmu72")
 
-[node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
-tracker = &"right_hand"
+[node name="OpenXRHand" type="OpenXRHand" parent="XROrigin3D"]
+visible = false
+hand_skeleton = NodePath("hand_skeleton")
 
-[node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("3_mputp")]
+[node name="hand_skeleton" type="Skeleton3D" parent="XROrigin3D/OpenXRHand"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+bones/0/name = "Wrist_L"
+bones/0/parent = -1
+bones/0/rest = Transform3D(1, -1.83077e-05, 1.52659e-08, 1.52668e-08, 0.00166774, 0.999999, -1.83077e-05, -0.999999, 0.00166774, 3.86425e-08, -1.86975e-05, 0.0271756)
+bones/0/enabled = true
+bones/0/position = Vector3(3.86425e-08, -1.86975e-05, 0.0271756)
+bones/0/rotation = Quaternion(-0.706517, 6.47275e-06, 6.47275e-06, 0.707696)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/name = "Thumb_Metacarpal_L"
+bones/1/parent = 0
+bones/1/rest = Transform3D(0.998518, 0.0514748, -0.0176622, -0.0515081, 0.789166, -0.612017, -0.0175651, 0.612019, 0.790648, 0.01, 0.0271729, 0.02)
+bones/1/enabled = true
+bones/1/position = Vector3(0.01, 0.0271729, 0.02)
+bones/1/rotation = Quaternion(0.323537, -2.56575e-05, -0.0272204, 0.945824)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/name = "Thumb_Proximal_L"
+bones/2/parent = 1
+bones/2/rest = Transform3D(0.9872, 0.152366, -0.0471237, -0.147379, 0.98445, 0.095593, 0.060956, -0.0874244, 0.994304, 2.32831e-10, 0.0449165, -2.47383e-10)
+bones/2/enabled = true
+bones/2/position = Vector3(2.32831e-10, 0.0449165, -2.47383e-10)
+bones/2/rotation = Quaternion(-0.0459503, -0.0271357, -0.0752572, 0.995735)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/name = "Thumb_Distal_L"
+bones/3/parent = 2
+bones/3/rest = Transform3D(0.999396, -0.0267728, 0.0221734, 0.029071, 0.993417, -0.110803, -0.0190609, 0.111381, 0.993595, -2.32831e-09, 0.0421479, 1.5134e-09)
+bones/3/enabled = true
+bones/3/position = Vector3(-2.32831e-09, 0.0421479, 1.5134e-09)
+bones/3/rotation = Quaternion(0.0556407, 0.0103261, 0.0139847, 0.9983)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/name = "Thumb_Tip_L"
+bones/4/parent = 3
+bones/4/rest = Transform3D(0.996985, 0.0700982, -0.0332655, -0.0642619, 0.986245, 0.152286, 0.0434829, -0.149689, 0.987777, -2.79397e-09, 0.0307495, -3.14321e-09)
+bones/4/enabled = true
+bones/4/position = Vector3(-2.79397e-09, 0.0307495, -3.14321e-09)
+bones/4/rotation = Quaternion(-0.0757687, -0.019257, -0.0337124, 0.996369)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/name = "Index_Metacarpal_L"
+bones/5/parent = 0
+bones/5/rest = Transform3D(0.998728, -0.0504232, 1.23609e-05, 0.0504232, 0.998727, 0.00117824, -7.17559e-05, -0.00117612, 0.999999, -0.01, 0.0271772, 0.0224051)
+bones/5/enabled = true
+bones/5/position = Vector3(-0.01, 0.0271772, 0.0224051)
+bones/5/rotation = Quaternion(-0.000588777, 2.10359e-05, 0.0252196, 0.999682)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/name = "Index_Proximal_L"
+bones/6/parent = 5
+bones/6/rest = Transform3D(0.972337, -0.232665, 0.0206709, 0.231429, 0.947612, -0.220165, 0.0316369, 0.218859, 0.975244, 5.33618e-10, 0.0803676, 2.58493e-09)
+bones/6/enabled = true
+bones/6/position = Vector3(5.33618e-10, 0.0803676, 2.58493e-09)
+bones/6/rotation = Quaternion(0.111223, -0.00277812, 0.117574, 0.986812)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/name = "Index_Intermediate_L"
+bones/7/parent = 6
+bones/7/rest = Transform3D(0.888266, 0.45745, -0.0415007, -0.4561, 0.889109, 0.0381859, 0.0543668, -0.0149908, 0.998408, 0, 0.0381163, -3.31784e-09)
+bones/7/enabled = true
+bones/7/position = Vector3(0, 0.0381163, -3.31784e-09)
+bones/7/rotation = Quaternion(-0.0136832, -0.0246682, -0.235071, 0.971569)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/name = "Index_Distal_L"
+bones/8/parent = 7
+bones/8/rest = Transform3D(0.96351, 0.266248, -0.0275872, -0.266931, 0.963393, -0.0249618, 0.0199313, 0.0314148, 0.999308, 5.52973e-09, 0.0313457, 1.77533e-09)
+bones/8/enabled = true
+bones/8/position = Vector3(5.52973e-09, 0.0313457, 1.77533e-09)
+bones/8/rotation = Quaternion(0.014226, -0.0119908, -0.134541, 0.990733)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/name = "Index_Tip_L"
+bones/9/parent = 8
+bones/9/rest = Transform3D(0.978525, -0.205782, -0.0119432, 0.205899, 0.973057, 0.103755, -0.00972942, -0.103985, 0.994531, 8.14907e-09, 0.027395, 1.36788e-09)
+bones/9/enabled = true
+bones/9/position = Vector3(8.14907e-09, 0.027395, 1.36788e-09)
+bones/9/rotation = Quaternion(-0.0522884, -0.000557213, 0.103621, 0.993241)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/name = "Middle_Metacarpal_L"
+bones/10/parent = 0
+bones/10/rest = Transform3D(0.995004, -0.099769, -0.00350001, 0.099763, 0.992433, 0.0715777, -0.00366771, -0.0715693, 0.997429, -0.01, 0.0271458, 0.00352759)
+bones/10/enabled = true
+bones/10/position = Vector3(-0.01, 0.0271458, 0.00352759)
+bones/10/rotation = Quaternion(-0.0358546, 4.2005e-05, 0.0499776, 0.998107)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/name = "Middle_Proximal_L"
+bones/11/parent = 10
+bones/11/rest = Transform3D(0.999778, 0.0209759, 0.00218413, -0.0210221, 0.999494, 0.0238698, -0.00168233, -0.0239104, 0.999713, -7.05768e-10, 0.0804632, 3.49246e-10)
+bones/11/enabled = true
+bones/11/position = Vector3(-7.05768e-10, 0.0804632, 3.49246e-10)
+bones/11/rotation = Quaternion(-0.0119466, 0.000966737, -0.0105008, 0.999873)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/name = "Middle_Intermediate_L"
+bones/12/parent = 11
+bones/12/rest = Transform3D(0.961959, 0.273192, -0.00112053, -0.272415, 0.958894, -0.0794533, -0.0206316, 0.0767361, 0.996838, 1.12959e-09, 0.0450034, 6.62112e-10)
+bones/12/enabled = true
+bones/12/position = Vector3(1.12959e-09, 0.0450034, 6.62112e-10)
+bones/12/rotation = Quaternion(0.0394554, 0.00492874, -0.137827, 0.989658)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/name = "Middle_Distal_L"
+bones/13/parent = 12
+bones/13/rest = Transform3D(0.94314, 0.332367, 0.00441731, -0.332359, 0.942752, 0.0275094, 0.00497878, -0.0274133, 0.999612, 5.97356e-09, 0.0324167, -5.82077e-11)
+bones/13/enabled = true
+bones/13/position = Vector3(5.97356e-09, 0.0324167, -5.82077e-11)
+bones/13/rotation = Quaternion(-0.0139315, -0.000142422, -0.168612, 0.985584)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/name = "Middle_Tip_L"
+bones/14/parent = 13
+bones/14/rest = Transform3D(0.943276, -0.331977, 0.00476805, 0.331981, 0.942901, -0.0269559, 0.00445295, 0.0270098, 0.999625, -2.07365e-09, 0.0233466, 6.54836e-11)
+bones/14/enabled = true
+bones/14/position = Vector3(-2.07365e-09, 0.0233466, 6.54836e-11)
+bones/14/rotation = Quaternion(0.0136882, 7.99239e-05, 0.168411, 0.985622)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/name = "Ring_Metacarpal_L"
+bones/15/parent = 0
+bones/15/rest = Transform3D(0.999346, -0.0360757, -0.00254382, 0.0360713, 0.989208, 0.142006, -0.00260659, -0.142005, 0.989863, -0.01, 0.027118, -0.0131)
+bones/15/enabled = true
+bones/15/position = Vector3(-0.01, 0.027118, -0.0131)
+bones/15/rotation = Quaternion(-0.0711949, 1.57335e-05, 0.0180856, 0.997298)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/name = "Ring_Proximal_L"
+bones/16/parent = 15
+bones/16/rest = Transform3D(0.996496, -0.08322, -0.00830595, 0.0836331, 0.991291, 0.101722, -0.000231653, -0.10206, 0.994778, 6.07542e-10, 0.0739438, 1.3315e-09)
+bones/16/enabled = true
+bones/16/position = Vector3(6.07542e-10, 0.0739438, 1.3315e-09)
+bones/16/rotation = Quaternion(-0.0510567, -0.00202299, 0.0418045, 0.997818)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/name = "Ring_Intermediate_L"
+bones/17/parent = 16
+bones/17/rest = Transform3D(0.947576, 0.31801, 0.0311471, -0.31672, 0.947668, -0.0401756, -0.0422934, 0.0282045, 0.998707, 8.73115e-11, 0.0401312, 9.60426e-10)
+bones/17/enabled = true
+bones/17/position = Vector3(8.73115e-11, 0.0401312, 9.60426e-10)
+bones/17/rotation = Quaternion(0.0173263, 0.0186085, -0.160829, 0.986655)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/name = "Ring_Distal_L"
+bones/18/parent = 17
+bones/18/rest = Transform3D(0.964842, 0.261334, 0.0280148, -0.261907, 0.964903, 0.01917, -0.0220218, -0.0258333, 0.999424, -2.38651e-09, 0.0277976, 9.60426e-10)
+bones/18/enabled = true
+bones/18/position = Vector3(-2.38651e-09, 0.0277976, 9.60426e-10)
+bones/18/rotation = Quaternion(-0.0113518, 0.0126214, -0.131984, 0.991107)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/name = "Ring_Tip_L"
+bones/19/parent = 18
+bones/19/rest = Transform3D(0.967981, -0.250976, -0.00497185, 0.250088, 0.965886, -0.0672338, 0.0216763, 0.0638376, 0.997725, 5.326e-09, 0.0270494, 3.96903e-09)
+bones/19/enabled = true
+bones/19/position = Vector3(5.326e-09, 0.0270494, 3.96903e-09)
+bones/19/rotation = Quaternion(0.0330517, -0.00671975, 0.126351, 0.991412)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/name = "Little_Metacarpal_L"
+bones/20/parent = 0
+bones/20/rest = Transform3D(0.998381, -0.0566367, -0.00517237, 0.0566277, 0.981538, 0.182691, -0.00527016, -0.182689, 0.983157, -4.46056e-10, 0.0270897, -0.03)
+bones/20/enabled = true
+bones/20/position = Vector3(-4.46056e-10, 0.0270897, -0.03)
+bones/20/rotation = Quaternion(-0.0917695, 2.4562e-05, 0.0284477, 0.995374)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/name = "Little_Proximal_L"
+bones/21/parent = 20
+bones/21/rest = Transform3D(0.999889, 0.0128583, 0.00751407, -0.0139898, 0.983965, 0.177811, -0.00510723, -0.177897, 0.984036, 3.49246e-10, 0.0657112, -2.20098e-10)
+bones/21/enabled = true
+bones/21/position = Vector3(3.49246e-10, 0.0657112, -2.20098e-10)
+bones/21/rotation = Quaternion(-0.089286, 0.00316807, -0.00673912, 0.995978)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/name = "Little_Intermediate_L"
+bones/22/parent = 21
+bones/22/rest = Transform3D(0.929353, 0.366091, 0.0477514, -0.360195, 0.927469, -0.100301, -0.0810071, 0.0760151, 0.993811, -4.07454e-10, 0.0331235, 2.6921e-10)
+bones/22/enabled = true
+bones/22/position = Vector3(-4.07454e-10, 0.0331235, 2.6921e-10)
+bones/22/rotation = Quaternion(0.0449258, 0.032808, -0.185059, 0.981152)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/name = "Little_Distal_L"
+bones/23/parent = 22
+bones/23/rest = Transform3D(0.976807, 0.212456, 0.02664, -0.213283, 0.976418, 0.0334405, -0.0189071, -0.0383468, 0.999086, 2.67755e-09, 0.0180244, 7.89441e-10)
+bones/23/enabled = true
+bones/23/position = Vector3(2.67755e-09, 0.0180244, 7.89441e-10)
+bones/23/rotation = Quaternion(-0.0180548, 0.0114553, -0.107075, 0.994021)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/name = "Little_Tip_L"
+bones/24/parent = 23
+bones/24/rest = Transform3D(0.951957, -0.304411, -0.0333367, 0.303186, 0.952204, -0.0372339, 0.0430777, 0.0253378, 0.99875, -3.72529e-09, 0.0197651, 4.65661e-09)
+bones/24/enabled = true
+bones/24/position = Vector3(-3.72529e-09, 0.0197651, 4.65661e-09)
+bones/24/rotation = Quaternion(0.0158363, -0.0193397, 0.153777, 0.987789)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/name = "Palm_L"
+bones/25/parent = 0
+bones/25/rest = Transform3D(1, 3.13855e-06, -2.14463e-05, -2.14514e-05, 0.00164795, -0.999999, -3.1032e-06, 0.999999, 0.00164795, 0.0307819, 0.0670555, -0.0420653)
+bones/25/enabled = true
+bones/25/position = Vector3(0.0307819, 0.0670555, -0.0420653)
+bones/25/rotation = Quaternion(0.706524, -6.47993e-06, -8.68672e-06, 0.707689)
+bones/25/scale = Vector3(1, 1, 1)
 
-[node name="ScrollContainer3D" parent="." instance=ExtResource("4_iciie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403526)
-path_start = Vector3(0.5, 0.5, 0.5)
-path_end = Vector3(-0.5, -0.5, -0.5)
-visibility_ratio = 1.0
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
+transform = Transform3D(0.967042, 0.24582, -0.0663439, -0.0663439, 0.494837, 0.866449, 0.24582, -0.833492, 0.494837, 0.0261569, 0.0891964, -0.0934418)
+bone_name = "Thumb_Tip_L"
+bone_idx = 4
 
-[node name="Node3D" type="Node3D" parent="ScrollContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/OpenXRHand/hand_skeleton/BoneAttachment3D"]
+mesh = SubResource("BoxMesh_c4lj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D"]
-mesh = SubResource("BoxMesh_844rn")
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
+transform = Transform3D(0.967526, 0.252326, -0.0150302, -0.0150302, 0.116784, 0.993043, 0.252326, -0.960569, 0.116784, -0.00665802, 0.0427913, -0.169868)
+bone_name = "Index_Tip_L"
+bone_idx = 9
 
-[node name="Node3D2" type="Node3D" parent="ScrollContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355848, 0.355848, 0.355848)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/OpenXRHand/hand_skeleton/BoneAttachment3D2"]
+mesh = SubResource("BoxMesh_c4lj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D2"]
-mesh = SubResource("BoxMesh_844rn")
+[node name="BoneAttachment3D3" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
+transform = Transform3D(0.976372, 0.215373, 0.0176349, 0.0176348, -0.160748, 0.986837, 0.215373, -0.96321, -0.160748, 0.000406058, -0.044646, -0.161828)
+bone_name = "Ring_Tip_L"
+bone_idx = 19
 
-[node name="Node3D3" type="Node3D" parent="ScrollContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215087, 0.215087, 0.215087)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/OpenXRHand/hand_skeleton/BoneAttachment3D3"]
+mesh = SubResource("BoxMesh_c4lj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D3"]
-mesh = SubResource("BoxMesh_844rn")
+[node name="BoneAttachment3D4" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
+transform = Transform3D(0.971349, 0.235416, 0.0325577, 0.0325576, -0.267517, 0.963003, 0.235416, -0.934352, -0.267517, 0.0109935, -0.0637899, -0.127802)
+bone_name = "Little_Tip_L"
+bone_idx = 24
 
-[node name="Node3D4" type="Node3D" parent="ScrollContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0716297, 0.0716297, 0.0716297)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/OpenXRHand/hand_skeleton/BoneAttachment3D4"]
+mesh = SubResource("BoxMesh_c4lj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D4"]
-mesh = SubResource("BoxMesh_844rn")
+[node name="BoneAttachment3D5" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
+transform = Transform3D(0.98042, 0.196912, 0.00149799, 0.001498, -0.015065, 0.999885, 0.196912, -0.980305, -0.0150651, -0.00327212, -0.00771424, -0.176318)
+bone_name = "Middle_Tip_L"
+bone_idx = 14
 
-[node name="Node3D5" type="Node3D" parent="ScrollContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0716297, -0.0716297, -0.0716297)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/OpenXRHand/hand_skeleton/BoneAttachment3D5"]
+mesh = SubResource("BoxMesh_c4lj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D5"]
-mesh = SubResource("BoxMesh_844rn")
+[node name="BoneAttachment3D6" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
+transform = Transform3D(1, 3.12364e-06, -3.13861e-06, -3.12371e-06, 1, -1.97886e-05, 3.13854e-06, 1.97889e-05, 1, 0.0307807, -0.0419721, -0.0399505)
+bone_name = "Palm_L"
+bone_idx = 25
 
-[node name="Node3D6" type="Node3D" parent="ScrollContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215086, -0.215086, -0.215086)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/OpenXRHand/hand_skeleton/BoneAttachment3D6"]
+mesh = SubResource("BoxMesh_c4lj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D6"]
-mesh = SubResource("BoxMesh_844rn")
+[node name="GazeTarget" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -3)
+script = ExtResource("2_8u7x8")
 
-[node name="Node3D7" type="Node3D" parent="ScrollContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355848, -0.355848, -0.355848)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GazeTarget"]
+mesh = SubResource("BoxMesh_0eipm")
+skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrollContainer3D/Node3D7"]
-mesh = SubResource("BoxMesh_844rn")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GazeTarget"]
+shape = SubResource("BoxShape3D_bsbi4")
 
-[node name="Tablet" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09799, 0)
+[node name="GazeTarget2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -0.155638)
+script = ExtResource("2_8u7x8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tablet"]
-mesh = SubResource("BoxMesh_ndb0l")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GazeTarget2"]
+shape = SubResource("BoxShape3D_bsbi4")
 
-[node name="AlignmentContainer3D" parent="Tablet" instance=ExtResource("6_m14mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0566666, 0.00685741)
-extend = 0.283
-is_horizontal = true
-center_children = true
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GazeTarget2"]
+mesh = SubResource("BoxMesh_uurhn")
 
-[node name="AlignmentContainer3D3" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07075, 0, 0)
-extend = -0.12
+[node name="GazeTarget3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 2.43865)
+script = ExtResource("2_8u7x8")
 
-[node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
-pixel_size = 0.0001
-text = "Mo"
-font_size = 128
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GazeTarget3"]
+shape = SubResource("BoxShape3D_fhisi")
 
-[node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
-pixel_size = 0.0001
-text = "Doctor"
-font_size = 128
-
-[node name="AlignmentContainer3D4" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07075, 0, 0)
-extend = -0.12
-
-[node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
-pixel_size = 0.0001
-text = "Mo"
-font_size = 128
-
-[node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
-pixel_size = 0.0001
-text = "Doctor"
-font_size = 128
-
-[node name="AlignmentContainer3D5" parent="Tablet/AlignmentContainer3D" instance=ExtResource("6_m14mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07075, 0, 0)
-extend = -0.12
-
-[node name="Label3D" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
-pixel_size = 0.0001
-text = "Mo"
-font_size = 128
-
-[node name="Doctor" type="Label3D" parent="Tablet/AlignmentContainer3D/AlignmentContainer3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
-pixel_size = 0.0001
-text = "Doctor"
-font_size = 128
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GazeTarget3"]
+mesh = SubResource("BoxMesh_vqst6")

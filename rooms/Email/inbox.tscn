@@ -19,13 +19,14 @@ font_size = 91
 resource_local_to_scene = true
 size = Vector2(0.3, 0.15)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ghglr"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5xddk"]
+viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvvbx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hvve"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ghglr")
+albedo_texture = SubResource("ViewportTexture_5xddk")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qva2"]
@@ -53,7 +54,7 @@ mail_scene = ExtResource("2_p01o0")
 mail_amount = 5
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(0.919145, -0.144375, -0.366508, 1.49012e-08, 0.930415, -0.366508, 0.393919, 0.336874, 0.855186, 0, 0, 0)
+transform = Transform3D(-0.919145, -0.144375, 0.366508, -1.49012e-08, 0.930415, 0.366508, -0.393919, 0.336874, -0.855186, 0, 0, 0)
 
 [node name="Label3D" parent="." instance=ExtResource("3_furkl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -93,7 +94,7 @@ vertical_alignment = 1
 
 [node name="Screen" parent="Label3D" index="1"]
 mesh = SubResource("QuadMesh_x1qpa")
-surface_material_override/0 = SubResource("StandardMaterial3D_vvvbx")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hvve")
 
 [node name="StaticBody3D" parent="Label3D" index="2"]
 screen_size = Vector2(0.3, 0.15)

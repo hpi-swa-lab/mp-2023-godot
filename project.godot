@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="VRShell"
-run/main_scene="res://scenes/shell.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+run/main_scene="res://rooms/Debug/Debug.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://vrshell-icon.png"
 
 [autoload]

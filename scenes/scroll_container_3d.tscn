@@ -18,5 +18,5 @@ script = ExtResource("1_6dmnp")
 curve = SubResource("Curve3D_cbwpq")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Internal/Path3D"]
-transform = Transform3D(-0.60971, -0.412623, -0.676753, -4.47034e-08, 0.853813, -0.520579, 0.792623, -0.317403, -0.520579, 0.195303, 0.265618, 0.265618)
+transform = Transform3D(0.60971, 0.412623, 0.676753, -0.792623, 0.317403, 0.520579, 2.98023e-08, -0.853813, 0.520579, 0.195303, 0.265618, 0.265618)
 progress = 0.450481

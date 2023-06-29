@@ -30,13 +30,14 @@ size = Vector2(12, 15)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ttmcu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3eww6"]
+viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro50s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t63c"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ttmcu")
+albedo_texture = SubResource("ViewportTexture_3eww6")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgjwa"]
@@ -4210,13 +4211,14 @@ default_font_size = 33
 resource_local_to_scene = true
 size = Vector2(3.2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cs3gk"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_saes6"]
+viewport_path = NodePath("Viewport2Din3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1urxt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1bnr"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_cs3gk")
+albedo_texture = SubResource("ViewportTexture_saes6")
 texture_filter = 1
 
 [node name="Classroom" type="Node3D"]
@@ -4348,7 +4350,7 @@ enabled = false
 
 [node name="Screen" parent="Viewport2Din3D2" index="1"]
 mesh = SubResource("QuadMesh_20g21")
-surface_material_override/0 = SubResource("StandardMaterial3D_ro50s")
+surface_material_override/0 = SubResource("StandardMaterial3D_7t63c")
 
 [node name="CollisionShape3D" parent="Viewport2Din3D2/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_sgjwa")
@@ -4402,7 +4404,7 @@ scroll_active = false
 
 [node name="Screen" type="MeshInstance3D" parent="Viewport2Din3D"]
 mesh = SubResource("QuadMesh_a3322")
-surface_material_override/0 = SubResource("StandardMaterial3D_1urxt")
+surface_material_override/0 = SubResource("StandardMaterial3D_p1bnr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Viewport2Din3D"]
 collision_layer = 1048577
