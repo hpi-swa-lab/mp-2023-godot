@@ -258,7 +258,8 @@ transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.03488
 [node name="TextBox" parent="Inbox" index="0" instance=ExtResource("7_q0a42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
 text = "Inbox"
-width = 0.266833
+height = 0.1
+width = 0.1
 enable_handle_bar = false
 hide_box = true
 
@@ -287,11 +288,13 @@ Best, you Mate-Shop24 Team"
 [node name="MailArchery" parent="Inbox/InboxScrollContainer" index="2" instance=ExtResource("8_im45k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.75, 0.25)
 subject = "Archery cancelled"
-from = "Archie"
-to = "You"
+from = "From: Archie"
+to = "To: You"
 body = "Hey,
 
-Sorry guys, I'm still ill and therefore archery class will be cancelled this thursday. I hope we can get together next week.
+Sorry guys, I'm still ill and therefore archery class
+will be cancelled this thursday.
+I hope we can get together next week.
 
 Yours, Archie"
 
@@ -301,12 +304,10 @@ from = "From: Stephany from Platypus Consult"
 to = "To: You"
 body = "Hey Champ,
 
-Today I've got a very exclusive job
-offer for you:
+Today I've got a very exclusive job offer for you:
 Work as a Software Engineer at Platypus Consult.
 
-We offer a competitive compensation
-and flexible working hours
+We offer a competitive compensation and flexible working hours
 100 % remote.
 
 I look forward to hearing from you.

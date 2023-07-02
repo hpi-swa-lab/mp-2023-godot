@@ -96,6 +96,8 @@ func on_pointer_exited():
 
 var in_update = false
 
+var align_padding = 0.02
+
 func apply_properties():
 	if not is_inside_tree():
 		if !Engine.is_editor_hint():
@@ -123,6 +125,15 @@ func apply_properties():
 
 	if resize_box:
 		rearrange()
+	else:
+		reposition_label()
+		var text_width = box_mesh.size.x
+		# Reposition label manually in larger container
+		# (with resize_box the container box will always be about as big as the text box)
+		if alignment == HORIZONTAL_ALIGNMENT_LEFT:
+			label.position.x = - text_width/2 + align_padding
+		if alignment == HORIZONTAL_ALIGNMENT_RIGHT:
+			label.position.x = text_width/2 - align_padding
 	in_update = false
 
 func rearrange():
@@ -143,6 +154,8 @@ func rearrange():
 	reposition_handle(bb)
 
 func reposition_label():
+	label.position.x = 0
+	label.position.y = 0
 	label.position.z = box_mesh.size.z / 2 + z_dist
 
 var handle_bar_padding = 0.1
