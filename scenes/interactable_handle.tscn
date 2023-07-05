@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_4ffi1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_spe0k"]
-height = 0.25
+height = 0.1
 radius = 0.01
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wfjx1"]

@@ -47,3 +47,4 @@ mesh = SubResource("BoxMesh_xrn6j")
 [node name="InteractableHandle" parent="." index="3" node_paths=PackedStringArray("handled_node") instance=ExtResource("3_p2qtr")]
 collision_layer = 1048576
 handled_node = NodePath("..")
+enabled = true
