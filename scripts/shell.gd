@@ -23,8 +23,6 @@ func _ready():
 		L.log("OpenXR not initialized, please check if your headset is connected")
 	G.shell = self
 	right_hand_raycast = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
-#	right_hand.button_released.connect(on_right_hand_button_released)
-#	right_hand.button_pressed.connect(on_right_hand_button_pressed)
 #	active_room = $"Woods Room"
 	room_switcher_menu = $RoomSwitcherMenu
 
@@ -33,6 +31,8 @@ func _ready():
 	left_hand = $"XROrigin3D/Left Hand"
 	right_hand = $"XROrigin3D/Right Hand"
 	
+	right_hand.button_released.connect(on_right_hand_button_released)
+	right_hand.button_pressed.connect(on_right_hand_button_pressed)
 	right_hand.input_vector2_changed.connect(on_right_hand_vec2_changed)
 
 var left_hand : XRController3D : 
@@ -67,9 +67,9 @@ var right_hand_button_pressed_handlers = []
 var right_hand_button_released_handlers = []
 var right_hand_input_vec2_handlers = []
 
-#func on_right_hand_button_pressed(button_name):
-#	for handler in right_hand_button_pressed_handlers:
-#		handler.call(button_name)
+func on_right_hand_button_pressed(button_name):
+	for handler in right_hand_button_pressed_handlers:
+		handler.call(button_name)
 #	if button_name == "ax_button":
 #		room_switcher_menu.visible = !room_switcher_menu.visible
 #		$"Panel Manager".visible = !$"Panel Manager".visible
@@ -90,9 +90,9 @@ var right_hand_input_vec2_handlers = []
 #			elif ray_cast_target.has_method("pointer_pressed"):
 #				ray_cast_target.pointer_pressed(ray_cast_last_collided_at)
 #
-#func on_right_hand_button_released(button_name):
-#	for handler in right_hand_button_released_handlers:
-#		handler.call(button_name)
+func on_right_hand_button_released(button_name):
+	for handler in right_hand_button_released_handlers:
+		handler.call(button_name)
 #	if button_name == "trigger_click":
 #		var ray_cast_menu_result = ray_cast_on_room_switcher_menu()
 #		if ray_cast_menu_result:
@@ -115,6 +115,11 @@ var additional_functions: Array[Node] = []
 func switch_room(room_key):
 	if active_room != null:
 		active_room.queue_free()
+		
+	right_hand_button_pressed_handlers = []
+	right_hand_button_released_handlers = []
+	right_hand_input_vec2_handlers = []
+
 	var new_room = A.apps[room_key]["scene"].instantiate()
 	active_room = new_room
 	add_child(new_room)
