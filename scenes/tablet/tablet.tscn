@@ -1,28 +1,26 @@
-[gd_scene load_steps=14 format=3 uid="uid://cf17obp8yvxf7"]
+[gd_scene load_steps=12 format=3 uid="uid://cf17obp8yvxf7"]
 
 [ext_resource type="Script" path="res://scenes/tablet/tablet.gd" id="1_2rw0r"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_qndli"]
 [ext_resource type="PackedScene" uid="uid://bddj5m7ull6g0" path="res://addons/godot-xr-tools/interactables/interactable_handle.tscn" id="2_kb3fo"]
 [ext_resource type="Script" path="res://scripts/ObjectHandle.gd" id="3_4emeu"]
-[ext_resource type="PackedScene" uid="uid://dkk1dbehe46dy" path="res://scenes/AlignmentContainer3D.tscn" id="4_nv78j"]
-[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="5_vewid"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
 resource_local_to_scene = true
-size = Vector3(0.259544, 0.176181, 0.05)
+size = Vector3(0.505831, 0.409, 0.001)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xigs6"]
-height = 0.3
-radius = 0.01
+height = 0.4
+radius = 0.02
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_q6n0x"]
-top_radius = 0.01
-bottom_radius = 0.01
-height = 0.3
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_6b7bl"]
 resource_local_to_scene = true
-size = Vector3(0.248, 0.175, 0.006)
+size = Vector3(0.5, 0.4, 0.006)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frehn"]
 albedo_color = Color(0.192157, 0.192157, 0.192157, 1)
@@ -30,7 +28,7 @@ metallic = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_wxebs"]
 resource_local_to_scene = true
-size = Vector3(0.23, 0.16, 0.002)
+size = Vector3(0.476, 0.38, 0.002)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmqv7"]
 shading_mode = 0
@@ -39,6 +37,8 @@ shading_mode = 0
 collision_layer = 1048580
 freeze = true
 script = ExtResource("1_2rw0r")
+disabled = false
+enabled = false
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_bogg5")
@@ -52,11 +52,11 @@ hold_method = 1
 ranged_grab_method = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableHandle" index="0"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.13809, 0)
+transform = Transform3D(-4.37114e-08, -1, 3.48787e-16, 1, -4.37114e-08, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, 2.08165e-12, -0.226, 2.08165e-12)
 shape = SubResource("CylinderShape3D_xigs6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableHandle" index="1"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.13809, 0)
+transform = Transform3D(-4.37114e-08, -1, 3.48787e-16, 1, -4.37114e-08, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, 2.08165e-12, -0.226, 2.08165e-12)
 mesh = SubResource("CylinderMesh_q6n0x")
 
 [node name="device" type="MeshInstance3D" parent="." index="2"]
@@ -67,493 +67,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_frehn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 0.003)
 mesh = SubResource("BoxMesh_wxebs")
 surface_material_override/0 = SubResource("StandardMaterial3D_kmqv7")
-
-[node name="AlignmentContainer3D" parent="." index="4" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00414946)
-extend = 0.23
-is_horizontal = true
-center_children = true
-
-[node name="y container" parent="AlignmentContainer3D" index="0" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0985714, 0, 0)
-extend = -0.15
-center_children = true
-
-[node name="empty" type="Node3D" parent="AlignmentContainer3D/y container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/y container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "00:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM2" type="Label3D" parent="AlignmentContainer3D/y container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "02:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM3" type="Label3D" parent="AlignmentContainer3D/y container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "04:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM4" type="Label3D" parent="AlignmentContainer3D/y container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "06:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM5" type="Label3D" parent="AlignmentContainer3D/y container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "08:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM6" type="Label3D" parent="AlignmentContainer3D/y container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "10:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM7" type="Label3D" parent="AlignmentContainer3D/y container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "12:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM8" type="Label3D" parent="AlignmentContainer3D/y container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "14:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM9" type="Label3D" parent="AlignmentContainer3D/y container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "16:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM10" type="Label3D" parent="AlignmentContainer3D/y container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "18:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM11" type="Label3D" parent="AlignmentContainer3D/y container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "20:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Label3DDMM12" type="Label3D" parent="AlignmentContainer3D/y container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "22:00"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="mo container" parent="AlignmentContainer3D" index="1" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0985714, 0, 0)
-extend = -0.15
-center_children = true
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/mo container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Monday"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Node3D" type="Node3D" parent="AlignmentContainer3D/mo container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Node3D2" type="Node3D" parent="AlignmentContainer3D/mo container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-
-[node name="Node3D3" type="Node3D" parent="AlignmentContainer3D/mo container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-
-[node name="Node3D4" type="Node3D" parent="AlignmentContainer3D/mo container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-
-[node name="Node3D5" type="Node3D" parent="AlignmentContainer3D/mo container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-
-[node name="Node3D6" type="Node3D" parent="AlignmentContainer3D/mo container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-
-[node name="Node3D7" type="Node3D" parent="AlignmentContainer3D/mo container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-
-[node name="Node3D8" type="Node3D" parent="AlignmentContainer3D/mo container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-
-[node name="Node3D9" type="Node3D" parent="AlignmentContainer3D/mo container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-
-[node name="Node3D10" type="Node3D" parent="AlignmentContainer3D/mo container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-
-[node name="Node3D11" type="Node3D" parent="AlignmentContainer3D/mo container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-
-[node name="Node3D12" type="Node3D" parent="AlignmentContainer3D/mo container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)
-
-[node name="tue container" parent="AlignmentContainer3D" index="2" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0657143, 0, 0)
-extend = -0.15
-center_children = true
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/tue container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Tuesday"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Node3D" type="Node3D" parent="AlignmentContainer3D/tue container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Node3D2" type="Node3D" parent="AlignmentContainer3D/tue container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-
-[node name="Node3D3" type="Node3D" parent="AlignmentContainer3D/tue container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-
-[node name="Node3D4" type="Node3D" parent="AlignmentContainer3D/tue container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-
-[node name="Node3D5" type="Node3D" parent="AlignmentContainer3D/tue container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-
-[node name="Node3D6" type="Node3D" parent="AlignmentContainer3D/tue container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-
-[node name="Node3D7" type="Node3D" parent="AlignmentContainer3D/tue container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-
-[node name="Node3D8" type="Node3D" parent="AlignmentContainer3D/tue container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-
-[node name="Node3D9" type="Node3D" parent="AlignmentContainer3D/tue container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-
-[node name="Node3D10" type="Node3D" parent="AlignmentContainer3D/tue container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-
-[node name="Node3D11" type="Node3D" parent="AlignmentContainer3D/tue container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-
-[node name="Node3D12" type="Node3D" parent="AlignmentContainer3D/tue container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)
-
-[node name="wed container" parent="AlignmentContainer3D" index="3" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0328571, 0, 0)
-extend = -0.15
-center_children = true
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/wed container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Wednesday"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Node3D" type="Node3D" parent="AlignmentContainer3D/wed container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Node3D2" type="Node3D" parent="AlignmentContainer3D/wed container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-
-[node name="Node3D3" type="Node3D" parent="AlignmentContainer3D/wed container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-
-[node name="Node3D4" type="Node3D" parent="AlignmentContainer3D/wed container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-
-[node name="Node3D5" type="Node3D" parent="AlignmentContainer3D/wed container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-
-[node name="Node3D6" type="Node3D" parent="AlignmentContainer3D/wed container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-
-[node name="Node3D7" type="Node3D" parent="AlignmentContainer3D/wed container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-
-[node name="Node3D8" type="Node3D" parent="AlignmentContainer3D/wed container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-
-[node name="Node3D9" type="Node3D" parent="AlignmentContainer3D/wed container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-
-[node name="Node3D10" type="Node3D" parent="AlignmentContainer3D/wed container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-
-[node name="Node3D11" type="Node3D" parent="AlignmentContainer3D/wed container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-
-[node name="Node3D12" type="Node3D" parent="AlignmentContainer3D/wed container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)
-
-[node name="thu container" parent="AlignmentContainer3D" index="4" instance=ExtResource("4_nv78j")]
-extend = -0.15
-center_children = true
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/thu container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Thursday"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Node3D" type="Node3D" parent="AlignmentContainer3D/thu container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Node3D2" type="Node3D" parent="AlignmentContainer3D/thu container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-
-[node name="Node3D3" type="Node3D" parent="AlignmentContainer3D/thu container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-
-[node name="Node3D4" type="Node3D" parent="AlignmentContainer3D/thu container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-
-[node name="Node3D5" type="Node3D" parent="AlignmentContainer3D/thu container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-
-[node name="Node3D6" type="Node3D" parent="AlignmentContainer3D/thu container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-
-[node name="Node3D7" type="Node3D" parent="AlignmentContainer3D/thu container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-
-[node name="Node3D8" type="Node3D" parent="AlignmentContainer3D/thu container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-
-[node name="Node3D9" type="Node3D" parent="AlignmentContainer3D/thu container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-
-[node name="Node3D10" type="Node3D" parent="AlignmentContainer3D/thu container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-
-[node name="Node3D11" type="Node3D" parent="AlignmentContainer3D/thu container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-
-[node name="Node3D12" type="Node3D" parent="AlignmentContainer3D/thu container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)
-
-[node name="fri container" parent="AlignmentContainer3D" index="5" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0328571, 0, 0)
-extend = -0.15
-center_children = true
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/fri container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Friday"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Node3D" type="Node3D" parent="AlignmentContainer3D/fri container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Node3D2" type="Node3D" parent="AlignmentContainer3D/fri container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-
-[node name="Node3D3" type="Node3D" parent="AlignmentContainer3D/fri container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-
-[node name="Node3D4" type="Node3D" parent="AlignmentContainer3D/fri container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-
-[node name="Node3D5" type="Node3D" parent="AlignmentContainer3D/fri container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-
-[node name="Node3D6" type="Node3D" parent="AlignmentContainer3D/fri container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-
-[node name="Node3D7" type="Node3D" parent="AlignmentContainer3D/fri container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-
-[node name="Node3D8" type="Node3D" parent="AlignmentContainer3D/fri container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-
-[node name="Node3D9" type="Node3D" parent="AlignmentContainer3D/fri container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-
-[node name="Node3D10" type="Node3D" parent="AlignmentContainer3D/fri container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-
-[node name="Node3D11" type="Node3D" parent="AlignmentContainer3D/fri container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-
-[node name="Node3D12" type="Node3D" parent="AlignmentContainer3D/fri container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)
-
-[node name="sat container" parent="AlignmentContainer3D" index="6" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0657143, 0, 0)
-extend = -0.15
-center_children = true
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/sat container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Saturday"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Node3D" type="Node3D" parent="AlignmentContainer3D/sat container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Node3D2" type="Node3D" parent="AlignmentContainer3D/sat container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-
-[node name="Node3D3" type="Node3D" parent="AlignmentContainer3D/sat container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-
-[node name="Node3D4" type="Node3D" parent="AlignmentContainer3D/sat container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-
-[node name="Node3D5" type="Node3D" parent="AlignmentContainer3D/sat container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-
-[node name="Node3D6" type="Node3D" parent="AlignmentContainer3D/sat container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-
-[node name="Node3D7" type="Node3D" parent="AlignmentContainer3D/sat container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-
-[node name="Node3D8" type="Node3D" parent="AlignmentContainer3D/sat container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-
-[node name="Node3D9" type="Node3D" parent="AlignmentContainer3D/sat container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-
-[node name="Node3D10" type="Node3D" parent="AlignmentContainer3D/sat container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-
-[node name="Node3D11" type="Node3D" parent="AlignmentContainer3D/sat container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-
-[node name="Node3D12" type="Node3D" parent="AlignmentContainer3D/sat container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)
-
-[node name="sun container" parent="AlignmentContainer3D" index="7" instance=ExtResource("4_nv78j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0985714, 0, 0)
-extend = -0.15
-center_children = true
-
-[node name="Label3DDMM" type="Label3D" parent="AlignmentContainer3D/sun container" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Sunday"
-font_size = 11
-outline_size = 0
-script = ExtResource("5_vewid")
-intended_viewing_distance = 0.4
-
-[node name="Node3D" type="Node3D" parent="AlignmentContainer3D/sun container" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06875, 0)
-
-[node name="Node3D2" type="Node3D" parent="AlignmentContainer3D/sun container" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05625, 0)
-
-[node name="Node3D3" type="Node3D" parent="AlignmentContainer3D/sun container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04375, 0)
-
-[node name="Node3D4" type="Node3D" parent="AlignmentContainer3D/sun container" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03125, 0)
-
-[node name="Node3D5" type="Node3D" parent="AlignmentContainer3D/sun container" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01875, 0)
-
-[node name="Node3D6" type="Node3D" parent="AlignmentContainer3D/sun container" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0)
-
-[node name="Node3D7" type="Node3D" parent="AlignmentContainer3D/sun container" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0)
-
-[node name="Node3D8" type="Node3D" parent="AlignmentContainer3D/sun container" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01875, 0)
-
-[node name="Node3D9" type="Node3D" parent="AlignmentContainer3D/sun container" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03125, 0)
-
-[node name="Node3D10" type="Node3D" parent="AlignmentContainer3D/sun container" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04375, 0)
-
-[node name="Node3D11" type="Node3D" parent="AlignmentContainer3D/sun container" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05625, 0)
-
-[node name="Node3D12" type="Node3D" parent="AlignmentContainer3D/sun container" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06875, 0)

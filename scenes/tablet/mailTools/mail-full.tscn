@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgck30omle5hw"]
+
+[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="1_chyxq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uldwv"]
+resource_local_to_scene = true
+size = Vector3(0.498, 0.47, 0.006)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elqx3"]
+resource_local_to_scene = true
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uj18o"]
+top_radius = 0.001
+bottom_radius = 0.001
+height = 0.47
+
+[node name="mail-full" type="Node3D"]
+
+[node name="background" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_uldwv")
+surface_material_override/0 = SubResource("StandardMaterial3D_elqx3")
+
+[node name="Divider" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24762, 0, 0.00280762)
+mesh = SubResource("CylinderMesh_uj18o")
+
+[node name="From" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196289, 0.202942, 0.00427246)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "From"
+outline_size = 0
+horizontal_alignment = 0
+autowrap_mode = 2
+script = ExtResource("1_chyxq")
+intended_viewing_distance = 0.4
+
+[node name="Subject" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196289, 0.175293, 0.00427246)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Subject"
+outline_size = 0
+horizontal_alignment = 0
+autowrap_mode = 2
+script = ExtResource("1_chyxq")
+intended_viewing_distance = 0.4
+
+[node name="Body" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196289, 0.134995, 0.00427246)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Body"
+outline_size = 0
+horizontal_alignment = 0
+autowrap_mode = 2
+script = ExtResource("1_chyxq")
+intended_viewing_distance = 0.4

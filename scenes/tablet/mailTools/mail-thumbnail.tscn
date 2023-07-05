@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://cefqxiy74xck5"]
+
+[ext_resource type="Script" path="res://scenes/tablet/mailTools/mail-thumbnail.gd" id="1_56den"]
+[ext_resource type="PackedScene" uid="uid://bddj5m7ull6g0" path="res://addons/godot-xr-tools/interactables/interactable_handle.tscn" id="1_xb6sn"]
+[ext_resource type="Script" path="res://scenes/tablet/mailTools/interactable_handle.gd" id="3_bs7rx"]
+[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="3_u8ylw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rpu8n"]
+resource_local_to_scene = true
+size = Vector3(0.105171, 0.0785472, 0.0134459)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23sbi"]
+resource_local_to_scene = true
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cd7gp"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_23sbi")
+size = Vector3(0.102, 0.075, 0.006)
+
+[node name="mail-thumbnail" type="Node3D"]
+script = ExtResource("1_56den")
+subject = "Test subject"
+body = "this is a test mail i hope it findse"
+
+[node name="InteractableHandle" parent="." instance=ExtResource("1_xb6sn")]
+collision_layer = 1048576
+freeze = true
+script = ExtResource("3_bs7rx")
+picked_up_layer = 65536
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableHandle"]
+shape = SubResource("BoxShape3D_rpu8n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableHandle"]
+mesh = SubResource("BoxMesh_cd7gp")
+
+[node name="subject" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0412197, 0.0315094, 0.00756836)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Test subject..."
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 220.0
+script = ExtResource("3_u8ylw")
+intended_viewing_distance = 0.4
+
+[node name="body" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0412197, 0.00988773, 0.00756836)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "this is a test mail i hope it findse..."
+font_size = 20
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 220.0
+script = ExtResource("3_u8ylw")
+intended_viewing_distance = 0.4
