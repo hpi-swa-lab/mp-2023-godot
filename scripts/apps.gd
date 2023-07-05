@@ -10,7 +10,12 @@ var apps: Dictionary = {
 		"scene" :  preload("res://scenario/vr_objects.tscn"),
 		"icon": "res://assets/img/Woods.png",
 		"name": "VR Objects"
-	}
+	},
+	"tablet_2d" : {
+		"scene" :  preload("res://scenario/tablet_2d.tscn"),
+		"icon": "res://assets/img/Woods.png",
+		"name": "Tablet 2D"
+	},
 }
 
 # Called when the node enters the scene tree for the first time.

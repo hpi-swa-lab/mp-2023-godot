@@ -43,10 +43,12 @@ enabled = false
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_bogg5")
 
-[node name="InteractableHandle" parent="." index="1" instance=ExtResource("2_kb3fo")]
+[node name="InteractableHandle" parent="." index="1" node_paths=PackedStringArray("handled_node") instance=ExtResource("2_kb3fo")]
 collision_layer = 1048576
 freeze = true
 script = ExtResource("3_4emeu")
+handled_node = NodePath("..")
+y_offset = -0.15
 picked_up_layer = 1048576
 hold_method = 1
 ranged_grab_method = 0

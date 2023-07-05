@@ -4186,13 +4186,13 @@ default_font_size = 33
 resource_local_to_scene = true
 size = Vector2(3.2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ax6ub"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bombt"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4f6a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cotcx"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ax6ub")
+albedo_texture = SubResource("ViewportTexture_bombt")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgjwa"]
@@ -4371,7 +4371,7 @@ scroll_active = false
 
 [node name="Screen" type="MeshInstance3D" parent="Viewport2Din3D"]
 mesh = SubResource("QuadMesh_a3322")
-surface_material_override/0 = SubResource("StandardMaterial3D_r4f6a")
+surface_material_override/0 = SubResource("StandardMaterial3D_cotcx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Viewport2Din3D"]
 collision_layer = 1048577
