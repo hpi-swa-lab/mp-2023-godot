@@ -38,6 +38,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m50fj")
 [node name="Label3DDMM" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00756836)
 pixel_size = 0.0004
-font_size = 24
+font_size = 15
+outline_size = 0
 script = ExtResource("4_vu1ja")
 intended_viewing_distance = 0.4
