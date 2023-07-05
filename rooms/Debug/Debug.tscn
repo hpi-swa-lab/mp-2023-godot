@@ -63,11 +63,9 @@ target_position = Vector3(0, 0, -10)
 script = ExtResource("2_gmu72")
 
 [node name="OpenXRHand" type="OpenXRHand" parent="XROrigin3D"]
-visible = false
 hand_skeleton = NodePath("hand_skeleton")
 
 [node name="hand_skeleton" type="Skeleton3D" parent="XROrigin3D/OpenXRHand"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 bones/0/name = "Wrist_L"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.83077e-05, 1.52659e-08, 1.52668e-08, 0.00166774, 0.999999, -1.83077e-05, -0.999999, 0.00166774, 3.86425e-08, -1.86975e-05, 0.0271756)
@@ -252,7 +250,7 @@ bones/25/rotation = Quaternion(0.706524, -6.47993e-06, -8.68672e-06, 0.707689)
 bones/25/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
-transform = Transform3D(0.967042, 0.24582, -0.0663439, -0.0663439, 0.494837, 0.866449, 0.24582, -0.833492, 0.494837, 0.0261569, 0.0891964, -0.0934418)
+transform = Transform3D(0.967042, 0.24582, -0.0663439, -0.0663438, 0.494837, 0.86645, 0.24582, -0.833492, 0.494837, 0.0261569, 0.0891964, -0.0934419)
 bone_name = "Thumb_Tip_L"
 bone_idx = 4
 
@@ -260,7 +258,7 @@ bone_idx = 4
 mesh = SubResource("BoxMesh_c4lj8")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
-transform = Transform3D(0.967526, 0.252326, -0.0150302, -0.0150302, 0.116784, 0.993043, 0.252326, -0.960569, 0.116784, -0.00665802, 0.0427913, -0.169868)
+transform = Transform3D(0.967526, 0.252325, -0.0150303, -0.0150298, 0.116784, 0.993043, 0.252325, -0.96057, 0.116784, -0.00665798, 0.0427912, -0.169868)
 bone_name = "Index_Tip_L"
 bone_idx = 9
 
@@ -268,7 +266,7 @@ bone_idx = 9
 mesh = SubResource("BoxMesh_c4lj8")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
-transform = Transform3D(0.976372, 0.215373, 0.0176349, 0.0176348, -0.160748, 0.986837, 0.215373, -0.96321, -0.160748, 0.000406058, -0.044646, -0.161828)
+transform = Transform3D(0.976373, 0.215373, 0.0176349, 0.0176349, -0.160749, 0.986838, 0.215373, -0.96321, -0.160749, 0.000406065, -0.044646, -0.161828)
 bone_name = "Ring_Tip_L"
 bone_idx = 19
 
@@ -276,7 +274,7 @@ bone_idx = 19
 mesh = SubResource("BoxMesh_c4lj8")
 
 [node name="BoneAttachment3D4" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
-transform = Transform3D(0.971349, 0.235416, 0.0325577, 0.0325576, -0.267517, 0.963003, 0.235416, -0.934352, -0.267517, 0.0109935, -0.0637899, -0.127802)
+transform = Transform3D(0.971349, 0.235415, 0.0325578, 0.0325572, -0.267518, 0.963003, 0.235415, -0.934352, -0.267517, 0.0109935, -0.0637899, -0.127802)
 bone_name = "Little_Tip_L"
 bone_idx = 24
 
@@ -284,7 +282,7 @@ bone_idx = 24
 mesh = SubResource("BoxMesh_c4lj8")
 
 [node name="BoneAttachment3D5" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
-transform = Transform3D(0.98042, 0.196912, 0.00149799, 0.001498, -0.015065, 0.999885, 0.196912, -0.980305, -0.0150651, -0.00327212, -0.00771424, -0.176318)
+transform = Transform3D(0.98042, 0.196912, 0.00149805, 0.001498, -0.0150653, 0.999885, 0.196912, -0.980305, -0.0150654, -0.00327214, -0.00771429, -0.176318)
 bone_name = "Middle_Tip_L"
 bone_idx = 14
 
@@ -292,7 +290,7 @@ bone_idx = 14
 mesh = SubResource("BoxMesh_c4lj8")
 
 [node name="BoneAttachment3D6" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHand/hand_skeleton"]
-transform = Transform3D(1, 3.12364e-06, -3.13861e-06, -3.12371e-06, 1, -1.97886e-05, 3.13854e-06, 1.97889e-05, 1, 0.0307807, -0.0419721, -0.0399505)
+transform = Transform3D(1, 3.12364e-06, -3.13861e-06, -3.1237e-06, 1, -1.9908e-05, 3.13855e-06, 1.9908e-05, 1, 0.0307807, -0.0419721, -0.0399505)
 bone_name = "Palm_L"
 bone_idx = 25
 
