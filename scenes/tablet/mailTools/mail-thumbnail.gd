@@ -5,6 +5,7 @@ signal mail_selected(subject, body, from)
 
 @onready var subjectNode: Label3DDMM = $subject
 @onready var bodyNode: Label3DDMM = $body
+@onready var mesh: MeshInstance3D = $InteractableHandle/MeshInstance3D
 
 @export_multiline var subject = "":
 	set(newVal):
@@ -36,7 +37,6 @@ func _process(delta):
 	pass
 	
 func updateColor():
-	var mesh = $InteractableHandle/MeshInstance3D as MeshInstance3D
 	if not mesh:
 		return
 	var material = mesh.mesh.surface_get_material(0) as StandardMaterial3D

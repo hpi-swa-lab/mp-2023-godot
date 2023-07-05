@@ -19,8 +19,6 @@ func _ready():
 	pointer_exited.connect(on_pointer_exited)
 	parent = get_parent()
 	surface = mesh.mesh.surface_get_material(0) as StandardMaterial3D
-	if parent.selected:
-		surface.albedo_color = colorSelected
 
 var initialized = false
 func ready_in_shell():
