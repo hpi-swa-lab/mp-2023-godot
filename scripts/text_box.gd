@@ -69,6 +69,10 @@ enum TextAlignment {
 	set(m):
 		margin_y = m
 		apply_properties()
+@export var handle_bar_padding = 0.1:
+	set(h):
+		handle_bar_padding = h
+		apply_properties()
 
 var z_dist = 0.0001
 
@@ -127,6 +131,7 @@ func apply_properties():
 		rearrange()
 	else:
 		reposition_label()
+		reposition_handle(box_mesh.size)
 		var text_width = box_mesh.size.x
 		# Reposition label manually in larger container
 		# (with resize_box the container box will always be about as big as the text box)
@@ -158,10 +163,13 @@ func reposition_label():
 	label.position.y = 0
 	label.position.z = box_mesh.size.z / 2 + z_dist
 
-var handle_bar_padding = 0.1
+var max_handle_bar_length = 0.3
+var min_handle_bar_length = 0.1
 
 func reposition_handle(bb: Vector3):
 	var y_pos = - bb.y/2 - handle_bar_padding
+	handle_mesh.mesh.height = max(min(max_handle_bar_length, bb.x), min_handle_bar_length)
+	handle_collision_shape.shape.height = handle_mesh.mesh.height
 	handle_mesh.position.y = y_pos
 	handle_collision_shape.position.y = y_pos
 	
