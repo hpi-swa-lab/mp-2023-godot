@@ -6,11 +6,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
 resource_local_to_scene = true
-size = Vector3(0.423454, 0.176181, 0.05)
+size = Vector3(0.1, 0.1, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xrn6j"]
 resource_local_to_scene = true
-size = Vector3(0.423454, 0.176181, 0.05)
+size = Vector3(0.1, 0.1, 0.05)
 
 [node name="TextBox" instance=ExtResource("1_dokbo")]
 collision_layer = 1048580
@@ -20,8 +20,8 @@ script = ExtResource("2_k7ew3")
 text = "Hello World!"
 resize_box = true
 depth = 0.05
-height = 0.176181
-width = 0.423454
+height = 0.1
+width = 0.1
 material = null
 text_font_size = 50.0
 alignment = 1

@@ -1,24 +1,15 @@
 extends Node
 
 var apps: Dictionary = {
-	"email" :  {
-		"scene": preload("res://rooms/Email/email_room.tscn"),
+	"meta_slices_2d" :  {
+		"scene": preload("res://scenario/meta_slices_2d.tscn"),
 		"icon": "res://assets/img/Mail.png",
-		"name": "Mail",
-		"additional_functions": { # Path to additional functions, which are added to the XRControllers when the room is loaded
-			"left": "Additional Functions/Left",
-			"right": "Additional Functions/Right"
-		}
+		"name": "Meta Slices 2D",
 	},
-	"adventure" : {
-		"scene" :  preload("res://rooms/Adventure/woods_room.tscn"),
+	"vr_objects" : {
+		"scene" :  preload("res://scenario/vr_objects.tscn"),
 		"icon": "res://assets/img/Woods.png",
-		"name": "Adventure"
-	},
-	"calendar" : {
-		"scene" :  preload("res://rooms/Calendar/calendar_room.tscn"),
-		"icon": "res://assets/img/Calendar.png",
-		"name": "Calendar"
+		"name": "VR Objects"
 	}
 }
 

@@ -44,7 +44,7 @@ func _ready():
 
 	child_picked_up.connect(_on_child_picked_up)
 	mail_path = $Internal/Path3D/PathFollow3D
-	left_controller = G.shell.left_hand
+#	left_controller = G.shell.left_hand
 	
 	position_children()
 
@@ -53,6 +53,7 @@ func _ready():
 func _process(delta):
 	if Engine.is_editor_hint():
 		return
+	if G.shell == null: return
 	left_controller = G.shell.left_hand
 	if left_controller == null: return
 	

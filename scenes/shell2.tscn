@@ -1,0 +1,169 @@
+[gd_scene load_steps=22 format=3 uid="uid://7wcr3kr5ykx1"]
+
+[ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_xsdho"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_1ftie"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_gy2d2"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_i85gb"]
+[ext_resource type="Script" path="res://scenes/room_switch_menu.gd" id="7_t77yp"]
+[ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="8_5fjpo"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="16_l51dr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6jea"]
+albedo_color = Color(1, 0.109804, 0.109804, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ugme5"]
+material = SubResource("StandardMaterial3D_s6jea")
+top_radius = 0.005
+bottom_radius = 0.005
+height = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
+radius = 0.244139
+height = 0.989987
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
+ground_color = Color(0.180392, 0.364706, 0, 1)
+energy_multiplier = 4.83
+
+[sub_resource type="Sky" id="Sky_3nj16"]
+sky_material = SubResource("PhysicalSkyMaterial_0rulv")
+
+[sub_resource type="Environment" id="Environment_fi6uc"]
+background_mode = 2
+sky = SubResource("Sky_3nj16")
+
+[sub_resource type="SystemFont" id="SystemFont_j8pjj"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_24njd"]
+font = SubResource("SystemFont_j8pjj")
+font_size = 78
+
+[sub_resource type="QuadMesh" id="QuadMesh_rhfi7"]
+resource_local_to_scene = true
+size = Vector2(2, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ryrsm"]
+viewport_path = NodePath("RoomSwitcherMenu/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tifit"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_ryrsm")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxoqc"]
+resource_local_to_scene = true
+size = Vector3(2, 1, 0.02)
+
+[node name="Shell" type="Node3D"]
+script = ExtResource("1_3eykf")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
+current = true
+
+[node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_wa404")]
+
+[node name="XRToolsFunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_xsdho")]
+
+[node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("4_1ftie")]
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/Right Hand/RightHand"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+target_position = Vector3(0, 0, -5)
+collision_mask = 9437184
+collide_with_areas = true
+
+[node name="VisibleRay" type="MeshInstance3D" parent="XROrigin3D/Right Hand/RightHand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.47778)
+visible = false
+mesh = SubResource("CylinderMesh_ugme5")
+
+[node name="XRToolsFunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_xsdho")]
+
+[node name="FunctionPointer" parent="XROrigin3D/Right Hand" instance=ExtResource("5_gy2d2")]
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("6_i85gb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595009, 0)
+collision_layer = 0
+collision_mask = 1
+enabled = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
+shape = SubResource("CapsuleShape3D_g4e5f")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fi6uc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
+shadow_enabled = true
+
+[node name="RoomSwitcherMenu" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0995, -1.29705)
+script = ExtResource("7_t77yp")
+screen_size = Vector2(2, 1)
+viewport_size = Vector2(1200, 600)
+transparent = 0
+
+[node name="Viewport" type="SubViewport" parent="RoomSwitcherMenu"]
+disable_3d = true
+gui_embed_subwindows = true
+size = Vector2i(1200, 600)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="RoomSwitcherMenu/Viewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_5fjpo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomSwitcherMenu/Viewport/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="RoomSwitcherMenu/Viewport/Control/VBoxContainer"]
+layout_mode = 2
+text = "Select room to switch to"
+label_settings = SubResource("LabelSettings_24njd")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoomSwitcherMenu/Viewport/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Screen" type="MeshInstance3D" parent="RoomSwitcherMenu"]
+mesh = SubResource("QuadMesh_rhfi7")
+surface_material_override/0 = SubResource("StandardMaterial3D_tifit")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RoomSwitcherMenu"]
+collision_layer = 1048577
+collision_mask = 0
+script = ExtResource("16_l51dr")
+screen_size = Vector2(2, 1)
+viewport_size = Vector2(1200, 600)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomSwitcherMenu/StaticBody3D"]
+shape = SubResource("BoxShape3D_vxoqc")
+
+[connection signal="pointer_entered" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu" method="_on_pointer_entered" flags=18]
+[connection signal="pointer_exited" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu" method="_on_pointer_exited" flags=18]
+[connection signal="pointer_moved" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu/StaticBody3D" method="_on_pointer_moved" flags=18]
+[connection signal="pointer_pressed" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu/StaticBody3D" method="_on_pointer_pressed" flags=18]
+[connection signal="pointer_released" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu/StaticBody3D" method="_on_pointer_released" flags=18]
