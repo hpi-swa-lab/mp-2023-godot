@@ -1,0 +1,447 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd7n1dy8p1qsg"]
+
+[ext_resource type="PackedScene" uid="uid://cf17obp8yvxf7" path="res://scenes/tablet/tablet.tscn" id="1_vjd0f"]
+[ext_resource type="PackedScene" uid="uid://dkk1dbehe46dy" path="res://scenes/AlignmentContainer3D.tscn" id="2_i2b8h"]
+[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="3_uc36d"]
+[ext_resource type="PackedScene" uid="uid://ce7ueq575gn15" path="res://scenes/tablet/assignment_slot.tscn" id="4_gpplc"]
+
+[node name="calendar-tablet" type="Node3D"]
+
+[node name="Tablet" parent="." instance=ExtResource("1_vjd0f")]
+
+[node name="AlignmentContainer3D2" parent="Tablet" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 2.08165e-12, 0.006)
+extend = 0.482
+is_horizontal = true
+center_children = true
+
+[node name="y container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206571, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="empty" type="Node3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+
+[node name="Label3DDMM5" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "08:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="Label3DDMM6" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "10:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="Label3DDMM7" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "12:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="Label3DDMM8" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "14:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="Label3DDMM9" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "16:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="Label3DDMM10" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "18:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="Label3DDMM11" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "20:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="Label3DDMM12" type="Label3D" parent="Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "22:00"
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="mo container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206571, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="Label3DDMM" type="Label3D" parent="Tablet/AlignmentContainer3D2/mo container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Monday"
+font_size = 24
+outline_size = 0
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+show = false
+
+[node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+
+[node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+
+[node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+show = false
+
+[node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+show = false
+
+[node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+show = false
+
+[node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+show = false
+
+[node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+show = false
+
+[node name="tue container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137714, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="Label3DDMM" type="Label3D" parent="Tablet/AlignmentContainer3D2/tue container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Tuesday"
+font_size = 24
+outline_size = 0
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+show = false
+
+[node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+show = false
+
+[node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+show = false
+
+[node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+show = false
+
+[node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+show = false
+
+[node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+show = false
+
+[node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+show = false
+
+[node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+show = false
+
+[node name="wed container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0688571, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="Label3DDMM" type="Label3D" parent="Tablet/AlignmentContainer3D2/wed container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Wednesday"
+font_size = 24
+outline_size = 0
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+show = false
+
+[node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+show = false
+
+[node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+show = false
+
+[node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+show = false
+
+[node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+show = false
+
+[node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+show = false
+
+[node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+show = false
+
+[node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+show = false
+
+[node name="thu container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77556e-17, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="Label3DDMM" type="Label3D" parent="Tablet/AlignmentContainer3D2/thu container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Thursday"
+font_size = 24
+outline_size = 0
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+show = false
+
+[node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+show = false
+
+[node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+show = false
+
+[node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+show = false
+
+[node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+show = false
+
+[node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+show = false
+
+[node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+show = false
+
+[node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+show = false
+
+[node name="fri container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0688571, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="Label3DDMM" type="Label3D" parent="Tablet/AlignmentContainer3D2/fri container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Friday"
+font_size = 24
+outline_size = 0
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+show = false
+
+[node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+show = false
+
+[node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+show = false
+
+[node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+show = false
+
+[node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+show = false
+
+[node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+show = false
+
+[node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+show = false
+
+[node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+show = false
+
+[node name="sat container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137714, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="Label3DDMM" type="Label3D" parent="Tablet/AlignmentContainer3D2/sat container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Saturday"
+font_size = 24
+outline_size = 0
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+show = false
+
+[node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+show = false
+
+[node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+show = false
+
+[node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+show = false
+
+[node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+show = false
+
+[node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+show = false
+
+[node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+show = false
+
+[node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+show = false
+
+[node name="sun container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206571, 0, 0)
+extend = -0.354
+center_children = true
+
+[node name="Label3DDMM" type="Label3D" parent="Tablet/AlignmentContainer3D2/sun container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+pixel_size = 0.0004
+modulate = Color(0, 0, 0, 1)
+text = "Sunday"
+font_size = 24
+outline_size = 0
+script = ExtResource("3_uc36d")
+intended_viewing_distance = 0.4
+
+[node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
+show = false
+
+[node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+show = false
+
+[node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+show = false
+
+[node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
+show = false
+
+[node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
+show = false
+
+[node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
+show = false
+
+[node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
+show = false
+
+[node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
+show = false
