@@ -32,7 +32,6 @@ func _ready():
 
 func on_picked_up():
 	if get_parent().has_signal("child_picked_up"):
-		print("has signal")
 		get_parent().emit_signal("child_picked_up", self)
 
 func set_text():

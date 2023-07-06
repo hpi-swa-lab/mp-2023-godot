@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba8iwv6edf6l2"]
+[gd_scene load_steps=7 format=3 uid="uid://ba8iwv6edf6l2"]
 
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="1_opf1u"]
 [ext_resource type="Script" path="res://scenes/vrobjects/calendar/day.gd" id="2_bm5sp"]
+[ext_resource type="PackedScene" uid="uid://cdox3tps0bhpt" path="res://scenes/vrobjects/calendar/time.tscn" id="3_u12rx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22hem"]
 
@@ -20,7 +21,6 @@ script = ExtResource("2_bm5sp")
 title = "Monday"
 text = ""
 resize_box = false
-depth = 0.05
 height = 0.85
 width = 0.2
 material = SubResource("StandardMaterial3D_22hem")
@@ -35,17 +35,24 @@ mesh = SubResource("BoxMesh_ap1dv")
 
 [node name="InteractableHandle" parent="." index="2"]
 y_offset = -0.505
+press_to_hold = true
+release_mode = -1
+ranged_grab_speed = 20.0
+picked_by_exclude = ""
+picked_by_require = ""
 
 [node name="Label3DDMM" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0251)
 pixel_size = 0.0
 text = ""
 intended_viewing_distance = 0.0
 
 [node name="DayLabel" parent="." index="4" instance=ExtResource("1_opf1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.517216, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476583, 0)
 text = "Monday"
-height = 0.0771111
-width = 0.16534
+height = 0.02
+width = 0.02
 enable_handle_bar = false
 hide_box = true
+
+[node name="Time" parent="." index="5" instance=ExtResource("3_u12rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157355, 0.337878, 0)

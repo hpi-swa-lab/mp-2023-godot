@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbhnjiv1wyar5"]
+[gd_scene load_steps=6 format=3 uid="uid://cbhnjiv1wyar5"]
 
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="1_h85q4"]
 [ext_resource type="Script" path="res://scenes/vrobjects/calendar/calendar.gd" id="1_vy30a"]
+[ext_resource type="PackedScene" uid="uid://cdox3tps0bhpt" path="res://scenes/vrobjects/calendar/time.tscn" id="2_v6bsy"]
 [ext_resource type="PackedScene" uid="uid://ba8iwv6edf6l2" path="res://scenes/vrobjects/calendar/day.tscn" id="3_8c618"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aq3o"]
@@ -10,63 +11,7 @@ albedo_color = Color(0.341176, 0.360784, 1, 1)
 [node name="calendar" type="Node3D"]
 script = ExtResource("1_vy30a")
 
-[node name="Time" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183284, 0.717548, 0)
-
-[node name="8" parent="Time" instance=ExtResource("1_h85q4")]
-text = "08:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
-
-[node name="10" parent="Time" instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-text = "10:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
-
-[node name="12" parent="Time" instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-text = "12:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
-
-[node name="14" parent="Time" instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
-text = "14:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
-
-[node name="16" parent="Time" instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
-text = "16:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
-
-[node name="18" parent="Time" instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-text = "18:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
-
-[node name="20" parent="Time" instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
-text = "20:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
-
-[node name="22" parent="Time" instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
-text = "22:00"
-resize_box = false
-enable_handle_bar = false
-hide_box = true
+[node name="Time" parent="." instance=ExtResource("2_v6bsy")]
 
 [node name="Event" parent="." instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506092, 0.0736202)

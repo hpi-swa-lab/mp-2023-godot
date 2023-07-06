@@ -254,7 +254,8 @@ transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.03488
 [node name="TextBox" parent="Inbox" index="0" instance=ExtResource("7_q0a42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
 text = "Inbox"
-width = 0.126773
+height = 0.02
+width = 0.02
 enable_handle_bar = false
 hide_box = true
 
@@ -281,7 +282,7 @@ We hope to hear from you again soon!
 Best, you Mate-Shop24 Team"
 
 [node name="MailArchery" parent="Inbox/InboxScrollContainer" index="2" instance=ExtResource("8_im45k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.75, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333779, 0.666221, 0.333779)
 subject = "Archery cancelled"
 from = "From: Archie"
 to = "To: You"
@@ -294,6 +295,7 @@ I hope we can get together next week.
 Yours, Archie"
 
 [node name="MailJob" parent="Inbox/InboxScrollContainer" index="3" instance=ExtResource("8_im45k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166221, 0.833779, 0.166221)
 subject = "Software Engineer at Platypus Consult"
 from = "From: Stephany from Platypus Consult"
 to = "To: You"
