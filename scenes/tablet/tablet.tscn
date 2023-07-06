@@ -11,11 +11,11 @@ size = Vector3(0.505831, 0.409, 0.001)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xigs6"]
 height = 0.4
-radius = 0.02
+radius = 0.01
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_q6n0x"]
-top_radius = 0.005
-bottom_radius = 0.005
+top_radius = 0.01
+bottom_radius = 0.01
 height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_6b7bl"]
@@ -49,6 +49,8 @@ freeze = true
 script = ExtResource("3_4emeu")
 handled_node = NodePath("..")
 y_offset = -0.222
+radius = 0.01
+sticky_positions = PackedVector3Array()
 picked_up_layer = 1048576
 hold_method = 1
 ranged_grab_method = 0

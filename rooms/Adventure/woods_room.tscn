@@ -248,15 +248,13 @@ mesh = SubResource("CylinderMesh_rd4ti")
 transform = Transform3D(0.544698, -0.838633, 0, 0.838633, 0.544698, 0, 0, 0, 1, 0, 0.966791, 0)
 shape = SubResource("CylinderShape3D_84buy")
 
-[node name="TextBox" parent="." index="12" instance=ExtResource("7_q0a42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418554, 0)
-
-[node name="Inbox" type="Node3D" parent="." index="13"]
+[node name="Inbox" type="Node3D" parent="." index="12"]
 transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.0348821, -0.244324, 0, 0)
 
 [node name="TextBox" parent="Inbox" index="0" instance=ExtResource("7_q0a42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
 text = "Inbox"
+width = 0.126773
 enable_handle_bar = false
 hide_box = true
 
@@ -311,5 +309,5 @@ I look forward to hearing from you.
 
 Best, Stephany"
 
-[node name="calendar" parent="." index="14" instance=ExtResource("10_e4a0r")]
+[node name="calendar" parent="." index="13" instance=ExtResource("10_e4a0r")]
 transform = Transform3D(-0.0369576, 0, -0.999317, 0, 1, 0, 0.999317, 0, -0.0369576, -1.63056, 1.0446, -0.451383)
