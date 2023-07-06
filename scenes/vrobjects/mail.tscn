@@ -27,7 +27,6 @@ text_font_size = 20.0
 enable_handle_bar = false
 margin_x = 0.02
 margin_y = 0.02
-handle_bar_padding = 0.1
 enabled = false
 
 [node name="Body" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
@@ -42,7 +41,6 @@ alignment = 0
 enable_handle_bar = false
 margin_x = 0.02
 margin_y = 0.02
-handle_bar_padding = 0.1
 enabled = false
 
 [node name="From" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
@@ -57,7 +55,6 @@ alignment = 0
 enable_handle_bar = false
 margin_x = 0.02
 margin_y = 0.02
-handle_bar_padding = 0.1
 enabled = false
 
 [node name="To" parent="TextBoxes" instance=ExtResource("1_gn5o8")]
@@ -72,9 +69,9 @@ alignment = 2
 enable_handle_bar = false
 margin_x = 0.02
 margin_y = 0.02
-handle_bar_padding = 0.1
 enabled = false
 
 [node name="InteractableHandle" parent="." node_paths=PackedStringArray("handled_node") instance=ExtResource("2_82a4p")]
 handled_node = NodePath("..")
-sticky_positions = null
+radius = 0.01
+enabled = true

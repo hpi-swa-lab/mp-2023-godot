@@ -13,7 +13,6 @@ resource_local_to_scene = true
 size = Vector3(0.1, 0.1, 0.05)
 
 [node name="TextBox" instance=ExtResource("1_dokbo")]
-collision_layer = 1048580
 freeze = true
 freeze_mode = 0
 script = ExtResource("2_k7ew3")
@@ -47,4 +46,6 @@ mesh = SubResource("BoxMesh_xrn6j")
 [node name="InteractableHandle" parent="." index="3" node_paths=PackedStringArray("handled_node") instance=ExtResource("3_p2qtr")]
 collision_layer = 1048576
 handled_node = NodePath("..")
+y_offset = -0.1
+radius = 0.01
 enabled = true

@@ -11,7 +11,7 @@ albedo_color = Color(0.341176, 0.360784, 1, 1)
 script = ExtResource("1_vy30a")
 
 [node name="Time" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206364, 0.717548, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183284, 0.717548, 0)
 
 [node name="8" parent="Time" instance=ExtResource("1_h85q4")]
 text = "08:00"
@@ -19,6 +19,7 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="10" parent="Time" instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
@@ -27,6 +28,7 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="12" parent="Time" instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
@@ -35,6 +37,7 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="14" parent="Time" instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
@@ -43,6 +46,7 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="16" parent="Time" instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
@@ -51,6 +55,7 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="18" parent="Time" instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -59,6 +64,7 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="20" parent="Time" instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
@@ -67,6 +73,7 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="22" parent="Time" instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
@@ -75,39 +82,47 @@ resize_box = false
 text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
+enabled = false
 
 [node name="Event" parent="." instance=ExtResource("1_h85q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506092, 0.0200807)
 text = "Event	"
 resize_box = false
-width = 0.25
+width = 0.18
 material = SubResource("StandardMaterial3D_3aq3o")
 text_font_size = 20.0
 handle_bar_padding = 0.02
 
 [node name="Monday" parent="." instance=ExtResource("3_8c618")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.359, 0)
+collision_layer = 1048580
 
 [node name="Tuesday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.359, 0)
+collision_layer = 1048580
 title = "Tuesday"
 
 [node name="Wednesday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, 0.359, 0)
+collision_layer = 1048580
 title = "Wednesday"
 
 [node name="Thursday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69, 0.359, 0)
+collision_layer = 1048580
 title = "Thursday"
 
 [node name="Friday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92, 0.359, 0)
+collision_layer = 1048580
 title = "Friday"
 
 [node name="Saturday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 0.359, 0)
+collision_layer = 1048580
 title = "Saturday"
 
 [node name="Sunday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38, 0.359, 0)
+collision_layer = 1048580
 title = "Sunday"

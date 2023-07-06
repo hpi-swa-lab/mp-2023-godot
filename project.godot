@@ -46,6 +46,7 @@ theme/default_font_multichannel_signed_distance_field=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 
 [xr]
 

@@ -93,10 +93,12 @@ func _ready():
 	apply_properties()
 
 func on_pointer_entered():
-	G.add_outline(mesh)
+	pass
+	#G.add_outline(mesh)
 	
 func on_pointer_exited():
-	G.remove_outline(mesh)
+	pass
+	#G.remove_outline(mesh)
 
 var in_update = false
 
@@ -170,8 +172,8 @@ func reposition_handle(bb: Vector3):
 	var y_pos = - bb.y/2 - handle_bar_padding
 	handle_mesh.mesh.height = max(min(max_handle_bar_length, bb.x), min_handle_bar_length)
 	handle_collision_shape.shape.height = handle_mesh.mesh.height
-	handle_mesh.position.y = y_pos
-	handle_collision_shape.position.y = y_pos
+
+	handle.y_offset = y_pos
 	
 func set_material(m):
 	if !Engine.is_editor_hint():

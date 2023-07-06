@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_4ffi1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_spe0k"]
-height = 0.1
+resource_local_to_scene = true
+height = 0.3
 radius = 0.01
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wfjx1"]
@@ -22,10 +23,13 @@ material = SubResource("StandardMaterial3D_eg5l8")
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="InteractableHandle" instance=ExtResource("1_dhvvy")]
+process_priority = -1
 collision_layer = 1048580
+collision_mask = 1048576
 freeze = true
 script = ExtResource("2_yej3c")
 y_offset = -0.15
+radius = null
 sticky_positions = PackedVector3Array()
 enabled = false
 picked_up_layer = 1048576
