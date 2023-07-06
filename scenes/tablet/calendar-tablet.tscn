@@ -137,32 +137,40 @@ intended_viewing_distance = 0.4
 [node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
+font_size = 24
 
 [node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
+font_size = 24
 
 [node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
+font_size = 24
 
 [node name="tue container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137714, 0, 0)
@@ -182,34 +190,42 @@ intended_viewing_distance = 0.4
 [node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
+font_size = 24
 
 [node name="wed container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0688571, 0, 0)
@@ -229,34 +245,42 @@ intended_viewing_distance = 0.4
 [node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
+font_size = 24
 
 [node name="thu container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77556e-17, 0, 0)
@@ -276,34 +300,42 @@ intended_viewing_distance = 0.4
 [node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
+font_size = 24
 
 [node name="fri container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0688571, 0, 0)
@@ -323,34 +355,42 @@ intended_viewing_distance = 0.4
 [node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
+font_size = 24
 
 [node name="sat container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137714, 0, 0)
@@ -370,34 +410,42 @@ intended_viewing_distance = 0.4
 [node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
+font_size = 24
 
 [node name="sun container" parent="Tablet/AlignmentContainer3D2" instance=ExtResource("2_i2b8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206571, 0, 0)
@@ -417,31 +465,39 @@ intended_viewing_distance = 0.4
 [node name="assignment_slot" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot2" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot3" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot4" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot5" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot6" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot7" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
+font_size = 24
 
 [node name="assignment_slot8" parent="Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("4_gpplc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
+font_size = 24
