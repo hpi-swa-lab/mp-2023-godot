@@ -4,9 +4,8 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bc4mgk7rgyd5j"
 path.s3tc="res://.godot/imported/Computer_1319 Computer.png-39fc57b0045b6a47df9c759b966c4e7c.s3tc.ctex"
-path.etc2="res://.godot/imported/Computer_1319 Computer.png-39fc57b0045b6a47df9c759b966c4e7c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -14,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/meshes/classroom/Computer_1319 Computer.png"
-dest_files=["res://.godot/imported/Computer_1319 Computer.png-39fc57b0045b6a47df9c759b966c4e7c.s3tc.ctex", "res://.godot/imported/Computer_1319 Computer.png-39fc57b0045b6a47df9c759b966c4e7c.etc2.ctex"]
+dest_files=["res://.godot/imported/Computer_1319 Computer.png-39fc57b0045b6a47df9c759b966c4e7c.s3tc.ctex"]
 
 [params]
 

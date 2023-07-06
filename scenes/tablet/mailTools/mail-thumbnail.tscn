@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rpu8n"]
 resource_local_to_scene = true
-size = Vector3(0.105171, 0.0785472, 0.0134459)
+size = Vector3(0.105, 0.079, 0.0134459)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23sbi"]
 resource_local_to_scene = true
@@ -16,23 +16,23 @@ shading_mode = 0
 [sub_resource type="BoxMesh" id="BoxMesh_cd7gp"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_23sbi")
-size = Vector3(0.102, 0.075, 0.006)
+size = Vector3(0.105, 0.079, 0.006)
 
 [node name="mail-thumbnail" type="Node3D"]
 script = ExtResource("1_56den")
 subject = "Test subject"
 body = "this is a test mail i hope it findse"
 
-[node name="InteractableHandle" parent="." instance=ExtResource("1_xb6sn")]
+[node name="Background" parent="." instance=ExtResource("1_xb6sn")]
 collision_layer = 1048576
 freeze = true
 script = ExtResource("3_bs7rx")
 picked_up_layer = 65536
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableHandle"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background"]
 shape = SubResource("BoxShape3D_rpu8n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableHandle"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background"]
 mesh = SubResource("BoxMesh_cd7gp")
 
 [node name="subject" type="Label3D" parent="."]

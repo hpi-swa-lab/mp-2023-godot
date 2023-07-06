@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/tablet/tablet.gd" id="1_2rw0r"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_qndli"]
-[ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="3_kwiwn"]
+[ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="3_2j2xh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
 resource_local_to_scene = true
@@ -42,7 +42,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 0.0
 mesh = SubResource("BoxMesh_wxebs")
 surface_material_override/0 = SubResource("StandardMaterial3D_kmqv7")
 
-[node name="InteractableHandle" parent="." index="3" node_paths=PackedStringArray("handled_node") instance=ExtResource("3_kwiwn")]
+[node name="InteractableHandle" parent="." index="3" node_paths=PackedStringArray("handled_node") instance=ExtResource("3_2j2xh")]
 handled_node = NodePath("..")
 y_offset = -0.23
-sticky_positions = PackedVector3Array()
