@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://21krsh2yvxqn"]
+[gd_scene load_steps=8 format=3 uid="uid://21krsh2yvxqn"]
 
 [ext_resource type="PackedScene" uid="uid://bddj5m7ull6g0" path="res://addons/godot-xr-tools/interactables/interactable_handle.tscn" id="1_dhvvy"]
 [ext_resource type="Script" path="res://scripts/ObjectHandle.gd" id="2_yej3c"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="3_4ffi1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_spe0k"]
-height = 0.3
+height = 0.1
 radius = 0.01
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wfjx1"]
@@ -13,11 +14,20 @@ top_radius = 0.01
 bottom_radius = 0.01
 height = 0.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eg5l8"]
+albedo_color = Color(1, 0.188235, 0.188235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ttjbq"]
+material = SubResource("StandardMaterial3D_eg5l8")
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="InteractableHandle" instance=ExtResource("1_dhvvy")]
 collision_layer = 1048580
 freeze = true
 script = ExtResource("2_yej3c")
 y_offset = -0.15
+sticky_positions = PackedVector3Array()
+enabled = false
 picked_up_layer = 1048576
 hold_method = 1
 ranged_grab_method = 0
@@ -29,3 +39,15 @@ shape = SubResource("CylinderShape3D_spe0k")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.15, 0)
 mesh = SubResource("CylinderMesh_wfjx1")
+
+[node name="InternalPickable" parent="." index="2" instance=ExtResource("3_4ffi1")]
+collision_layer = 0
+collision_mask = 0
+freeze = true
+freeze_mode = 0
+hold_method = 1
+ranged_grab_method = 0
+
+[node name="DebugMesh" type="MeshInstance3D" parent="InternalPickable" index="1"]
+visible = false
+mesh = SubResource("BoxMesh_ttjbq")

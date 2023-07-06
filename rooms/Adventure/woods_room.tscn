@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b5wkmvwm7um16"]
+[gd_scene load_steps=40 format=3 uid="uid://b5wkmvwm7um16"]
 
 [ext_resource type="PackedScene" uid="uid://cpa41rxcvp3p1" path="res://scenes/Room.tscn" id="1_3xsji"]
 [ext_resource type="Script" path="res://rooms/Adventure/Bow.gd" id="3_gxru2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="7_q0a42"]
 [ext_resource type="PackedScene" uid="uid://bnifb8cd4ymis" path="res://scenes/vrobjects/mail.tscn" id="8_im45k"]
 [ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="8_rm0cs"]
+[ext_resource type="PackedScene" uid="uid://cbhnjiv1wyar5" path="res://scenes/vrobjects/calendar/calendar.tscn" id="10_e4a0r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhvkn"]
 albedo_color = Color(0.470588, 0.921569, 1, 1)
@@ -249,8 +250,6 @@ shape = SubResource("CylinderShape3D_84buy")
 
 [node name="TextBox" parent="." index="12" instance=ExtResource("7_q0a42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418554, 0)
-height = 0.1
-width = 0.1
 
 [node name="Inbox" type="Node3D" parent="." index="13"]
 transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.0348821, -0.244324, 0, 0)
@@ -258,8 +257,6 @@ transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.03488
 [node name="TextBox" parent="Inbox" index="0" instance=ExtResource("7_q0a42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
 text = "Inbox"
-height = 0.1
-width = 0.1
 enable_handle_bar = false
 hide_box = true
 
@@ -313,3 +310,6 @@ We offer a competitive compensation and flexible working hours
 I look forward to hearing from you.
 
 Best, Stephany"
+
+[node name="calendar" parent="." index="14" instance=ExtResource("10_e4a0r")]
+transform = Transform3D(-0.0369576, 0, -0.999317, 0, 1, 0, 0.999317, 0, -0.0369576, -1.63056, 1.0446, -0.451383)
