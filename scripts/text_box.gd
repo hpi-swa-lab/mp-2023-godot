@@ -1,10 +1,10 @@
 @tool
-extends XRToolsPickable
+extends StaticBody3D
 
 enum TextAlignment {
 	LEFT,
 	CENTER,
-	RIGHT
+	RIGHT	
 }
 
 @export_multiline var text: String: 
@@ -37,9 +37,9 @@ enum TextAlignment {
 		material = m
 		apply_properties()
 
-@export var text_font_size : float :
-	set(t):
-		text_font_size = t
+@export var intended_viewing_distance : float :
+	set(i):
+		intended_viewing_distance = i
 		apply_properties()
 
 @export var alignment: TextAlignment = TextAlignment.CENTER :
@@ -57,7 +57,7 @@ enum TextAlignment {
 		hide_box = h
 		apply_properties()
 
-@onready var label: Label3D = $Label
+@onready var label: Label3DDMM = $Label3DDMM
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
@@ -93,10 +93,12 @@ func _ready():
 	apply_properties()
 
 func on_pointer_entered():
-	G.add_outline(mesh)
+	pass
+	#G.add_outline(mesh)
 	
 func on_pointer_exited():
-	G.remove_outline(mesh)
+	pass
+	#G.remove_outline(mesh)
 
 var in_update = false
 
@@ -113,6 +115,7 @@ func apply_properties():
 
 	box_mesh.size.y = height
 	box_mesh.size.x = width
+	box_mesh.size.z = depth
 	collision_box.size = box_mesh.size
 
 	label.horizontal_alignment = int(alignment)
@@ -122,7 +125,7 @@ func apply_properties():
 	handle.collision_layer = 0b00000000_00010000_00000000_00000000 if enable_handle_bar else 0
 
 	label.text = text
-	label.font_size = text_font_size
+	label.intended_viewing_distance = intended_viewing_distance
 
 	box_mesh.material = material
 	mesh.visible = !hide_box
@@ -170,8 +173,8 @@ func reposition_handle(bb: Vector3):
 	var y_pos = - bb.y/2 - handle_bar_padding
 	handle_mesh.mesh.height = max(min(max_handle_bar_length, bb.x), min_handle_bar_length)
 	handle_collision_shape.shape.height = handle_mesh.mesh.height
-	handle_mesh.position.y = y_pos
-	handle_collision_shape.position.y = y_pos
+
+	handle.y_offset = y_pos
 	
 func set_material(m):
 	if !Engine.is_editor_hint():

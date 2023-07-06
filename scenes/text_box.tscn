@@ -1,44 +1,43 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnuiyxtvphcor"]
 
-[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_dokbo"]
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="2_k7ew3"]
+[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="3_l47e6"]
+[ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="3_p2qtr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
 resource_local_to_scene = true
-size = Vector3(0.1, 0.1, 0.05)
+size = Vector3(0.22701, 0.0687556, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xrn6j"]
 resource_local_to_scene = true
-size = Vector3(0.1, 0.1, 0.05)
+size = Vector3(0.22701, 0.0687556, 0.05)
 
-[node name="TextBox" instance=ExtResource("1_dokbo")]
-collision_layer = 1048580
-freeze = true
-freeze_mode = 0
+[node name="TextBox" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 196615
 script = ExtResource("2_k7ew3")
 text = "Hello World!"
 resize_box = true
 depth = 0.05
-height = 0.1
-width = 0.1
-material = null
-text_font_size = 50.0
-alignment = 1
-enable_handle_bar = true
-hide_box = false
-margin_x = 0.1
-margin_y = 0.1
-handle_bar_padding = 0.1
-ranged_grab_method = 0
+height = 0.0687556
+width = 0.22701
+intended_viewing_distance = 1.0
+handle_bar_padding = 0.05
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_bogg5")
 
-[node name="Label" type="Label3D" parent="." index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xrn6j")
+
+[node name="InteractableHandle" parent="." node_paths=PackedStringArray("handled_node") instance=ExtResource("3_p2qtr")]
+collision_layer = 1048576
+handled_node = NodePath("..")
+y_offset = -0.0743778
+enabled = true
+
+[node name="Label3DDMM" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0251)
 pixel_size = 0.001
 text = "Hello World!"
-font_size = 50
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
-mesh = SubResource("BoxMesh_xrn6j")
+script = ExtResource("3_l47e6")

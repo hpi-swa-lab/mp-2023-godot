@@ -248,19 +248,15 @@ mesh = SubResource("CylinderMesh_rd4ti")
 transform = Transform3D(0.544698, -0.838633, 0, 0.838633, 0.544698, 0, 0, 0, 1, 0, 0.966791, 0)
 shape = SubResource("CylinderShape3D_84buy")
 
-[node name="TextBox" parent="." index="12" instance=ExtResource("7_q0a42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418554, 0)
-handle_bar_padding = 0.1
-
-[node name="Inbox" type="Node3D" parent="." index="13"]
+[node name="Inbox" type="Node3D" parent="." index="12"]
 transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.0348821, -0.244324, 0, 0)
 
 [node name="TextBox" parent="Inbox" index="0" instance=ExtResource("7_q0a42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
 text = "Inbox"
+width = 0.126773
 enable_handle_bar = false
 hide_box = true
-handle_bar_padding = 0.1
 
 [node name="InboxScrollContainer" parent="Inbox" index="1" instance=ExtResource("8_rm0cs")]
 transform = Transform3D(0.993984, 0, 0.109526, 0, 1, 0, -0.109526, 0, 0.993984, 0.0190916, 0.484127, 0.0117028)
@@ -285,7 +281,7 @@ We hope to hear from you again soon!
 Best, you Mate-Shop24 Team"
 
 [node name="MailArchery" parent="Inbox/InboxScrollContainer" index="2" instance=ExtResource("8_im45k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333779, 0.666221, 0.333779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.75, 0.25)
 subject = "Archery cancelled"
 from = "From: Archie"
 to = "To: You"
@@ -298,7 +294,6 @@ I hope we can get together next week.
 Yours, Archie"
 
 [node name="MailJob" parent="Inbox/InboxScrollContainer" index="3" instance=ExtResource("8_im45k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166221, 0.833779, 0.166221)
 subject = "Software Engineer at Platypus Consult"
 from = "From: Stephany from Platypus Consult"
 to = "To: You"
@@ -314,5 +309,5 @@ I look forward to hearing from you.
 
 Best, Stephany"
 
-[node name="calendar" parent="." index="14" instance=ExtResource("10_e4a0r")]
+[node name="calendar" parent="." index="13" instance=ExtResource("10_e4a0r")]
 transform = Transform3D(-0.0369576, 0, -0.999317, 0, 1, 0, 0.999317, 0, -0.0369576, -1.63056, 1.0446, -0.451383)

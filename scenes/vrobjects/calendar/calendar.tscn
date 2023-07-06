@@ -11,12 +11,11 @@ albedo_color = Color(0.341176, 0.360784, 1, 1)
 script = ExtResource("1_vy30a")
 
 [node name="Time" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206364, 0.717548, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183284, 0.717548, 0)
 
 [node name="8" parent="Time" instance=ExtResource("1_h85q4")]
 text = "08:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
@@ -24,7 +23,6 @@ hide_box = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 text = "10:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
@@ -32,7 +30,6 @@ hide_box = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 text = "12:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
@@ -40,7 +37,6 @@ hide_box = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 text = "14:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
@@ -48,7 +44,6 @@ hide_box = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 text = "16:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
@@ -56,7 +51,6 @@ hide_box = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 text = "18:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
@@ -64,7 +58,6 @@ hide_box = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 text = "20:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
@@ -72,42 +65,63 @@ hide_box = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 text = "22:00"
 resize_box = false
-text_font_size = 30.0
 enable_handle_bar = false
 hide_box = true
 
 [node name="Event" parent="." instance=ExtResource("1_h85q4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506092, 0.0200807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506092, 0.0736202)
 text = "Event	"
 resize_box = false
-width = 0.25
+depth = 0.02
+height = 0.0674222
+width = 0.18
 material = SubResource("StandardMaterial3D_3aq3o")
-text_font_size = 20.0
 handle_bar_padding = 0.02
 
 [node name="Monday" parent="." instance=ExtResource("3_8c618")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.359, 0)
+collision_layer = 1048580
+margin_x = 0.1
+margin_y = 0.1
 
 [node name="Tuesday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.359, 0)
+collision_layer = 1048580
 title = "Tuesday"
+margin_x = 0.1
+margin_y = 0.1
 
 [node name="Wednesday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, 0.359, 0)
+collision_layer = 1048580
 title = "Wednesday"
+margin_x = 0.1
+margin_y = 0.1
 
 [node name="Thursday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69, 0.359, 0)
+collision_layer = 1048580
 title = "Thursday"
+margin_x = 0.1
+margin_y = 0.1
 
 [node name="Friday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92, 0.359, 0)
+collision_layer = 1048580
 title = "Friday"
+margin_x = 0.1
+margin_y = 0.1
 
 [node name="Saturday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 0.359, 0)
+collision_layer = 1048580
 title = "Saturday"
+margin_x = 0.1
+margin_y = 0.1
 
 [node name="Sunday" parent="." instance=ExtResource("3_8c618")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 0.359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38, 0.359, 0)
+collision_layer = 1048580
 title = "Sunday"
+margin_x = 0.1
+margin_y = 0.1

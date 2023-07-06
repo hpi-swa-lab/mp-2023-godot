@@ -10,7 +10,7 @@ extends "res://scripts/text_box.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	apply_properties()
 
 func apply_properties():
 	super.apply_properties()
