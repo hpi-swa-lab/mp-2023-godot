@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnuiyxtvphcor"]
+[gd_scene load_steps=5 format=3 uid="uid://dnuiyxtvphcor"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_dokbo"]
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="2_k7ew3"]
-[ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="3_p2qtr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
 resource_local_to_scene = true
@@ -43,8 +42,3 @@ font_size = 50
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
 mesh = SubResource("BoxMesh_xrn6j")
-
-[node name="InteractableHandle" parent="." index="3" node_paths=PackedStringArray("handled_node") instance=ExtResource("3_p2qtr")]
-collision_layer = 1048576
-handled_node = NodePath("..")
-enabled = true

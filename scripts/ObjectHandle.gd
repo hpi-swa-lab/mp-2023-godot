@@ -30,9 +30,10 @@ var original_rotation # Rotation used when sticking
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	pointer_entered.connect(on_pointer_entered)
-	pointer_exited.connect(on_pointer_exited)
-	original_rotation = global_rotation
+	if not Engine.is_editor_hint():
+		pointer_entered.connect(on_pointer_entered)
+		pointer_exited.connect(on_pointer_exited)
+		original_rotation = global_rotation
 
 var initialized = false
 func ready_in_shell():
@@ -91,6 +92,8 @@ var sticking = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Engine.is_editor_hint():
+		return
 	if is_currently_picked_up:
 		if len(sticky_positions)>0:
 			for p in sticky_positions:

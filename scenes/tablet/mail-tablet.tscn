@@ -21,28 +21,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181584, 0.18889, 0.0028839
 extend = -0.378
 
 [node name="mail-thumbnail" parent="Tablet/AlignmentContainer3D" instance=ExtResource("3_c8v15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0378, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04725, 0)
 subject = "Test	"
 body = "1"
 selected = true
 
 [node name="mail-thumbnail2" parent="Tablet/AlignmentContainer3D" instance=ExtResource("3_c8v15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1134, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04725, 0)
 subject = "2"
 body = "Body"
 
 [node name="mail-thumbnail3" parent="Tablet/AlignmentContainer3D" instance=ExtResource("3_c8v15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.189, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14175, 0)
 subject = "3"
 body = "three"
 
 [node name="mail-thumbnail4" parent="Tablet/AlignmentContainer3D" instance=ExtResource("3_c8v15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2646, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23625, 0)
 subject = "4"
 body = "four"
 
 [node name="mail-thumbnail5" parent="Tablet/AlignmentContainer3D" instance=ExtResource("3_c8v15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3402, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33075, 0)
 subject = "5"
 body = "adsada"
 
