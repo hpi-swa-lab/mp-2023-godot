@@ -26,9 +26,10 @@ var original_rotation # Rotation used when sticking
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	pointer_entered.connect(on_pointer_entered)
-	pointer_exited.connect(on_pointer_exited)
-	original_rotation = global_rotation
+	if !Engine.is_editor_hint():
+		pointer_entered.connect(on_pointer_entered)
+		pointer_exited.connect(on_pointer_exited)
+		original_rotation = global_rotation
 	apply_properties()
 
 var initialized = false
@@ -50,6 +51,7 @@ func on_pointer_exited():
 
 @onready var internal_pickable = $"InternalPickable"
 var is_currently_picked_up = false
+var _original_parent = null
 
 func on_button_press(button_name):
 	if button_name == "grip_click":
@@ -62,14 +64,29 @@ func on_button_press(button_name):
 			internal_pickable.pick_up(G.shell.right_hand_pickup, G.shell.right_hand)
 
 			is_currently_picked_up = true
+			_original_parent = get_parent()
+			_original_parent.remove_child(self)
+			internal_pickable.add_child(self)
+
+			# Hacky way to enable this to be reparented to internalpickable (to remove shaking of handle)
+			G.shell.right_hand_pickup.picked_up_object = null 
+
 			if handled_node.has_signal("on_handle_pick_up"):
 				handled_node.emit_signal("on_handle_pick_up")
 	
 func on_button_release(button_name):
 	if button_name == "grip_click":
 		if is_currently_picked_up:
+
 			is_currently_picked_up = false
+			internal_pickable.remove_child(self)
+			_original_parent.add_child(self)
+
+			# see on_button_press (hacky way must be reversed here)
+			G.shell.right_hand_pickup.picked_up_object = internal_pickable
 			G.shell.right_hand_pickup.drop_object()
+
+			
 
 			if handled_node.has_signal("on_handle_dropped"):
 				handled_node.emit_signal("on_handle_dropped")
@@ -97,17 +114,18 @@ var sticking = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_currently_picked_up:
-		if len(sticky_positions)>0:
-			for p in sticky_positions:
-				var global_sticky_position = p * sticky_position_relative_to_node.transform.inverse()
-				var dist = global_sticky_position.distance_to(internal_pickable.global_position)
-				if dist < sticky_distance:
-					sticking = true
-					global_position = global_sticky_position
-					global_rotation = original_rotation
-					break
-				sticking = false
-		if !sticking:
-			global_transform = internal_pickable.global_transform
-		handled_node.global_transform = global_transform
+	if !Engine.is_editor_hint():
+		if is_currently_picked_up:
+			if len(sticky_positions)>0:
+				for p in sticky_positions:
+					var global_sticky_position = p * sticky_position_relative_to_node.transform.inverse()
+					var dist = global_sticky_position.distance_to(internal_pickable.global_position)
+					if dist < sticky_distance:
+						sticking = true
+						global_position = global_sticky_position
+						global_rotation = original_rotation
+						break
+					sticking = false
+			if !sticking:
+				global_transform = internal_pickable.global_transform
+			handled_node.global_transform = global_transform
