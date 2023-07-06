@@ -9,7 +9,7 @@ signal pointer_exited
 var pointer_on_this = false
 
 @export var handled_node: Node3D
-@export var y_offset = -0.15:
+@export var y_offset = -0.23:
 	set(o):
 		if !Engine.is_editor_hint():
 			return
@@ -34,6 +34,8 @@ func _ready():
 		pointer_entered.connect(on_pointer_entered)
 		pointer_exited.connect(on_pointer_exited)
 		original_rotation = global_rotation
+		mesh.position.y = y_offset
+		collision_shape.position.y = y_offset
 
 var initialized = false
 func ready_in_shell():
