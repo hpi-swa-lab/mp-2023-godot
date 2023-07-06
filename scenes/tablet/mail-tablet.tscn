@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dkheve6pgcctk"]
 
 [ext_resource type="Script" path="res://scenes/tablet/mail-tablet.gd" id="1_ne8gw"]
-[ext_resource type="PackedScene" uid="uid://cf17obp8yvxf7" path="res://scenes/tablet/tablet.tscn" id="1_okhe7"]
+[ext_resource type="PackedScene" uid="uid://cf0n531lmrqhe" path="res://scenes/tablet/tablet.tscn" id="1_okhe7"]
 [ext_resource type="PackedScene" uid="uid://dkk1dbehe46dy" path="res://scenes/AlignmentContainer3D.tscn" id="2_xe7wa"]
 [ext_resource type="PackedScene" uid="uid://cefqxiy74xck5" path="res://scenes/tablet/mailTools/mail-thumbnail.tscn" id="3_c8v15"]
 [ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="4_eepr2"]
@@ -53,6 +53,7 @@ modulate = Color(0, 0, 0, 1)
 text = "From"
 outline_size = 0
 horizontal_alignment = 0
+vertical_alignment = 0
 autowrap_mode = 2
 script = ExtResource("4_eepr2")
 intended_viewing_distance = 0.4
@@ -64,6 +65,7 @@ modulate = Color(0, 0, 0, 1)
 text = "Subject"
 outline_size = 0
 horizontal_alignment = 0
+vertical_alignment = 0
 autowrap_mode = 2
 script = ExtResource("4_eepr2")
 intended_viewing_distance = 0.4
@@ -75,6 +77,7 @@ modulate = Color(0, 0, 0, 1)
 text = "Body"
 outline_size = 0
 horizontal_alignment = 0
+vertical_alignment = 0
 autowrap_mode = 2
 script = ExtResource("4_eepr2")
 intended_viewing_distance = 0.4

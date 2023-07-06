@@ -1,102 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk7ekkw7j06bv"]
+[gd_scene load_steps=7 format=3 uid="uid://dk7ekkw7j06bv"]
 
 [ext_resource type="PackedScene" uid="uid://capecerw7cjrl" path="res://rooms/classroom/classroom.tscn" id="1_oy6k8"]
-[ext_resource type="Script" path="res://scenes/tablet/mail-tablet.gd" id="2_sfs3s"]
-[ext_resource type="PackedScene" uid="uid://cf17obp8yvxf7" path="res://scenes/tablet/tablet.tscn" id="3_8gxgb"]
+[ext_resource type="PackedScene" uid="uid://cf0n531lmrqhe" path="res://scenes/tablet/tablet.tscn" id="3_8gxgb"]
 [ext_resource type="PackedScene" uid="uid://dkk1dbehe46dy" path="res://scenes/AlignmentContainer3D.tscn" id="4_jio3t"]
-[ext_resource type="PackedScene" uid="uid://cefqxiy74xck5" path="res://scenes/tablet/mailTools/mail-thumbnail.tscn" id="5_46g75"]
 [ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="6_lp3e2"]
 [ext_resource type="PackedScene" uid="uid://ce7ueq575gn15" path="res://scenes/tablet/assignment_slot.tscn" id="7_majns"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_hmxee"]
-top_radius = 0.001
-bottom_radius = 0.001
-height = 0.376
+[ext_resource type="PackedScene" uid="uid://dkheve6pgcctk" path="res://scenes/tablet/mail-tablet.tscn" id="8_adt8j"]
 
 [node name="tablet_2d" type="Node3D"]
 
 [node name="Classroom" parent="." instance=ExtResource("1_oy6k8")]
-
-[node name="mail-tablet" type="Node3D" parent="."]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.432423, 1.56176, 0.194309)
-script = ExtResource("2_sfs3s")
-
-[node name="Tablet" parent="mail-tablet" instance=ExtResource("3_8gxgb")]
-
-[node name="AlignmentContainer3D" parent="mail-tablet/Tablet" instance=ExtResource("4_jio3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181584, 0.18889, 0)
-extend = -0.378
-
-[node name="mail-thumbnail" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("5_46g75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0378, 0)
-subject = "Clean up your room"
-body = "Hi Son, please clean up your room.
-
-Smell ya later"
-from = "Yo Mama"
-selected = true
-
-[node name="mail-thumbnail2" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("5_46g75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1134, 0)
-subject = "2asdfafdaf"
-body = "Bodydfadfasdf"
-from = "asdfasdfasdfsdf"
-
-[node name="mail-thumbnail3" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("5_46g75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.189, 0)
-subject = "3dfadf"
-body = "threedfasdfasdfas"
-from = "dfsadfasfdsafsadf"
-
-[node name="mail-thumbnail4" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("5_46g75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2646, 0)
-subject = "4dfaasdfasdfasdf"
-body = "foursadfadfasd"
-from = "fsadfasdfasdfdasfasdf"
-
-[node name="mail-thumbnail5" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("5_46g75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3402, 0)
-subject = "5asdfsadfasfdsdfsdafadaffbds"
-body = "adsadadfadfasdfasdfasdffdsafdfsadfasdffbad"
-from = "fdsdfasdfassadgafdgbgngbdfbn rqnbvf"
-
-[node name="From" type="Label3D" parent="mail-tablet/Tablet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0961474, 0.166106, 0.0048978)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "From"
-outline_size = 0
-horizontal_alignment = 0
-autowrap_mode = 2
-script = ExtResource("6_lp3e2")
-intended_viewing_distance = 0.4
-
-[node name="Subject" type="Label3D" parent="mail-tablet/Tablet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0961474, 0.138457, 0.0048978)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Subject"
-outline_size = 0
-horizontal_alignment = 0
-autowrap_mode = 2
-script = ExtResource("6_lp3e2")
-intended_viewing_distance = 0.4
-
-[node name="Body" type="Label3D" parent="mail-tablet/Tablet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0961474, 0.0981584, 0.0048978)
-pixel_size = 0.0004
-modulate = Color(0, 0, 0, 1)
-text = "Body"
-outline_size = 0
-horizontal_alignment = 0
-autowrap_mode = 2
-script = ExtResource("6_lp3e2")
-intended_viewing_distance = 0.4
-
-[node name="divider" type="MeshInstance3D" parent="mail-tablet/Tablet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.126731, 0, 0.00330406)
-mesh = SubResource("CylinderMesh_hmxee")
-skeleton = NodePath("../..")
 
 [node name="calendar-tablet" type="Node3D" parent="."]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.820088, 1.52212, 0.356907)
@@ -534,8 +447,53 @@ show = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
 show = false
 
-[connection signal="mail_selected" from="mail-tablet/Tablet/AlignmentContainer3D/mail-thumbnail" to="mail-tablet" method="_on_mailthumbnail_mail_selected" flags=18]
-[connection signal="mail_selected" from="mail-tablet/Tablet/AlignmentContainer3D/mail-thumbnail2" to="mail-tablet" method="_on_mailthumbnail_mail_selected" flags=18]
-[connection signal="mail_selected" from="mail-tablet/Tablet/AlignmentContainer3D/mail-thumbnail3" to="mail-tablet" method="_on_mailthumbnail_mail_selected" flags=18]
-[connection signal="mail_selected" from="mail-tablet/Tablet/AlignmentContainer3D/mail-thumbnail4" to="mail-tablet" method="_on_mailthumbnail_mail_selected" flags=18]
-[connection signal="mail_selected" from="mail-tablet/Tablet/AlignmentContainer3D/mail-thumbnail5" to="mail-tablet" method="_on_mailthumbnail_mail_selected" flags=18]
+[node name="mail-tablet2" parent="." instance=ExtResource("8_adt8j")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.684332, 1.522, 0.335691)
+
+[node name="mail-thumbnail" parent="mail-tablet2/Tablet/AlignmentContainer3D" index="0"]
+subject = "Archery cancelled	"
+body = "Hey crew, just a heads up: I'm still sick so Archery on Thursday is cancelled.
+
+Stay sharp,
+Archie"
+from = "Archie"
+selected = false
+
+[node name="mail-thumbnail2" parent="mail-tablet2/Tablet/AlignmentContainer3D" index="1"]
+subject = "Your Order"
+body = "Thank you for shopping with Amazon. Please find attached the receipt"
+from = "Amazon"
+
+[node name="mail-thumbnail3" parent="mail-tablet2/Tablet/AlignmentContainer3D" index="2"]
+subject = "Let's go gym"
+body = "Hey Hotty Boddy,
+
+here's a coupon for 50% off on your next training session.
+
+Your Gym,
+Gym-nasium"
+from = "Gym-nasium"
+
+[node name="mail-thumbnail4" parent="mail-tablet2/Tablet/AlignmentContainer3D" index="3"]
+subject = "20$ received"
+body = "Here are the 20$ from Crystal."
+from = "PayPal"
+
+[node name="mail-thumbnail5" parent="mail-tablet2/Tablet/AlignmentContainer3D" index="4"]
+subject = "BitCoin is booming again"
+body = "You won't believe this. But in 2023, BitCoin value has increased from 1 BTC = 12.033,45$ to 1 BTC = 13.497.86$. So click this link and save your chances: https://free-bitcoin.free/amazing.
+
+You're welcome,
+Your sketchy friend from Highschool"
+from = "Sketchy Sketcherson"
+
+[node name="From" parent="mail-tablet2/Tablet" index="5"]
+text = ""
+
+[node name="Subject" parent="mail-tablet2/Tablet" index="6"]
+text = ""
+
+[node name="Body" parent="mail-tablet2/Tablet" index="7"]
+text = ""
+
+[editable path="mail-tablet2"]

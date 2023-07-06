@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf17obp8yvxf7"]
+[gd_scene load_steps=12 format=3 uid="uid://cf0n531lmrqhe"]
 
 [ext_resource type="Script" path="res://scenes/tablet/tablet.gd" id="1_2rw0r"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_qndli"]
