@@ -20,6 +20,10 @@ var pointer_on_this = false
 
 @export var sticky_positions: PackedVector3Array = []
 @export var sticky_position_relative_to_node: Node3D
+@export var radius_fixed: float
+@export var is_radius_fixed: bool
+@export var origin: Vector3
+
 var sticky_distance = 0.08
 var original_rotation # Rotation used when sticking
 
@@ -99,6 +103,14 @@ func _process(delta):
 					global_rotation = original_rotation
 					break
 				sticking = false
-		if !sticking:
+		if is_radius_fixed:
+			var moved_vector: Vector3 = internal_pickable.global_position - origin
+			var handle_position: Vector2 = Vector2(moved_vector.x, moved_vector.z).normalized() * radius_fixed
+			var current_y = global_position.y
+			var new_global_position = Vector3(handle_position.x, current_y, handle_position.y)
+			global_position = new_global_position
+			look_at(Vector3(origin.x, current_y, origin.z))
+			rotate_y(PI)
+		elif !sticking:
 			global_transform = internal_pickable.global_transform
 		handled_node.global_transform = global_transform
