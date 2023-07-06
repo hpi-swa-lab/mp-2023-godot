@@ -1,11 +1,150 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjy1a0oal1yqi"]
+[gd_scene load_steps=9 format=3 uid="uid://bjy1a0oal1yqi"]
 
 [ext_resource type="PackedScene" uid="uid://capecerw7cjrl" path="res://rooms/classroom/classroom.tscn" id="1_ks0c3"]
+[ext_resource type="PackedScene" uid="uid://cbhnjiv1wyar5" path="res://scenes/vrobjects/calendar/calendar.tscn" id="2_5wjem"]
 [ext_resource type="PackedScene" uid="uid://bnifb8cd4ymis" path="res://scenes/vrobjects/mail.tscn" id="2_cjr1i"]
+[ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="3_kcnsb"]
+[ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="4_6yasd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmgny"]
+resource_local_to_scene = true
+size = Vector3(0.25, 0.1, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aq3o"]
+albedo_color = Color(0.341176, 0.360784, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fpxnj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3aq3o")
+size = Vector3(0.25, 0.1, 0.05)
 
 [node name="vr_objects" type="Node3D"]
 
 [node name="Classroom" parent="." instance=ExtResource("1_ks0c3")]
 
-[node name="Mail" parent="." instance=ExtResource("2_cjr1i")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.437565, 1.51674, 0.495777)
+[node name="calendar" parent="." instance=ExtResource("2_5wjem")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.468825, 1.41247, 0.8577)
+
+[node name="8" parent="calendar/Time" index="0"]
+handle_bar_padding = 0.1
+
+[node name="10" parent="calendar/Time" index="1"]
+handle_bar_padding = 0.1
+
+[node name="12" parent="calendar/Time" index="2"]
+handle_bar_padding = 0.1
+
+[node name="14" parent="calendar/Time" index="3"]
+handle_bar_padding = 0.1
+
+[node name="16" parent="calendar/Time" index="4"]
+handle_bar_padding = 0.1
+
+[node name="18" parent="calendar/Time" index="5"]
+handle_bar_padding = 0.1
+
+[node name="20" parent="calendar/Time" index="6"]
+handle_bar_padding = 0.1
+
+[node name="22" parent="calendar/Time" index="7"]
+handle_bar_padding = 0.1
+
+[node name="CollisionShape3D" parent="calendar/Event" index="0"]
+shape = SubResource("BoxShape3D_rmgny")
+
+[node name="Label" parent="calendar/Event" index="1"]
+text = "Event	"
+font_size = 20
+
+[node name="MeshInstance3D" parent="calendar/Event" index="2"]
+mesh = SubResource("BoxMesh_fpxnj")
+
+[node name="InteractableHandle" parent="calendar/Event" index="3"]
+sticky_positions = PackedVector3Array()
+
+[node name="Monday" parent="calendar" index="2"]
+handle_bar_padding = 0.1
+
+[node name="Tuesday" parent="calendar" index="3"]
+handle_bar_padding = 0.1
+
+[node name="Wednesday" parent="calendar" index="4"]
+handle_bar_padding = 0.1
+
+[node name="Thursday" parent="calendar" index="5"]
+handle_bar_padding = 0.1
+
+[node name="Friday" parent="calendar" index="6"]
+handle_bar_padding = 0.1
+
+[node name="Saturday" parent="calendar" index="7"]
+handle_bar_padding = 0.1
+
+[node name="Sunday" parent="calendar" index="8"]
+handle_bar_padding = 0.1
+
+[node name="Inbox" type="Node3D" parent="."]
+transform = Transform3D(-0.731341, 0, -0.682011, 0, 1, 0, 0.682011, 0, -0.731341, 0.608007, 1.28853, 0.409936)
+
+[node name="TextBox" parent="Inbox" instance=ExtResource("3_kcnsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
+text = "Inbox"
+enable_handle_bar = false
+hide_box = true
+handle_bar_padding = 0.1
+
+[node name="InboxScrollContainer" parent="Inbox" instance=ExtResource("4_6yasd")]
+transform = Transform3D(0.993984, 0, 0.109526, 0, 1, 0, -0.109526, 0, 0.993984, -0.404099, 0.484127, -0.630417)
+path_start = Vector3(0.5, -0.5, 0.5)
+path_end = Vector3(-0.5, 0.5, -0.5)
+visibility_ratio = 1.0
+
+[node name="MailMate" parent="Inbox/InboxScrollContainer" instance=ExtResource("2_cjr1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5)
+subject = "Invoice @ mate-shop24.de"
+from = "From: Mate-Shop24"
+to = "To: You"
+body = "Dear __mateLover77__,
+
+This is the invoice for your order
+#17866A43
+You order details:
+- 240l Club Mate
+- 62l Mio Mate
+- 12l Mate Mate
+
+We hope to hear from you again soon!
+Best, you Mate-Shop24 Team"
+
+[node name="MailArchery" parent="Inbox/InboxScrollContainer" instance=ExtResource("2_cjr1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.167071, -0.167071, 0.167071)
+subject = "Archery cancelled"
+from = "From: Archie"
+to = "To: You"
+body = "Hey,
+
+Sorry guys, I'm still ill and therefore archery class
+will be cancelled this thursday.
+I hope we can get together next week.
+
+Yours, Archie"
+
+[node name="MailJob" parent="Inbox/InboxScrollContainer" instance=ExtResource("2_cjr1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167071, 0.167071, -0.167071)
+subject = "Software Engineer at Platypus Consult"
+from = "From: Stephany from Platypus Consult"
+to = "To: You"
+body = "Hey Champ,
+
+Today I've got a very exclusive job offer for you:
+Work as a Software Engineer at Platypus Consult.
+
+We offer a competitive compensation and flexible working hours
+100 % remote.
+
+I look forward to hearing from you.
+
+Best, Stephany"
+
+[editable path="calendar"]
+[editable path="calendar/Event"]
