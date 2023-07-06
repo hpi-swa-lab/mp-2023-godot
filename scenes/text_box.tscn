@@ -29,6 +29,7 @@ enable_handle_bar = true
 hide_box = false
 margin_x = 0.1
 margin_y = 0.1
+handle_bar_padding = 0.1
 ranged_grab_method = 0
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -46,3 +47,4 @@ mesh = SubResource("BoxMesh_xrn6j")
 [node name="InteractableHandle" parent="." index="3" node_paths=PackedStringArray("handled_node") instance=ExtResource("3_p2qtr")]
 collision_layer = 1048576
 handled_node = NodePath("..")
+enabled = true
