@@ -120,6 +120,16 @@ var sticking = false
 func _process(delta):
 	if !Engine.is_editor_hint():
 		if is_currently_picked_up:
+			if is_radius_fixed:
+				var moved_vector: Vector3 = internal_pickable.global_position - origin
+				var handle_position: Vector2 = Vector2(moved_vector.x, moved_vector.z).normalized() * radius_fixed
+				var current_y = handled_node.global_position.y
+				var new_global_position = Vector3(handle_position.x, current_y, handle_position.y)
+				handled_node.global_position = new_global_position
+				handled_node.look_at(Vector3(origin.x, current_y, origin.z))
+				handled_node.rotate_y(PI)
+				return
+				
 			if len(sticky_positions)>0:
 				for p in sticky_positions:
 					var global_sticky_position = p * sticky_position_relative_to_node.transform.inverse()
@@ -130,14 +140,6 @@ func _process(delta):
 						global_rotation = original_rotation
 						break
 					sticking = false
-			if is_radius_fixed:
-				var moved_vector: Vector3 = internal_pickable.global_position - origin
-				var handle_position: Vector2 = Vector2(moved_vector.x, moved_vector.z).normalized() * radius_fixed
-				var current_y = global_position.y
-				var new_global_position = Vector3(handle_position.x, current_y, handle_position.y)
-				global_position = new_global_position
-				look_at(Vector3(origin.x, current_y, origin.z))
-				rotate_y(PI)
 			elif !sticking:
 				global_transform = internal_pickable.global_transform
 			handled_node.global_transform = global_transform

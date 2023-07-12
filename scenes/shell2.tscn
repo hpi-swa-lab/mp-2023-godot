@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddvkgmui35jl2"]
+[gd_scene load_steps=23 format=3 uid="uid://ddvkgmui35jl2"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
@@ -22,6 +22,10 @@ height = 5.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
 radius = 0.244139
 height = 0.989987
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_awkma"]
+radius = 0.3
+height = 1.8
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
 ground_color = Color(0.180392, 0.364706, 0, 1)
@@ -103,6 +107,10 @@ enabled = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
 shape = SubResource("CapsuleShape3D_g4e5f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268492, 0)
+mesh = SubResource("CapsuleMesh_awkma")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi6uc")

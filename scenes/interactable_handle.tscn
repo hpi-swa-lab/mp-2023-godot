@@ -35,14 +35,9 @@ radius_fixed = 0.0
 is_radius_fixed = false
 origin = Vector3(0, 0, 0)
 enabled = false
-press_to_hold = true
 picked_up_layer = 1048576
 hold_method = 1
-release_mode = -1
 ranged_grab_method = 0
-ranged_grab_speed = 20.0
-picked_by_exclude = ""
-picked_by_require = ""
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.15, 0)
