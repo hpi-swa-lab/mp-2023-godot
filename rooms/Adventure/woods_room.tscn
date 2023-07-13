@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="7_q0a42"]
 [ext_resource type="PackedScene" uid="uid://bnifb8cd4ymis" path="res://scenes/vrobjects/mail.tscn" id="8_im45k"]
 [ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="8_rm0cs"]
-[ext_resource type="PackedScene" uid="uid://cbhnjiv1wyar5" path="res://scenes/vrobjects/calendar/calendar.tscn" id="10_e4a0r"]
+[ext_resource type="PackedScene" uid="uid://d1tevnd0nhwpi" path="res://scenes/vrobjects/calendar/calendar.tscn" id="10_e4a0r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhvkn"]
 albedo_color = Color(0.470588, 0.921569, 1, 1)
@@ -254,8 +254,6 @@ transform = Transform3D(-0.0348821, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.03488
 [node name="TextBox" parent="Inbox" index="0" instance=ExtResource("7_q0a42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259506, 1.83422, -0.00905764)
 text = "Inbox"
-height = 0.02
-width = 0.02
 enable_handle_bar = false
 hide_box = true
 
@@ -312,4 +310,4 @@ I look forward to hearing from you.
 Best, Stephany"
 
 [node name="calendar" parent="." index="13" instance=ExtResource("10_e4a0r")]
-transform = Transform3D(-0.0369576, 0, -0.999317, 0, 1, 0, 0.999317, 0, -0.0369576, -1.63056, 1.0446, -0.451383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.534868, 1.73489, 0)

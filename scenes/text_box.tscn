@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnuiyxtvphcor"]
+[gd_scene load_steps=6 format=3 uid="uid://dnuiyxtvphcor"]
 
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="2_k7ew3"]
 [ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="3_l47e6"]
@@ -6,11 +6,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bogg5"]
 resource_local_to_scene = true
-size = Vector3(0.22701, 0.0687556, 0.05)
+size = Vector3(0.02, 0.02, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xrn6j"]
 resource_local_to_scene = true
-size = Vector3(0.22701, 0.0687556, 0.05)
+size = Vector3(0.02, 0.02, 0.05)
 
 [node name="TextBox" type="StaticBody3D"]
 collision_layer = 0
@@ -19,8 +19,8 @@ script = ExtResource("2_k7ew3")
 text = "Hello World!"
 resize_box = true
 depth = 0.05
-height = 0.0687556
-width = 0.22701
+height = 0.02
+width = 0.02
 intended_viewing_distance = 1.0
 handle_bar_padding = 0.05
 
@@ -33,7 +33,7 @@ mesh = SubResource("BoxMesh_xrn6j")
 [node name="InteractableHandle" parent="." node_paths=PackedStringArray("handled_node") instance=ExtResource("3_p2qtr")]
 collision_layer = 1048576
 handled_node = NodePath("..")
-y_offset = -0.0743778
+y_offset = -0.05
 enabled = true
 
 [node name="Label3DDMM" type="Label3D" parent="."]

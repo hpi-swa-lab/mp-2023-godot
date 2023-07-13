@@ -1,39 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjy1a0oal1yqi"]
+[gd_scene load_steps=6 format=3 uid="uid://bjy1a0oal1yqi"]
 
 [ext_resource type="PackedScene" uid="uid://capecerw7cjrl" path="res://rooms/classroom/classroom.tscn" id="1_ks0c3"]
-[ext_resource type="PackedScene" uid="uid://cbhnjiv1wyar5" path="res://scenes/vrobjects/calendar/calendar.tscn" id="2_5wjem"]
 [ext_resource type="PackedScene" uid="uid://bnifb8cd4ymis" path="res://scenes/vrobjects/mail.tscn" id="2_cjr1i"]
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="3_kcnsb"]
 [ext_resource type="PackedScene" uid="uid://v3yard3yd6qp" path="res://scenes/scroll_container_3d.tscn" id="4_6yasd"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rmgny"]
-resource_local_to_scene = true
-size = Vector3(0.25, 0.1, 0.05)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aq3o"]
-albedo_color = Color(0.341176, 0.360784, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fpxnj"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_3aq3o")
-size = Vector3(0.25, 0.1, 0.05)
+[ext_resource type="PackedScene" uid="uid://d1tevnd0nhwpi" path="res://scenes/vrobjects/calendar/calendar.tscn" id="5_fw570"]
 
 [node name="vr_objects" type="Node3D"]
 
 [node name="Classroom" parent="." instance=ExtResource("1_ks0c3")]
-
-[node name="calendar" parent="." instance=ExtResource("2_5wjem")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.468825, 1.41247, 0.8577)
-
-[node name="CollisionShape3D" parent="calendar/Event" index="0"]
-shape = SubResource("BoxShape3D_rmgny")
-
-[node name="Label" parent="calendar/Event" index="1"]
-text = "Event	"
-font_size = 20
-
-[node name="MeshInstance3D" parent="calendar/Event" index="2"]
-mesh = SubResource("BoxMesh_fpxnj")
 
 [node name="Inbox" type="Node3D" parent="."]
 transform = Transform3D(-0.731341, 0, -0.682011, 0, 1, 0, 0.682011, 0, -0.731341, 0.608007, 1.28853, 0.409936)
@@ -97,5 +72,5 @@ I look forward to hearing from you.
 
 Best, Stephany"
 
-[editable path="calendar"]
-[editable path="calendar/Event"]
+[node name="calendar" parent="." instance=ExtResource("5_fw570")]
+transform = Transform3D(-0.42323, 0, 0.478745, 0, 0.639, 0, -0.478745, 0, -0.42323, -0.834402, 2.50028, 0.535193)

@@ -1,58 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba8iwv6edf6l2"]
+[gd_scene load_steps=7 format=3 uid="uid://dli0dfqcfjl1d"]
 
 [ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="1_opf1u"]
 [ext_resource type="Script" path="res://scenes/vrobjects/calendar/day.gd" id="2_bm5sp"]
-[ext_resource type="PackedScene" uid="uid://cdox3tps0bhpt" path="res://scenes/vrobjects/calendar/time.tscn" id="3_u12rx"]
+[ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="2_s3gty"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22hem"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6caj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ivydd"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3ob37"]
 resource_local_to_scene = true
-size = Vector3(0.2, 0.85, 0.05)
+height = 0.3
+radius = 0.01
 
-[sub_resource type="BoxMesh" id="BoxMesh_ap1dv"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_r0oeg"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_22hem")
-size = Vector3(0.2, 0.85, 0.05)
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.3
 
-[node name="Day" instance=ExtResource("1_opf1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.342593, 0)
+[node name="Day" type="Node3D"]
 script = ExtResource("2_bm5sp")
-title = "Monday"
-text = ""
+
+[node name="DayLabel" parent="." instance=ExtResource("1_opf1u")]
+text = "Monday July 10th"
 resize_box = false
-height = 0.85
-width = 0.2
-material = SubResource("StandardMaterial3D_22hem")
-intended_viewing_distance = 0.0
-handle_bar_padding = 0.08
-
-[node name="CollisionShape3D" parent="." index="0"]
-shape = SubResource("BoxShape3D_ivydd")
-
-[node name="MeshInstance3D" parent="." index="1"]
-mesh = SubResource("BoxMesh_ap1dv")
-
-[node name="InteractableHandle" parent="." index="2"]
-y_offset = -0.505
-press_to_hold = true
-release_mode = -1
-ranged_grab_speed = 20.0
-picked_by_exclude = ""
-picked_by_require = ""
-
-[node name="Label3DDMM" parent="." index="3"]
-pixel_size = 0.0
-text = ""
-intended_viewing_distance = 0.0
-
-[node name="DayLabel" parent="." index="4" instance=ExtResource("1_opf1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476583, 0)
-text = "Monday"
-height = 0.02
-width = 0.02
+height = 0.0771111
+width = 0.5
+material = SubResource("StandardMaterial3D_q6caj")
+alignment = 0
 enable_handle_bar = false
-hide_box = true
 
-[node name="Time" parent="." index="5" instance=ExtResource("3_u12rx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157355, 0.337878, 0)
+[node name="InteractableHandle" parent="." node_paths=PackedStringArray("handled_node") instance=ExtResource("2_s3gty")]
+handled_node = NodePath("..")
+y_offset = -0.3
+
+[node name="CollisionShape3D" parent="InteractableHandle" index="0"]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -0.312455, -0.3, 0)
+shape = SubResource("CylinderShape3D_3ob37")
+
+[node name="MeshInstance3D" parent="InteractableHandle" index="1"]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -0.312455, -0.3, 0)
+mesh = SubResource("CylinderMesh_r0oeg")
+
+[editable path="InteractableHandle"]

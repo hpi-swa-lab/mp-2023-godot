@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbhnjiv1wyar5"]
+
+[ext_resource type="PackedScene" uid="uid://dnuiyxtvphcor" path="res://scenes/text_box.tscn" id="1_h85q4"]
+[ext_resource type="Script" path="res://scenes/vrobjects/calendar-gcal-style/calendar.gd" id="1_vy30a"]
+[ext_resource type="PackedScene" uid="uid://cdox3tps0bhpt" path="res://scenes/vrobjects/calendar-gcal-style/time.tscn" id="2_v6bsy"]
+[ext_resource type="PackedScene" uid="uid://ba8iwv6edf6l2" path="res://scenes/vrobjects/calendar-gcal-style/day.tscn" id="3_8c618"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aq3o"]
+albedo_color = Color(0.341176, 0.360784, 1, 1)
+
+[node name="calendar" type="Node3D"]
+script = ExtResource("1_vy30a")
+
+[node name="Time" parent="." instance=ExtResource("2_v6bsy")]
+
+[node name="Event" parent="." instance=ExtResource("1_h85q4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506092, 0.0736202)
+text = "Event	"
+resize_box = false
+depth = 0.02
+height = 0.0674222
+width = 0.18
+material = SubResource("StandardMaterial3D_3aq3o")
+handle_bar_padding = 0.02
+
+[node name="Monday" parent="." instance=ExtResource("3_8c618")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.359, 0)
+collision_layer = 1048580
+margin_x = 0.1
+margin_y = 0.1
+
+[node name="Tuesday" parent="." instance=ExtResource("3_8c618")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.359, 0)
+collision_layer = 1048580
+title = "Tuesday"
+margin_x = 0.1
+margin_y = 0.1
+
+[node name="Wednesday" parent="." instance=ExtResource("3_8c618")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, 0.359, 0)
+collision_layer = 1048580
+title = "Wednesday"
+margin_x = 0.1
+margin_y = 0.1
+
+[node name="Thursday" parent="." instance=ExtResource("3_8c618")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69, 0.359, 0)
+collision_layer = 1048580
+title = "Thursday"
+margin_x = 0.1
+margin_y = 0.1
+
+[node name="Friday" parent="." instance=ExtResource("3_8c618")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92, 0.359, 0)
+collision_layer = 1048580
+title = "Friday"
+margin_x = 0.1
+margin_y = 0.1
+
+[node name="Saturday" parent="." instance=ExtResource("3_8c618")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 0.359, 0)
+collision_layer = 1048580
+title = "Saturday"
+margin_x = 0.1
+margin_y = 0.1
+
+[node name="Sunday" parent="." instance=ExtResource("3_8c618")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38, 0.359, 0)
+collision_layer = 1048580
+title = "Sunday"
+margin_x = 0.1
+margin_y = 0.1

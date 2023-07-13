@@ -1,5 +1,6 @@
 @tool
 extends StaticBody3D
+class_name TextBox
 
 enum TextAlignment {
 	LEFT,

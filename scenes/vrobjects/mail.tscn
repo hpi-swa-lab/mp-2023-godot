@@ -62,8 +62,3 @@ enable_handle_bar = false
 [node name="InteractableHandle" parent="." node_paths=PackedStringArray("handled_node") instance=ExtResource("2_82a4p")]
 handled_node = NodePath("..")
 enabled = true
-press_to_hold = true
-release_mode = -1
-ranged_grab_speed = 20.0
-picked_by_exclude = ""
-picked_by_require = ""
