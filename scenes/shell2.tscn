@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddvkgmui35jl2"]
+[gd_scene load_steps=26 format=3 uid="uid://ddvkgmui35jl2"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
@@ -20,15 +20,6 @@ albedo_color = Color(0.368627, 0.486275, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc060"]
 transparency = 1
 albedo_color = Color(0.368627, 0.486275, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yoi6"]
-albedo_color = Color(1, 0.109804, 0.109804, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ugme5"]
-material = SubResource("StandardMaterial3D_6yoi6")
-top_radius = 0.005
-bottom_radius = 0.005
-height = 5.0
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
 ground_color = Color(0.709804, 0.92549, 0.972549, 1)
@@ -90,28 +81,16 @@ tracker = &"left_hand"
 hand_material_override = SubResource("StandardMaterial3D_khxxh")
 
 [node name="XRToolsFunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_xsdho")]
-visible = false
+enabled = false
 
 [node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("5_gy2d2")]
-visible = false
+enabled = false
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("4_1ftie")]
 hand_material_override = SubResource("StandardMaterial3D_wc060")
-
-[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/Right Hand/RightHand"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-visible = false
-target_position = Vector3(0, 0, -5)
-collision_mask = 9437184
-collide_with_areas = true
-
-[node name="VisibleRay" type="MeshInstance3D" parent="XROrigin3D/Right Hand/RightHand"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.47778)
-visible = false
-mesh = SubResource("CylinderMesh_ugme5")
 
 [node name="XRToolsFunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_xsdho")]
 grab_distance = 0.0
@@ -257,10 +236,12 @@ test_json = "{
 }"
 
 [node name="SubmitButton" type="RigidBody3D" parent="."]
+visible = false
 freeze = true
 script = ExtResource("11_xioas")
 enabled = false
 press_to_hold = false
+picked_up_layer = 1114112
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubmitButton"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.01179, 0, -1.13426)

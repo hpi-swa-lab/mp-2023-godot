@@ -63,14 +63,11 @@ func on_button_press(button_name):
 				(mesh.mesh.surface_get_material(0) as StandardMaterial3D).albedo_color = Color.BLUE
 			else:
 				(mesh.mesh.surface_get_material(0) as StandardMaterial3D).albedo_color = Color.WHITE
-	
+
 func on_button_release(button_name):
 	if button_name == "grip_click":
 		if is_currently_picked_up:
 			is_currently_picked_up = false
-			
-			if handled_node == null or _original_handled_parent == null:
-				print("something went wrong")
 
 			if handled_node != null:
 				handled_node.reparent(_original_handled_parent)
