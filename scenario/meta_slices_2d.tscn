@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://didevps03sc73"]
+[gd_scene load_steps=43 format=3 uid="uid://didevps03sc73"]
 
 [ext_resource type="PackedScene" uid="uid://capecerw7cjrl" path="res://rooms/classroom/classroom.tscn" id="1_8iwwq"]
 [ext_resource type="PackedScene" uid="uid://21krsh2yvxqn" path="res://scenes/interactable_handle.tscn" id="2_bn5yo"]
@@ -10,6 +10,23 @@
 [ext_resource type="PackedScene" uid="uid://cf0n531lmrqhe" path="res://scenes/tablet/tablet.tscn" id="8_32oe0"]
 [ext_resource type="PackedScene" uid="uid://cefqxiy74xck5" path="res://scenes/tablet/mailTools/mail-thumbnail.tscn" id="9_d207r"]
 [ext_resource type="PackedScene" uid="uid://ce7ueq575gn15" path="res://scenes/tablet/assignment_slot.tscn" id="10_5ejgo"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_8wr05"]
+resource_local_to_scene = true
+size = Vector2(3.2, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1smby"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ca1bi"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_1smby")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31xbr"]
+resource_local_to_scene = true
+size = Vector3(3.2, 2, 0.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wu367"]
 resource_local_to_scene = true
@@ -139,6 +156,13 @@ size = Vector3(0.476, 0.38, 0.002)
 
 [node name="Classroom" parent="." instance=ExtResource("1_8iwwq")]
 
+[node name="Screen" parent="Classroom/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_8wr05")
+surface_material_override/0 = SubResource("StandardMaterial3D_ca1bi")
+
+[node name="CollisionShape3D" parent="Classroom/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_31xbr")
+
 [node name="Panel" type="RigidBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 1)
 visible = false
@@ -161,9 +185,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kmqv7")
 
 [node name="InteractableHandle" parent="Panel" node_paths=PackedStringArray("handled_node") instance=ExtResource("2_bn5yo")]
 handled_node = NodePath("..")
-y_offset = -0.432
-radius_fixed = 1.0
-is_radius_fixed = true
 
 [node name="CollisionShape3D" parent="Panel/InteractableHandle" index="0"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.432, 0)
@@ -179,7 +200,7 @@ extend = -0.771
 center_children = true
 
 [node name="mail-thumbnail" type="Node3D" parent="Panel/AlignmentContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3084, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289125, 0)
 script = ExtResource("4_rr635")
 subject = "Test	fasffsadfsadfsadfsadfsadf"
 body = "1"
@@ -226,7 +247,7 @@ width = 350.0
 script = ExtResource("5_f8i46")
 
 [node name="mail-thumbnail2" type="Node3D" parent="Panel/AlignmentContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1542, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289125, 0)
 script = ExtResource("4_rr635")
 subject = "Test	fasffsadfsadfsadfsadfsadf"
 body = "1"
@@ -273,6 +294,7 @@ width = 350.0
 script = ExtResource("5_f8i46")
 
 [node name="mail-thumbnail3" type="Node3D" parent="Panel/AlignmentContainer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.096375, 0)
 script = ExtResource("4_rr635")
 subject = "Test	fasffsadfsadfsadfsadfsadf"
 body = "1"
@@ -319,7 +341,7 @@ width = 350.0
 script = ExtResource("5_f8i46")
 
 [node name="mail-thumbnail4" type="Node3D" parent="Panel/AlignmentContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1542, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.096375, 0)
 script = ExtResource("4_rr635")
 subject = "Test	fasffsadfsadfsadfsadfsadf"
 body = "1"
@@ -366,7 +388,7 @@ width = 350.0
 script = ExtResource("5_f8i46")
 
 [node name="mail-thumbnail5" type="Node3D" parent="Panel/AlignmentContainer3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3084, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.289125, 0)
 script = ExtResource("4_rr635")
 subject = "Test	fasffsadfsadfsadfsadfsadf"
 body = "1"
@@ -468,10 +490,6 @@ mesh = SubResource("BoxMesh_un1d8")
 [node name="screen" parent="mail-tablet/Tablet" index="2"]
 mesh = SubResource("BoxMesh_uymwf")
 
-[node name="InteractableHandle" parent="mail-tablet/Tablet" index="3"]
-radius_fixed = 1.5
-is_radius_fixed = true
-
 [node name="CollisionShape3D" parent="mail-tablet/Tablet/InteractableHandle" index="0"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.23, 0)
 shape = SubResource("CylinderShape3D_qr786")
@@ -485,7 +503,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181584, 0.18889, 0.0028839
 extend = -0.378
 
 [node name="mail-thumbnail" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("9_d207r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0378, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04725, 0)
 subject = "Doctors Appointment"
 body = "With this mail, I want to confirm your appointment on Thursday at 14.00 for about 2h.
 
@@ -495,13 +513,13 @@ from = "Doctor Skebowski"
 selected = true
 
 [node name="mail-thumbnail2" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("9_d207r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1134, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04725, 0)
 subject = "Booking confirmed"
 body = "You successfully reserved a tablet on Friday at 18.00 for four persons. If you have any allergies please let us know."
 from = "Grill Royale"
 
 [node name="mail-thumbnail3" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("9_d207r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.189, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14175, 0)
 subject = "Yoga Session moved"
 body = "Namasté,
 
@@ -511,13 +529,13 @@ Yoga Mitte"
 from = "Yoga Mitte"
 
 [node name="mail-thumbnail4" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("9_d207r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2646, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23625, 0)
 subject = "Free iPod"
 body = "Win a free iPod!!! by entering your credit card informations under: https://free-ipod.heroku.com/spam"
 from = "Trusty McTrustface"
 
 [node name="mail-thumbnail5" parent="mail-tablet/Tablet/AlignmentContainer3D" instance=ExtResource("9_d207r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3402, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33075, 0)
 subject = "Parcel is there"
 body = "Your package arrived today at 15.34"
 from = "Amazon"
@@ -577,10 +595,6 @@ mesh = SubResource("BoxMesh_vp552")
 [node name="screen" parent="calendar-tablet/Tablet" index="2"]
 mesh = SubResource("BoxMesh_bafqe")
 
-[node name="InteractableHandle" parent="calendar-tablet/Tablet" index="3"]
-radius_fixed = 1.5
-is_radius_fixed = true
-
 [node name="AlignmentContainer3D2" parent="calendar-tablet/Tablet" instance=ExtResource("3_ax1bx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 2.08165e-12, 0.006)
 extend = 0.482
@@ -588,15 +602,15 @@ is_horizontal = true
 center_children = true
 
 [node name="y container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.210875, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206571, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="empty" type="Node3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 
 [node name="Label3DDMM5" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "08:00"
@@ -608,7 +622,7 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="Label3DDMM6" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "10:00"
@@ -620,7 +634,7 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="Label3DDMM7" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "12:00"
@@ -632,6 +646,7 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="Label3DDMM8" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "14:00"
@@ -643,7 +658,7 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="Label3DDMM9" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "16:00"
@@ -655,7 +670,7 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="Label3DDMM10" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "18:00"
@@ -667,7 +682,7 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="Label3DDMM11" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "20:00"
@@ -679,7 +694,7 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="Label3DDMM12" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "22:00"
@@ -691,12 +706,12 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="mo container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150625, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206571, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "Monday"
@@ -706,49 +721,50 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="assignment_slot" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot2" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 font_size = 24
 
 [node name="assignment_slot3" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 font_size = 24
 
 [node name="assignment_slot4" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot5" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot6" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot7" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot8" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
 font_size = 24
 
 [node name="tue container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.090375, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137714, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "Tuesday"
@@ -758,51 +774,52 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="assignment_slot" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot2" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot3" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot4" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot5" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 text = "Yoga"
 font_size = 24
 
 [node name="assignment_slot6" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot7" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot8" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
 font_size = 24
 
 [node name="wed container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030125, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0688571, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "Wednesday"
@@ -812,51 +829,52 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="assignment_slot" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot2" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot3" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot4" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot5" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot6" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot7" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot8" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
 font_size = 24
 
 [node name="thu container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030125, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77556e-17, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "Thursday"
@@ -866,51 +884,52 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="assignment_slot" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot2" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot3" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot4" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot5" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot6" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot7" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot8" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
 font_size = 24
 
 [node name="fri container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.090375, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0688571, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "Friday"
@@ -920,51 +939,52 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="assignment_slot" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot2" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot3" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot4" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot5" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot6" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot7" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot8" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
 font_size = 24
 
 [node name="sat container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150625, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137714, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "Saturday"
@@ -974,51 +994,52 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="assignment_slot" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot2" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot3" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot4" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot5" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot6" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot7" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot8" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
 font_size = 24
 
 [node name="sun container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("3_ax1bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.210875, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206571, 0, 0)
 extend = -0.354
 center_children = true
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 pixel_size = 0.0004
 modulate = Color(0, 0, 0, 1)
 text = "Sunday"
@@ -1028,41 +1049,42 @@ script = ExtResource("5_f8i46")
 intended_viewing_distance = 0.4
 
 [node name="assignment_slot" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot2" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot3" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot4" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot5" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022125, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot6" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0786667, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066375, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot7" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110625, 0)
 show = false
 font_size = 24
 
 [node name="assignment_slot8" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container" instance=ExtResource("10_5ejgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154875, 0)
 show = false
 font_size = 24
 
@@ -1072,6 +1094,7 @@ font_size = 24
 [connection signal="mail_selected" from="mail-tablet/Tablet/AlignmentContainer3D/mail-thumbnail4" to="mail-tablet" method="_on_mailthumbnail_mail_selected" flags=18]
 [connection signal="mail_selected" from="mail-tablet/Tablet/AlignmentContainer3D/mail-thumbnail5" to="mail-tablet" method="_on_mailthumbnail_mail_selected" flags=18]
 
+[editable path="Classroom"]
 [editable path="Panel/InteractableHandle"]
 [editable path="mail-tablet/Tablet"]
 [editable path="mail-tablet/Tablet/InteractableHandle"]

@@ -21,11 +21,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 2.08165e-12, 0.006)
 extend = 0.482
 is_horizontal = true
 center_children = true
+use_child_height = null
 
 [node name="y container" parent="calendar-tablet/Tablet/AlignmentContainer3D2" instance=ExtResource("4_jio3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206571, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="empty" type="Node3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/y container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -130,6 +132,7 @@ intended_viewing_distance = 0.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206571, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/mo container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -177,6 +180,7 @@ show = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137714, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/tue container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -224,6 +228,7 @@ show = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0688571, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/wed container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -271,6 +276,7 @@ show = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77556e-17, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/thu container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -318,6 +324,7 @@ show = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0688571, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/fri container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -365,6 +372,7 @@ show = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137714, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sat container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -412,6 +420,7 @@ show = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206571, 0, 0)
 extend = -0.354
 center_children = true
+use_child_height = null
 
 [node name="Label3DDMM" type="Label3D" parent="calendar-tablet/Tablet/AlignmentContainer3D2/sun container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154875, 0)
@@ -457,6 +466,9 @@ show = false
 
 [node name="mail-tablet2" parent="." instance=ExtResource("8_adt8j")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.684332, 1.522, 0.335691)
+
+[node name="AlignmentContainer3D" parent="mail-tablet2/Tablet" index="4"]
+use_child_height = null
 
 [node name="mail-thumbnail" parent="mail-tablet2/Tablet/AlignmentContainer3D" index="0"]
 subject = "Archery cancelled	"

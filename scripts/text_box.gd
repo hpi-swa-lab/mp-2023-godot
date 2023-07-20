@@ -1,5 +1,6 @@
 @tool
 extends StaticBody3D
+class_name TextBox
 
 enum TextAlignment {
 	LEFT,
@@ -94,7 +95,6 @@ func _ready():
 
 func on_pointer_entered():
 	pass
-	#G.add_outline(mesh)
 	
 func on_pointer_exited():
 	pass

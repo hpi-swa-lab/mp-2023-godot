@@ -44,4 +44,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kmqv7")
 
 [node name="InteractableHandle" parent="." index="3" node_paths=PackedStringArray("handled_node") instance=ExtResource("3_2j2xh")]
 handled_node = NodePath("..")
-y_offset = -0.23

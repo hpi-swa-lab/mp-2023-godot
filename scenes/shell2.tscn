@@ -1,34 +1,37 @@
-[gd_scene load_steps=23 format=3 uid="uid://ddvkgmui35jl2"]
+[gd_scene load_steps=28 format=3 uid="uid://ddvkgmui35jl2"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_xsdho"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_1ftie"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_gy2d2"]
-[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_i85gb"]
-[ext_resource type="Script" path="res://scenes/room_switch_menu.gd" id="7_t77yp"]
-[ext_resource type="Theme" uid="uid://dtsmkdeo6gbj5" path="res://assets/gui_theme.tres" id="8_5fjpo"]
+[ext_resource type="Script" path="res://scripts/AlignmentContainer3D.gd" id="6_akkmj"]
+[ext_resource type="Script" path="res://scenes/ExperienceGenerator.gd" id="9_wpk04"]
+[ext_resource type="Script" path="res://scenes/user-study/Button.gd" id="11_xioas"]
+[ext_resource type="Script" path="res://scripts/Fetch.gd" id="13_o1ni4"]
+[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="13_wjrgg"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="14_tmntf"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="16_l51dr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6jea"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khxxh"]
+transparency = 1
+albedo_color = Color(0.368627, 0.486275, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc060"]
+transparency = 1
+albedo_color = Color(0.368627, 0.486275, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yoi6"]
 albedo_color = Color(1, 0.109804, 0.109804, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ugme5"]
-material = SubResource("StandardMaterial3D_s6jea")
+material = SubResource("StandardMaterial3D_6yoi6")
 top_radius = 0.005
 bottom_radius = 0.005
 height = 5.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4e5f"]
-radius = 0.244139
-height = 0.989987
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_awkma"]
-radius = 0.3
-height = 1.8
-
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_0rulv"]
-ground_color = Color(0.180392, 0.364706, 0, 1)
+ground_color = Color(0.709804, 0.92549, 0.972549, 1)
 energy_multiplier = 4.83
 
 [sub_resource type="Sky" id="Sky_3nj16"]
@@ -38,29 +41,38 @@ sky_material = SubResource("PhysicalSkyMaterial_0rulv")
 background_mode = 2
 sky = SubResource("Sky_3nj16")
 
-[sub_resource type="SystemFont" id="SystemFont_j8pjj"]
-subpixel_positioning = 0
+[sub_resource type="LabelSettings" id="LabelSettings_nwrua"]
+font_size = 53
 
-[sub_resource type="LabelSettings" id="LabelSettings_24njd"]
-font = SubResource("SystemFont_j8pjj")
-font_size = 78
-
-[sub_resource type="QuadMesh" id="QuadMesh_rhfi7"]
+[sub_resource type="QuadMesh" id="QuadMesh_4dfsu"]
 resource_local_to_scene = true
-size = Vector2(2, 1)
+size = Vector2(3.2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ryrsm"]
-viewport_path = NodePath("RoomSwitcherMenu/Viewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_2iybv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tifit"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7xji"]
+transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_ryrsm")
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_2iybv")
 texture_filter = 1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vxoqc"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvxde"]
 resource_local_to_scene = true
-size = Vector3(2, 1, 0.02)
+size = Vector3(3.2, 2, 0.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvha4"]
+resource_local_to_scene = true
+size = Vector3(0.5, 0.247, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o0b4"]
+resource_local_to_scene = true
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dce4o"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_0o0b4")
+size = Vector3(0.5, 0.247, 0.05)
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_3eykf")
@@ -75,13 +87,19 @@ current = true
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_wa404")]
+hand_material_override = SubResource("StandardMaterial3D_khxxh")
 
 [node name="XRToolsFunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_xsdho")]
+visible = false
+
+[node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("5_gy2d2")]
+visible = false
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("4_1ftie")]
+hand_material_override = SubResource("StandardMaterial3D_wc060")
 
 [node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/Right Hand/RightHand"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -96,21 +114,10 @@ visible = false
 mesh = SubResource("CylinderMesh_ugme5")
 
 [node name="XRToolsFunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_xsdho")]
+grab_distance = 0.0
+ranged_distance = 20.0
 
 [node name="FunctionPointer" parent="XROrigin3D/Right Hand" instance=ExtResource("5_gy2d2")]
-
-[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("6_i85gb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595009, 0)
-collision_layer = 0
-collision_mask = 1
-enabled = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
-shape = SubResource("CapsuleShape3D_g4e5f")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/PlayerBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268492, 0)
-mesh = SubResource("CapsuleMesh_awkma")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi6uc")
@@ -119,59 +126,161 @@ environment = SubResource("Environment_fi6uc")
 transform = Transform3D(1, 0, 0, 0, 0.797868, 0.602832, 0, -0.602832, 0.797868, 0, 22.4567, -62.4577)
 shadow_enabled = true
 
-[node name="RoomSwitcherMenu" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0995, -1.29705)
-script = ExtResource("7_t77yp")
-screen_size = Vector2(2, 1)
-viewport_size = Vector2(1200, 600)
-transparent = 0
+[node name="StartPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221037, -0.565312)
+script = ExtResource("6_akkmj")
+extend = 2.0
+is_horizontal = true
+center_children = true
 
-[node name="Viewport" type="SubViewport" parent="RoomSwitcherMenu"]
+[node name="ExperienceGenerator" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "start_position")]
+script = ExtResource("9_wpk04")
+user_warning = NodePath("../UserWarning2DScreen")
+start_position = NodePath("../StartPosition")
+
+[node name="UserWarning2DScreen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.25673)
+visible = false
+script = ExtResource("14_tmntf")
+screen_size = Vector2(3.2, 2)
+viewport_size = Vector2(640, 400)
+
+[node name="Viewport" type="SubViewport" parent="UserWarning2DScreen"]
 disable_3d = true
+transparent_bg = true
 gui_embed_subwindows = true
-size = Vector2i(1200, 600)
-render_target_update_mode = 4
+size = Vector2i(640, 400)
+render_target_update_mode = 1
 
-[node name="Control" type="Control" parent="RoomSwitcherMenu/Viewport"]
+[node name="Control" type="Control" parent="UserWarning2DScreen/Viewport"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("8_5fjpo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoomSwitcherMenu/Viewport/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Panel" type="Panel" parent="UserWarning2DScreen/Viewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="RoomSwitcherMenu/Viewport/Control/VBoxContainer"]
-layout_mode = 2
-text = "Select room to switch to"
-label_settings = SubResource("LabelSettings_24njd")
+[node name="Label" type="Label" parent="UserWarning2DScreen/Viewport/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This study targets PC!"
+label_settings = SubResource("LabelSettings_nwrua")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RoomSwitcherMenu/Viewport/Control/VBoxContainer"]
-layout_mode = 2
+[node name="Screen" type="MeshInstance3D" parent="UserWarning2DScreen"]
+mesh = SubResource("QuadMesh_4dfsu")
+surface_material_override/0 = SubResource("StandardMaterial3D_v7xji")
 
-[node name="Screen" type="MeshInstance3D" parent="RoomSwitcherMenu"]
-mesh = SubResource("QuadMesh_rhfi7")
-surface_material_override/0 = SubResource("StandardMaterial3D_tifit")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RoomSwitcherMenu"]
+[node name="StaticBody3D" type="StaticBody3D" parent="UserWarning2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
 script = ExtResource("16_l51dr")
-screen_size = Vector2(2, 1)
-viewport_size = Vector2(1200, 600)
+screen_size = Vector2(3.2, 2)
+viewport_size = Vector2(640, 400)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomSwitcherMenu/StaticBody3D"]
-shape = SubResource("BoxShape3D_vxoqc")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UserWarning2DScreen/StaticBody3D"]
+shape = SubResource("BoxShape3D_fvxde")
 
-[connection signal="pointer_entered" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu" method="_on_pointer_entered" flags=18]
-[connection signal="pointer_exited" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu" method="_on_pointer_exited" flags=18]
-[connection signal="pointer_moved" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu/StaticBody3D" method="_on_pointer_moved" flags=18]
-[connection signal="pointer_pressed" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu/StaticBody3D" method="_on_pointer_pressed" flags=18]
-[connection signal="pointer_released" from="RoomSwitcherMenu/StaticBody3D" to="RoomSwitcherMenu/StaticBody3D" method="_on_pointer_released" flags=18]
+[node name="HTTPRequest" type="HTTPRequest" parent="." node_paths=PackedStringArray("experience_generator")]
+script = ExtResource("13_o1ni4")
+experience_generator = NodePath("../ExperienceGenerator")
+test_json = "{
+    \"platform\": \"PC\",
+    \"surveyId\": \"demographics\",
+    \"stateId\": 2,
+    \"toProof\": \"Beweise: Alle Weintrinker sind rothaarig\",
+    \"statements\": [
+        {
+            \"text\": \"alle Weintrinker sind 20 Jahre alt\",
+            \"correct\": false
+        },
+        {
+            \"text\": \"alle Weintrinker sind irisch\",
+            \"correct\": true
+        },
+        {
+            \"text\": \"alle Weintrinker wohnen in potsdam\",
+            \"correct\": true
+        },
+        {
+            \"text\": \"alle potsdamer sind klein\",
+            \"correct\": true
+        },
+        {
+            \"text\": \"alle iren haben große füße\",
+            \"correct\": true
+        },
+        {
+            \"text\": \"alle potsdamer, die große füße haben, sind abenteuerlustig\",
+            \"correct\": true
+        },
+        {
+            \"text\": \"alle potsdamer, die große füße haben und drei füße haben, sind irisch\",
+            \"correct\": false
+        },
+        {
+            \"text\": \"alle iren sind reich\",
+            \"correct\": false
+        },
+        {
+            \"text\": \"alle abenteuerlustigen, die medizin studieren, sind rothaarig\",
+            \"correct\": false
+        },
+        {
+            \"text\": \"alle münsteraner studieren medizin\",
+            \"correct\": false
+        },
+        {
+            \"text\": \"alle briten sind münsteraner\",
+            \"correct\": false
+        },
+        {
+            \"text\": \"alle abenteuerlustigen, die klein sind, sind rothaarig\",
+            \"correct\": true
+        }
+    ],
+    \"arrangeable\": true,
+    \"forceRestart\": false
+}"
+
+[node name="SubmitButton" type="RigidBody3D" parent="."]
+freeze = true
+script = ExtResource("11_xioas")
+enabled = false
+press_to_hold = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubmitButton"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.01179, 0, -1.13426)
+shape = SubResource("BoxShape3D_tvha4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubmitButton"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.01179, 0, -1.13426)
+mesh = SubResource("BoxMesh_dce4o")
+skeleton = NodePath("")
+
+[node name="Label3DDMM" type="Label3D" parent="SubmitButton"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.99404, 0, -1.11651)
+pixel_size = 0.0005
+text = "Submit"
+font_size = 203
+script = ExtResource("13_wjrgg")
+intended_viewing_distance = 0.5
+
+[connection signal="pointer_moved" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
+[connection signal="pointer_pressed" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
+[connection signal="pointer_released" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
+[connection signal="request_completed" from="HTTPRequest" to="HTTPRequest" method="_on_request_completed"]
+[connection signal="button_pressed" from="SubmitButton" to="HTTPRequest" method="_on_submit_button_button_pressed"]

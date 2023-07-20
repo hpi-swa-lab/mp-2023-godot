@@ -40,10 +40,10 @@ func set_text():
 			return
 		else:
 			await ready
-	subject_textbox.text = subject
-	from_textbox.text = from
-	to_textbox.text = to
-	body_textbox.text = body
+#	subject_textbox.text = subject
+#	from_textbox.text = from
+#	to_textbox.text = to
+#	body_textbox.text = body
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

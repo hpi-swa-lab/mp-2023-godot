@@ -15,11 +15,11 @@ top_radius = 0.01
 bottom_radius = 0.01
 height = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eg5l8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0suv"]
 albedo_color = Color(1, 0.188235, 0.188235, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ttjbq"]
-material = SubResource("StandardMaterial3D_eg5l8")
+material = SubResource("StandardMaterial3D_c0suv")
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="InteractableHandle" instance=ExtResource("1_dhvvy")]
@@ -28,12 +28,6 @@ collision_layer = 1048580
 collision_mask = 1048576
 freeze = true
 script = ExtResource("2_yej3c")
-y_offset = -0.15
-radius = 0.01
-sticky_positions = PackedVector3Array()
-radius_fixed = 0.0
-is_radius_fixed = false
-origin = Vector3(0, 0, 0)
 enabled = false
 picked_up_layer = 1048576
 hold_method = 1

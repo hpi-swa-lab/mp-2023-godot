@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwiyi5aucxn8x"]
+
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_mt5db"]
+[ext_resource type="Script" path="res://basic.gd" id="1_rcdxs"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_cjam1"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_3oe03"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_sy5u8"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="6_wjh2i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2pplp"]
+resource_local_to_scene = true
+size = Vector3(0.5, 0.247, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ja2gl"]
+size = Vector3(0.5, 0.24, 0.05)
+
+[node name="Scene" type="Node3D"]
+script = ExtResource("1_rcdxs")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76039, 11.7752)
+current = true
+
+[node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("1_mt5db")]
+
+[node name="XRToolsFunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("2_cjam1")]
+ranged_distance = 20.0
+
+[node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("4_sy5u8")]
+
+[node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("3_3oe03")]
+
+[node name="XRToolsFunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("2_cjam1")]
+ranged_distance = 20.0
+
+[node name="FunctionPointer" parent="XROrigin3D/Right Hand" instance=ExtResource("4_sy5u8")]
+
+[node name="InteractableHandle2" type="RigidBody3D" parent="."]
+process_priority = -1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.956423)
+collision_layer = 1048580
+collision_mask = 1048576
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("6_wjh2i")
+picked_up_layer = 1048576
+hold_method = 1
+ranged_grab_method = 0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InteractableHandle2"]
+shape = SubResource("BoxShape3D_2pplp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableHandle2"]
+mesh = SubResource("BoxMesh_ja2gl")

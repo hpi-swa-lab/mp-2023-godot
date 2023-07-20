@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://2kjqc2p2iop8"]
+
+[ext_resource type="Script" path="res://scripts/ObjectHandle.gd" id="1_fgyd4"]
+[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="2_5nitu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_adcn6"]
+resource_local_to_scene = true
+size = Vector3(0.5, 0.247, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws011"]
+resource_local_to_scene = true
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ei3y8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ws011")
+size = Vector3(0.5, 0.247, 0.05)
+
+[node name="InteractableHandle" type="RigidBody3D"]
+process_priority = -1
+collision_layer = 1048580
+collision_mask = 1048576
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_fgyd4")
+picked_up_layer = 1048576
+hold_method = 1
+ranged_grab_method = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_adcn6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ei3y8")
+skeleton = NodePath("")
+
+[node name="Label3DDMM" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0251)
+pixel_size = 0.0005
+text = "Test test"
+script = ExtResource("2_5nitu")
+intended_viewing_distance = 0.5
