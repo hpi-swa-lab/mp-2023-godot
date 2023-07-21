@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddvkgmui35jl2"]
+[gd_scene load_steps=27 format=3 uid="uid://ddvkgmui35jl2"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_gy2d2"]
 [ext_resource type="Script" path="res://scripts/AlignmentContainer3D.gd" id="6_akkmj"]
 [ext_resource type="Script" path="res://scenes/ExperienceGenerator.gd" id="9_wpk04"]
-[ext_resource type="Script" path="res://scenes/user-study/Button.gd" id="11_xioas"]
+[ext_resource type="Texture2D" uid="uid://1x8d3eke6bej" path="res://assets/icons/icon_ok.png" id="10_hh4ma"]
+[ext_resource type="Texture2D" uid="uid://cjfcws6wxhnwy" path="res://assets/icons/icon_send.png" id="11_k2rdm"]
 [ext_resource type="Script" path="res://scripts/Fetch.gd" id="13_o1ni4"]
-[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="13_wjrgg"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="14_tmntf"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="16_l51dr"]
 
@@ -52,18 +52,22 @@ texture_filter = 1
 resource_local_to_scene = true
 size = Vector3(3.2, 2, 0.02)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tvha4"]
+[sub_resource type="QuadMesh" id="QuadMesh_fycao"]
 resource_local_to_scene = true
-size = Vector3(0.5, 0.247, 0.05)
+size = Vector2(3, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o0b4"]
-resource_local_to_scene = true
+[sub_resource type="ViewportTexture" id="ViewportTexture_1bfq3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14okp"]
+transparency = 1
+cull_mode = 2
 shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_1bfq3")
+texture_filter = 1
 
-[sub_resource type="BoxMesh" id="BoxMesh_dce4o"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nnfl2"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_0o0b4")
-size = Vector3(0.5, 0.247, 0.05)
+size = Vector3(3, 2, 0.02)
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_3eykf")
@@ -112,13 +116,13 @@ extend = 2.0
 is_horizontal = true
 center_children = true
 
-[node name="ExperienceGenerator" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "start_position")]
+[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "start_position")]
 script = ExtResource("9_wpk04")
 user_warning = NodePath("../UserWarning2DScreen")
 start_position = NodePath("../StartPosition")
 
 [node name="UserWarning2DScreen" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.25673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3)
 script = ExtResource("14_tmntf")
 screen_size = Vector2(3.2, 2)
 viewport_size = Vector2(640, 400)
@@ -173,9 +177,79 @@ viewport_size = Vector2(640, 400)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UserWarning2DScreen/StaticBody3D"]
 shape = SubResource("BoxShape3D_fvxde")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="." node_paths=PackedStringArray("experience_generator")]
+[node name="UserWarning2DScreen2" type="Node3D" parent="."]
+transform = Transform3D(0.686187, 0, -0.727426, 0, 1, 0, 0.727426, 0, 0.686187, 4.3316, 1.5, -1.56044)
+script = ExtResource("14_tmntf")
+
+[node name="Viewport" type="SubViewport" parent="UserWarning2DScreen2"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="UserWarning2DScreen2/Viewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UserWarning2DScreen2/Viewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserWarning2DScreen2/Viewport/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CheckButton" type="Button" parent="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 39
+text = "Check"
+icon = ExtResource("10_hh4ma")
+expand_icon = true
+
+[node name="Separator" type="HSeparator" parent="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 39
+text = "Submit"
+icon = ExtResource("11_k2rdm")
+expand_icon = true
+
+[node name="Screen" type="MeshInstance3D" parent="UserWarning2DScreen2"]
+mesh = SubResource("QuadMesh_fycao")
+surface_material_override/0 = SubResource("StandardMaterial3D_14okp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UserWarning2DScreen2"]
+collision_layer = 1048577
+collision_mask = 0
+script = ExtResource("16_l51dr")
+viewport_size = Vector2(300, 200)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UserWarning2DScreen2/StaticBody3D"]
+shape = SubResource("BoxShape3D_nnfl2")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." node_paths=PackedStringArray("experience_manager")]
 script = ExtResource("13_o1ni4")
-experience_generator = NodePath("../ExperienceGenerator")
+experience_manager = NodePath("../ExperienceManager")
 test_json = "{
     \"platform\": \"PC\",
     \"surveyId\": \"demographics\",
@@ -235,33 +309,12 @@ test_json = "{
     \"forceRestart\": false
 }"
 
-[node name="SubmitButton" type="RigidBody3D" parent="."]
-visible = false
-freeze = true
-script = ExtResource("11_xioas")
-enabled = false
-press_to_hold = false
-picked_up_layer = 1114112
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubmitButton"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.01179, 0, -1.13426)
-shape = SubResource("BoxShape3D_tvha4")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubmitButton"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.01179, 0, -1.13426)
-mesh = SubResource("BoxMesh_dce4o")
-skeleton = NodePath("")
-
-[node name="Label3DDMM" type="Label3D" parent="SubmitButton"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.99404, 0, -1.11651)
-pixel_size = 0.0005
-text = "Submit"
-font_size = 203
-script = ExtResource("13_wjrgg")
-intended_viewing_distance = 0.5
-
 [connection signal="pointer_moved" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
 [connection signal="pointer_pressed" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
 [connection signal="pointer_released" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
+[connection signal="button_down" from="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer/CheckButton" to="ExperienceManager" method="_on_check_button_button_down"]
+[connection signal="button_down" from="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer/SubmitButton" to="HTTPRequest" method="_on_submit_button_button_down"]
+[connection signal="pointer_moved" from="UserWarning2DScreen2/StaticBody3D" to="UserWarning2DScreen2/StaticBody3D" method="_on_pointer_moved" flags=18]
+[connection signal="pointer_pressed" from="UserWarning2DScreen2/StaticBody3D" to="UserWarning2DScreen2/StaticBody3D" method="_on_pointer_pressed" flags=18]
+[connection signal="pointer_released" from="UserWarning2DScreen2/StaticBody3D" to="UserWarning2DScreen2/StaticBody3D" method="_on_pointer_released" flags=18]
 [connection signal="request_completed" from="HTTPRequest" to="HTTPRequest" method="_on_request_completed"]
-[connection signal="button_pressed" from="SubmitButton" to="HTTPRequest" method="_on_submit_button_button_pressed"]

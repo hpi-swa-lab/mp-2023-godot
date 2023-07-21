@@ -1,5 +1,5 @@
 extends Node3D
-class_name ExperienceGenerator
+class_name ExperienceManager
 
 @export var user_warning: Node3D
 @export var start_position: AlignmentContainer3D
@@ -45,3 +45,7 @@ func generate_experience(data):
 		
 	alignment_container.position_children()
 	alignment_container2.position_children()
+
+
+func _on_check_button_button_down():
+	print("check")
