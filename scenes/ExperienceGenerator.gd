@@ -9,9 +9,9 @@ class_name ExperienceGenerator
 
 
 func generate_experience(data):
-	if data["platform"] == "PC":
+	if data["view"] != "VR":
 		user_warning.show()
-#		return
+		return
 	else:
 		user_warning.hide()
 	

@@ -33,19 +33,19 @@ background_mode = 2
 sky = SubResource("Sky_3nj16")
 
 [sub_resource type="LabelSettings" id="LabelSettings_nwrua"]
-font_size = 53
+font_size = 30
 
 [sub_resource type="QuadMesh" id="QuadMesh_4dfsu"]
 resource_local_to_scene = true
 size = Vector2(3.2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2iybv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ahady"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7xji"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuuj5"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2iybv")
+albedo_texture = SubResource("ViewportTexture_ahady")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fvxde"]
@@ -119,7 +119,6 @@ start_position = NodePath("../StartPosition")
 
 [node name="UserWarning2DScreen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.25673)
-visible = false
 script = ExtResource("14_tmntf")
 screen_size = Vector2(3.2, 2)
 viewport_size = Vector2(640, 400)
@@ -129,7 +128,7 @@ disable_3d = true
 transparent_bg = true
 gui_embed_subwindows = true
 size = Vector2i(640, 400)
-render_target_update_mode = 1
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="UserWarning2DScreen/Viewport"]
 layout_mode = 3
@@ -154,14 +153,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "This study targets PC!"
+text = "This view is not targeted at VR.
+Please switch to the targeted view."
 label_settings = SubResource("LabelSettings_nwrua")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Screen" type="MeshInstance3D" parent="UserWarning2DScreen"]
 mesh = SubResource("QuadMesh_4dfsu")
-surface_material_override/0 = SubResource("StandardMaterial3D_v7xji")
+surface_material_override/0 = SubResource("StandardMaterial3D_iuuj5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserWarning2DScreen"]
 collision_layer = 1048577
