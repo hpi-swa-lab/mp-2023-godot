@@ -1,15 +1,18 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddvkgmui35jl2"]
+[gd_scene load_steps=32 format=3 uid="uid://ckwa5jp780hgf"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_xsdho"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_1ftie"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_gy2d2"]
+[ext_resource type="Script" path="res://scripts/ControllerHandler.gd" id="5_t0c5i"]
 [ext_resource type="Script" path="res://scripts/AlignmentContainer3D.gd" id="6_akkmj"]
-[ext_resource type="Script" path="res://scenes/ExperienceGenerator.gd" id="9_wpk04"]
+[ext_resource type="Script" path="res://scenes/ExperienceManager.gd" id="7_ejdiu"]
 [ext_resource type="Texture2D" uid="uid://1x8d3eke6bej" path="res://assets/icons/icon_ok.png" id="10_hh4ma"]
 [ext_resource type="Texture2D" uid="uid://cjfcws6wxhnwy" path="res://assets/icons/icon_send.png" id="11_k2rdm"]
+[ext_resource type="Script" path="res://scripts/SelfDisableButton.gd" id="12_rwcqg"]
 [ext_resource type="Script" path="res://scripts/Fetch.gd" id="13_o1ni4"]
+[ext_resource type="Texture2D" uid="uid://bfhxeuhx18wiu" path="res://assets/icons/icon_start.png" id="13_w8c5c"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="14_tmntf"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="16_l51dr"]
 
@@ -39,13 +42,13 @@ font_size = 30
 resource_local_to_scene = true
 size = Vector2(3.2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ahady"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ei5hl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuuj5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yvafn"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ahady")
+albedo_texture = SubResource("ViewportTexture_ei5hl")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fvxde"]
@@ -56,18 +59,27 @@ size = Vector3(3.2, 2, 0.02)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1bfq3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_timdg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14okp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_087j0"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_1bfq3")
+albedo_texture = SubResource("ViewportTexture_timdg")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnfl2"]
 resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_17nxg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7totj"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_17nxg")
+texture_filter = 1
 
 [node name="Shell" type="Node3D"]
 script = ExtResource("1_3eykf")
@@ -80,11 +92,12 @@ current = true
 
 [node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
+script = ExtResource("5_t0c5i")
 
 [node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_wa404")]
 hand_material_override = SubResource("StandardMaterial3D_khxxh")
 
-[node name="XRToolsFunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_xsdho")]
+[node name="FunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_xsdho")]
 enabled = false
 
 [node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("5_gy2d2")]
@@ -92,11 +105,12 @@ enabled = false
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
+script = ExtResource("5_t0c5i")
 
 [node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("4_1ftie")]
 hand_material_override = SubResource("StandardMaterial3D_wc060")
 
-[node name="XRToolsFunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_xsdho")]
+[node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_xsdho")]
 grab_distance = 0.0
 ranged_distance = 20.0
 
@@ -116,25 +130,27 @@ extend = 2.0
 is_horizontal = true
 center_children = true
 
-[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "start_position")]
-script = ExtResource("9_wpk04")
-user_warning = NodePath("../UserWarning2DScreen")
+[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "start_position", "left_controller", "right_controller")]
+script = ExtResource("7_ejdiu")
+user_warning = NodePath("../UserInfo2DScreen")
 start_position = NodePath("../StartPosition")
+left_controller = NodePath("../XROrigin3D/Left Hand")
+right_controller = NodePath("../XROrigin3D/Right Hand")
 
-[node name="UserWarning2DScreen" type="Node3D" parent="."]
+[node name="UserInfo2DScreen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3)
 script = ExtResource("14_tmntf")
 screen_size = Vector2(3.2, 2)
 viewport_size = Vector2(640, 400)
 
-[node name="Viewport" type="SubViewport" parent="UserWarning2DScreen"]
+[node name="Viewport" type="SubViewport" parent="UserInfo2DScreen"]
 disable_3d = true
 transparent_bg = true
 gui_embed_subwindows = true
 size = Vector2i(640, 400)
-render_target_update_mode = 4
+render_target_update_mode = 1
 
-[node name="Control" type="Control" parent="UserWarning2DScreen/Viewport"]
+[node name="Control" type="Control" parent="UserInfo2DScreen/Viewport"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,7 +158,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="UserWarning2DScreen/Viewport/Control"]
+[node name="Panel" type="Panel" parent="UserInfo2DScreen/Viewport/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,7 +166,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UserWarning2DScreen/Viewport/Control/Panel"]
+[node name="Label" type="Label" parent="UserInfo2DScreen/Viewport/Control/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,32 +179,32 @@ label_settings = SubResource("LabelSettings_nwrua")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screen" type="MeshInstance3D" parent="UserWarning2DScreen"]
+[node name="Screen" type="MeshInstance3D" parent="UserInfo2DScreen"]
 mesh = SubResource("QuadMesh_4dfsu")
-surface_material_override/0 = SubResource("StandardMaterial3D_iuuj5")
+surface_material_override/0 = SubResource("StandardMaterial3D_yvafn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="UserWarning2DScreen"]
+[node name="StaticBody3D" type="StaticBody3D" parent="UserInfo2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
 script = ExtResource("16_l51dr")
 screen_size = Vector2(3.2, 2)
 viewport_size = Vector2(640, 400)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UserWarning2DScreen/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UserInfo2DScreen/StaticBody3D"]
 shape = SubResource("BoxShape3D_fvxde")
 
-[node name="UserWarning2DScreen2" type="Node3D" parent="."]
-transform = Transform3D(0.686187, 0, -0.727426, 0, 1, 0, 0.727426, 0, 0.686187, 4.3316, 1.5, -1.56044)
+[node name="UserMenu2DScreen" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.98725, 1.5, -1.74719)
 script = ExtResource("14_tmntf")
 
-[node name="Viewport" type="SubViewport" parent="UserWarning2DScreen2"]
+[node name="Viewport" type="SubViewport" parent="UserMenu2DScreen"]
 disable_3d = true
 transparent_bg = true
 gui_embed_subwindows = true
 size = Vector2i(300, 200)
-render_target_update_mode = 4
+render_target_update_mode = 1
 
-[node name="Control" type="Control" parent="UserWarning2DScreen2/Viewport"]
+[node name="Control" type="Control" parent="UserMenu2DScreen/Viewport"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -196,7 +212,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="UserWarning2DScreen2/Viewport/Control"]
+[node name="Panel" type="Panel" parent="UserMenu2DScreen/Viewport/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -204,7 +220,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UserWarning2DScreen2/Viewport/Control/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UserMenu2DScreen/Viewport/Control/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -215,7 +231,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="CheckButton" type="Button" parent="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer"]
+[node name="CheckButton" type="Button" parent="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 39
@@ -223,28 +239,85 @@ text = "Check"
 icon = ExtResource("10_hh4ma")
 expand_icon = true
 
-[node name="Separator" type="HSeparator" parent="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer"]
+[node name="Separator" type="HSeparator" parent="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="SubmitButton" type="Button" parent="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer"]
+[node name="SubmitButton" type="Button" parent="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 39
 text = "Submit"
 icon = ExtResource("11_k2rdm")
 expand_icon = true
+script = ExtResource("12_rwcqg")
 
-[node name="Screen" type="MeshInstance3D" parent="UserWarning2DScreen2"]
+[node name="Screen" type="MeshInstance3D" parent="UserMenu2DScreen"]
 mesh = SubResource("QuadMesh_fycao")
-surface_material_override/0 = SubResource("StandardMaterial3D_14okp")
+surface_material_override/0 = SubResource("StandardMaterial3D_087j0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="UserWarning2DScreen2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="UserMenu2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
 script = ExtResource("16_l51dr")
 viewport_size = Vector2(300, 200)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UserWarning2DScreen2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UserMenu2DScreen/StaticBody3D"]
+shape = SubResource("BoxShape3D_nnfl2")
+
+[node name="UserStart2DScreen" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.987, 1.5, -1.747)
+script = ExtResource("14_tmntf")
+
+[node name="Viewport" type="SubViewport" parent="UserStart2DScreen"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="UserStart2DScreen/Viewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UserStart2DScreen/Viewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="UserStart2DScreen/Viewport/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 63
+text = "Start"
+icon = ExtResource("13_w8c5c")
+expand_icon = true
+script = ExtResource("12_rwcqg")
+
+[node name="Screen" type="MeshInstance3D" parent="UserStart2DScreen"]
+mesh = SubResource("QuadMesh_fycao")
+surface_material_override/0 = SubResource("StandardMaterial3D_7totj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UserStart2DScreen"]
+collision_layer = 1048577
+collision_mask = 0
+script = ExtResource("16_l51dr")
+viewport_size = Vector2(300, 200)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UserStart2DScreen/StaticBody3D"]
 shape = SubResource("BoxShape3D_nnfl2")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." node_paths=PackedStringArray("experience_manager")]
@@ -309,12 +382,17 @@ test_json = "{
     \"forceRestart\": false
 }"
 
-[connection signal="pointer_moved" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
-[connection signal="pointer_pressed" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
-[connection signal="pointer_released" from="UserWarning2DScreen/StaticBody3D" to="UserWarning2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
-[connection signal="button_down" from="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer/CheckButton" to="ExperienceManager" method="_on_check_button_button_down"]
-[connection signal="button_down" from="UserWarning2DScreen2/Viewport/Control/Panel/VBoxContainer/SubmitButton" to="HTTPRequest" method="_on_submit_button_button_down"]
-[connection signal="pointer_moved" from="UserWarning2DScreen2/StaticBody3D" to="UserWarning2DScreen2/StaticBody3D" method="_on_pointer_moved" flags=18]
-[connection signal="pointer_pressed" from="UserWarning2DScreen2/StaticBody3D" to="UserWarning2DScreen2/StaticBody3D" method="_on_pointer_pressed" flags=18]
-[connection signal="pointer_released" from="UserWarning2DScreen2/StaticBody3D" to="UserWarning2DScreen2/StaticBody3D" method="_on_pointer_released" flags=18]
+[connection signal="experience_started" from="ExperienceManager" to="HTTPRequest" method="_on_experience_manager_experience_started"]
+[connection signal="pointer_moved" from="UserInfo2DScreen/StaticBody3D" to="UserInfo2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
+[connection signal="pointer_pressed" from="UserInfo2DScreen/StaticBody3D" to="UserInfo2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
+[connection signal="pointer_released" from="UserInfo2DScreen/StaticBody3D" to="UserInfo2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
+[connection signal="button_down" from="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer/CheckButton" to="ExperienceManager" method="_on_check_button_button_down"]
+[connection signal="button_down" from="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer/SubmitButton" to="HTTPRequest" method="_on_submit_button_button_down"]
+[connection signal="pointer_moved" from="UserMenu2DScreen/StaticBody3D" to="UserMenu2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
+[connection signal="pointer_pressed" from="UserMenu2DScreen/StaticBody3D" to="UserMenu2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
+[connection signal="pointer_released" from="UserMenu2DScreen/StaticBody3D" to="UserMenu2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
+[connection signal="button_down" from="UserStart2DScreen/Viewport/Control/Panel/StartButton" to="ExperienceManager" method="_on_start_button_button_down"]
+[connection signal="pointer_moved" from="UserStart2DScreen/StaticBody3D" to="UserStart2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
+[connection signal="pointer_pressed" from="UserStart2DScreen/StaticBody3D" to="UserStart2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
+[connection signal="pointer_released" from="UserStart2DScreen/StaticBody3D" to="UserStart2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
 [connection signal="request_completed" from="HTTPRequest" to="HTTPRequest" method="_on_request_completed"]

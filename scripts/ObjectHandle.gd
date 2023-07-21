@@ -7,8 +7,13 @@ signal pointer_exited
 @onready var mesh = $MeshInstance3D
 @onready var collision_shape = $"CollisionShape3D"
 @export var handled_node: Node3D
+# don't change in inspector (only for reading purposes)
+@export var correct = false
+@export var selected = false
 
 var pointer_on_this = false
+var is_currently_picked_up = false
+var _original_handled_parent = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,10 +38,6 @@ func on_pointer_entered():
 func on_pointer_exited():
 	G.remove_outline(mesh)
 	pointer_on_this = false
-
-var is_currently_picked_up = false
-var _original_handled_parent = null
-var selected = false
 
 func on_button_press(button_name):
 	if pointer_on_this:
