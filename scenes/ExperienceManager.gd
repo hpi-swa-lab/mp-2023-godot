@@ -4,6 +4,7 @@ class_name ExperienceManager
 signal experience_started
 
 @export var user_warning: Node3D
+@export var user_info_2d_screen: Node3D
 @export var start_position: AlignmentContainer3D
 
 @export var left_controller: ControllerHandler
@@ -75,11 +76,13 @@ func _on_check_button_button_down():
 	var correct_object_handles = object_handles.filter(
 		func(object_handle: ObjectHandle3D): 
 			return object_handle.correct)
-			
+	
+	var label = user_info_2d_screen.get_node("Viewport/Control/Panel/Label") as Label
 	if selected_object_handles == correct_object_handles:
-		print("all selected are correct")
+		label.text = "All selected are correct"
 	else:
-		print("some selected are not correct")
+		label.text = "Some selected are incorrect"
+	user_info_2d_screen.show()
 
 
 func _on_start_button_button_down():

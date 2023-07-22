@@ -128,9 +128,10 @@ extend = 2.0
 is_horizontal = true
 center_children = true
 
-[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "start_position", "left_controller", "right_controller")]
+[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "user_info_2d_screen", "start_position", "left_controller", "right_controller")]
 script = ExtResource("7_ejdiu")
 user_warning = NodePath("../UserInfo2DScreen")
+user_info_2d_screen = NodePath("../UserInfo2DScreen")
 start_position = NodePath("../StartPosition")
 left_controller = NodePath("../XROrigin3D/Left Hand")
 right_controller = NodePath("../XROrigin3D/Right Hand")
