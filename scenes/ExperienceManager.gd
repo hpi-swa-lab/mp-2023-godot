@@ -46,7 +46,7 @@ func generate_experience(data):
 		
 		var object_handle: ObjectHandle3D = object_handle_scene.instantiate() as ObjectHandle3D
 		object_handle.correct = statement["correct"]
-		if arrangeable:
+		if not arrangeable:
 			object_handle.handled_node = container
 		(object_handle.get_node("Label3DDMM") as Label3D).text = statement["text"]
 		
