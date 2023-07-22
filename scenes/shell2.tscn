@@ -42,13 +42,13 @@ font_size = 30
 resource_local_to_scene = true
 size = Vector2(3.2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ei5hl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4mliu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yvafn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4n0n"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ei5hl")
+albedo_texture = SubResource("ViewportTexture_4mliu")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fvxde"]
@@ -59,26 +59,26 @@ size = Vector3(3.2, 2, 0.02)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_timdg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fy6g1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_087j0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysy0l"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_timdg")
+albedo_texture = SubResource("ViewportTexture_fy6g1")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnfl2"]
 resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_17nxg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kc87s"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7totj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3vmv"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_17nxg")
+albedo_texture = SubResource("ViewportTexture_kc87s")
 texture_filter = 1
 
 [node name="Shell" type="Node3D"]
@@ -94,20 +94,18 @@ current = true
 tracker = &"left_hand"
 script = ExtResource("5_t0c5i")
 
-[node name="LeftHand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_wa404")]
+[node name="Hand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_wa404")]
 hand_material_override = SubResource("StandardMaterial3D_khxxh")
 
 [node name="FunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_xsdho")]
-enabled = false
 
 [node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("5_gy2d2")]
-enabled = false
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 script = ExtResource("5_t0c5i")
 
-[node name="RightHand" parent="XROrigin3D/Right Hand" instance=ExtResource("4_1ftie")]
+[node name="Hand" parent="XROrigin3D/Right Hand" instance=ExtResource("4_1ftie")]
 hand_material_override = SubResource("StandardMaterial3D_wc060")
 
 [node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_xsdho")]
@@ -181,7 +179,7 @@ vertical_alignment = 1
 
 [node name="Screen" type="MeshInstance3D" parent="UserInfo2DScreen"]
 mesh = SubResource("QuadMesh_4dfsu")
-surface_material_override/0 = SubResource("StandardMaterial3D_yvafn")
+surface_material_override/0 = SubResource("StandardMaterial3D_c4n0n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserInfo2DScreen"]
 collision_layer = 1048577
@@ -253,7 +251,7 @@ script = ExtResource("12_rwcqg")
 
 [node name="Screen" type="MeshInstance3D" parent="UserMenu2DScreen"]
 mesh = SubResource("QuadMesh_fycao")
-surface_material_override/0 = SubResource("StandardMaterial3D_087j0")
+surface_material_override/0 = SubResource("StandardMaterial3D_ysy0l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserMenu2DScreen"]
 collision_layer = 1048577
@@ -273,7 +271,7 @@ disable_3d = true
 transparent_bg = true
 gui_embed_subwindows = true
 size = Vector2i(300, 200)
-render_target_update_mode = 4
+render_target_update_mode = 1
 
 [node name="Control" type="Control" parent="UserStart2DScreen/Viewport"]
 layout_mode = 3
@@ -309,7 +307,7 @@ script = ExtResource("12_rwcqg")
 
 [node name="Screen" type="MeshInstance3D" parent="UserStart2DScreen"]
 mesh = SubResource("QuadMesh_fycao")
-surface_material_override/0 = SubResource("StandardMaterial3D_7totj")
+surface_material_override/0 = SubResource("StandardMaterial3D_w3vmv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserStart2DScreen"]
 collision_layer = 1048577
@@ -324,7 +322,7 @@ shape = SubResource("BoxShape3D_nnfl2")
 script = ExtResource("13_o1ni4")
 experience_manager = NodePath("../ExperienceManager")
 test_json = "{
-    \"platform\": \"PC\",
+    \"platform\": \"VR\",
     \"surveyId\": \"demographics\",
     \"stateId\": 2,
     \"toProof\": \"Beweise: Alle Weintrinker sind rothaarig\",
@@ -379,7 +377,8 @@ test_json = "{
         }
     ],
     \"arrangeable\": true,
-    \"forceRestart\": false
+    \"forceRestart\": false,
+	\"leftHand\": false
 }"
 
 [connection signal="experience_started" from="ExperienceManager" to="HTTPRequest" method="_on_experience_manager_experience_started"]

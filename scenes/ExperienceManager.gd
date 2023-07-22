@@ -16,7 +16,7 @@ var object_handles: Array[ObjectHandle3D]
 
 
 func generate_experience(data):
-	if data["view"] != "VR":
+	if data["platform"] != "VR":
 		user_warning.show()
 		return
 	else:

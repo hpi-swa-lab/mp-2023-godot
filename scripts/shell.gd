@@ -34,21 +34,30 @@ func _ready():
 	right_hand.button_released.connect(on_right_hand_button_released)
 	right_hand.button_pressed.connect(on_right_hand_button_pressed)
 	right_hand.input_vector2_changed.connect(on_right_hand_vec2_changed)
+	
+	left_hand.button_released.connect(on_left_hand_button_released)
+	left_hand.button_pressed.connect(on_left_hand_button_pressed)
+	left_hand.input_vector2_changed.connect(on_left_hand_vec2_changed)
 
-var left_hand : XRController3D : 
+var left_hand : ControllerHandler : 
 	set(new_value):
 		left_hand = new_value
 		controllers_ready.emit(left_hand)
 		
-var right_hand : XRController3D : 
+var right_hand : ControllerHandler : 
 	set(new_value):
 		right_hand = new_value
 		controllers_ready.emit(right_hand)
 		
-@onready var right_hand_pickup = $"XROrigin3D/Right Hand/XRToolsFunctionPickup"
 @onready var player_body: XRToolsPlayerBody = $XROrigin3D/PlayerBody
+
+@onready var right_hand_pickup = $"XROrigin3D/Right Hand/FunctionPickup"
 @onready var right_raycast: RayCast3D = $"XROrigin3D/Right Hand/RightHand/RayCast3D"
 @onready var right_pointer: XRToolsFunctionPointer = $"XROrigin3D/Right Hand/FunctionPointer"
+
+@onready var left_hand_pickup = $"XROrigin3D/Left Hand/FunctionPickup"
+@onready var left_raycast: RayCast3D = $"XROrigin3D/Left Hand/LeftHand/RayCast3D"
+@onready var left_pointer: XRToolsFunctionPointer = $"XROrigin3D/Left Hand/FunctionPointer"
 
 #func ray_cast_on_room_switcher_menu():
 #	right_hand_raycast.force_raycast_update()
@@ -63,13 +72,28 @@ var right_hand : XRController3D :
 # our own ray cast (not used)
 var ray_cast_last_collided_at = Vector3(0,0,0)
 var ray_cast_target = null
+
 var right_hand_button_pressed_handlers = []
 var right_hand_button_released_handlers = []
 var right_hand_input_vec2_handlers = []
 
+var left_hand_button_pressed_handlers = []
+var left_hand_button_released_handlers = []
+var left_hand_input_vec2_handlers = []
+
+func on_left_hand_button_pressed(button_name):
+	if not left_hand.is_active:
+		return
+		
+	for handler in left_hand_button_pressed_handlers:
+		handler.call(button_name, left_hand, left_hand_pickup)
+
 func on_right_hand_button_pressed(button_name):
+	if not right_hand.is_active:
+		return
+		
 	for handler in right_hand_button_pressed_handlers:
-		handler.call(button_name)
+		handler.call(button_name, right_hand, right_hand_pickup)
 #	if button_name == "ax_button":
 #		room_switcher_menu.visible = !room_switcher_menu.visible
 #		$"Panel Manager".visible = !$"Panel Manager".visible
@@ -90,9 +114,20 @@ func on_right_hand_button_pressed(button_name):
 #			elif ray_cast_target.has_method("pointer_pressed"):
 #				ray_cast_target.pointer_pressed(ray_cast_last_collided_at)
 #
+
+func on_left_hand_button_released(button_name):
+	if not left_hand.is_active:
+		return
+		
+	for handler in left_hand_button_released_handlers:
+		handler.call(button_name, left_hand_pickup)
+
 func on_right_hand_button_released(button_name):
+	if not right_hand.is_active:
+		return
+	
 	for handler in right_hand_button_released_handlers:
-		handler.call(button_name)
+		handler.call(button_name, right_hand_pickup)
 #	if button_name == "trigger_click":
 #		var ray_cast_menu_result = ray_cast_on_room_switcher_menu()
 #		if ray_cast_menu_result:
@@ -110,7 +145,7 @@ func on_right_hand_button_released(button_name):
 #				ray_cast_target = null
 #				ray_cast_last_collided_at = Vector3(0, 0, 0)
 
-var additional_functions: Array[Node] = []			
+var additional_functions: Array[Node] = []
 
 func switch_room(room_key):
 	print(room_key)
@@ -158,11 +193,24 @@ func haptic_pulse(side: String, duration: float, intensity: float = 10):
 
 
 func on_right_hand_vec2_changed(input_name: String, value: Vector2):
+	if not right_hand.is_active:
+		return
+	
 	for handler in right_hand_input_vec2_handlers:
+		handler.call(input_name, value)
+		
+func on_left_hand_vec2_changed(input_name: String, value: Vector2):
+	if not left_hand.is_active:
+		return
+		
+	for handler in left_hand_input_vec2_handlers:
 		handler.call(input_name, value)
 
 func pointer_vec():
 	var base_pointer = Vector3(0,0,-1000)
+	if left_hand.is_active:
+		return base_pointer *  left_pointer.global_transform.inverse()
+	
 	return base_pointer *  right_pointer.global_transform.inverse()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

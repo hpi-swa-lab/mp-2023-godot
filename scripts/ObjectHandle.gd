@@ -27,6 +27,11 @@ func ready_in_shell():
 	G.shell.right_hand_button_pressed_handlers.append(on_button_press)
 	G.shell.right_hand_button_released_handlers.append(on_button_release)
 	G.shell.right_hand_input_vec2_handlers.append(on_input_vec2)
+	
+	G.shell.left_hand_button_pressed_handlers.append(on_button_press)
+	G.shell.left_hand_button_released_handlers.append(on_button_release)
+	G.shell.left_hand_input_vec2_handlers.append(on_input_vec2)
+	
 	initialized = true
 
 func on_pointer_entered():
@@ -39,13 +44,13 @@ func on_pointer_exited():
 	G.remove_outline(mesh)
 	pointer_on_this = false
 
-func on_button_press(button_name):
+func on_button_press(button_name, hand, pickup):
 	if pointer_on_this:
 		if button_name == "grip_click":
 			if handled_node != null:
 				_original_handled_parent = handled_node.get_parent()
 			
-			pick_up(G.shell.right_hand_pickup, G.shell.right_hand)
+			pick_up(pickup, hand)
 			
 			if handled_node != null:
 				handled_node.reparent(self)
@@ -53,7 +58,7 @@ func on_button_press(button_name):
 			is_currently_picked_up = true
 
 			# Hacky way to enable this to be reparented to internalpickable (to remove shaking of handle)
-			G.shell.right_hand_pickup.picked_up_object = null
+			pickup.picked_up_object = null
 
 			if handled_node != null and handled_node.has_signal("on_handle_pick_up"):
 				handled_node.emit_signal("on_handle_pick_up")
@@ -65,7 +70,7 @@ func on_button_press(button_name):
 			else:
 				(mesh.mesh.surface_get_material(0) as StandardMaterial3D).albedo_color = Color.WHITE
 
-func on_button_release(button_name):
+func on_button_release(button_name, pickup):
 	if button_name == "grip_click":
 		if is_currently_picked_up:
 			is_currently_picked_up = false
@@ -74,8 +79,8 @@ func on_button_release(button_name):
 				handled_node.reparent(_original_handled_parent)
 			
 			# see on_button_press (hacky way must be reversed here)
-			G.shell.right_hand_pickup.picked_up_object = self
-			G.shell.right_hand_pickup.drop_object()
+			pickup.picked_up_object = self
+			pickup.drop_object()
 
 			if handled_node != null and handled_node.has_signal("on_handle_dropped"):
 				handled_node.emit_signal("on_handle_dropped")

@@ -12,7 +12,10 @@ var start_time: int
 var state_id: int
 
 func _ready():
-	request_status()
+#	request_status()
+	var json = JSON.parse_string(test_json)
+	experience_manager.generate_experience(json)
+	state_id = 1
 
 
 func _on_request_completed(result, response_code, headers, body):
