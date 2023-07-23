@@ -34,6 +34,15 @@ func ready_in_shell():
 	
 	initialized = true
 
+func remove_handlers():
+	G.shell.right_hand_button_pressed_handlers.erase(on_button_press)
+	G.shell.right_hand_button_released_handlers.erase(on_button_release)
+	G.shell.right_hand_input_vec2_handlers.erase(on_input_vec2)
+	
+	G.shell.left_hand_button_pressed_handlers.erase(on_button_press)
+	G.shell.left_hand_button_released_handlers.erase(on_button_release)
+	G.shell.left_hand_input_vec2_handlers.erase(on_input_vec2)
+
 func on_pointer_entered():
 	if !initialized:
 		ready_in_shell()

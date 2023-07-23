@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ckwa5jp780hgf"]
+[gd_scene load_steps=39 format=3 uid="uid://ckwa5jp780hgf"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
@@ -40,45 +40,111 @@ font_size = 30
 
 [sub_resource type="QuadMesh" id="QuadMesh_4dfsu"]
 resource_local_to_scene = true
-size = Vector2(3.2, 2)
+size = Vector2(3.2, 0.9)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4mliu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kwvcj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4n0n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4inur"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_4mliu")
+albedo_texture = SubResource("ViewportTexture_kwvcj")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fvxde"]
 resource_local_to_scene = true
-size = Vector3(3.2, 2, 0.02)
+size = Vector3(3.2, 0.9, 0.02)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0df62"]
+bg_color = Color(0, 0, 0, 0.556863)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ectt7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4j07"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_ectt7")
+texture_filter = 1
+
+[sub_resource type="Animation" id="Animation_8hfeq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Viewport/Control/Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.556863)]
+}
+
+[sub_resource type="Animation" id="Animation_q8st5"]
+resource_name = "blink"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Viewport/Control/Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 4.59479, 0.183011),
+"update": 0,
+"values": [Color(0, 0, 0, 0.588235), Color(1, 0.12549, 0.0862745, 0.705882), Color(0, 0, 0, 0.588235)]
+}
+
+[sub_resource type="Animation" id="Animation_yfma1"]
+resource_name = "blink_green"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Viewport/Control/Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 4.59479, 0.183011),
+"update": 0,
+"values": [Color(0, 0, 0, 0.588235), Color(0, 0.662745, 0.0901961, 0.705882), Color(0, 0, 0, 0.588235)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5cclt"]
+_data = {
+"RESET": SubResource("Animation_8hfeq"),
+"blink_green": SubResource("Animation_yfma1"),
+"blink_red": SubResource("Animation_q8st5")
+}
 
 [sub_resource type="QuadMesh" id="QuadMesh_fycao"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fy6g1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_b281k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysy0l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l37o6"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_fy6g1")
+albedo_texture = SubResource("ViewportTexture_b281k")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnfl2"]
 resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kc87s"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ha0ay"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3vmv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujn38"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_kc87s")
+albedo_texture = SubResource("ViewportTexture_ha0ay")
 texture_filter = 1
 
 [node name="Shell" type="Node3D"]
@@ -128,25 +194,81 @@ extend = 2.0
 is_horizontal = true
 center_children = true
 
-[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_warning", "user_info_2d_screen", "start_position", "left_controller", "right_controller")]
+[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_info_2d_screen", "user_start_2d_screen", "user_menu_2d_screen", "user_task_2d_screen", "start_position", "left_controller", "right_controller")]
 script = ExtResource("7_ejdiu")
-user_warning = NodePath("../UserInfo2DScreen")
 user_info_2d_screen = NodePath("../UserInfo2DScreen")
+user_start_2d_screen = NodePath("../UserStart2DScreen")
+user_menu_2d_screen = NodePath("../UserMenu2DScreen")
+user_task_2d_screen = NodePath("../UserTask2DScreen")
 start_position = NodePath("../StartPosition")
 left_controller = NodePath("../XROrigin3D/Left Hand")
 right_controller = NodePath("../XROrigin3D/Right Hand")
 
-[node name="UserInfo2DScreen" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3)
+[node name="UserTask2DScreen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, -3)
 script = ExtResource("14_tmntf")
-screen_size = Vector2(3.2, 2)
-viewport_size = Vector2(640, 400)
+screen_size = Vector2(3.2, 0.9)
+viewport_size = Vector2(640, 180)
+
+[node name="Viewport" type="SubViewport" parent="UserTask2DScreen"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(640, 180)
+
+[node name="Control" type="Control" parent="UserTask2DScreen/Viewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UserTask2DScreen/Viewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UserTask2DScreen/Viewport/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "To proof: Roses are red, violets are blue."
+label_settings = SubResource("LabelSettings_nwrua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Screen" type="MeshInstance3D" parent="UserTask2DScreen"]
+mesh = SubResource("QuadMesh_4dfsu")
+surface_material_override/0 = SubResource("StandardMaterial3D_4inur")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UserTask2DScreen"]
+collision_layer = 1048577
+collision_mask = 0
+script = ExtResource("16_l51dr")
+screen_size = Vector2(3.2, 0.9)
+viewport_size = Vector2(640, 180)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UserTask2DScreen/StaticBody3D"]
+shape = SubResource("BoxShape3D_fvxde")
+
+[node name="UserInfo2DScreen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, -3)
+script = ExtResource("14_tmntf")
+screen_size = Vector2(3.2, 0.9)
+viewport_size = Vector2(640, 180)
 
 [node name="Viewport" type="SubViewport" parent="UserInfo2DScreen"]
 disable_3d = true
 transparent_bg = true
 gui_embed_subwindows = true
-size = Vector2i(640, 400)
+size = Vector2i(640, 180)
 render_target_update_mode = 1
 
 [node name="Control" type="Control" parent="UserInfo2DScreen/Viewport"]
@@ -164,6 +286,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0df62")
 
 [node name="Label" type="Label" parent="UserInfo2DScreen/Viewport/Control/Panel"]
 layout_mode = 1
@@ -180,17 +303,22 @@ vertical_alignment = 1
 
 [node name="Screen" type="MeshInstance3D" parent="UserInfo2DScreen"]
 mesh = SubResource("QuadMesh_4dfsu")
-surface_material_override/0 = SubResource("StandardMaterial3D_c4n0n")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4j07")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserInfo2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
 script = ExtResource("16_l51dr")
-screen_size = Vector2(3.2, 2)
-viewport_size = Vector2(640, 400)
+screen_size = Vector2(3.2, 0.9)
+viewport_size = Vector2(640, 180)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UserInfo2DScreen/StaticBody3D"]
 shape = SubResource("BoxShape3D_fvxde")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInfo2DScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_5cclt")
+}
 
 [node name="UserMenu2DScreen" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.98725, 1.5, -1.74719)
@@ -252,7 +380,7 @@ script = ExtResource("12_rwcqg")
 
 [node name="Screen" type="MeshInstance3D" parent="UserMenu2DScreen"]
 mesh = SubResource("QuadMesh_fycao")
-surface_material_override/0 = SubResource("StandardMaterial3D_ysy0l")
+surface_material_override/0 = SubResource("StandardMaterial3D_l37o6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserMenu2DScreen"]
 collision_layer = 1048577
@@ -308,7 +436,7 @@ script = ExtResource("12_rwcqg")
 
 [node name="Screen" type="MeshInstance3D" parent="UserStart2DScreen"]
 mesh = SubResource("QuadMesh_fycao")
-surface_material_override/0 = SubResource("StandardMaterial3D_w3vmv")
+surface_material_override/0 = SubResource("StandardMaterial3D_ujn38")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserStart2DScreen"]
 collision_layer = 1048577
@@ -383,10 +511,14 @@ test_json = "{
 }"
 
 [connection signal="experience_started" from="ExperienceManager" to="HTTPRequest" method="_on_experience_manager_experience_started"]
+[connection signal="pointer_moved" from="UserTask2DScreen/StaticBody3D" to="UserTask2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
+[connection signal="pointer_pressed" from="UserTask2DScreen/StaticBody3D" to="UserTask2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
+[connection signal="pointer_released" from="UserTask2DScreen/StaticBody3D" to="UserTask2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
 [connection signal="pointer_moved" from="UserInfo2DScreen/StaticBody3D" to="UserInfo2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
 [connection signal="pointer_pressed" from="UserInfo2DScreen/StaticBody3D" to="UserInfo2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
 [connection signal="pointer_released" from="UserInfo2DScreen/StaticBody3D" to="UserInfo2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
 [connection signal="button_down" from="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer/CheckButton" to="ExperienceManager" method="_on_check_button_button_down"]
+[connection signal="button_down" from="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer/SubmitButton" to="ExperienceManager" method="_on_submit_button_button_down"]
 [connection signal="button_down" from="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer/SubmitButton" to="HTTPRequest" method="_on_submit_button_button_down"]
 [connection signal="pointer_moved" from="UserMenu2DScreen/StaticBody3D" to="UserMenu2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
 [connection signal="pointer_pressed" from="UserMenu2DScreen/StaticBody3D" to="UserMenu2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
