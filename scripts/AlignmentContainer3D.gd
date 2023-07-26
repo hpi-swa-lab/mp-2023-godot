@@ -17,7 +17,7 @@ class_name AlignmentContainer3D
 		center_children = new_center_children
 		position_children()
 
-# extend will be ignored and sum of child height used
+# if true, extend will be added to child height
 @export var use_child_height: bool:
 	set(new_use_child_height):
 		use_child_height = new_use_child_height
@@ -37,7 +37,7 @@ func position_children(node = null):
 		var total_child_height = 0.0
 		for child in children:
 			total_child_height += ((child.get_node("InteractableHandle/CollisionShape3D") as CollisionShape3D).shape as BoxShape3D).size.y
-		height = total_child_height
+		height = total_child_height + extend
 
 	if center_children:
 		offset = height / 2

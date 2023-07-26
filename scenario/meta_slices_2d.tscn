@@ -15,13 +15,13 @@
 resource_local_to_scene = true
 size = Vector2(3.2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1smby"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nl7n5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ca1bi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqx0r"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_1smby")
+albedo_texture = SubResource("ViewportTexture_nl7n5")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_31xbr"]
@@ -158,7 +158,7 @@ size = Vector3(0.476, 0.38, 0.002)
 
 [node name="Screen" parent="Classroom/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_8wr05")
-surface_material_override/0 = SubResource("StandardMaterial3D_ca1bi")
+surface_material_override/0 = SubResource("StandardMaterial3D_cqx0r")
 
 [node name="CollisionShape3D" parent="Classroom/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_31xbr")
@@ -185,6 +185,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kmqv7")
 
 [node name="InteractableHandle" parent="Panel" node_paths=PackedStringArray("handled_node") instance=ExtResource("2_bn5yo")]
 handled_node = NodePath("..")
+correct = false
+selected = false
 
 [node name="CollisionShape3D" parent="Panel/InteractableHandle" index="0"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.432, 0)
@@ -490,6 +492,10 @@ mesh = SubResource("BoxMesh_un1d8")
 [node name="screen" parent="mail-tablet/Tablet" index="2"]
 mesh = SubResource("BoxMesh_uymwf")
 
+[node name="InteractableHandle" parent="mail-tablet/Tablet" index="3"]
+correct = false
+selected = false
+
 [node name="CollisionShape3D" parent="mail-tablet/Tablet/InteractableHandle" index="0"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.23, 0)
 shape = SubResource("CylinderShape3D_qr786")
@@ -594,6 +600,10 @@ mesh = SubResource("BoxMesh_vp552")
 
 [node name="screen" parent="calendar-tablet/Tablet" index="2"]
 mesh = SubResource("BoxMesh_bafqe")
+
+[node name="InteractableHandle" parent="calendar-tablet/Tablet" index="3"]
+correct = false
+selected = false
 
 [node name="AlignmentContainer3D2" parent="calendar-tablet/Tablet" instance=ExtResource("3_ax1bx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 2.08165e-12, 0.006)

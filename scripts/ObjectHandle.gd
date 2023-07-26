@@ -52,12 +52,20 @@ func on_pointer_entered():
 func on_pointer_exited():
 	G.remove_outline(mesh)
 	pointer_on_this = false
+	
+func _process(delta):
+	if is_currently_picked_up:
+		look_at(get_viewport().get_camera_3d().global_position)
+		rotate_object_local(Vector3.UP, PI)
 
 func on_button_press(button_name, hand, pickup):
 	if pointer_on_this:
-		if button_name == "grip_click":
+		if button_name == "trigger_click":
 			if handled_node != null:
 				_original_handled_parent = handled_node.get_parent()
+			else:
+				look_at(get_viewport().get_camera_3d().global_position)
+				rotate_object_local(Vector3.UP, PI)
 			
 			pick_up(pickup, hand)
 			
@@ -72,15 +80,17 @@ func on_button_press(button_name, hand, pickup):
 			if handled_node != null and handled_node.has_signal("on_handle_pick_up"):
 				handled_node.emit_signal("on_handle_pick_up")
 				
-		if button_name == "trigger_click":
+		if button_name == "ax_button":
 			selected = !selected
 			if selected:
 				(mesh.mesh.surface_get_material(0) as StandardMaterial3D).albedo_color = Color.BLUE
+				(get_node("Label3DDMM") as Label3D).modulate = Color.WHITE
 			else:
 				(mesh.mesh.surface_get_material(0) as StandardMaterial3D).albedo_color = Color.WHITE
+				(get_node("Label3DDMM") as Label3D).modulate = Color.BLACK
 
 func on_button_release(button_name, pickup):
-	if button_name == "grip_click":
+	if button_name == "trigger_click":
 		if is_currently_picked_up:
 			is_currently_picked_up = false
 
@@ -97,5 +107,6 @@ func on_button_release(button_name, pickup):
 func on_input_vec2(input_name, value):
 	if input_name == "primary":
 		if is_currently_picked_up:
-			var ray_cast_vector : Vector3 = G.shell.pointer_vec().normalized()
-			global_position = ray_cast_vector * 0.01 * sign(value.y) + global_position
+			return
+#			var ray_cast_vector : Vector3 = G.shell.pointer_vec().normalized()
+#			global_position = ray_cast_vector * 0.01 * sign(value.y) + global_position

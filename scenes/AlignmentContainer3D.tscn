@@ -4,6 +4,7 @@
 
 [node name="AlignmentContainer3D" type="Node3D"]
 script = ExtResource("1_weu2f")
+extend = 0.25
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
