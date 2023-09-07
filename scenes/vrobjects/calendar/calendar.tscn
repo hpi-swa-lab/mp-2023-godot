@@ -9,32 +9,26 @@
 
 [node name="Event" parent="Monday" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107407, 0)
-text = ""
-resize_box = false
-depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
+text = "08:00  Breakfast with Bob"
+height = 0.0693333
+width = 0.433021
 handle_bar_padding = 0.1
 
 [node name="Event2" parent="Monday" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22508, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Jane"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
+height = 0.0754222
+width = 0.387377
 handle_bar_padding = 0.1
 
 [node name="Event3" parent="Monday" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34483, 0)
-text = ""
+text = "20:00 Dinner with Jane"
 resize_box = false
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
+height = 0.0754222
+width = 0.387377
 handle_bar_padding = 0.1
 
 [node name="Tu" parent="." instance=ExtResource("3_8c618")]
@@ -43,32 +37,20 @@ title = "Tuesday July 11th"
 
 [node name="Event" parent="Tu" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107407, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Jane"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event2" parent="Tu" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22508, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Jane"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event3" parent="Tu" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34483, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Jane"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Wednesday" parent="." instance=ExtResource("3_8c618")]
@@ -77,32 +59,20 @@ title = "Wednesday July 12th"
 
 [node name="Event" parent="Wednesday" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107407, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event2" parent="Wednesday" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22508, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event3" parent="Wednesday" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34483, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Th" parent="." instance=ExtResource("3_8c618")]
@@ -111,32 +81,21 @@ title = "Thursday July 13th"
 
 [node name="Event" parent="Th" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107407, 0)
-text = ""
+text = "20:00 Dinner with Lisa"
 resize_box = false
-depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
+depth = 0.108
 handle_bar_padding = 0.1
 
 [node name="Event2" parent="Th" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22508, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event3" parent="Th" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34483, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Fr" parent="." instance=ExtResource("3_8c618")]
@@ -145,32 +104,20 @@ title = "Friday July 14th"
 
 [node name="Event" parent="Fr" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107407, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event2" parent="Fr" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22508, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event3" parent="Fr" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34483, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Sat" parent="." instance=ExtResource("3_8c618")]
@@ -179,30 +126,18 @@ title = "Saturday July 15th"
 
 [node name="Event" parent="Sat" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107407, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event2" parent="Sat" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22508, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1
 
 [node name="Event3" parent="Sat" instance=ExtResource("2_2516j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34483, 0)
-text = ""
-resize_box = false
+text = "20:00 Dinner with Lisa"
 depth = 0.1
-height = 0.0
-width = 0.0
-intended_viewing_distance = 0.0
 handle_bar_padding = 0.1

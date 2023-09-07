@@ -1,3 +1,4 @@
+@tool
 extends TextBox
 
 signal on_handle_pick_up
@@ -12,6 +13,7 @@ func on_picked_up():
 		var p = get_parent()
 		p.remove_child(self)
 		p.get_parent().add_child(self)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -3,17 +3,17 @@ extends Node
 var apps: Dictionary = {
 	"meta_slices_2d" :  {
 		"scene": func (): return load("res://scenario/meta_slices_2d.tscn"),
-		"icon": "res://assets/img/Mail.png",
+		"icon": "res://assets/img/One.png",
 		"name": "Meta Slices 2D",
 	},
 	"vr_objects" : {
 		"scene" : func (): return load("res://scenario/vr_objects.tscn"),
-		"icon": "res://assets/img/Woods.png",
+		"icon": "res://assets/img/Many.png",
 		"name": "VR Objects"
 	},
 	"tablet_2d" : {
 		"scene" : func (): return load("res://scenario/tablet_2d.tscn"),
-		"icon": "res://assets/img/Woods.png",
+		"icon": "res://assets/img/Two.png",
 		"name": "Tablet 2D"
 	},
 }

@@ -101,6 +101,7 @@ mesh = SubResource("CylinderMesh_ugme5")
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("6_i85gb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595009, 0)
+visible = false
 collision_layer = 0
 collision_mask = 1
 enabled = false
