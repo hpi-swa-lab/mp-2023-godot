@@ -1,6 +1,6 @@
 # mp-2023-godot
 
-This repository contains all Godot code / files that were created during the 2023 summer term master project.
+This repo includes different scenarios resulting from the qualitative study, and VRShell, a general approach to facilitate context switching for VR apps within Godot. This repository contains all Godot code / files that were created during the 2023 summer term master project.
 
 ## How to use this repository
 
