@@ -34,6 +34,49 @@ In this tag these 3 interface methods are implemented in rudimentary fashion for
 
 The tag "gaze-tracking" features experiments on gaze/eye tracking using Meta Quest Pro.
 
+**Setup Gaze-Tracking**
+Setup instructions are based on this [pull request](https://github.com/godotengine/godot/pull/77989).
+1. Make a custom editor build of Godot from this pull request: https://github.com/godotengine/godot/pull/77989
+2. Download the source code from this branch/tag: https://github.com/hpi-swa-lab/vr-shell/releases/tag/gaze-tracking
+3. Modify the `vr-shell-gaze-tracking/android/build/src/com/godot/game/GodotApp.java` like this to ask for eye tracking permission:
+```java
+package com.godot.game;
+
+import org.godotengine.godot.FullScreenGodotApp;
+import android.content.pm.PackageManager;
+
+import android.os.Bundle;
+
+/**
+ 
+Template activity for Godot Android builds.
+Feel free to extend and modify this class for your custom logic.
+*/
+public class GodotApp extends FullScreenGodotApp {
+    private static final String PERMISSION_EYE_TRACKING = "com.oculus.permission.EYE_TRACKING";
+      private static final int REQUEST_CODE_PERMISSION_EYE_TRACKING = 1;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.GodotAppMainTheme);
+        super.onCreate(savedInstanceState);
+        requestEyeTrackingPermissionIfNeeded();
+    }
+
+    private void requestEyeTrackingPermissionIfNeeded() {
+        if (checkSelfPermission(PERMISSION_EYE_TRACKING) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[] {PERMISSION_EYE_TRACKING}, REQUEST_CODE_PERMISSION_EYE_TRACKING);
+        }
+    }
+}
+```
+4. Update the `vr-shell-gaze-tracking/android/build/AndroidManifest.xml` to ask for eye tracking permission:
+```xml
+<uses-feature android:name="oculus.software.eye_tracking" android:required="true" />
+<uses-permission android:name="com.oculus.permission.EYE_TRACKING" />
+```
+   
+
 ## Setup
 
 ### Meta Quest 2 Export
