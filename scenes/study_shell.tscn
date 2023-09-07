@@ -1,21 +1,21 @@
-[gd_scene load_steps=42 format=3 uid="uid://ckwa5jp780hgf"]
+[gd_scene load_steps=42 format=3 uid="uid://ddvkgmui35jl2"]
 
-[ext_resource type="Script" path="res://scripts/shell.gd" id="1_3eykf"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_wa404"]
-[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_xsdho"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_1ftie"]
-[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_gy2d2"]
-[ext_resource type="Script" path="res://scripts/ControllerHandler.gd" id="5_t0c5i"]
-[ext_resource type="Script" path="res://scripts/AlignmentContainer3D.gd" id="6_akkmj"]
-[ext_resource type="Script" path="res://scenes/ExperienceManager.gd" id="7_ejdiu"]
-[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="7_en5qn"]
-[ext_resource type="Texture2D" uid="uid://1x8d3eke6bej" path="res://assets/icons/icon_ok.png" id="10_hh4ma"]
-[ext_resource type="Texture2D" uid="uid://cjfcws6wxhnwy" path="res://assets/icons/icon_send.png" id="11_k2rdm"]
-[ext_resource type="Script" path="res://scripts/SelfDisableButton.gd" id="12_rwcqg"]
-[ext_resource type="Script" path="res://scripts/Fetch.gd" id="13_o1ni4"]
-[ext_resource type="Texture2D" uid="uid://bfhxeuhx18wiu" path="res://assets/icons/icon_start.png" id="13_w8c5c"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="14_tmntf"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="16_l51dr"]
+[ext_resource type="Script" path="res://scripts/shell.gd" id="1_1umma"]
+[ext_resource type="Script" path="res://scripts/ControllerHandler.gd" id="2_o13ks"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_mmafi"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_m7mcb"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_bmhao"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_48att"]
+[ext_resource type="Script" path="res://scripts/label3d_dmm.gd" id="7_8bnts"]
+[ext_resource type="Script" path="res://scripts/AlignmentContainer3D.gd" id="8_f3fj4"]
+[ext_resource type="Script" path="res://scenes/ExperienceManager.gd" id="9_hitd4"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="10_1vr8y"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="11_57o0r"]
+[ext_resource type="Texture2D" uid="uid://1x8d3eke6bej" path="res://assets/icons/icon_ok.png" id="12_ftu11"]
+[ext_resource type="Texture2D" uid="uid://cjfcws6wxhnwy" path="res://assets/icons/icon_send.png" id="13_pu2iy"]
+[ext_resource type="Script" path="res://scripts/SelfDisableButton.gd" id="14_5wif5"]
+[ext_resource type="Texture2D" uid="uid://bfhxeuhx18wiu" path="res://assets/icons/icon_start.png" id="15_pyq0w"]
+[ext_resource type="Script" path="res://scripts/Fetch.gd" id="16_3vpv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khxxh"]
 transparency = 1
@@ -52,13 +52,13 @@ font_size = 30
 resource_local_to_scene = true
 size = Vector2(3.2, 0.9)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2r6fg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mfpns"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmg4a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjys1"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2r6fg")
+albedo_texture = SubResource("ViewportTexture_mfpns")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fvxde"]
@@ -68,13 +68,13 @@ size = Vector3(3.2, 0.9, 0.02)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0df62"]
 bg_color = Color(0, 0, 0, 0.556863)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_om2dc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kv4je"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6i05"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4iibo"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_om2dc")
+albedo_texture = SubResource("ViewportTexture_kv4je")
 texture_filter = 1
 
 [sub_resource type="Animation" id="Animation_8hfeq"]
@@ -135,30 +135,30 @@ _data = {
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hn3fx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3x0g5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jqw8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbfw7"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_hn3fx")
+albedo_texture = SubResource("ViewportTexture_3x0g5")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnfl2"]
 resource_local_to_scene = true
 size = Vector3(3, 2, 0.02)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7nu1q"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wevru"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2sxi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38po"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_7nu1q")
+albedo_texture = SubResource("ViewportTexture_wevru")
 texture_filter = 1
 
-[node name="Shell" type="Node3D"]
-script = ExtResource("1_3eykf")
+[node name="Study Shell" type="Node3D"]
+script = ExtResource("1_1umma")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
@@ -168,27 +168,27 @@ current = true
 
 [node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
-script = ExtResource("5_t0c5i")
+script = ExtResource("2_o13ks")
 
-[node name="Hand" parent="XROrigin3D/Left Hand" instance=ExtResource("2_wa404")]
+[node name="Hand" parent="XROrigin3D/Left Hand" instance=ExtResource("3_mmafi")]
 hand_material_override = SubResource("StandardMaterial3D_khxxh")
 
-[node name="FunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("3_xsdho")]
+[node name="FunctionPickup" parent="XROrigin3D/Left Hand" instance=ExtResource("4_m7mcb")]
 
-[node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("5_gy2d2")]
+[node name="FunctionPointer" parent="XROrigin3D/Left Hand" instance=ExtResource("5_bmhao")]
 
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
-script = ExtResource("5_t0c5i")
+script = ExtResource("2_o13ks")
 
-[node name="Hand" parent="XROrigin3D/Right Hand" instance=ExtResource("4_1ftie")]
+[node name="Hand" parent="XROrigin3D/Right Hand" instance=ExtResource("6_48att")]
 hand_material_override = SubResource("StandardMaterial3D_wc060")
 
-[node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("3_xsdho")]
+[node name="FunctionPickup" parent="XROrigin3D/Right Hand" instance=ExtResource("4_m7mcb")]
 grab_distance = 0.0
 ranged_distance = 20.0
 
-[node name="FunctionPointer" parent="XROrigin3D/Right Hand" instance=ExtResource("5_gy2d2")]
+[node name="FunctionPointer" parent="XROrigin3D/Right Hand" instance=ExtResource("5_bmhao")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fi6uc")
@@ -207,36 +207,30 @@ skeleton = NodePath("")
 
 [node name="Label3DDMM" type="Label3D" parent="TestWord"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0871048)
+pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 outline_modulate = Color(1, 1, 1, 0)
 text = "Test test"
 font_size = 33
 autowrap_mode = 2
-script = ExtResource("7_en5qn")
+script = ExtResource("7_8bnts")
 intended_viewing_distance = 12.0
 
 [node name="StartPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.269, -0.565)
-script = ExtResource("6_akkmj")
+script = ExtResource("8_f3fj4")
 extend = 2.0
 is_horizontal = true
 center_children = true
+use_child_height = null
 
-[node name="ExperienceManager" type="Node3D" parent="." node_paths=PackedStringArray("user_info_2d_screen", "user_start_2d_screen", "user_menu_2d_screen", "user_task_2d_screen", "start_position", "test_word", "left_controller", "right_controller")]
-script = ExtResource("7_ejdiu")
-user_info_2d_screen = NodePath("../UserInfo2DScreen")
-user_start_2d_screen = NodePath("../UserStart2DScreen")
-user_menu_2d_screen = NodePath("../UserMenu2DScreen")
-user_task_2d_screen = NodePath("../UserTask2DScreen")
-start_position = NodePath("../StartPosition")
-test_word = NodePath("../TestWord")
-left_controller = NodePath("../XROrigin3D/Left Hand")
-right_controller = NodePath("../XROrigin3D/Right Hand")
+[node name="ExperienceManager" type="Node3D" parent="."]
+script = ExtResource("9_hitd4")
 test_words = Array[String](["Sauerkraut", "Currywurst", "Süßkartoffeln", "Sellerie", "Butterspätzle", "Lasagne", "Granatapfel", "Brokkoli", "Nudelsuppe", "Flammenkuchen", "Spinat", "Petersilie", "Koriander", "Seelachs", "Grillhähnchen", "Cheeseburger", "Gewürzgurke"])
 
 [node name="UserTask2DScreen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60537, -3)
-script = ExtResource("14_tmntf")
+script = ExtResource("10_1vr8y")
 screen_size = Vector2(3.2, 0.9)
 viewport_size = Vector2(640, 180)
 
@@ -277,12 +271,12 @@ vertical_alignment = 1
 
 [node name="Screen" type="MeshInstance3D" parent="UserTask2DScreen"]
 mesh = SubResource("QuadMesh_4dfsu")
-surface_material_override/0 = SubResource("StandardMaterial3D_wmg4a")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjys1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserTask2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
-script = ExtResource("16_l51dr")
+script = ExtResource("11_57o0r")
 screen_size = Vector2(3.2, 0.9)
 viewport_size = Vector2(640, 180)
 
@@ -291,7 +285,7 @@ shape = SubResource("BoxShape3D_fvxde")
 
 [node name="UserInfo2DScreen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50537, -3)
-script = ExtResource("14_tmntf")
+script = ExtResource("10_1vr8y")
 screen_size = Vector2(3.2, 0.9)
 viewport_size = Vector2(640, 180)
 
@@ -334,12 +328,12 @@ vertical_alignment = 1
 
 [node name="Screen" type="MeshInstance3D" parent="UserInfo2DScreen"]
 mesh = SubResource("QuadMesh_4dfsu")
-surface_material_override/0 = SubResource("StandardMaterial3D_p6i05")
+surface_material_override/0 = SubResource("StandardMaterial3D_4iibo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserInfo2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
-script = ExtResource("16_l51dr")
+script = ExtResource("11_57o0r")
 screen_size = Vector2(3.2, 0.9)
 viewport_size = Vector2(640, 180)
 
@@ -353,13 +347,14 @@ libraries = {
 
 [node name="UserMenu2DScreen" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.98725, 2.05537, -1.74719)
-script = ExtResource("14_tmntf")
+script = ExtResource("10_1vr8y")
 
 [node name="Viewport" type="SubViewport" parent="UserMenu2DScreen"]
 disable_3d = true
 transparent_bg = true
 gui_embed_subwindows = true
 size = Vector2i(300, 200)
+render_target_update_mode = 1
 
 [node name="Control" type="Control" parent="UserMenu2DScreen/Viewport"]
 layout_mode = 3
@@ -393,7 +388,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 39
 text = "Checken"
-icon = ExtResource("10_hh4ma")
+icon = ExtResource("12_ftu11")
 expand_icon = true
 
 [node name="Separator" type="HSeparator" parent="UserMenu2DScreen/Viewport/Control/Panel/VBoxContainer"]
@@ -406,18 +401,18 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 39
 text = "Senden"
-icon = ExtResource("11_k2rdm")
+icon = ExtResource("13_pu2iy")
 expand_icon = true
-script = ExtResource("12_rwcqg")
+script = ExtResource("14_5wif5")
 
 [node name="Screen" type="MeshInstance3D" parent="UserMenu2DScreen"]
 mesh = SubResource("QuadMesh_fycao")
-surface_material_override/0 = SubResource("StandardMaterial3D_2jqw8")
+surface_material_override/0 = SubResource("StandardMaterial3D_pbfw7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserMenu2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
-script = ExtResource("16_l51dr")
+script = ExtResource("11_57o0r")
 viewport_size = Vector2(300, 200)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UserMenu2DScreen/StaticBody3D"]
@@ -425,7 +420,7 @@ shape = SubResource("BoxShape3D_nnfl2")
 
 [node name="UserStart2DScreen" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.987, 2.05537, -1.747)
-script = ExtResource("14_tmntf")
+script = ExtResource("10_1vr8y")
 
 [node name="Viewport" type="SubViewport" parent="UserStart2DScreen"]
 disable_3d = true
@@ -462,25 +457,25 @@ grow_vertical = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 63
 text = "Start"
-icon = ExtResource("13_w8c5c")
+icon = ExtResource("15_pyq0w")
 expand_icon = true
-script = ExtResource("12_rwcqg")
+script = ExtResource("14_5wif5")
 
 [node name="Screen" type="MeshInstance3D" parent="UserStart2DScreen"]
 mesh = SubResource("QuadMesh_fycao")
-surface_material_override/0 = SubResource("StandardMaterial3D_a2sxi")
+surface_material_override/0 = SubResource("StandardMaterial3D_v38po")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="UserStart2DScreen"]
 collision_layer = 1048577
 collision_mask = 0
-script = ExtResource("16_l51dr")
+script = ExtResource("11_57o0r")
 viewport_size = Vector2(300, 200)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UserStart2DScreen/StaticBody3D"]
 shape = SubResource("BoxShape3D_nnfl2")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." node_paths=PackedStringArray("experience_manager")]
-script = ExtResource("13_o1ni4")
+script = ExtResource("16_3vpv5")
 experience_manager = NodePath("../ExperienceManager")
 test_json = "{
     \"platform\": \"VR\",
@@ -542,8 +537,6 @@ test_json = "{
 	\"leftHand\": false
 }"
 
-[connection signal="experience_finished" from="ExperienceManager" to="HTTPRequest" method="_on_experience_manager_experience_finished"]
-[connection signal="experience_started" from="ExperienceManager" to="HTTPRequest" method="_on_experience_manager_experience_started"]
 [connection signal="pointer_moved" from="UserTask2DScreen/StaticBody3D" to="UserTask2DScreen/StaticBody3D" method="_on_pointer_moved" flags=18]
 [connection signal="pointer_pressed" from="UserTask2DScreen/StaticBody3D" to="UserTask2DScreen/StaticBody3D" method="_on_pointer_pressed" flags=18]
 [connection signal="pointer_released" from="UserTask2DScreen/StaticBody3D" to="UserTask2DScreen/StaticBody3D" method="_on_pointer_released" flags=18]
