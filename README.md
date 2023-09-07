@@ -38,7 +38,8 @@ The tag "gaze-tracking" features experiments on gaze/eye tracking using the Meta
 Setup instructions are based on this [pull request](https://github.com/godotengine/godot/pull/77989).
 1. Make a custom editor build of Godot from this pull request: https://github.com/godotengine/godot/pull/77989
 2. Download the source code from this branch/tag: https://github.com/hpi-swa-lab/vr-shell/releases/tag/gaze-tracking
-3. Modify the `vr-shell-gaze-tracking/android/build/src/com/godot/game/GodotApp.java` like this to ask for eye tracking permission:
+3. Setup Godot for Android export.
+4. Modify the `vr-shell-gaze-tracking/android/build/src/com/godot/game/GodotApp.java` like this to ask for eye tracking permission:
 ```java
 package com.godot.game;
 
@@ -70,7 +71,7 @@ public class GodotApp extends FullScreenGodotApp {
     }
 }
 ```
-4. Update the `vr-shell-gaze-tracking/android/build/AndroidManifest.xml` to ask for eye tracking permission:
+5. Update the `vr-shell-gaze-tracking/android/build/AndroidManifest.xml` to ask for eye tracking permission:
 ```xml
 <uses-feature android:name="oculus.software.eye_tracking" android:required="true" />
 <uses-permission android:name="com.oculus.permission.EYE_TRACKING" />
