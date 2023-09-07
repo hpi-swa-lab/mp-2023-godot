@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://7f80cm36mgod"]
+[gd_scene load_steps=15 format=3 uid="uid://dj7lpcowipddk"]
 
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_ot81t"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_16aro"]

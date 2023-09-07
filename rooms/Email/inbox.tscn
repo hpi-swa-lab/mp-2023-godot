@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1uygyufkp6vs"]
+[gd_scene load_steps=9 format=3 uid="uid://c1uygyufkp6vs"]
 
 [ext_resource type="Script" path="res://rooms/Email/mail_spawner.gd" id="1_76cks"]
 [ext_resource type="PackedScene" uid="uid://caiubikjo74ai" path="res://rooms/Email/mail.tscn" id="2_p01o0"]
@@ -11,26 +11,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 2.08165e-12)
 }
 point_count = 2
-
-[sub_resource type="LabelSettings" id="LabelSettings_p2y2r"]
-font_size = 91
-
-[sub_resource type="QuadMesh" id="QuadMesh_x1qpa"]
-resource_local_to_scene = true
-size = Vector2(0.3, 0.15)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_1kt3r"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpvjx"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_1kt3r")
-texture_filter = 1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3qva2"]
-resource_local_to_scene = true
-size = Vector3(0.3, 0.15, 0.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6nuno"]
 
@@ -59,48 +39,6 @@ transform = Transform3D(0.919145, -0.144375, -0.366508, 1.49012e-08, 0.930415, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 screen_size = Vector2(0.3, 0.15)
 viewport_size = Vector2(300, 150)
-
-[node name="Viewport" parent="Label3D" index="0"]
-size = Vector2i(300, 150)
-
-[node name="GUI" type="Control" parent="Label3D/Viewport" index="0"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="Label3D/Viewport/GUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Label3D/Viewport/GUI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Inbox"
-label_settings = SubResource("LabelSettings_p2y2r")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Screen" parent="Label3D" index="1"]
-mesh = SubResource("QuadMesh_x1qpa")
-surface_material_override/0 = SubResource("StandardMaterial3D_fpvjx")
-
-[node name="StaticBody3D" parent="Label3D" index="2"]
-screen_size = Vector2(0.3, 0.15)
-viewport_size = Vector2(300, 150)
-
-[node name="CollisionShape3D" parent="Label3D/StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_3qva2")
 
 [node name="Box" type="StaticBody3D" parent="."]
 collision_layer = 1048576
@@ -164,5 +102,3 @@ mesh = SubResource("CapsuleMesh_1v5dk")
 
 [connection signal="on_pointer_entered" from="Box" to="." method="_on_box_on_pointer_entered"]
 [connection signal="on_pointer_exited" from="Box" to="." method="_on_box_on_pointer_exited"]
-
-[editable path="Label3D"]
