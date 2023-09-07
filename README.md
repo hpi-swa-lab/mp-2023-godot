@@ -32,7 +32,7 @@ In this tag these 3 interface methods are implemented in rudimentary fashion for
 
 ### gaze-tracking
 
-The tag "gaze-tracking" features experiments on gaze/eye tracking using Meta Quest Pro.
+The tag "gaze-tracking" features experiments on gaze/eye tracking using the Meta Quest Pro. The exploration tries to replicate the Apple Vision Pro eye interaction for selecting/focusing/highlighting/etc.
 
 **Setup Gaze-Tracking**
 Setup instructions are based on this [pull request](https://github.com/godotengine/godot/pull/77989).
